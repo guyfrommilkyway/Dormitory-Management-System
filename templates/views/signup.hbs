@@ -7,11 +7,11 @@
     <div class="container m-5">
         <div class="row justify-content-center">
             <div class="col-md-5">
-                <form class="d-flex flex-column justify-content-center" action="">
-                    <input class="form-control mb-2" type="text" placeholder="Name" required>
-                    <input class="form-control mb-2" type="email" placeholder="Email" required>
-                    <input class="form-control mb-2" type="password" placeholder="Password" required>
-                    <button class="btn btn-primary btn-s btn-block mb-2">Sign up</button>
+                <form class="d-flex flex-column justify-content-center" action="/users" method="POST">
+                    <input class="form-control mb-2" type="text" name="name" placeholder="Name" required>
+                    <input class="form-control mb-2" type="email" name="email" placeholder="Email" required>
+                    <input class="form-control mb-2" type="password" name="password" placeholder="Password" required>
+                    <button class="btn btn-primary btn-s btn-block mb-2" type="submit">Sign up</button>
                 </form>
             </div>
         </div>
