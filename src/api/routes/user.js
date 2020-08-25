@@ -18,10 +18,10 @@ router.post('/user/signup', async (req, res) => {
 // User login
 router.post('/user/login', async (req, res) => {
     try {
-        await userLogin(req.body)
+        const { user, token } = await userLogin(req.body)
 
-        req.method = 'get'
-        res.redirect('/home')
+        res.cookie('accessToken', token)
+            .redirect('/home')
     } catch (e) {
         res.status(400).send()
     }
