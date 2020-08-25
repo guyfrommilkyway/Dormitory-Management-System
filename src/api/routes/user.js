@@ -1,5 +1,6 @@
 const express = require('express')
-const { userSignup, userLogin } = require('../../services/user')
+const { userSignup, userLogin, userLogout } = require('../../services/user')
+const authentication = require('../middlewares/authentication')
 
 const router = new express.Router()
 
@@ -24,6 +25,18 @@ router.post('/user/login', async (req, res) => {
             .redirect('/home')
     } catch (e) {
         res.status(400).send()
+    }
+})
+
+// User logout
+router.post('/users/logout', authentication, async (req, res) => {
+    try {
+        userLogout(req.cookies.accessToken)
+
+        res.cookie('accessToken', '')
+            .redirect('/home')
+    } catch (e) {
+        res.status(500).send()
     }
 })
 
