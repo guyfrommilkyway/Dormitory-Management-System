@@ -2,7 +2,7 @@ const path = require('path')
 const hbs = require('hbs')
 const cookieParser = require('cookie-parser')
 
-module.exports = async (app, express) => {
+module.exports = async (app, express, router) => {
     // Database connection
     await require('./mongoose')
 

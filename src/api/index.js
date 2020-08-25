@@ -1,4 +1,6 @@
-module.exports = (app) => {
-    await require('../api/routes/landing')(app)
-    await require('../api/routes/user')(app)
+const userRouter = require('./routes/user')
+
+module.exports = async (app) => {
+    await require('./routes/landing')(app)
+    app.use(userRouter)
 }
