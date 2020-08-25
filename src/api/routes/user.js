@@ -1,14 +1,27 @@
 const express = require('express')
-const { signup } = require('../../services/signup')
+const { userSignup, userLogin } = require('../../services/user')
 
 const router = new express.Router()
 
-// create a new user
-router.post('/users', async (req, res) => {
+// User signup
+router.post('/user/signup', async (req, res) => {
     try {
-        await signup(req.body)
+        await userSignup(req.body)
 
-        res.status(201).send()
+        req.method = 'get'
+        res.redirect('/')
+    } catch (e) {
+        res.status(400).send()
+    }
+})
+
+// User login
+router.post('/user/login', async (req, res) => {
+    try {
+        await userLogin(req.body)
+
+        req.method = 'get'
+        res.redirect('/home')
     } catch (e) {
         res.status(400).send()
     }
