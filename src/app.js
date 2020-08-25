@@ -11,7 +11,7 @@ async function startServer() {
     await require('../src/loaders/express')(app, express)
 
     // Routes
-    await require('../src/api/index')(app)
+    await require('../src/api/index')(app, express)
 
     app.listen(port, () => {
         console.log(`The server is up on port ${port}.`)
