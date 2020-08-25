@@ -7,6 +7,7 @@ module.exports = async (app, express) => {
 
     // Setup handlebars and engine views
     app.set('view engine', 'hbs')
+    app.engine('hbs', hbs.__express)
     app.set('views', path.join(__dirname, '../../templates/views'))
     hbs.registerPartials(path.join(__dirname, '../../templates/partials'))
 
