@@ -20,8 +20,10 @@ module.exports = async (app) => {
     // Home
     app.get('/home', authentication, async (req, res) => {
         res.render('components/landing/home', {
-            layout: 'layouts/index',
-            title: 'Home'
+            layout: 'layouts/main',
+            title: 'Home',
+            username: req.session.userName,
+            email: req.session.userEmail,
         })
     })
 }
