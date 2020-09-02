@@ -95,7 +95,7 @@
 .property .sidebar {
   width: 18rem;
   min-height: 100vh;
-  padding: 1.5rem;
+  padding: 1.5rem 0;
   margin-right: 2rem;
   background-color: #e0e0ce;
   border-radius: 4px;
@@ -111,8 +111,7 @@
   justify-content: start;
   align-items: center;
   min-height: 40px;
-  padding: 0.6rem;
-  margin-bottom: 0.7rem;
+  padding: 0.6rem 1.5rem;
 }
 
 .property .sidebar .navbar-nav .nav-item .icon {
