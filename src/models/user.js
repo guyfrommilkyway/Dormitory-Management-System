@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
+const Property = require('./property')
 
 // User model
 const userSchema = new mongoose.Schema({
@@ -42,6 +43,13 @@ const userSchema = new mongoose.Schema({
 }, {
     timestamps: true
 })
+
+userSchema.virtual('properties', {
+    ref: 'Property',
+    localField: '_id',
+    foreignField: 'author'
+})
+
 
 // Token generation
 userSchema.methods.generateAuthToken = async function () {
