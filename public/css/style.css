@@ -1,52 +1,34 @@
+@font-face {
+  font-family: Garamond;
+  src: url("../fonts/CormorantGaramond-Regular.ttf");
+}
+
+@font-face {
+  font-family: HarryPotter;
+  src: url("../fonts/HARRYP__.TTF");
+}
+
 body {
-  color: #707070;
   background-color: #eeeeee;
 }
 
-.form-login {
-  min-width: 320px;
-  min-height: 500px;
-  padding: 3.5rem 2rem;
-  margin: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  text-align: center;
-  background-color: #ffffff;
-}
-
-.avatar {
-  width: 5rem;
-  height: 5rem;
-  margin: 1.55rem auto;
-  border-radius: 3.5rem;
-  fill: #9c28b1;
-}
-
-.md-form-login {
-  min-width: 80%;
-  padding: 0 2rem;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.form-control-login {
-  margin: 1rem auto 1rem auto;
-}
-
-.btn-login {
-  min-width: 100%;
-  padding: 0.4rem;
-  margin: 0.8rem 0 0.5rem 0;
+form .form-group .form-control {
+  padding: 0.6rem 0;
+  margin: 0 0 0.6rem 0;
   color: #ffffff;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #eeeeee;
+  border-radius: 0;
+}
+
+form .form-group .form-control:focus {
+  border-bottom: 1px solid #ffeab2;
+  box-shadow: none;
+}
+
+.btn {
+  padding: 0.4rem 1rem;
   font-size: 1rem;
-  text-transform: capitalize;
-  background-color: #9c28b1;
-}
-
-.btn-login:hover {
-  color: #ffffff;
+  text-transform: none;
 }
