@@ -1,0 +1,137 @@
+/* Topbar */
+
+.navbar {
+  height: 80px;
+  margin: 0;
+  padding: 0 2rem;
+  background-color: #3c2415;
+  align-items: center;
+}
+
+.navbar .navbar-brand .crest {
+  width: 170px;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar .navbar-nav {
+  margin-left: 102px;
+  flex-direction: row;
+}
+
+.navbar .navbar-nav .nav-item {
+  margin-right: 1rem;
+}
+
+.navbar .navbar-nav .nav-item .nav-link {
+  padding: 1rem;
+  color: #ffeab2;
+  text-transform: uppercase;
+}
+
+.navbar .dropdown {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 0;
+  margin: 0;
+  width: 300px;
+}
+
+.navbar .dropdown .dropdown-menu {
+  width: 100%;
+  margin: 0.8rem 0;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background-color: #e0e0ce;
+}
+
+.navbar .dropdown .dropdown-menu .menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar .dropdown .dropdown-menu .menu .profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 1.2rem;
+}
+
+.navbar .dropdown .dropdown-menu .menu .profile .photo {
+  width: 5rem;
+  height: 5rem;
+  margin: 0.5rem;
+  border-radius: 2.5rem;
+}
+
+.navbar .dropdown .dropdown-menu .menu .profile .name {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+
+.navbar .dropdown .dropdown-menu .menu .profile .email {
+  font-size: 0.9rem;
+}
+
+.navbar .dropdown .dropdown-menu .menu .wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+}
+
+.navbar .dropdown .dropdown-menu .menu .wrapper .setting {
+  padding: 0.4rem 1rem;
+  color: #3c2415;
+  border: 1px solid #3c2415;
+  box-shadow: none;
+}
+
+.navbar .dropdown .dropdown-menu .menu .wrapper .setting:hover {
+  border: 1px solid #3c2415;
+}
+
+.navbar .dropdown .dropdown-menu .menu .wrapper form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar .dropdown .dropdown-menu .menu .wrapper form .logout {
+  margin: 0;
+  color: #ffeab2;
+  background-color: #3c2415;
+  box-shadow: none;
+}
+
+.navbar .user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar .dropdown .user .username {
+  margin-right: 1rem;
+  color: #ffeab2;
+  font-family: Ubuntu;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.navbar .dropdown .user .avatar {
+  width: 2rem;
+  margin: 0;
+  padding: 0;
+}
