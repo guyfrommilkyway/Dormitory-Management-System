@@ -1,6 +1,8 @@
 const path = require('path')
 const hbs = require('hbs')
 const cookieParser = require('cookie-parser')
+const session = require('express-session')
+const { v4: uuidv4 } = require('uuid')
 
 module.exports = async (app, express) => {
     // Database connection
@@ -19,6 +21,17 @@ module.exports = async (app, express) => {
     app.use(express.json())
     app.use(express.urlencoded({ extended: true }))
     app.use(cookieParser())
+    app.use(session({
+        genid: function (req) {
+            return uuidv4()
+        },
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            secure: false,
+        }
+    }))
 
     // Routes
     await require('../api/index')(app)

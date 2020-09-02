@@ -9,8 +9,8 @@ router.post('/user/signup', async (req, res) => {
     try {
         await userSignup(req.body)
 
-        req.method = 'get'
-        res.redirect('/')
+        res.status(201)
+            .redirect('/')
     } catch (e) {
         res.status(400).send()
     }
@@ -21,7 +21,12 @@ router.post('/user/login', async (req, res) => {
     try {
         const { user, token } = await userLogin(req.body)
 
-        res.cookie('accessToken', token)
+        req.session.userId = user._id
+        req.session.userName = user.name
+        req.session.userEmail = user.email
+        req.session.token = token
+
+        res.cookie('sessionId', req.session.id)
             .redirect('/home')
     } catch (e) {
         res.status(400).send()
@@ -29,11 +34,13 @@ router.post('/user/login', async (req, res) => {
 })
 
 // User logout
-router.post('/users/logout', authentication, async (req, res) => {
+router.post('/user/logout', authentication, async (req, res) => {
     try {
-        userLogout(req.cookies.accessToken)
+        userLogout(req.session.token)
 
-        res.cookie('accessToken', '')
+        req.session.destroy()
+
+        res.clearCookie('sessionId')
             .redirect('/home')
     } catch (e) {
         res.status(500).send()
