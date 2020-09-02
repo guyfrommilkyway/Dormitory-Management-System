@@ -2,14 +2,14 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/user')
 
 // User signup
-const userSignup = async (object) => {
-    const user = new User(object)
+const userSignup = async (userObject) => {
+    const user = new User(userObject)
     await user.save()
 }
 
 // User login
-const userLogin = async (object) => {
-    const user = await User.findByCredentials(object.email, object.password)
+const userLogin = async (userObject) => {
+    const user = await User.findByCredentials(userObject.email, userObject.password)
     const token = await user.generateAuthToken()
 
     return { user, token }
