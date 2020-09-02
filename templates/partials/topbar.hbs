@@ -1,0 +1,44 @@
+<!--Topbar-->
+<nav class="navbar">
+
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="#logo">
+        <img class="crest" src="/images/logo.png" alt="">
+    </a>
+
+    <!-- Nav -->
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="/home">Home
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/property">Property</a>
+        </li>
+    </ul>
+
+    <!-- User -->
+    <div class="dropdown">
+        <a class="user" type="button" id="dropdownMenuMenu" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <img class="avatar" src="/images/default-avatar.png" alt="">
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuMenu">
+            <div class="menu">
+                <div class="profile">
+                    <img class="photo" src="/images/default-avatar.png" alt="">
+                    <span class="name">{{username}}</span>
+                    <span class="email">{{email}}</span>
+                </div>
+                <div class="wrapper">
+                    <a class="btn setting" href="#">Profile</a>
+                    <form action="/user/logout" method="POST">
+                        <button class="btn logout" type="submit">Log out</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</nav>
