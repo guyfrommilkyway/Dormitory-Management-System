@@ -1,6 +1,6 @@
 /* Login */
 
-.login {
+.wrapper {
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -11,7 +11,7 @@
   background-repeat: no-repeat;
 }
 
-.login form {
+.wrapper form {
   max-width: 400px;
   min-width: 320px;
   min-height: 400px;
@@ -21,13 +21,13 @@
   border-radius: 0.25rem;
 }
 
-.login form h2 {
+.wrapper form h2 {
   color: #ffffff;
   text-align: center;
   font-family: HarryPotter;
 }
 
-.login form .logo {
+.wrapper form .logo {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,22 +36,22 @@
   text-align: center;
 }
 
-.login form .logo .hogwarts-crest {
+.wrapper form .logo .hogwarts-crest {
   width: 120px;
   margin: 0;
   padding: 0;
 }
 
-.login form .form-group .form-control:focus {
+.wrapper form .form-group .form-control:focus {
   border-bottom: 1px solid #ffeab2;
   box-shadow: none;
 }
 
-.login form .form-group .form-control::placeholder {
+.wrapper form .form-group .form-control::placeholder {
   color: #ffffff;
 }
 
-.login form button {
+.wrapper form button {
   display: block;
   margin: 1.2rem auto 0.8rem auto;
   padding: 0.4rem 1rem;
@@ -61,26 +61,69 @@
   background-color: #ffeab2;
 }
 
-.login form p {
-  margin-bottom: 2rem;
+.wrapper form p {
+  margin-bottom: 0.2rem;
   color: #ffffff;
   font-size: 0.9rem;
   text-align: center;
 }
 
-.login form p a {
+.wrapper form p a {
   color: #ffeab2;
 }
 
-.login form p a:hover {
+.wrapper form p a:hover {
   color: #ffeab2;
   font-style: italic;
   text-decoration: underline;
 }
 
-.login form p a:focus {
+.wrapper form p a:focus {
   color: #ffeab2;
   font-style: italic;
+}
+
+/* Sign up */
+
+.wrapper form .upload {
+  margin-bottom: 1rem;
+  border: 1px dashed #ffffff;
+}
+
+.wrapper form .upload label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.wrapper form .upload label #uploaded-image {
+  width: 8rem;
+  height: 8rem;
+  background-image: url("../images/placeholder.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.wrapper form .upload label span {
+  display: block;
+  width: 200px;
+  margin-top: 0.5rem;
+  color: #ffffff;
+  font-size: 0.9rem;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.wrapper form .upload input[type="file"] {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
 
 /* Home */
@@ -93,7 +136,7 @@
 }
 
 .property .sidebar {
-  width: 18rem;
+  width: 20rem;
   min-height: 100vh;
   padding: 1.5rem 0;
   margin-right: 2rem;
@@ -143,17 +186,51 @@
 }
 
 .property form .modal .modal-content .modal-body .upload {
+  margin-bottom: 1rem;
   text-align: center;
+  border: 1px dashed #3c2415;
 }
 
 .property form .modal .modal-dialog .modal-content .modal-body .upload label {
-  width: 8rem;
-  height: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.property
+  form
+  .modal
+  .modal-dialog
+  .modal-content
+  .modal-body
+  .upload
+  label
+  #uploaded-image {
+  width: 10rem;
+  height: 10rem;
   background-image: url("../images/placeholder.png");
   background-position: center;
   background-size: cover;
-  cursor: pointer;
-  border: 2px dashed #c2c2c2;
+  background-repeat: no-repeat;
+}
+
+.property
+  form
+  .modal
+  .modal-dialog
+  .modal-content
+  .modal-body
+  .upload
+  label
+  span {
+  display: block;
+  width: 300px;
+  margin-top: 0.5rem;
+  word-wrap: break-word;
+  font-size: 0.8rem;
 }
 
 .property

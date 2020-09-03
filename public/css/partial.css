@@ -68,12 +68,12 @@
 .navbar .dropdown .dropdown-menu .menu .profile .photo {
   width: 5rem;
   height: 5rem;
-  margin: 0.5rem;
+  margin-bottom: 1rem;
   border-radius: 2.5rem;
 }
 
 .navbar .dropdown .dropdown-menu .menu .profile .name {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-transform: uppercase;
 }
 
@@ -81,25 +81,25 @@
   font-size: 0.9rem;
 }
 
-.navbar .dropdown .dropdown-menu .menu .wrapper {
+.navbar .dropdown .dropdown-menu .menu .button-group {
   display: flex;
   justify-content: space-between;
   width: 100%;
   padding: 1rem;
 }
 
-.navbar .dropdown .dropdown-menu .menu .wrapper .setting {
+.navbar .dropdown .dropdown-menu .menu .button-group .setting {
   padding: 0.4rem 1rem;
   color: #3c2415;
   border: 1px solid #3c2415;
   box-shadow: none;
 }
 
-.navbar .dropdown .dropdown-menu .menu .wrapper .setting:hover {
+.navbar .dropdown .dropdown-menu .menu .button-group .setting:hover {
   border: 1px solid #3c2415;
 }
 
-.navbar .dropdown .dropdown-menu .menu .wrapper form {
+.navbar .dropdown .dropdown-menu .menu .button-group form {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,7 +108,7 @@
   padding: 0;
 }
 
-.navbar .dropdown .dropdown-menu .menu .wrapper form .logout {
+.navbar .dropdown .dropdown-menu .menu .button-group form .logout {
   margin: 0;
   color: #ffeab2;
   background-color: #3c2415;
@@ -131,7 +131,9 @@
 }
 
 .navbar .dropdown .user .avatar {
-  width: 2rem;
+  width: 2.4rem;
+  height: 2.4rem;
   margin: 0;
   padding: 0;
+  border-radius: 1.2rem;
 }
