@@ -21,17 +21,19 @@
     <div class="dropdown">
         <a class="user" type="button" id="dropdownMenuMenu" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
-            <img class="avatar" src="/images/default-avatar.png" alt="">
+            <img class="avatar" {{#if user.avatar}} src="data:image/png;base64,{{user.avatar.data}}" {{else}}
+                src="/images/placeholder.png" {{/if}} alt="profile-picture">
         </a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuMenu">
             <div class="menu">
                 <div class="profile">
-                    <img class="photo" src="/images/default-avatar.png" alt="">
-                    <span class="name">{{username}}</span>
-                    <span class="email">{{email}}</span>
+                    <img class="photo" {{#if user.avatar}} src="data:image/png;base64,{{user.avatar.data}}" {{else}}
+                        src="/images/placeholder.png" {{/if}} alt="profile-picture">
+                    <span class="name">{{user.name}}</span>
+                    <span class="email">{{user.email}}</span>
                 </div>
-                <div class="wrapper">
+                <div class="button-group">
                     <a class="btn setting" href="#">Profile</a>
                     <form action="/user/logout" method="POST">
                         <button class="btn logout" type="submit">Log out</button>
