@@ -1,4 +1,5 @@
 const authentication = require('../middlewares/authentication')
+const user = require('../../services/user')
 
 module.exports = async (app) => {
     // Index
@@ -22,8 +23,7 @@ module.exports = async (app) => {
         res.render('components/landing/home', {
             layout: 'layouts/main',
             title: 'Home',
-            username: req.session.userName,
-            email: req.session.userEmail,
+            user: req.session.user,
         })
     })
 }
