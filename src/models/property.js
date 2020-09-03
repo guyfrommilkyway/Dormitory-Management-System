@@ -20,6 +20,9 @@ const propertySchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    avatar: {
+        type: String
+    },
     author: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,

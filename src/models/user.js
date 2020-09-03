@@ -34,6 +34,10 @@ const userSchema = new mongoose.Schema({
             }
         }
     },
+    avatar: {
+        data: Buffer,
+        contentType: String
+    },
     tokens: [{
         token: {
             type: String,
@@ -50,6 +54,14 @@ userSchema.virtual('properties', {
     foreignField: 'author'
 })
 
+userSchema.methods.toJSON = function () {
+    const userObject = this.toObject()
+
+    delete userObject.password
+    delete userObject.tokens
+
+    return userObject
+}
 
 // Token generation
 userSchema.methods.generateAuthToken = async function () {
