@@ -33,8 +33,8 @@ router.get('/property', authentication, async (req, res) => {
         const { properties } = await propertyList(req.session.user)
 
         res.status(200)
-            .render('components/landing/property', {
-                layout: 'layouts/main',
+            .render('pages/landing/property', {
+                layout: 'index',
                 title: 'Property',
                 user: req.session.user,
                 properties: properties
