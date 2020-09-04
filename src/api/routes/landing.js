@@ -4,24 +4,24 @@ const user = require('../../services/user')
 module.exports = async (app) => {
     // Index
     app.get('', async (req, res) => {
-        res.render('components/login', {
-            layout: 'layouts/index',
+        res.render('pages/login', {
+            layout: 'index',
             title: 'Login'
         })
     })
 
     // Signup
     app.get('/signup', async (req, res) => {
-        res.render('components/signup', {
-            layout: 'layouts/index',
+        res.render('pages/signup', {
+            layout: 'index',
             title: 'Signup'
         })
     })
 
     // Home
     app.get('/home', authentication, async (req, res) => {
-        res.render('components/landing/home', {
-            layout: 'layouts/main',
+        res.render('pages/landing/home', {
+            layout: 'index',
             title: 'Home',
             user: req.session.user,
         })
