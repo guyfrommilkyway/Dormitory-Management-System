@@ -1,0 +1,22 @@
+<!-- Sidebar -->
+<nav class="sidebar">
+
+    <!-- Nav -->
+    <div class="navbar-nav" href="">
+        <a class="nav-item" data-toggle="modal" data-target="#add-property">
+            <img class="icon" src="/images/icons/add.svg" alt="">
+            <span class="text">Add property</span>
+        </a>
+        <a class="nav-item">
+            <img class="icon" src="/images/icons/view.svg" alt="">
+            <span class="text">View all</span>
+        </a>
+        {{#each properties}}
+        <a class="nav-item" href="#">
+            <img class="icon" src="/uploads/property_avatars/{{avatar}}" alt="">
+            <span class="text">{{name}}</span>
+        </a>
+        {{/each}}
+    </div>
+
+</nav>
