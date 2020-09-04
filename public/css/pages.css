@@ -53,9 +53,9 @@
 
 .wrapper form button {
   display: block;
-  margin: 1.2rem auto 0.8rem auto;
+  margin: 1.5rem auto;
   padding: 0.4rem 1rem;
-  color: #3c2415;
+  color: #1b2432;
   text-align: center;
   text-transform: none;
   background-color: #ffeab2;
@@ -135,38 +135,6 @@
   align-items: flex-start;
 }
 
-.property .sidebar {
-  width: 20rem;
-  min-height: 100vh;
-  padding: 1.5rem 0;
-  margin-right: 2rem;
-  background-color: #e0e0ce;
-  border-radius: 4px;
-}
-
-.property .content {
-  width: 100%;
-  background-color: #ffffff;
-}
-
-.property .sidebar .navbar-nav .nav-item {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  min-height: 40px;
-  padding: 0.6rem 1.5rem;
-}
-
-.property .sidebar .navbar-nav .nav-item .icon {
-  width: 20px;
-  margin-right: 0.7rem;
-  padding: 0;
-}
-
-.property .sidebar .navbar-nav .nav-item .text {
-  color: #3c2415;
-}
-
 .property form .modal .modal-dialog .modal-content {
   border-radius: 0;
 }
@@ -177,7 +145,7 @@
   align-items: center;
   height: 80px;
   color: #ffeab2;
-  background-color: #3c2415;
+  background-color: #1b2432;
   border-radius: 0;
 }
 
@@ -188,7 +156,7 @@
 .property form .modal .modal-content .modal-body .upload {
   margin-bottom: 1rem;
   text-align: center;
-  border: 1px dashed #3c2415;
+  border: 1px dashed #1b2432;
 }
 
 .property form .modal .modal-dialog .modal-content .modal-body .upload label {
@@ -257,8 +225,8 @@
   .modal-body
   .form-group
   .form-control {
-  color: #3c2415;
-  border-bottom: 1px solid #3c2415;
+  color: #1b2432;
+  border-bottom: 1px solid #1b2432;
 }
 
 .property
@@ -269,8 +237,8 @@
   .modal-body
   .form-group
   .form-control:focus {
-  color: #3c2415;
-  border-bottom: 1px solid #3c2415;
+  color: #1b2432;
+  border-bottom: 1px solid #1b2432;
 }
 
 .property form .modal .modal-dialog .modal-content .modal-footer {
@@ -279,13 +247,13 @@
   align-items: center;
   height: 80px;
   color: #ffeab2;
-  background-color: #3c2415;
+  background-color: #1b2432;
   border-radius: 0;
 }
 
 .property form .modal .modal-dialog .modal-content .modal-footer .cancel {
   background: none;
-  border: 1px solid #3c2415;
+  border: 1px solid #1b2432;
   box-shadow: none;
 }
 
@@ -296,6 +264,6 @@
 }
 
 .property form .modal .modal-dialog .modal-content .modal-footer .add {
-  color: #3c2415;
+  color: #1b2432;
   background-color: #ffeab2;
 }
