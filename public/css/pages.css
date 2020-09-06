@@ -131,8 +131,172 @@
 /* Property */
 .property {
   display: flex;
-  padding: 2rem;
+  padding: 1rem;
+}
+
+.property .content {
+  width: 100%;
+
+  background: none;
+}
+
+.property .content .message {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+}
+
+.property .content .message span {
+  text-align: center;
+  color: #ffeab2;
+  font-size: 1.2rem;
+}
+
+.property .content .property-card {
+  display: flex;
+  justify-content: space-between;
   align-items: flex-start;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 2px;
+  background-color: #ffeab2;
+}
+
+.property .content .property-card .property-about {
+  display: flex;
+  margin: 0 1rem;
+}
+
+.property .content .property-card .property-about .property-image img {
+  width: 10rem;
+}
+
+.property .content .property-card .property-about .property-description {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+}
+
+.property .content .property-card .property-about .property-description h4 {
+  font-family: Garamond;
+  font-weight: bold;
+}
+
+.property
+  .content
+  .property-card
+  .property-about
+  .property-description
+  .location
+  img {
+  width: 16px;
+}
+
+.property
+  .content
+  .property-card
+  .property-about
+  .property-description
+  .location
+  span {
+  margin: 0;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.property .content .property-card .property-about .property-description p {
+  width: 100%;
+  margin: 0.5rem 0 0 0;
+}
+
+.property .content .property-card .property-summary {
+  margin-left: 2rem;
+}
+
+.property .content .property-card .property-summary h4 {
+  font-family: Garamond;
+  font-weight: bold;
+}
+
+.property .content .property-card .property-summary .property-summary-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content
+  .property-card
+  .property-summary
+  .property-summary-row
+  .property-summary-col {
+  padding: 0;
+  margin-right: 0.8rem;
+}
+
+.property
+  .content
+  .property-card
+  .property-summary
+  .property-summary-row
+  .property-summary-col
+  .property-summary-wrapper {
+  display: flex;
+  align-items: center;
+  width: 150px;
+  margin-bottom: 0.6rem;
+  font-size: 0.9rem;
+}
+
+.property
+  .content
+  .property-card
+  .property-summary
+  .property-summary-row
+  .property-summary-col
+  .property-summary-wrapper
+  .icon {
+  display: flex;
+  flex-wrap: no-wrap;
+  align-items: center;
+  width: 120px;
+  min-width: 120px;
+}
+
+.property
+  .content
+  .property-card
+  .property-summary
+  .property-summary-row
+  .property-summary-col
+  .property-summary-wrapper
+  .icon
+  img {
+  width: 20px;
+  margin-right: 0.5rem;
+}
+
+.property
+  .content
+  .property-card
+  .property-summary
+  .property-summary-row
+  .property-summary-col
+  .property-summary-wrapper
+  .icon
+  span {
+  margin: 0;
+  font-weight: normal;
+}
+
+.property
+  .content
+  .property-card
+  .property-summary
+  .property-summary-row
+  .property-summary-col
+  .property-summary-wrapper
+  span {
+  font-weight: bold;
 }
 
 .property form .modal .modal-dialog .modal-content {

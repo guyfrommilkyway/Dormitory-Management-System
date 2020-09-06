@@ -1,132 +1,97 @@
 /* Topbar */
 
-.navbar {
-  height: 80px;
-  margin: 0;
-  padding: 0 2rem;
+.topbar {
+  padding: 0.5rem 1rem;
   background-color: #1b2432;
-  align-items: center;
 }
 
-.navbar .navbar-brand .crest {
+.topbar .navbar-brand .logo {
   width: 170px;
-  padding: 0;
-  margin: 0;
+  margin-right: 2rem;
 }
 
-.navbar .navbar-nav {
-  margin-left: 102px;
-  flex-direction: row;
+.topbar .navbar-collapse .navbar-nav {
+  align-items: center;
+  margin-left: 1.5rem;
 }
 
-.navbar .navbar-nav .nav-item {
-  margin-right: 1rem;
-}
-
-.navbar .navbar-nav .nav-item .nav-link {
-  padding: 1rem;
+.topbar .navbar-collapse .navbar-nav .nav-item .nav-link {
+  padding: 0.8rem 1.5rem;
   color: #ffeab2;
+  font-family: Garamond;
+  font-weight: 600;
   text-transform: uppercase;
 }
 
-.navbar .dropdown {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-end;
-  padding: 0;
-  margin: 0;
-  width: 18rem;
-}
-
-.navbar .dropdown .user {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.navbar .dropdown .user .avatar {
+.topbar .navbar-collapse .dropdown .user .avatar {
   width: 2.4rem;
   height: 2.4rem;
-  margin: 0;
-  padding: 0;
   border-radius: 1.2rem;
 }
 
-.navbar .dropdown .dropdown-menu {
-  width: 100%;
-  margin: 0.5rem 0;
-  padding: 0.5rem;
+.topbar .navbar-collapse .dropdown .dropdown-menu {
+  width: 20rem;
+  padding: 0.5rem 0.8rem;
+  margin: 0.5rem 0.8rem;
   border: none;
-  border-radius: 2px;
-  background: #ffeab2;
+  background-color: #ffeab2;
 }
 
-.navbar .dropdown .dropdown-menu .menu {
+.topbar .navbar-collapse .dropdown .dropdown-menu .profile-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  width: 100%;
+  text-align: center;
 }
 
-.navbar .dropdown .dropdown-menu .menu .profile {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-  padding: 0.8rem 0.5rem;
+.topbar .navbar-collapse .dropdown .dropdown-menu .profile-wrapper img {
+  width: 6rem;
+  height: 6rem;
+  margin: 0.5rem 0;
+  color: #1b2432;
+  border-radius: 3rem;
 }
 
-.navbar .dropdown .dropdown-menu .menu .profile .photo {
-  width: 5rem;
-  height: 5rem;
-  margin-bottom: 1rem;
-  border-radius: 2.5rem;
-}
-
-.navbar .dropdown .dropdown-menu .menu .profile span {
-  word-wrap: break-word;
-}
-
-.navbar .dropdown .dropdown-menu .menu .profile .name {
+.topbar .navbar-collapse .dropdown .dropdown-menu .profile-wrapper #name {
+  font-size: 1.2rem;
   text-transform: uppercase;
 }
 
-.navbar .dropdown .dropdown-menu .menu .profile .email {
-  font-size: 0.8rem;
+.topbar .navbar-collapse .dropdown .dropdown-menu .profile-wrapper #email {
+  font-size: 0.9rem;
 }
 
-.navbar .dropdown .dropdown-menu .menu .button-group {
+.topbar .navbar-collapse .dropdown .dropdown-menu .btn-wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
-  padding: 0.6rem;
+  margin-top: 1rem;
+  background-color: #ffeab2;
 }
 
-.navbar .dropdown .dropdown-menu .menu .button-group .setting {
+.topbar .navbar-collapse .dropdown .dropdown-menu .btn-wrapper a {
   padding: 0.4rem 1rem;
-  margin: 0;
+}
+
+.topbar .navbar-collapse .dropdown .dropdown-menu .btn-wrapper form {
+  width: auto;
+}
+
+.topbar .navbar-collapse .dropdown .dropdown-menu .btn-wrapper a {
   color: #1b2432;
   border: 1px solid #1b2432;
   box-shadow: none;
 }
 
-.navbar .dropdown .dropdown-menu .menu .button-group form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar .dropdown .dropdown-menu .menu .button-group form .logout {
-  margin: 0;
+.topbar .navbar-collapse .dropdown .dropdown-menu .btn-wrapper form button {
   color: #ffeab2;
   background-color: #1b2432;
   box-shadow: none;
+}
+
+.topbar .navbar-collapse .user-wrapper {
+  display: none;
 }
 
 /* Sidebar */
@@ -135,7 +100,7 @@
   width: 20rem;
   min-height: 100vh;
   padding: 1.5rem 0;
-  margin-right: 2rem;
+  margin-right: 1rem;
   background-color: #1b2432;
   border-radius: 2px;
 }
@@ -161,4 +126,105 @@
 
 .property .sidebar .navbar-nav .nav-item .text {
   color: #ffeab2;
+}
+
+/* Responsive */
+
+/* Topbar */
+
+@media screen and (max-width: 992px) {
+  .topbar .navbar-toggler .menu-icon {
+    width: 20px;
+    fill: #ffeab2;
+  }
+
+  .topbar .navbar-collapse .navbar-nav {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0.8rem 0;
+    border-radius: 2px;
+    background-color: #ffeab2;
+  }
+
+  .topbar .navbar-collapse .navbar-nav .nav-item .nav-link {
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    color: #1b2432;
+    text-transform: uppercase;
+  }
+
+  .topbar .navbar-collapse .dropdown {
+    display: none;
+  }
+
+  .topbar .navbar-collapse #user-button {
+    display: none;
+  }
+
+  .topbar .navbar-collapse .user-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: inherit;
+    padding: 0;
+    margin: 1.5rem 0;
+    color: #ffeab2;
+    background: none;
+  }
+
+  .topbar .navbar-collapse .user-wrapper .profile-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .topbar .navbar-collapse .user-wrapper .profile-wrapper img {
+    width: 6rem;
+    margin: 0 auto 1rem auto;
+    border-radius: 3rem;
+  }
+
+  .topbar .navbar-collapse .user-wrapper .profile-wrapper .span-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .topbar .navbar-collapse .user-wrapper .profile-wrapper .span-wrapper #name {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+  }
+
+  .topbar .navbar-collapse .user-wrapper .profile-wrapper .span-wrapper #email {
+    font-size: 0.9rem;
+  }
+
+  .topbar .navbar-collapse .user-wrapper .btn-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 280px;
+  }
+
+  .topbar .navbar-collapse .user-wrapper .btn-wrapper a {
+    padding: 0.4rem 1rem;
+    color: #ffeab2;
+    border: 1px solid #ffeab2;
+    box-shadow: none;
+  }
+
+  .topbar .navbar-collapse .user-wrapper .btn-wrapper form {
+    display: flex;
+    justify-content: flex-end;
+    width: 100px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .topbar .navbar-collapse .user-wrapper .btn-wrapper form button {
+    color: #1b2432;
+    background-color: #ffeab2;
+  }
 }
