@@ -8,6 +8,7 @@ const propertyNew = async (propertyObject, fileObject, userObject) => {
         location: propertyObject.location,
         about: propertyObject.about,
         room: propertyObject.room,
+        available: propertyObject.room,
         avatar,
         author: userObject._id
     })

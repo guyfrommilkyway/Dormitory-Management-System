@@ -20,6 +20,21 @@ const propertySchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    available: {
+        type: Number
+    },
+    occupied: {
+        type: Number,
+        default: 0
+    },
+    resident: {
+        type: Number,
+        default: 0
+    },
+    booking: {
+        type: Number,
+        default: 0
+    },
     avatar: {
         type: String
     },
