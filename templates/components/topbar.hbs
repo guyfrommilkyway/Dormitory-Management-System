@@ -1,46 +1,71 @@
-<!--Topbar-->
-<nav class="navbar">
-
+<!--Topbar -->
+<nav class="navbar navbar-expand-lg topbar">
     <!-- Navbar brand -->
-    <a class="navbar-brand" href="#logo">
-        <img class="crest" src="/images/logo.png" alt="">
+    <a class="navbar-brand" href="/home">
+        <img class="logo" src="/images/logo.png" alt="">
     </a>
 
-    <!-- Nav -->
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-            <a class="nav-link" href="/home">Home
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-nav-collapse"
+        aria-controls="navbar-nav-collapse" aria-expanded="false" aria-label="Toggle navigation">
+        <svg class="menu-icon" viewBox="0 0 384 384">
+            <rect x="0" y="277.333" width="384" height="42.667" />
+            <rect x="0" y="170.667" width="384" height="42.667" />
+            <rect x="0" y="64" width="384" height="42.667" />
+        </svg>
+
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbar-nav-collapse">
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/property">Property</a>
+            </li>
+        </ul>
+
+        <div class="dropdown">
+            <a class="user" type="button" id="dropdownMenuMenu" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <img class="avatar" {{#if user.avatar}} src="data:image/png;base64,{{user.avatar.data}}" {{else}}
+                    src="/images/placeholder.png" {{/if}} alt="profile-picture">
             </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/property">Property</a>
-        </li>
-    </ul>
-
-    <!-- User -->
-    <div class="dropdown">
-        <a class="user" type="button" id="dropdownMenuMenu" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            <img class="avatar" {{#if user.avatar}} src="data:image/png;base64,{{user.avatar.data}}" {{else}}
-                src="/images/placeholder.png" {{/if}} alt="profile-picture">
-        </a>
-
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuMenu">
-            <div class="menu">
-                <div class="profile">
-                    <img class="photo" {{#if user.avatar}} src="data:image/png;base64,{{user.avatar.data}}" {{else}}
-                        src="/images/placeholder.png" {{/if}} alt="profile-picture">
-                    <span class="name">{{user.name}}</span>
-                    <span class="email">{{user.email}}</span>
+            <div class="dropdown-menu dropdown-menu-right z-depth-2" aria-labelledby="dropdownMenuButton">
+                <div class="profile-wrapper">
+                    <img src="data:image/png;base64,{{user.avatar.data}}" alt="avatar">
+                    <div class="span-wrapper">
+                        <span id="name">{{user.name}}</span>
+                        <span id="email">{{user.email}}</span>
+                    </div>
                 </div>
-                <div class="button-group">
-                    <a class="btn setting" href="#">Profile</a>
+                <div class="btn-wrapper">
+                    <a class="btn" href="#profile">Edit profile</a>
                     <form action="/user/logout" method="POST">
-                        <button class="btn logout" type="submit">Log out</button>
+                        <button class="btn" type="submit">Log out</button>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
 
+        <!-- User -->
+        <div class="user-wrapper">
+            <div class="profile-wrapper">
+                <img src="data:image/png;base64,{{user.avatar.data}}" alt="avatar">
+                <div class="span-wrapper">
+                    <span id="name">{{user.name}}</span>
+                    <span id="email">{{user.email}}</span>
+                </div>
+            </div>
+            <div class="btn-wrapper">
+                <a class="btn" href="/home">Edit profile</a>
+                <form action="/user/logout" method="POST">
+                    <button class="btn" type="submit">Log out</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </nav>
