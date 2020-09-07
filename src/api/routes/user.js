@@ -8,7 +8,7 @@ const authentication = require('../middlewares/authentication')
 const router = new express.Router()
 
 const storage = multer.diskStorage({
-    destination: path.join(__dirname, '../../../public/uploads/profile_avatars'),
+    destination: path.join(__dirname, '../../../public/uploads/profile'),
     filename: function (req, file, cb) {
         cb(null, uuidv4())
     }
