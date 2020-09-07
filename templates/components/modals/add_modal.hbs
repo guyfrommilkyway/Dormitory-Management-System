@@ -14,7 +14,7 @@
                             <span id="uploaded-message">Click here to upload an image</span>
                         </label>
                         <input class="inputfile" name="avatar" id="file" type="file"
-                            accept="image/png, image/jpeg, image/jpg" onchange="upload(this);" required />
+                            accept="image/png, image/jpeg, image/jpg" onchange="uploadProperty(this);" required />
                     </div>
                     <div class="form-group">
                         <input class="form-control" name="name" type="text" placeholder="Name" required>
@@ -32,20 +32,3 @@
         </div>
     </div>
 </form>
-
-<script>
-    function upload(input) {
-        if (input.files && input.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                $('#uploaded-image')
-                    .attr('style', 'background-image: url(' + e.target.result + '); background-size: contain;');
-                $('#uploaded-message')
-                    .attr('style', 'display: none;');
-                $('.upload')
-                    .attr('style', 'border: none;');
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-</script>
