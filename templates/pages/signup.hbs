@@ -15,7 +15,7 @@
 
         <!-- Input -->
         <div class="form-group">
-            <input class="form-control" type="text" name="name" placeholder="Name" required>
+            <input class="form-control" id="name" type="text" name="name" placeholder="Name" required>
             <input class="form-control" type="email" name="email" placeholder="Email" required>
             <input class="form-control" style="background-image: none;" type="password" name="password"
                 placeholder="Password" required>
@@ -33,21 +33,3 @@
 
     </form>
 </div>
-
-
-<script>
-    function upload(input) {
-        if (input.files && input.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                $('#uploaded-image')
-                    .attr('style', 'width: 10rem; height: 10rem; background-image: url(' + e.target.result + '); border-radius: 5rem;');
-                $('#uploaded-message')
-                    .attr('style', 'display: none;');
-                $('.upload')
-                    .attr('style', 'border: none;');
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-</script>
