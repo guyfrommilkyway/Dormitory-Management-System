@@ -4,10 +4,18 @@ const user = require('../../services/user')
 module.exports = async (app) => {
     // Index
     app.get('', async (req, res) => {
-        res.render('pages/login', {
-            layout: 'index',
-            title: 'Login'
-        })
+        if (req.session.user && req.session.token) {
+            res.render('pages/landing/home', {
+                layout: 'index',
+                title: 'Home',
+                user: req.session.user,
+            })
+        } else {
+            res.render('pages/login', {
+                layout: 'index',
+                title: 'Login'
+            })
+        }
     })
 
     // Signup
@@ -18,11 +26,11 @@ module.exports = async (app) => {
         })
     })
 
-    // Home
-    app.get('/home', authentication, async (req, res) => {
-        res.render('pages/landing/home', {
+    // Settings
+    app.get('/settings', authentication, async (req, res) => {
+        res.render('pages/landing/settings', {
             layout: 'index',
-            title: 'Home',
+            title: 'Settings',
             user: req.session.user,
         })
     })

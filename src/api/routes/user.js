@@ -37,7 +37,7 @@ router.post('/user/login', async (req, res) => {
         req.session.token = token
 
         res.cookie('sessionId', req.session.id)
-            .redirect('/home')
+            .redirect('/')
     } catch (e) {
         res.status(400)
             .redirect('/')

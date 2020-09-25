@@ -12,7 +12,7 @@
 
 .topbar .navbar-collapse .navbar-nav {
   align-items: center;
-  margin-left: 1.5rem;
+  margin-left: 2.2rem;
 }
 
 .topbar .navbar-collapse .navbar-nav .nav-item .nav-link {
@@ -54,6 +54,7 @@
 
 .topbar .navbar-collapse .dropdown .dropdown-menu .profile-wrapper #name {
   font-size: 1.2rem;
+  font-weight: 600;
   text-transform: uppercase;
 }
 
@@ -100,9 +101,9 @@
   width: 20rem;
   min-height: 100vh;
   padding: 1.5rem 0;
-  margin-right: 1rem;
+  margin: 0 1rem 1rem 0;
   background-color: #1b2432;
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 .property .content {
@@ -120,12 +121,13 @@
 
 .property .sidebar .navbar-nav .nav-item .icon {
   width: 20px;
-  margin-right: 0.7rem;
+  margin-right: 1rem;
   padding: 0;
 }
 
 .property .sidebar .navbar-nav .nav-item .text {
   color: #ffeab2;
+  font-size: 15px;
 }
 
 /* Responsive */
@@ -195,6 +197,7 @@
 
   .topbar .navbar-collapse .user-wrapper .profile-wrapper .span-wrapper #name {
     font-size: 1.1rem;
+    font-weight: 600;
     text-transform: uppercase;
   }
 
@@ -205,7 +208,7 @@
   .topbar .navbar-collapse .user-wrapper .btn-wrapper {
     display: flex;
     justify-content: space-between;
-    width: 280px;
+    width: 320px;
   }
 
   .topbar .navbar-collapse .user-wrapper .btn-wrapper a {
@@ -218,7 +221,6 @@
   .topbar .navbar-collapse .user-wrapper .btn-wrapper form {
     display: flex;
     justify-content: flex-end;
-    width: 100px;
     padding: 0;
     margin: 0;
   }
