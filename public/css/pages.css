@@ -136,7 +136,6 @@
 
 .property .content {
   width: 100%;
-
   background: none;
 }
 
@@ -211,7 +210,7 @@
 }
 
 .property .content .property-card .property-summary {
-  margin-left: 2rem;
+  margin: 2rem 0 0 2rem;
 }
 
 .property .content .property-card .property-summary h4 {

@@ -8,7 +8,13 @@
   src: url("../fonts/HARRYP__.TTF");
 }
 
+@font-face {
+  font-family: Raleway;
+  src: url("../fonts/Raleway-VariableFont_wght.ttf");
+}
+
 body {
+  font-family: Raleway;
   background-color: #4d5b73;
 }
 
@@ -30,5 +36,6 @@ form .form-group .form-control:focus {
 .btn {
   padding: 0.4rem 1rem;
   font-size: 1rem;
+  font-weight: 600;
   text-transform: none;
 }
