@@ -1,12 +1,13 @@
 <div class="wrapper">
+    <div class="brand-wrapper">
+        <a class="brand-link" href="/">
+            Dormitory<br>Management<br>System
+        </a>
+    </div>
+
     <form class="col-xl-4" action="/user/login" method="POST">
         <!-- Header -->
-        <h2>Log in to your account</h2>
-
-        <!-- Image -->
-        <div class="logo">
-            <img class="hogwarts-crest" src="/images/hogwarts-crest.png" alt="">
-        </div>
+        <h4>Log in to your account</h4>
 
         <!-- Input -->
         <div class="form-group">
@@ -16,18 +17,20 @@
         </div>
 
         <!-- Button -->
-        <button class="btn" type="submit">Log in</button>
+        <button class="btn btn-block" type="submit">Log in</button>
 
-        <!-- Forgot password -->
-        <p>
-            <span>Forgot password? </span>
-            <a href="#reset">Reset</a>
-        </p>
+        <div class="links">
+            <!-- Forgot password -->
+            <p>
+                <span>Forgot password? </span>
+                <a href="#reset">Reset</a>
+            </p>
 
-        <!-- Sign up -->
-        <p>
-            <span>Don't have an account yet? </span>
-            <a href="/signup">Sign up</a>
-        </p>
+            <!-- Sign up -->
+            <p>
+                <span>Don't have an account yet? </span>
+                <a href="/signup">Sign up</a>
+            </p>
+        </div>
     </form>
 </div>
