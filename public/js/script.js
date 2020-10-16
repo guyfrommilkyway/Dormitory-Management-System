@@ -16,7 +16,7 @@ function upload(input) {
         const reader = new FileReader();
         reader.onload = function (e) {
             $('#uploaded-image')
-                .attr('style', 'width: 10rem; height: 10rem; background-image: url(' + e.target.result + '); border-radius: 5rem;');
+                .attr('style', 'width: 7rem; height: 7rem; background-image: url(' + e.target.result + '); border-radius: 3.5rem;');
             $('#uploaded-message')
                 .attr('style', 'display: none;');
             $('.upload')

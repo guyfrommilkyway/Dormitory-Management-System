@@ -5,41 +5,42 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("../images/banner.jpg");
-  background-position-x: 80%;
-  background-size: cover;
-  background-repeat: no-repeat;
+}
+
+.wrapper .brand-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 1rem;
+  line-height: 1.1rem;
+}
+
+.wrapper .brand-wrapper .brand-link {
+  color: #ffeab2;
+  line-height: 1.1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .wrapper form {
   max-width: 400px;
   min-width: 320px;
-  min-height: 400px;
+  min-height: 360px;
   padding: 2rem 4rem;
   margin: 0;
-  background: rgba(71, 71, 71, 0.8);
-  border-radius: 0.25rem;
+  background-color: #1b2432;
+  border-radius: 3px;
 }
 
-.wrapper form h2 {
+.wrapper form h4 {
   color: #ffffff;
   text-align: center;
-  font-family: HarryPotter;
+  margin-bottom: 1.5rem;
 }
 
-.wrapper form .logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  margin: 1.5rem 0;
-  text-align: center;
-}
-
-.wrapper form .logo .hogwarts-crest {
-  width: 120px;
-  margin: 0;
-  padding: 0;
+.wrapper .form-group {
+  margin-bottom: 1.5rem;
 }
 
 .wrapper form .form-group .form-control:focus {
@@ -53,32 +54,32 @@
 
 .wrapper form button {
   display: block;
-  margin: 1.5rem auto;
-  padding: 0.4rem 1rem;
   color: #1b2432;
-  text-align: center;
-  text-transform: none;
   background-color: #ffeab2;
 }
 
-.wrapper form p {
+.wrapper form .links {
+  margin-top: 2.5rem;
+}
+
+.wrapper form .links p {
   margin-bottom: 0.2rem;
   color: #ffffff;
   font-size: 0.9rem;
   text-align: center;
 }
 
-.wrapper form p a {
+.wrapper form .links p a {
   color: #ffeab2;
 }
 
-.wrapper form p a:hover {
+.wrapper form .links p a:hover {
   color: #ffeab2;
   font-style: italic;
   text-decoration: underline;
 }
 
-.wrapper form p a:focus {
+.wrapper form .links p a:focus {
   color: #ffeab2;
   font-style: italic;
 }
@@ -100,8 +101,8 @@
 }
 
 .wrapper form .upload label #uploaded-image {
-  width: 8rem;
-  height: 8rem;
+  width: 4rem;
+  height: 4rem;
   background-image: url("../images/placeholder.png");
   background-position: center;
   background-size: cover;
@@ -131,204 +132,118 @@
 /* Property */
 .property {
   display: flex;
-  padding: 1rem;
 }
 
 .property .content {
   width: 100%;
+  margin: 1rem 1rem 1rem 0;
   background: none;
 }
 
-.property .content .message {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 1rem;
+.property .content .property-about {
+  padding: 1.5rem 2rem;
+  background-color: #ffeab2;
+  border-radius: 3px;
 }
 
-.property .content .message span {
-  text-align: center;
-  color: #ffeab2;
-  font-size: 1.2rem;
+.property .content .property-about h4 {
+  font-weight: bold;
+}
+
+.property .contet .property-about .location {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.property .content .property-about .location img {
+  width: 20px;
+}
+
+.property .content .property-about p {
+  margin-top: 0.5rem;
 }
 
 .property .content .property-card {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 2px;
-  background-color: #ffeab2;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
 }
 
-.property .content .property-card .property-about {
-  display: flex;
-  margin: 0 1rem;
-}
-
-.property .content .property-card .property-about .property-image img {
-  width: 10rem;
-}
-
-.property .content .property-card .property-about .property-description {
+.property .content .property-card .property-card-item {
   display: flex;
   flex-direction: column;
-  margin-left: 2rem;
+  justify-content: flex-end;
+  min-width: 220px;
+  max-width: 250px;
+  min-height: 100px;
+  max-height: 130px;
+  margin: 0.5rem;
+  background-color: #ffeab2;
+  border-radius: 3px;
 }
 
-.property .content .property-card .property-about .property-description h4 {
-  font-family: Garamond;
-  font-weight: bold;
-}
-
-.property
-  .content
-  .property-card
-  .property-about
-  .property-description
-  .location
-  img {
-  width: 16px;
-}
-
-.property
-  .content
-  .property-card
-  .property-about
-  .property-description
-  .location
-  span {
-  margin: 0;
-  font-size: 0.9rem;
-  font-style: italic;
-}
-
-.property .content .property-card .property-about .property-description p {
-  width: 100%;
-  margin: 0.5rem 0 0 0;
-}
-
-.property .content .property-card .property-summary {
-  margin: 2rem 0 0 2rem;
-}
-
-.property .content .property-card .property-summary h4 {
-  font-family: Garamond;
-  font-weight: bold;
-}
-
-.property .content .property-card .property-summary .property-summary-row {
+.property .content .property-card .property-card-item .detail-wrapper {
   display: flex;
   justify-content: space-between;
-}
-
-.content
-  .property-card
-  .property-summary
-  .property-summary-row
-  .property-summary-col {
-  padding: 0;
-  margin-right: 0.8rem;
-}
-
-.property
-  .content
-  .property-card
-  .property-summary
-  .property-summary-row
-  .property-summary-col
-  .property-summary-wrapper {
-  display: flex;
   align-items: center;
-  width: 150px;
-  margin-bottom: 0.6rem;
-  font-size: 0.9rem;
+  padding: 0.9rem 0.8rem;
 }
 
 .property
   .content
   .property-card
-  .property-summary
-  .property-summary-row
-  .property-summary-col
-  .property-summary-wrapper
-  .icon {
-  display: flex;
-  flex-wrap: no-wrap;
-  align-items: center;
-  width: 120px;
-  min-width: 120px;
+  .property-card-item
+  .detail-wrapper
+  div
+  .room-no {
+  font-size: 2rem;
+  line-height: 2.4rem;
 }
 
 .property
   .content
   .property-card
-  .property-summary
-  .property-summary-row
-  .property-summary-col
-  .property-summary-wrapper
-  .icon
-  img {
-  width: 20px;
-  margin-right: 0.5rem;
+  .property-card-item
+  .detail-wrapper
+  div
+  .room-description {
+  font-size: 1.2rem;
+  line-height: 1.6rem;
 }
 
-.property
-  .content
-  .property-card
-  .property-summary
-  .property-summary-row
-  .property-summary-col
-  .property-summary-wrapper
-  .icon
-  span {
-  margin: 0;
-  font-weight: normal;
+.property .content .property-card .property-card-item img {
+  width: 55px;
 }
 
-.property
-  .content
-  .property-card
-  .property-summary
-  .property-summary-row
-  .property-summary-col
-  .property-summary-wrapper
-  span {
-  font-weight: bold;
+.property .content .property-card .property-card-item a {
+  width: 100%;
+  padding: 0.3rem 0.6rem;
+  color: #ffffff;
+  font-size: 15px;
+  background-color: #1b2432;
+  border-radius: 0 0 3px 3px;
 }
 
 .property form .modal .modal-dialog .modal-content {
-  border-radius: 0;
+  border-radius: 3px;
+  background: none;
 }
 
 .property form .modal .modal-dialog .modal-content .modal-header {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  height: 80px;
   color: #ffeab2;
   background-color: #1b2432;
-  border-radius: 0;
+  border: none;
+}
+
+.property form .modal .modal-dialog .modal-content .modal-header h5 {
+  font-weight: bold;
 }
 
 .property form .modal .modal-dialog .modal-content .modal-body {
-  background-color: #e0e0ce;
-}
-
-.property form .modal .modal-content .modal-body .upload {
-  margin-bottom: 1rem;
-  text-align: center;
-  border: 1px dashed #1b2432;
-}
-
-.property form .modal .modal-dialog .modal-content .modal-body .upload label {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  cursor: pointer;
+  background-color: #47556b;
 }
 
 .property
@@ -337,40 +252,7 @@
   .modal-dialog
   .modal-content
   .modal-body
-  .upload
-  label
-  #uploaded-image {
-  width: 10rem;
-  height: 10rem;
-  background-image: url("../images/placeholder.png");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.property
-  form
-  .modal
-  .modal-dialog
-  .modal-content
-  .modal-body
-  .upload
-  label
-  span {
-  display: block;
-  width: 300px;
-  margin-top: 0.5rem;
-  word-wrap: break-word;
-  font-size: 0.8rem;
-}
-
-.property
-  form
-  .modal
-  .modal-dialog
-  .modal-content
-  .modal-body
-  .upload
+  .form-group
   input[type="file"] {
   width: 0.1px;
   height: 0.1px;
@@ -388,7 +270,6 @@
   .modal-body
   .form-group
   .form-control {
-  color: #1b2432;
   border-bottom: 1px solid #1b2432;
 }
 
@@ -400,18 +281,25 @@
   .modal-body
   .form-group
   .form-control:focus {
-  color: #1b2432;
   border-bottom: 1px solid #1b2432;
 }
 
+.property
+  form
+  .modal
+  .modal-dialog
+  .modal-content
+  .modal-body
+  .form-group
+  .form-control::placeholder {
+  color: #dfe0e1;
+  font-style: italic;
+}
+
 .property form .modal .modal-dialog .modal-content .modal-footer {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  height: 80px;
   color: #ffeab2;
   background-color: #1b2432;
-  border-radius: 0;
+  border: none;
 }
 
 .property form .modal .modal-dialog .modal-content .modal-footer .cancel {

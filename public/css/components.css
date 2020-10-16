@@ -5,22 +5,28 @@
   background-color: #1b2432;
 }
 
-.topbar .navbar-brand .logo {
-  width: 170px;
-  margin-right: 2rem;
+.topbar .navbar-brand {
+  color: #ffeab2;
+  line-height: 1.1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .topbar .navbar-collapse .navbar-nav {
   align-items: center;
-  margin-left: 2.2rem;
 }
 
 .topbar .navbar-collapse .navbar-nav .nav-item .nav-link {
-  padding: 0.8rem 1.5rem;
+  padding: 0.8rem 1.2rem;
   color: #ffeab2;
-  font-family: Garamond;
-  font-weight: 600;
+  font-size: 0.9rem;
+  font-weight: bold;
   text-transform: uppercase;
+}
+
+.topbar .navbar-collapse .dropdown {
+  margin-left: 2rem;
 }
 
 .topbar .navbar-collapse .dropdown .user .avatar {
@@ -34,6 +40,7 @@
   padding: 0.5rem 0.8rem;
   margin: 0.5rem 0.8rem;
   border: none;
+  border-radius: 3px;
   background-color: #ffeab2;
 }
 
@@ -96,38 +103,48 @@
 }
 
 /* Sidebar */
-
-.property .sidebar {
+.sidebar {
   width: 20rem;
-  min-height: 100vh;
-  padding: 1.5rem 0;
-  margin: 0 1rem 1rem 0;
+  min-height: 500px;
+  margin: 1rem;
   background-color: #1b2432;
   border-radius: 3px;
 }
 
-.property .content {
-  width: 100%;
-  background-color: #ffffff;
+.sidebar .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.8rem 1rem;
+  background-color: #ffeab2;
+  border-radius: 3px 3px 0 0;
 }
 
-.property .sidebar .navbar-nav .nav-item {
+.sidebar .header a {
+  color: #1b2432;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.sidebar .header img {
+  width: 30px;
+}
+
+.sidebar .navbar-nav .nav-item {
   display: flex;
   justify-content: start;
   align-items: center;
   min-height: 40px;
-  padding: 0.8rem 1.6rem;
+  padding: 0.8rem 1rem;
 }
 
-.property .sidebar .navbar-nav .nav-item .icon {
+.sidebar .navbar-nav .nav-item img {
   width: 20px;
   margin-right: 1rem;
-  padding: 0;
 }
 
-.property .sidebar .navbar-nav .nav-item .text {
-  color: #ffeab2;
-  font-size: 15px;
+.sidebar .navbar-nav .nav-item span {
+  color: #ffffff;
 }
 
 /* Responsive */
