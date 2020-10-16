@@ -1,0 +1,24 @@
+{{>topbar}}
+
+<!-- Main -->
+<main class="property">
+
+    {{>property}}
+
+    <!-- Content -->
+    <section class="content">
+        {{#if properties}}
+
+
+
+        {{else}}
+        <div class="message">
+            <span>There are currently no property listed under your account.</span>
+        </div>
+
+        {{/if}}
+    </section>
+
+    {{>modals/add_modal}}
+
+</main>

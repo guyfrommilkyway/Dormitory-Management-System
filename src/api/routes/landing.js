@@ -1,5 +1,4 @@
 const authentication = require('../middlewares/authentication')
-const user = require('../../services/user')
 
 module.exports = async (app) => {
     // Index
@@ -20,10 +19,18 @@ module.exports = async (app) => {
 
     // Signup
     app.get('/signup', async (req, res) => {
-        res.render('pages/signup', {
-            layout: 'index',
-            title: 'Signup'
-        })
+        if (req.session.user && req.session.token) {
+            res.render('pages/landing/home', {
+                layout: 'index',
+                title: 'Home',
+                user: req.session.user,
+            })
+        } else {
+            res.render('pages/signup', {
+                layout: 'index',
+                title: 'Signup'
+            })
+        }
     })
 
     // Settings
