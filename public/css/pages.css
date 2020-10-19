@@ -1,97 +1,111 @@
-/* Login */
+/* Main */
 
 .wrapper {
-  min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.wrapper .brand-wrapper {
+.wrapper .content-wrapper {
+  width: 100%;
+}
+
+.wrapper .content-wrapper .content {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+/* Login */
+
+.brand-wrapper {
   position: fixed;
   top: 0;
   left: 0;
   margin: 1rem;
-  line-height: 1.1rem;
+  line-height: 1rem;
 }
 
-.wrapper .brand-wrapper .brand-link {
+.brand {
   color: #ffeab2;
-  line-height: 1.1rem;
   font-size: 1.2rem;
-  font-weight: bold;
+  line-height: 1rem;
   text-transform: uppercase;
 }
 
-.wrapper form {
-  max-width: 400px;
+#login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#login form {
+  max-width: 380px;
   min-width: 320px;
   min-height: 360px;
-  padding: 2rem 4rem;
+  padding: 2rem 3rem;
   margin: 0;
   background-color: #1b2432;
   border-radius: 3px;
 }
 
-.wrapper form h4 {
+#login form h4 {
   color: #ffffff;
   text-align: center;
   margin-bottom: 1.5rem;
 }
 
-.wrapper .form-group {
+#login .form-group {
   margin-bottom: 1.5rem;
 }
 
-.wrapper form .form-group .form-control:focus {
+#login form .form-group .form-control:focus {
   border-bottom: 1px solid #ffeab2;
   box-shadow: none;
 }
 
-.wrapper form .form-group .form-control::placeholder {
+#login form .form-group .form-control::placeholder {
   color: #ffffff;
 }
 
-.wrapper form button {
+#login form button {
   display: block;
   color: #1b2432;
   background-color: #ffeab2;
 }
 
-.wrapper form .links {
+#login form .links {
   margin-top: 2.5rem;
 }
 
-.wrapper form .links p {
+#login form .links p {
   margin-bottom: 0.2rem;
   color: #ffffff;
   font-size: 0.9rem;
   text-align: center;
 }
 
-.wrapper form .links p a {
+#login form .links p a {
   color: #ffeab2;
 }
 
-.wrapper form .links p a:hover {
+#login form .links p a:hover {
   color: #ffeab2;
   font-style: italic;
   text-decoration: underline;
 }
 
-.wrapper form .links p a:focus {
+#login form .links p a:focus {
   color: #ffeab2;
   font-style: italic;
 }
 
 /* Sign up */
 
-.wrapper form .upload {
+#login form .upload {
   margin-bottom: 1rem;
   border: 1px dashed #ffffff;
 }
 
-.wrapper form .upload label {
+#login form .upload label {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -100,7 +114,7 @@
   cursor: pointer;
 }
 
-.wrapper form .upload label #uploaded-image {
+#login form .upload label #uploaded-image {
   width: 4rem;
   height: 4rem;
   background-image: url("../images/placeholder.png");
@@ -108,7 +122,7 @@
   background-size: cover;
 }
 
-.wrapper form .upload label span {
+#login form .upload label span {
   display: block;
   width: 200px;
   margin-top: 0.5rem;
@@ -118,7 +132,7 @@
   word-wrap: break-word;
 }
 
-.wrapper form .upload input[type="file"] {
+#login form .upload input[type="file"] {
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
@@ -130,124 +144,43 @@
 /* Home */
 
 /* Property */
-.property {
-  display: flex;
+
+#property .container-fluid .row .col-12 #accordion {
+  margin: 1rem 0;
 }
 
-.property .content {
-  width: 100%;
-  margin: 1rem 1rem 1rem 0;
-  background: none;
+#property .container-fluid .row .col-12 #accordion .card {
+  margin-bottom: 0.5rem;
 }
 
-.property .content .property-about {
-  padding: 1.5rem 2rem;
-  background-color: #ffeab2;
-  border-radius: 3px;
+#property .container-fluid .row .col-12 #accordion .card .card-header {
+  padding: 0;
 }
 
-.property .content .property-about h4 {
-  font-weight: bold;
-}
-
-.property .contet .property-about .location {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.property .content .property-about .location img {
-  width: 20px;
-}
-
-.property .content .property-about p {
-  margin-top: 0.5rem;
-}
-
-.property .content .property-card {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem 1rem;
-}
-
-.property .content .property-card .property-card-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  min-width: 220px;
-  max-width: 250px;
-  min-height: 100px;
-  max-height: 130px;
-  margin: 0.5rem;
-  background-color: #ffeab2;
-  border-radius: 3px;
-}
-
-.property .content .property-card .property-card-item .detail-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.9rem 0.8rem;
-}
-
-.property
-  .content
-  .property-card
-  .property-card-item
-  .detail-wrapper
-  div
-  .room-no {
-  font-size: 2rem;
-  line-height: 2.4rem;
-}
-
-.property
-  .content
-  .property-card
-  .property-card-item
-  .detail-wrapper
-  div
-  .room-description {
-  font-size: 1.2rem;
-  line-height: 1.6rem;
-}
-
-.property .content .property-card .property-card-item img {
-  width: 55px;
-}
-
-.property .content .property-card .property-card-item a {
-  width: 100%;
-  padding: 0.3rem 0.6rem;
-  color: #ffffff;
-  font-size: 15px;
-  background-color: #1b2432;
-  border-radius: 0 0 3px 3px;
-}
-
-.property form .modal .modal-dialog .modal-content {
+form .modal .modal-dialog .modal-content {
   border-radius: 3px;
   background: none;
 }
 
-.property form .modal .modal-dialog .modal-content .modal-header {
+form .modal .modal-dialog .modal-content .modal-header {
   color: #ffeab2;
   background-color: #1b2432;
   border: none;
 }
 
-.property form .modal .modal-dialog .modal-content .modal-header h5 {
+form .modal .modal-dialog .modal-content .modal-header h5 {
   font-weight: bold;
 }
 
-.property form .modal .modal-dialog .modal-content .modal-body {
+form .modal .modal-dialog .modal-content .modal-body {
+  padding: 1rem 2rem;
   background-color: #47556b;
 }
 
-.property
-  form
+form .modal .modal-dialog .modal-content .modal-body .form-group {
+  margin: 0.5rem 1.5rem;
+}
+form
   .modal
   .modal-dialog
   .modal-content
@@ -262,30 +195,21 @@
   z-index: -1;
 }
 
-.property
-  form
-  .modal
-  .modal-dialog
-  .modal-content
-  .modal-body
-  .form-group
-  .form-control {
-  border-bottom: 1px solid #1b2432;
+form .modal .modal-dialog .modal-content .modal-body .form-group .form-control {
+  border-bottom: 1px solid #ffffff;
 }
 
-.property
-  form
+form
   .modal
   .modal-dialog
   .modal-content
   .modal-body
   .form-group
   .form-control:focus {
-  border-bottom: 1px solid #1b2432;
+  border-bottom: 1px solid #ffeab2;
 }
 
-.property
-  form
+form
   .modal
   .modal-dialog
   .modal-content
@@ -293,28 +217,27 @@
   .form-group
   .form-control::placeholder {
   color: #dfe0e1;
-  font-style: italic;
+  font-size: 15px;
 }
 
-.property form .modal .modal-dialog .modal-content .modal-footer {
+form .modal .modal-dialog .modal-content .modal-footer {
   color: #ffeab2;
   background-color: #1b2432;
   border: none;
 }
 
-.property form .modal .modal-dialog .modal-content .modal-footer .cancel {
+form .modal .modal-dialog .modal-content .modal-footer .cancel {
   background: none;
   border: 1px solid #1b2432;
   box-shadow: none;
 }
 
-.property form .modal .modal-dialog .modal-content .modal-footer .cancel:hover {
+form .modal .modal-dialog .modal-content .modal-footer .cancel:hover {
   color: #ffeab2;
-  border: 1px solid #ffeab2;
   box-shadow: none;
 }
 
-.property form .modal .modal-dialog .modal-content .modal-footer .add {
+form .modal .modal-dialog .modal-content .modal-footer .add {
   color: #1b2432;
   background-color: #ffeab2;
 }

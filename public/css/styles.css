@@ -34,3 +34,8 @@ form .form-group .form-control:focus {
   font-weight: 600;
   text-transform: none;
 }
+
+.icon {
+  width: 20px;
+  margin-right: 1rem;
+}
