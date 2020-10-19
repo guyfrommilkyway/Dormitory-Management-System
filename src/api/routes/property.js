@@ -28,24 +28,6 @@ router.post('/user/property/add', authentication, uploadPropertyAvatar.any(), as
     }
 })
 
-// List properties
-router.get('/property', authentication, async (req, res) => {
-    try {
-        const { properties } = await propertyList(req.session.user)
-
-        res.status(200)
-            .render('pages/landing/property/list', {
-                layout: 'index',
-                title: 'Property',
-                user: req.session.user,
-                properties: properties
-            })
-    } catch (e) {
-        res.status(400)
-            .send(e)
-    }
-})
-
 // View property
 router.get('/property/:id', authentication, async (req, res) => {
     try {
@@ -53,7 +35,7 @@ router.get('/property/:id', authentication, async (req, res) => {
         const { property } = await propertyView(req.params.id, req.session.user)
 
         res.status(200)
-            .render('pages/landing/property/view', {
+            .render('pages/landing/property', {
                 layout: 'index',
                 title: property.name,
                 user: req.session.user,
