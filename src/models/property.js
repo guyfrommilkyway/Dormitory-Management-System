@@ -1,4 +1,4 @@
-// User model
+// Property model
 const mongoose = require('mongoose')
 
 const propertySchema = new mongoose.Schema({
@@ -45,6 +45,12 @@ const propertySchema = new mongoose.Schema({
     }
 }, {
     timestamps: true
+})
+
+propertySchema.virtual('rooms', {
+    ref: 'Room',
+    localField: '_id',
+    foreignField: 'property'
 })
 
 const Property = mongoose.model('Property', propertySchema)
