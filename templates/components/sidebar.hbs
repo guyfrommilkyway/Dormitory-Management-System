@@ -1,0 +1,67 @@
+<!-- Sidebar -->
+<nav id="sidebar">
+
+    <!-- Brand -->
+    <div class="brand">
+        <a class="brand-link" href="/">
+            Dormitory<br>Management<br>System
+        </a>
+    </div>
+
+    <!-- Links -->
+    <div class="navbar-nav">
+        <div class="nav-item">
+            <a class="nav-link" href="/">
+                <img class="icon" src="/images/icons/dashboard.svg" alt="">
+                Dashboard
+            </a>
+        </div>
+        <div class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#collapseProperty" role="button" aria-expanded="false"
+                aria-controls="collapseProperty">
+                <img class="icon" src="/images/icons/home.svg" alt="">
+                Property
+            </a>
+            <div class="collapse" id="collapseProperty">
+                <div class="card card-body z-depth-0">
+                    <button class="nav-link btn btn-block z-depth-0" data-toggle="modal"
+                        data-target="#addPropertyModal">
+                        <img class="icon" src="/images/icons/add.svg" alt="add">
+                        Add property
+                    </button>
+                    {{#each properties}}
+                    <a class="nav-link" href="/property/{{_id}}">
+                        <img class="icon" {{#if avatar}} src="/uploads/property/{{avatar}}" {{else}}
+                            src="/images/home.svg" {{/if}} alt="">
+                        {{name}}
+                    </a>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        <div class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#collapseSettings" role="button" aria-expanded="false"
+                aria-controls="collapseSettings">
+                <img class="icon" src="/images/icons/setting.svg" alt="">
+                Settings
+            </a>
+            <div class="collapse" id="collapseSettings">
+                <div class="card card-body z-depth-0">
+                    <a class="nav-link" href="#profile">
+                        <img class="icon" {{#if avatar}} src="/uploads/property/{{avatar}}" {{else}}
+                            src="/images/icons/tenant.svg" {{/if}} alt="">
+                        Account
+                    </a>
+                    <a class="nav-link" href="#security">
+                        <img class="icon" {{#if avatar}} src="/uploads/property/{{avatar}}" {{else}}
+                            src="/images/icons/shield.svg" {{/if}} alt="">
+                        Security
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{>modals/add_modal}}
+
+</nav>

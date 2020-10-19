@@ -1,42 +1,54 @@
-<div class="wrapper">
+<!-- Main -->
+<main id="login">
+
+    <!-- Brand -->
     <div class="brand-wrapper">
-        <a class="brand-link" href="/">
+        <a class="brand" href="/">
             Dormitory<br>Management<br>System
         </a>
     </div>
 
-    <form class="col-xl-4" action="/user/signup" method="POST" enctype="multipart/form-data">
-        <!-- Header -->
-        <h4>Create an account</h4>
+    <!-- Content -->
+    <div class="container-fluid">
+        <div class="row justify-content-center">
 
-        <!-- Image -->
-        <div class="upload">
-            <label for="file">
-                <div id="uploaded-image"></div>
-                <span id="uploaded-message">Upload your profile photo</span>
-            </label>
-            <input class="inputfile" name="avatar" id="file" type="file" accept="image/png, image/jpeg, image/jpg"
-                onchange="upload(this);" required />
+            <div class="col-xl-4">
+                <form action="/user/signup" method="POST" enctype="multipart/form-data">
+                    <!-- Header -->
+                    <h4>Create an account</h4>
+
+                    <!-- Image -->
+                    <div class="upload">
+                        <label for="file">
+                            <div id="uploaded-image"></div>
+                            <span id="uploaded-message">Upload your profile photo</span>
+                        </label>
+                        <input class="inputfile" name="avatar" id="file" type="file"
+                            accept="image/png, image/jpeg, image/jpg" onchange="upload(this);" required />
+                    </div>
+
+                    <!-- Input -->
+                    <div class="form-group">
+                        <input class="form-control" id="name" type="text" name="name" placeholder="Name" required>
+                        <input class="form-control" type="email" name="email" placeholder="Email" required>
+                        <input class="form-control" style="background-image: none;" type="password" name="password"
+                            placeholder="Password" required>
+                    </div>
+
+                    <!-- Button -->
+                    <button class="btn btn-block" type="submit">Submit</button>
+
+                    <div class="links">
+                        <!-- Log in -->
+                        <p>
+                            <span>Already have an account? </span>
+                            <a href="/">Log in</a>
+                        </p>
+                    </div>
+
+                </form>
+            </div>
         </div>
+    </div>
 
-        <!-- Input -->
-        <div class="form-group">
-            <input class="form-control" id="name" type="text" name="name" placeholder="Name" required>
-            <input class="form-control" type="email" name="email" placeholder="Email" required>
-            <input class="form-control" style="background-image: none;" type="password" name="password"
-                placeholder="Password" required>
-        </div>
-
-        <!-- Button -->
-        <button class="btn btn-block" type="submit">Submit</button>
-
-        <div class="links">
-            <!-- Log in -->
-            <p>
-                <span>Already have an account? </span>
-                <a href="/">Log in</a>
-            </p>
-        </div>
-
-    </form>
-</div>
+</main>

@@ -8,8 +8,19 @@
 
         {{>topbar}}
 
-        <!-- Main Content -->
         <section class="content">
+
+            {{#if properties}}
+
+
+
+            {{else}}
+
+            <div class="message">
+                <span>There are currently no property listed under your account.</span>
+            </div>
+
+            {{/if}}
 
         </section>
 
