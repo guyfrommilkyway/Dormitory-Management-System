@@ -1,15 +1,3 @@
-// Sets the cursor focus
-$("document").ready(function () {
-    const $inputEmail = document.querySelector('#email')
-    $inputEmail.focus()
-})
-
-// Sets the cursor focus
-$("document").ready(function () {
-    const $inputName = document.querySelector('#name')
-    $inputName.focus()
-})
-
 // Upload profile avatar
 function upload(input) {
     if (input.files && input.files[0]) {
@@ -27,16 +15,14 @@ function upload(input) {
 }
 
 // Upload property avatar
-function uploadProperty(input) {
+function update(input) {
     if (input.files && input.files[0]) {
         const reader = new FileReader();
         reader.onload = function (e) {
-            $('#uploaded-image')
-                .attr('style', 'background-image: url(' + e.target.result + '); background-size: contain;');
-            $('#uploaded-message')
+            $('#old_image')
                 .attr('style', 'display: none;');
-            $('.upload')
-                .attr('style', 'border: none;');
+            $('#updated_image')
+            .attr('style', 'display: block; background-image: url(' + e.target.result + ');');
         };
         reader.readAsDataURL(input.files[0]);
     }
