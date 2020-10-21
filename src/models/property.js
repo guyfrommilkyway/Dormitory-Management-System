@@ -12,33 +12,7 @@ const propertySchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    about: {
-        type: String,
-        required: true
-    },
-    room: {
-        type: Number,
-        required: true
-    },
-    available: {
-        type: Number
-    },
-    occupied: {
-        type: Number,
-        default: 0
-    },
-    resident: {
-        type: Number,
-        default: 0
-    },
-    booking: {
-        type: Number,
-        default: 0
-    },
-    avatar: {
-        type: String
-    },
-    author: {
+    owner: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'User'
@@ -50,8 +24,9 @@ const propertySchema = new mongoose.Schema({
 propertySchema.virtual('rooms', {
     ref: 'Room',
     localField: '_id',
-    foreignField: 'property'
+    foreignField: 'owner'
 })
+
 
 const Property = mongoose.model('Property', propertySchema)
 
