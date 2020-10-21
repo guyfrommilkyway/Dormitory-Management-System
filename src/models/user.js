@@ -2,13 +2,24 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
-const Property = require('./property')
 
 // User model
 const userSchema = new mongoose.Schema({
-    name: {
+    username: {
         type: String,
         required: true,
+        trim: true
+    },
+    first_name: {
+        type: String,
+        trim: true
+    },
+    last_name: {
+        type: String,
+        trim: true
+    },
+    contact: {
+        type: String,
         trim: true
     },
     email: {
@@ -51,9 +62,16 @@ const userSchema = new mongoose.Schema({
 userSchema.virtual('properties', {
     ref: 'Property',
     localField: '_id',
-    foreignField: 'author'
+    foreignField: 'owner'
 })
 
+userSchema.virtual('catalogs', {
+    ref: 'Catalog',
+    localField: '_id',
+    foreignField: 'owner'
+})
+
+// Hide private data
 userSchema.methods.toJSON = function () {
     const userObject = this.toObject()
 
