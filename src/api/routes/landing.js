@@ -1,7 +1,16 @@
 const authentication = require('../middlewares/authentication')
-const {propertyList} = require('../../services/property')
+const { propertyList } = require('../../services/property')
 
 module.exports = async (app) => {
+
+    // Demo
+    app.get('/demo', async (req, res) => {
+        res.render('pages/demo', {
+            layout: 'index',
+            title: 'Demo'
+        })
+    })
+
     // Index
     app.get('', async (req, res) => {
         if (req.session.user && req.session.token) {
@@ -12,7 +21,7 @@ module.exports = async (app) => {
                     layout: 'index',
                     title: 'Dashboard',
                     user: req.session.user,
-                    properties: properties
+                    properties
                 })
         } else {
             res.render('pages/login', {
@@ -29,7 +38,7 @@ module.exports = async (app) => {
                 layout: 'index',
                 title: 'Dashboard',
                 user: req.session.user,
-                properties: properties
+                properties
             })
         } else {
             res.render('pages/signup', {
@@ -39,23 +48,23 @@ module.exports = async (app) => {
         }
     })
 
-    // Settings
-    app.get('/settings', authentication, async (req, res) => {
-        const { properties } = await propertyList(req.session.user)
+    // Edit profile
+    app.get('/profile', authentication ,async (req, res) => {
+        if (req.session.user && req.session.token) {
+            const { properties } = await propertyList(req.session.user)
 
-        res.render('pages/landing/settings', {
-            layout: 'index',
-            title: 'Settings',
-            user: req.session.user,
-            properties: properties
-        })
-    })
-
-    // Demo
-    app.get('/demo', async (req, res) => {
-        res.render('pages/demo', {
-            layout: 'index',
-            title: 'Demo'
-        })
+            res.status(200)
+                .render('pages/landing/account/profile', {
+                    layout: 'index',
+                    title: 'Edit profile',
+                    user: req.session.user,
+                    properties
+                })
+        } else {
+            res.render('pages/login', {
+                layout: 'index',
+                title: 'Login'
+            })
+        }
     })
 }
