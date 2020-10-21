@@ -3,6 +3,7 @@ const express = require('express')
 const multer = require('multer')
 const { v4: uuidv4 } = require('uuid')
 const { propertyNew, propertyList, propertyView} = require('../../services/property')
+const { catalogList } = require('../../services/catalog')
 const authentication = require('../middlewares/authentication')
 
 const router = new express.Router()
@@ -21,7 +22,7 @@ router.post('/user/property/add', authentication, uploadPropertyAvatar.any(), as
         await propertyNew(req.body, req.session.user)
 
         res.status(201)
-            .redirect('/property')
+            .redirect('/')
     } catch (e) {
         res.status(400)
             .send()
@@ -33,14 +34,16 @@ router.get('/property/:id', authentication, async (req, res) => {
     try {
         const { properties } = await propertyList(req.session.user)
         const { property } = await propertyView(req.params.id, req.session.user)
+        const { catalogs } = await catalogList(req.session.user)
 
         res.status(200)
-            .render('pages/landing/property', {
+            .render('pages/landing/property/view', {
                 layout: 'index',
                 title: property.name,
                 user: req.session.user,
-                properties: properties,
-                property: property
+                properties,
+                property,
+                catalogs
             })
     } catch (e) {
         res.status(400)
