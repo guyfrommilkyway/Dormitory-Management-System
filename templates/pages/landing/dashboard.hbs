@@ -1,3 +1,5 @@
+{{>topbar}}
+
 <!-- Main -->
 <main class="wrapper">
 
@@ -6,9 +8,7 @@
     <!-- Content -->
     <section class="content-wrapper">
 
-        {{>topbar}}
-
-        <section class="content">
+        <section class="content" id="dashboard">
 
             {{#if properties}}
 
@@ -16,8 +16,12 @@
 
             {{else}}
 
-            <div class="message">
-                <span>There are currently no property listed under your account.</span>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 mt-5 text-center">
+                        <span class="message">There are currently no property listed under your account.</span>
+                    </div>
+                </div>
             </div>
 
             {{/if}}
@@ -25,7 +29,5 @@
         </section>
 
     </section>
-
-    {{>modals/add_modal}}
 
 </main>

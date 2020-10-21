@@ -1,13 +1,6 @@
 <!-- Sidebar -->
 <nav id="sidebar">
 
-    <!-- Brand -->
-    <div class="brand">
-        <a class="brand-link" href="/">
-            Dormitory<br>Management<br>System
-        </a>
-    </div>
-
     <!-- Links -->
     <div class="navbar-nav">
         <div class="nav-item">
@@ -19,7 +12,7 @@
         <div class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#collapseProperty" role="button" aria-expanded="false"
                 aria-controls="collapseProperty">
-                <img class="icon" src="/images/icons/home.svg" alt="">
+                <img class="icon" src="/images/icons/property.svg" alt="">
                 Property
             </a>
             <div class="collapse" id="collapseProperty">
@@ -27,12 +20,11 @@
                     <button class="nav-link btn btn-block z-depth-0" data-toggle="modal"
                         data-target="#addPropertyModal">
                         <img class="icon" src="/images/icons/add.svg" alt="add">
-                        Add property
+                        Add
                     </button>
                     {{#each properties}}
                     <a class="nav-link" href="/property/{{_id}}">
-                        <img class="icon" {{#if avatar}} src="/uploads/property/{{avatar}}" {{else}}
-                            src="/images/home.svg" {{/if}} alt="">
+                        <img class="icon" src="/images/icons/building.svg" alt="">
                         {{name}}
                     </a>
                     {{/each}}
@@ -43,25 +35,52 @@
             <a class="nav-link" data-toggle="collapse" href="#collapseSettings" role="button" aria-expanded="false"
                 aria-controls="collapseSettings">
                 <img class="icon" src="/images/icons/setting.svg" alt="">
-                Settings
+                Management
             </a>
             <div class="collapse" id="collapseSettings">
                 <div class="card card-body z-depth-0">
-                    <a class="nav-link" href="#profile">
-                        <img class="icon" {{#if avatar}} src="/uploads/property/{{avatar}}" {{else}}
-                            src="/images/icons/tenant.svg" {{/if}} alt="">
-                        Account
+                    <a class="nav-link" href="#property">
+                        <img class="icon" src="/images/icons/property.svg" alt="">
+                        Property
                     </a>
-                    <a class="nav-link" href="#security">
-                        <img class="icon" {{#if avatar}} src="/uploads/property/{{avatar}}" {{else}}
-                            src="/images/icons/shield.svg" {{/if}} alt="">
-                        Security
+                    <a class="nav-link" href="#catalog">
+                        <img class="icon" src="/images/icons/catalogue.svg" alt="">
+                        Catalog
                     </a>
+                </div>
+            </div>
+        </div>
+        <div class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#collapseAccount" role="button" aria-expanded="false"
+                aria-controls="collapseAccount">
+                <img class="icon" src="/images/icons/shield.svg" alt="">
+                Account
+            </a>
+            <div class="collapse" id="collapseAccount">
+                <div class="card card-body z-depth-0">
+                    <a class="nav-link" href="/profile">
+                        <img class="icon" src="/images/icons/profile.svg" alt="">
+                        Edit profile
+                    </a>
+                    <a class="nav-link" href="#password">
+                        <img class="icon" src="/images/icons/padlock.svg" alt="">
+                        Change password
+                    </a>
+                    <form action="/user/logout" method="POST">
+                        <button class="nav-link btn z-depth-0" href="#">
+                            <img class="icon" src="/images/icons/logout.svg" alt="">
+                            Log out
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
-    {{>modals/add_modal}}
-
 </nav>
+
+<!-- Modal -->
+{{>modals/property/add/property}}
+{{>modals/property/add/catalog}}
+{{>modals/property/add/room}}
+{{>modals/account/avatar}}
