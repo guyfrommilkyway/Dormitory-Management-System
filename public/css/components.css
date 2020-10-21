@@ -1,9 +1,16 @@
 /* Topbar */
 
 #topbar {
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 1rem;
   background-color: #1b2432;
+}
+
+#topbar .brand-link {
+  color: #ffeab2;
+  font-size: 1.4rem;
+  line-height: 1.2rem;
+  text-transform: uppercase;
 }
 
 #topbar .user {
@@ -11,90 +18,33 @@
   align-items: center;
 }
 
-#topbar .user .name span {
-  margin-right: 0.8rem;
-  color: white;
-  font-size: 0.9rem;
-  text-transform: uppercase;
+#topbar .user .name {
+  margin-right: 1rem;
+  text-transform: lowercase;
 }
 
-#topbar .user .dropdown .picture {
+#topbar .user .photo {
   width: 2.4rem;
   height: 2.4rem;
   border-radius: 1.2rem;
-  background-color: #ffeab2;
-}
-
-#topbar .user .dropdown .picture .avatar {
-  width: 2.4rem;
-  height: 2.4rem;
-  border-radius: 1.2rem;
-}
-
-#topbar .user .dropdown .dropdown-menu {
-  position: relative;
-  left: -130px;
-  margin: 0.5rem;
-  background-color: #ffeab2;
-  border-radius: 3px;
-}
-
-#topbar .user .dropdown .dropdown-menu form {
-  width: auto;
-  margin-bottom: 0.5rem;
-}
-
-#topbar .user .dropdown .dropdown-menu form button {
-  border-radius: 0;
-}
-
-#topbar .user .dropdown .dropdown-menu form button:focus {
-  color: #1b2432;
-  border: none;
-  outline: none;
-  background: none;
-}
-
-#topbar .user .dropdown .dropdown-menu .dropdown-item {
-  display: flex;
-  align-items: center;
-  padding: 0.7rem 1rem;
-  font-size: 0.9rem;
-}
-
-#topbar .user .dropdown .dropdown-menu .dropdown-item:focus {
-  background: none;
-}
-
-#topbar .user .dropdown .dropdown-menu .dropdown-item:hover {
-  background: none;
 }
 
 /* Sidebar */
 
 #sidebar {
-  width: 15rem;
-  min-width: 15rem;
-  min-height: 100vh;
+  width: 16rem;
+  min-width: 16rem;
+  min-height: 500px;
+  margin: 1rem;
+  padding: 1rem 0 4rem 0;
   color: #ffffff;
   line-height: 1rem;
   background-color: #1b2432;
-}
-
-#sidebar .brand {
-  margin: 1rem;
-}
-
-#sidebar .brand-link {
-  color: #ffeab2;
-  font-size: 1.2rem;
-  line-height: 1rem;
-  text-transform: uppercase;
+  border-radius: 3px;
 }
 
 #sidebar .navbar-nav {
   width: 100%;
-  margin-top: 1.2rem;
 }
 
 #sidebar .navbar-nav .nav-item {
@@ -117,7 +67,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 0.8rem 1rem;
+  padding: 0.8rem 1.5rem;
   color: #ffffff;
-  font-size: 0.9rem;
+  font-size: 15px;
 }

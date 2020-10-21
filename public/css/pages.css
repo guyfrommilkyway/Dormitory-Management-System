@@ -9,8 +9,8 @@
 }
 
 .wrapper .content-wrapper .content {
+  min-height: 100vh;
   margin: 1rem;
-  padding: 1rem;
 }
 
 /* Login */
@@ -23,10 +23,10 @@
   line-height: 1rem;
 }
 
-.brand {
+.brand-link {
   color: #ffeab2;
-  font-size: 1.2rem;
-  line-height: 1rem;
+  font-size: 1.4rem;
+  line-height: 1.2rem;
   text-transform: uppercase;
 }
 
@@ -55,6 +55,16 @@
 
 #login .form-group {
   margin-bottom: 1.5rem;
+}
+
+#login form .form-group .form-control {
+  padding-left: 0;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #eeeeee;
+  border-radius: 0;
 }
 
 #login form .form-group .form-control:focus {
@@ -141,7 +151,11 @@
   z-index: -1;
 }
 
-/* Home */
+/* Dashboard */
+
+.message {
+  font-size: 1.2rem;
+}
 
 /* Property */
 
@@ -157,87 +171,55 @@
   padding: 0;
 }
 
-form .modal .modal-dialog .modal-content {
-  border-radius: 3px;
-  background: none;
+/* Edit profile */
+#profile header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-form .modal .modal-dialog .modal-content .modal-header {
-  color: #ffeab2;
-  background-color: #1b2432;
-  border: none;
+#profile .profile-info {
+  display: flex;
+  margin: 1rem 0;
 }
 
-form .modal .modal-dialog .modal-content .modal-header h5 {
-  font-weight: bold;
+#profile .profile-info .upload {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 12rem;
+  height: 12rem;
 }
 
-form .modal .modal-dialog .modal-content .modal-body {
-  padding: 1rem 2rem;
-  background-color: #47556b;
+#profile .profile-info .upload #profile-avatar {
+  width: 12rem;
+  height: 12rem;
 }
 
-form .modal .modal-dialog .modal-content .modal-body .form-group {
-  margin: 0.5rem 1.5rem;
-}
-form
-  .modal
-  .modal-dialog
-  .modal-content
-  .modal-body
-  .form-group
-  input[type="file"] {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
+#profile .profile-info .upload a {
   position: absolute;
-  z-index: -1;
+  width: 12rem;
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: normal;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0;
 }
 
-form .modal .modal-dialog .modal-content .modal-body .form-group .form-control {
-  border-bottom: 1px solid #ffffff;
+#profile .profile-info form {
+  width: 100%;
+  max-width: 500px;
+  margin-left: 3rem;
 }
 
-form
-  .modal
-  .modal-dialog
-  .modal-content
-  .modal-body
-  .form-group
-  .form-control:focus {
-  border-bottom: 1px solid #ffeab2;
+#profile .profile-info form .btn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 2rem;
 }
 
-form
-  .modal
-  .modal-dialog
-  .modal-content
-  .modal-body
-  .form-group
-  .form-control::placeholder {
-  color: #dfe0e1;
-  font-size: 15px;
-}
-
-form .modal .modal-dialog .modal-content .modal-footer {
-  color: #ffeab2;
-  background-color: #1b2432;
-  border: none;
-}
-
-form .modal .modal-dialog .modal-content .modal-footer .cancel {
-  background: none;
-  border: 1px solid #1b2432;
-  box-shadow: none;
-}
-
-form .modal .modal-dialog .modal-content .modal-footer .cancel:hover {
-  color: #ffeab2;
-  box-shadow: none;
-}
-
-form .modal .modal-dialog .modal-content .modal-footer .add {
+#profile .profile-info form .btn-wrapper .btn {
   color: #1b2432;
   background-color: #ffeab2;
 }

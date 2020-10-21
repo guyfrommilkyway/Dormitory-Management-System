@@ -10,26 +10,23 @@
 
 body {
   font-family: Raleway;
+  color: #ffffff;
   background-color: #4d5b73;
 }
 
-form .form-group .form-control {
-  padding: 0.6rem 0;
-  margin: 0 0 0.6rem 0;
-  color: #ffffff;
-  background: none;
+.form-control {
+  margin-bottom: 0.8rem;
   border: none;
-  border-bottom: 1px solid #eeeeee;
-  border-radius: 0;
 }
 
-form .form-group .form-control:focus {
-  border-bottom: 1px solid #ffeab2;
+.form-control:focus {
+  border: none;
   box-shadow: none;
+  outline: none;
 }
 
 .btn {
-  padding: 0.4rem 1rem;
+  padding: 0.6rem 1rem;
   font-size: 1rem;
   font-weight: 600;
   text-transform: none;
@@ -38,4 +35,107 @@ form .form-group .form-control:focus {
 .icon {
   width: 20px;
   margin-right: 1rem;
+}
+
+form .modal .modal-dialog .modal-content {
+  border-radius: 3px;
+  background: none;
+}
+
+form .modal .modal-dialog .modal-content .modal-header {
+  padding: 1rem 1.5rem;
+  color: #ffeab2;
+  background-color: #1b2432;
+  border: none;
+}
+
+form .modal .modal-dialog .modal-content .modal-body {
+  padding: 1rem;
+  background-color: #47556b;
+}
+
+.upload {
+  display: flex;
+  justify-content: center;
+}
+
+.upload .form-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0 0 0;
+}
+
+.upload .form-group label {
+  max-width: 20rem;
+  max-height: 20rem;
+  margin: 0 0 1rem 0;
+  cursor: pointer;
+}
+
+.upload .form-group label #old_image {
+  width: 20rem;
+  height: 20rem;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.upload .form-group label #updated_image {
+  display: none;
+  width: 20rem;
+  height: 20rem;
+  margin: 0 auto;
+  padding: 0;
+  background-position: center;
+  background-size: cover;
+}
+
+.upload .form-group label .upload_text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -46.38px;
+  width: 20rem;
+  padding: 0.2rem 0.5rem;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.upload .form-group label .upload_text img {
+  width: 40px;
+  margin-right: 0.3rem;
+}
+
+.upload .form-group input[type="file"] {
+  width: 0.1px;
+  height: 0.1px;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+form .modal .modal-dialog .modal-content .modal-footer {
+  padding: 0.5rem 1rem;
+  color: #ffeab2;
+  background-color: #1b2432;
+  border: none;
+}
+
+form .modal .modal-dialog .modal-content .modal-footer .cancel {
+  background: none;
+  border: 1px solid #1b2432;
+  box-shadow: none;
+}
+
+form .modal .modal-dialog .modal-content .modal-footer .cancel:hover {
+  color: #ffeab2;
+  box-shadow: none;
+}
+
+form .modal .modal-dialog .modal-content .modal-footer .add {
+  color: #1b2432;
+  background-color: #ffeab2;
 }
