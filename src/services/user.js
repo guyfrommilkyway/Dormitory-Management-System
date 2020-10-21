@@ -3,13 +3,14 @@ const jwt = require('jsonwebtoken')
 const sharp = require('sharp')
 const User = require('../models/user')
 
-// User signup
+// Sign up
 const userSignup = async (userObject, fileObject) => {
     const img = fs.readFileSync(fileObject[0].path)
     const encoded_image = await sharp(img).resize({ width: 250, height: 250 }).png().toBuffer()
     const type = fileObject[0].mimetype
+    
     const user = new User({
-        name: userObject.name,
+        username: userObject.username,
         email: userObject.email,
         password: userObject.password,
         avatar: {
@@ -17,10 +18,11 @@ const userSignup = async (userObject, fileObject) => {
             contentType: type
         }
     })
+
     await user.save()
 }
 
-// User login
+// Log in
 const userLogin = async (userObject) => {
     const user = await User.findByCredentials(userObject.email, userObject.password)
     const token = await user.generateAuthToken()
@@ -28,7 +30,36 @@ const userLogin = async (userObject) => {
     return { user, token }
 }
 
-// User logout
+// Update avatar
+const userAvatarUpdate = async (userObject, fileObject) => {
+    const img = fs.readFileSync(fileObject[0].path)
+    const encoded_image = await sharp(img).resize({ width: 250, height: 250 }).png().toBuffer()
+    const type = fileObject[0].mimetype
+
+    const user = await User.findByIdAndUpdate(userObject._id, { 
+        avatar: {
+            data: encoded_image,
+            contentType: type
+        }
+    }, { new: true })
+
+    return { user }
+}
+
+// Update info
+const userInfoUpdate = async (userObject) => {
+    const user = await User.findByIdAndUpdate(userObject._id, {
+        first_name: userObject.first_name,
+        last_name:userObject.last_name,
+        contact: userObject.contact,
+        email: userObject.email,
+
+    }, { new: true })
+
+    return { user }
+}
+
+// Log out
 const userLogout = async (token) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET)
     const user = await User.findOne({ _id: decoded._id, 'tokens.token': token })
@@ -43,5 +74,7 @@ const userLogout = async (token) => {
 module.exports = {
     userSignup,
     userLogin,
+    userAvatarUpdate,
+    userInfoUpdate,
     userLogout
 }

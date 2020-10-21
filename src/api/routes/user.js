@@ -2,7 +2,7 @@ const path = require('path')
 const express = require('express')
 const multer = require('multer')
 const { v4: uuidv4 } = require('uuid')
-const { userSignup, userLogin, userLogout } = require('../../services/user')
+const { userSignup, userLogin, userAvatarUpdate, userInfoUpdate, userLogout } = require('../../services/user')
 const authentication = require('../middlewares/authentication')
 
 const router = new express.Router()
@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
 })
 const uploadUserAvatar = multer({ storage: storage })
 
-// User signup
+// Sign up
 router.post('/user/signup', uploadUserAvatar.any(), async (req, res) => {
     try {
         await userSignup(req.body, req.files)
@@ -28,7 +28,7 @@ router.post('/user/signup', uploadUserAvatar.any(), async (req, res) => {
     }
 })
 
-// User login
+// Log in
 router.post('/user/login', async (req, res) => {
     try {
         const { user, token } = await userLogin(req.body)
@@ -44,7 +44,37 @@ router.post('/user/login', async (req, res) => {
     }
 })
 
-// User logout
+// Update avatar
+router.post('/user/profile/avatar/update', authentication, uploadUserAvatar.any(), async (req, res) => {
+    try {
+        const { user } = await userAvatarUpdate(req.session.user, req.files)
+
+        req.session.user = user
+
+        res.status(200)
+            .redirect('/profile')
+    } catch (e) {
+        res.status(400)
+            .redirect('/')
+    }
+})
+
+// Update info
+router.post('/user/profile/info/update', authentication, async (req, res) => {
+    try {
+        const { user } = await userInfoUpdate(req.body)
+        
+        req.session.user = user
+
+        res.status(200)
+            .redirect('/profile')
+    } catch (e) {
+        res.status(400)
+            .redirect('/')
+    }
+})
+
+// Log out
 router.post('/user/logout', authentication, async (req, res) => {
     try {
         userLogout(req.session.token)
