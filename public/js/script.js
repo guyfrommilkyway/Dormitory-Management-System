@@ -27,3 +27,14 @@ function update(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+// Password confirmation
+$(document).ready(function() {
+    $('#newPassword, #confirmNewPassword').on('keyup', function () {
+        if ($('#newPassword').val() == $('#confirmNewPassword').val() ) {
+            $('#btnSave').attr('disabled', false);
+        } else {
+            $('#btnSave').attr('disabled', true);
+        }
+    });
+});
