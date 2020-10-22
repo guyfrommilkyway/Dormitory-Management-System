@@ -2,7 +2,13 @@ const path = require('path')
 const express = require('express')
 const multer = require('multer')
 const { v4: uuidv4 } = require('uuid')
-const { userSignup, userLogin, userAvatarUpdate, userInfoUpdate, userLogout } = require('../../services/user')
+const { 
+    userSignup, 
+    userLogin, 
+    userAvatarUpdate, 
+    userInfoUpdate, 
+    userPasswordChange, 
+    userLogout } = require('../../services/user')
 const authentication = require('../middlewares/authentication')
 
 const router = new express.Router()
@@ -52,7 +58,7 @@ router.post('/user/profile/avatar/update', authentication, uploadUserAvatar.any(
         req.session.user = user
 
         res.status(200)
-            .redirect('/profile')
+            .redirect('/account/profile')
     } catch (e) {
         res.status(400)
             .redirect('/')
@@ -67,7 +73,23 @@ router.post('/user/profile/info/update', authentication, async (req, res) => {
         req.session.user = user
 
         res.status(200)
-            .redirect('/profile')
+            .redirect('/account/profile')
+    } catch (e) {
+        res.status(400)
+            .redirect('/')
+    }
+})
+
+
+// Update password
+router.post('/user/profile/password/change', authentication, async (req, res) => {
+    try {
+        const { user } = await userPasswordChange(req.body)
+        
+        req.session.user = user
+
+        res.status(200)
+            .redirect('/account/password')
     } catch (e) {
         res.status(400)
             .redirect('/')

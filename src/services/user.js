@@ -1,6 +1,7 @@
 const fs = require('fs')
 const jwt = require('jsonwebtoken')
 const sharp = require('sharp')
+const bcrypt = require('bcryptjs')
 const User = require('../models/user')
 
 // Sign up
@@ -52,11 +53,26 @@ const userInfoUpdate = async (userObject) => {
         first_name: userObject.first_name,
         last_name:userObject.last_name,
         contact: userObject.contact,
-        email: userObject.email,
-
+        email: userObject.email
     }, { new: true })
 
     return { user }
+}
+
+// Update password
+const userPasswordChange = async (userObject) => {
+    const userToFind = await User.findByCredentials(userObject.email, userObject.currentPassword)
+
+    if (userToFind) {
+        const newPassword = await bcrypt.hash(userObject.newPassword, 8)
+        const user = await User.findByIdAndUpdate(userObject._id, {
+            password: newPassword
+        }, { new: true })
+
+        return { user }
+    } else {
+        throw new Error()
+    }
 }
 
 // Log out
@@ -76,5 +92,6 @@ module.exports = {
     userLogin,
     userAvatarUpdate,
     userInfoUpdate,
+    userPasswordChange,
     userLogout
 }
