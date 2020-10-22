@@ -49,7 +49,7 @@ module.exports = async (app) => {
     })
 
     // Edit profile
-    app.get('/profile', authentication ,async (req, res) => {
+    app.get('/account/profile', authentication ,async (req, res) => {
         if (req.session.user && req.session.token) {
             const { properties } = await propertyList(req.session.user)
 
@@ -57,6 +57,26 @@ module.exports = async (app) => {
                 .render('pages/landing/account/profile', {
                     layout: 'index',
                     title: 'Edit profile',
+                    user: req.session.user,
+                    properties
+                })
+        } else {
+            res.render('pages/login', {
+                layout: 'index',
+                title: 'Login'
+            })
+        }
+    })
+
+    // Change password
+    app.get('/account/password', authentication ,async (req, res) => {
+        if (req.session.user && req.session.token) {
+            const { properties } = await propertyList(req.session.user)
+
+            res.status(200)
+                .render('pages/landing/account/password', {
+                    layout: 'index',
+                    title: 'Change password',
                     user: req.session.user,
                     properties
                 })
