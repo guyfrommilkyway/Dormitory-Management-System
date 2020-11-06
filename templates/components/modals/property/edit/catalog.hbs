@@ -1,0 +1,31 @@
+<!-- Edit catalog modal -->
+<form action="/user/catalog/edit" method="POST">
+    <div class="modal fade" id="editCatalogModal" tabindex="-1" role="dialog" aria-labelledby="editCatalogModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit catalog</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="md-form mt-2 mb-3">
+                        <label for="inputEditCatalogName">Name</label>
+                        <input class="form-control" name="name" type="text" id="inputEditCatalogName"
+                            value="placeholder" required>
+                        <input class="form-control" name="_id" id="inputEditCatalog_id" value="placeholder"
+                            type="hidden" required>
+                    </div>
+                    <div class="md-form mb-3">
+                        <label for="inputEditCatalogRate">Rate</label>
+                        <input class="form-control" name="rate" type="text" id="inputEditCatalogRate"
+                            value="placeholder" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-custom">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

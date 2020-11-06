@@ -17,7 +17,25 @@ const catalogList = async (userObject) => {
     return { catalogs }
 }
 
+// Update catalog info
+const catalogEdit = async (catalogObject) => {
+    const catalog = await Catalog.findByIdAndUpdate(catalogObject._id, {
+        name: catalogObject.name,
+        rate: catalogObject.rate
+    })
+
+    return { catalog }
+}
+
+// Delete catalog info
+const catalogDelete = async (catalogObject, userObject) => {
+    await Catalog.findOneAndDelete({ _id: catalogObject._id, owner: userObject._id })
+}
+
+
 module.exports = {
     catalogNew,
-    catalogList
+    catalogList,
+    catalogEdit,
+    catalogDelete
 } 

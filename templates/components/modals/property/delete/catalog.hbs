@@ -1,0 +1,36 @@
+<!-- Delete catalog modal -->
+<form action="/user/catalog/delete" method="POST">
+    <div class="modal fade" id="deleteCatalogModal" tabindex="-1" role="dialog" aria-labelledby="deleteCatalogModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Are you sure you want to delete?</h4>
+                </div>
+                <div class="modal-body">
+                    <input class="form-control" name="_id" id="inputDeleteCatalog_id" type="hidden" required>
+                    <div>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Rate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span id="spanDeleteCatalogName"></span></td>
+                                    <td><span id="spanDeleteCatalogRate"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Confirm delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
