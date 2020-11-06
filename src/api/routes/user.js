@@ -22,9 +22,9 @@ const storage = multer.diskStorage({
 const uploadUserAvatar = multer({ storage: storage })
 
 // Sign up
-router.post('/user/signup', uploadUserAvatar.any(), async (req, res) => {
+router.post('/user/signup', async (req, res) => {
     try {
-        await userSignup(req.body, req.files)
+        await userSignup(req.body)
 
         res.status(201)
             .redirect('/')
