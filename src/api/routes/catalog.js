@@ -10,7 +10,7 @@ router.post('/user/property/catalog/add', authentication, async (req, res) => {
         await catalogNew(req.body, req.session.user)
 
         res.status(201)
-            .redirect('/')
+            .redirect('/management/catalog')
     } catch (e) {
         console.log(e)
         res.status(400)
