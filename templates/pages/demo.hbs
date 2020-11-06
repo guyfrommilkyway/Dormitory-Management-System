@@ -1,24 +1,78 @@
-{{>topbar}}
-
 <!-- Main -->
 <main class="wrapper">
 
     {{>sidebar}}
 
     <!-- Content -->
-    <section class="content-wrapper" id="demo">
+    <section class="content-wrapper" id="management">
+
+        {{>topbar}}
 
         <!-- Main Content -->
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12 p-0">
-
+                    <div class="col-md-12 p-0">
+                        <table id="tableProperty" class="table table-borderless table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Location</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each properties}}
+                                <tr>
+                                    <td>
+                                        <a href="/property/{{_id}}">{{name}}</a>
+                                    </td>
+                                    <td>{{location}}</td>
+                                    <td>
+                                        <button type="button" class="btn m-1 p-1 z-depth-0">
+                                            <img class="icon m-0" src="/images/icons/create-white-18dp.svg" alt="">
+                                        </button>
+                                        <button type="button" class="btn m-1 p-1 z-depth-0">
+                                            <img class="icon m-0" src="/images/icons/delete_forever-white-18dp.svg"
+                                                alt="">
+                                        </button>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </section>
-
     </section>
-
 </main>
+
+<!-- DataTables -->
+<script>
+    $('#tableProperty').DataTable({
+        "dom": '<"d-flex justify-content-between align-items-center mb-3"Bf>t<"d-flex justify-content-between align-items-center mt-4"ip>',
+        "buttons": {
+            dom: {
+                button: {
+                    tag: 'button',
+                    className: 'btn'
+                }
+            },
+            buttons: [
+                {
+
+                    className: 'btn-primary m-0 z-depth-0',
+                    text: `Add property`,
+                    action: function (e, dt, node, config) {
+                        $('#addPropertyModal').modal('show')
+                    }
+                },
+            ]
+        },
+        "pageLength": 10
+    });
+</script>
+
+<!-- Modal -->
+{{>modals/property/add/property}}

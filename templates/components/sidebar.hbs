@@ -1,50 +1,58 @@
 <!-- Sidebar -->
 <nav id="sidebar">
 
+    <!-- Brand -->
+    <div class="brand-wrapper">
+        <a class="brand-link" href="/">
+            Property <br> Management <br> System
+        </a>
+    </div>
+
     <!-- Links -->
     <div class="navbar-nav">
         <div class="nav-item">
             <a class="nav-link" href="/">
-                <img class="icon" src="/images/icons/dashboard.svg" alt="">
+                <img class="icon" src="/images/icons/dashboard-white-18dp.svg" alt="">
                 Dashboard
             </a>
         </div>
         <div class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#collapseProperty" role="button" aria-expanded="false"
                 aria-controls="collapseProperty">
-                <img class="icon" src="/images/icons/property.svg" alt="">
+                <img class="icon" src="/images/icons/apartment-white-18dp.svg" alt="">
                 Property
             </a>
             <div class="collapse" id="collapseProperty">
                 <div class="card card-body z-depth-0">
-                    <button class="nav-link btn btn-block z-depth-0" data-toggle="modal"
-                        data-target="#addPropertyModal">
-                        <img class="icon" src="/images/icons/add.svg" alt="add">
-                        Add
-                    </button>
+                    {{#if properties}}
                     {{#each properties}}
                     <a class="nav-link" href="/property/{{_id}}">
-                        <img class="icon" src="/images/icons/building.svg" alt="">
+                        <img class="icon" src="/images/icons/bookmark-white-18dp.svg" alt="">
                         {{name}}
                     </a>
                     {{/each}}
+                    {{else}}
+                    <div class="nav-link">
+                        <span>No properties found.</span>
+                    </div>
+                    {{/if}}
                 </div>
             </div>
         </div>
         <div class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#collapseSettings" role="button" aria-expanded="false"
                 aria-controls="collapseSettings">
-                <img class="icon" src="/images/icons/setting.svg" alt="">
+                <img class="icon" src="/images/icons/settings-white-18dp.svg" alt="">
                 Management
             </a>
             <div class="collapse" id="collapseSettings">
                 <div class="card card-body z-depth-0">
-                    <a class="nav-link" href="#property">
-                        <img class="icon" src="/images/icons/property.svg" alt="">
+                    <a class="nav-link" href="/management/property">
+                        <img class="icon" src="/images/icons/apartment-white-18dp.svg" alt="">
                         Property
                     </a>
-                    <a class="nav-link" href="#catalog">
-                        <img class="icon" src="/images/icons/catalogue.svg" alt="">
+                    <a class="nav-link" href="/management/catalog">
+                        <img class="icon" src="/images/icons/layers-white-18dp.svg" alt="">
                         Catalog
                     </a>
                 </div>
@@ -53,23 +61,22 @@
         <div class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#collapseAccount" role="button" aria-expanded="false"
                 aria-controls="collapseAccount">
-                <img class="icon" src="/images/icons/shield.svg" alt="">
+                <img class="icon" src="/images/icons/security-white-18dp.svg" alt="">
                 Account
             </a>
             <div class="collapse" id="collapseAccount">
                 <div class="card card-body z-depth-0">
                     <a class="nav-link" href="/account/profile">
-                        <img class="icon" src="/images/icons/profile.svg" alt="">
-                        Edit profile
+                        <img class="icon" src="/images/icons/account_circle-white-18dp.svg" alt="">
+                        Profile
                     </a>
-                    <a class="nav-link" href="/account/password">
-                        <img class="icon" src="/images/icons/padlock.svg" alt="">
-                        Change password
+                    <a class="nav-link mb-2" href="/account/password">
+                        <img class="icon" src="/images/icons/lock-white-18dp.svg" alt="">
+                        Security
                     </a>
                     <form action="/user/logout" method="POST">
-                        <button class="nav-link btn z-depth-0" href="#">
-                            <img class="icon" src="/images/icons/logout.svg" alt="">
-                            Log out
+                        <button class="btn btn-danger btn-block" href="#">
+                            Logout
                         </button>
                     </form>
                 </div>
@@ -78,9 +85,3 @@
     </div>
 
 </nav>
-
-<!-- Modal -->
-{{>modals/property/add/property}}
-{{>modals/property/add/catalog}}
-{{>modals/property/add/room}}
-{{>modals/account/avatar}}

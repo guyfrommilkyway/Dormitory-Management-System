@@ -1,132 +1,236 @@
-{{>topbar}}
-
 <!-- Main -->
 <main class="wrapper">
-
     {{>sidebar}}
-
     <!-- Content -->
-    <section class="content-wrapper">
+    <section class="content-wrapper" id="property">
+
+        {{>topbar}}
 
         <!-- Main Content -->
-        <section class="content" id="property">
+        <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12 p-0">
-                        <h2>{{property.name}}</h2>
-                        <div class="d-flex align-items-center">
-                            <img class="icon mr-1" src="/images/icons/location.svg" alt="">
-                            <span>{{property.location}}</span>
-                        </div>
-                        <button class="btn btn-dark" data-toggle="modal" data-target="#addRoomModal">
-                            <img class="icon" src="/images/icons/add.svg" alt="add">
-                            Add room
-                        </button>
-                        <button class="btn btn-dark" data-toggle="modal" data-target="#addCatalogModal">
-                            <img class="icon" src="/images/icons/add.svg" alt="add">
-                            Add catalog
-                        </button>
-                        <!-- Tables -->
-                        <div id="accordion">
-                            <div class="card">
-                                <div class="card-header" id="headingOne">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
-                                            aria-expanded="false" aria-controls="collapseOne">
-                                            Rooms
-                                        </button>
-                                    </h5>
-                                </div>
+                    <div class="col-md-12 p-0">
+                        <header>
+                            <h4>{{property.name}}</h4>
+                            <div class="d-flex align-items-center">
+                                <img class="icon mr-2" src="/images/icons/location_on-white-18dp.svg" alt="">
+                                <span>{{property.location}}</span>
+                            </div>
+                        </header>
+                        <nav class="navbar" id="property-topbar">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                        aria-controls="home" aria-selected="true">
+                                        <img class="icon" src="/images/icons/home-white-18dp.svg" alt="">
+                                        Home
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="room-tab" data-toggle="tab" href="#room" role="tab"
+                                        aria-controls="room" aria-selected="true">
+                                        <img class="icon" src="/images/icons/room-white-18dp.svg" alt="">
+                                        Room
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="tenant-tab" data-toggle="tab" href="#tenant" role="tab"
+                                        aria-controls="tenant" aria-selected="false"><img class="icon"
+                                            src="/images/icons/account_circle-white-18dp.svg" alt="">
+                                        Tenant
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="booking-tab" data-toggle="tab" href="#booking" role="tab"
+                                        aria-controls="booking" aria-selected="false">
+                                        <img class="icon" src="/images/icons/menu_book-white-18dp.svg" alt="">
+                                        Booking
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab"
+                                        aria-controls="settings" aria-selected="false">
+                                        <img class="icon" src="/images/icons/settings-white-18dp.svg" alt="">
+                                        Settings
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <section class="tab-content" id="myTabContent">
+                            <div class="tab-pane show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
-                                    data-parent="#accordion">
-                                    <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad squid. 3 wolf
-                                        moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
-                                        nesciunt
-                                        laborum eiusmod.
-                                        Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
-                                        coffee
-                                        nulla assumenda
-                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                        cred
-                                        nesciunt sapiente ea
-                                        proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                                        farm-to-table, raw denim
-                                        aesthetic synth nesciunt you probably haven't heard of them accusamus labore
-                                        sustainable VHS.
-                                    </div>
-                                </div>
                             </div>
-                            <div class="card">
-                                <div class="card-header" id="headingTwo">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed" data-toggle="collapse"
-                                            data-target="#collapseTwo" aria-expanded="false"
-                                            aria-controls="collapseTwo">
-                                            Tenants
-                                        </button>
-                                    </h5>
-                                </div>
-                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                                    data-parent="#accordion">
-                                    <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad squid. 3 wolf
-                                        moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
-                                        nesciunt
-                                        laborum eiusmod.
-                                        Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
-                                        coffee
-                                        nulla assumenda
-                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                        cred
-                                        nesciunt sapiente ea
-                                        proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                                        farm-to-table, raw denim
-                                        aesthetic synth nesciunt you probably haven't heard of them accusamus labore
-                                        sustainable VHS.
-                                    </div>
-                                </div>
+                            <div class="tab-pane fade" id="room" role="tabpanel" aria-labelledby="room-tab">
+                                <div id="demo-html"></div>
+                                <table id="tableRoom" class="table table-borderless table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Room</th>
+                                            <th>Floor</th>
+                                            <th>Catalog</th>
+                                            <th>Price</th>
+                                            <th>Tenant</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each rooms}}
+                                        <tr>
+                                            <td>{{name}}</td>
+                                            <td>{{floor}}</td>
+                                            <td>{{catalog.name}}</td>
+                                            <td>{{catalog.price}}</td>
+                                            <td>{{tenant.first_name}} {{tenant.last_name}}</td>
+                                            <td>
+                                                <button type="button" class="btn p-1 m-0 z-depth-0">
+                                                    <img class="icon m-0" src="/images/icons/create-white-18dp.svg"
+                                                        alt="">
+                                                </button>
+                                                <button type="button" class="btn p-1 m-0 z-depth-0">
+                                                    <img class="icon m-0"
+                                                        src="/images/icons/delete_forever-white-18dp.svg" alt="">
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
                             </div>
-                            <div class="card">
-                                <div class="card-header" id="headingThree">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed" data-toggle="collapse"
-                                            data-target="#collapseThree" aria-expanded="false"
-                                            aria-controls="collapseThree">
-                                            Bookings
-                                        </button>
-                                    </h5>
-                                </div>
-                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                                    data-parent="#accordion">
-                                    <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad squid. 3 wolf
-                                        moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
-                                        nesciunt
-                                        laborum eiusmod.
-                                        Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
-                                        coffee
-                                        nulla assumenda
-                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                        cred
-                                        nesciunt sapiente ea
-                                        proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                                        farm-to-table, raw denim
-                                        aesthetic synth nesciunt you probably haven't heard of them accusamus labore
-                                        sustainable VHS.
-                                    </div>
-                                </div>
+                            <div class="tab-pane fade" id="tenant" role="tabpanel" aria-labelledby="tenant-tab">
+                                <table id="tableTenant" class="table table-borderless table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>First name</th>
+                                            <th>Last name</th>
+                                            <th>Age</th>
+                                            <th>Contact</th>
+                                            <th>Email</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each tenants}}
+                                        <tr>
+                                            <td>{{first_name}}</td>
+                                            <td>{{last_name}}</td>
+                                            <td>{{age}}</td>
+                                            <td>{{contact}}</td>
+                                            <td>{{email}}</td>
+                                            <td>
+                                                <button type="button" class="btn p-1 m-0 z-depth-0">
+                                                    <img class="icon m-0" src="/images/icons/create-white-18dp.svg"
+                                                        alt="">
+                                                </button>
+                                                <button type="button" class="btn p-1 m-0 z-depth-0">
+                                                    <img class="icon m-0"
+                                                        src="/images/icons/delete_forever-white-18dp.svg" alt="">
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
                             </div>
-                        </div>
+                            <div class="tab-pane fade" id="booking" role="tabpanel" aria-labelledby="booking-tab">
+                                <table id="tableBooking" class="table table-borderless table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>First name</th>
+                                            <th>Last name</th>
+                                            <th>Age</th>
+                                            <th>Contact</th>
+                                            <th>Email</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each tenants}}
+                                        <tr>
+                                            <td>{{first_name}}</td>
+                                            <td>{{last_name}}</td>
+                                            <td>{{age}}</td>
+                                            <td>{{contact}}</td>
+                                            <td>{{email}}</td>
+                                            <td>
+                                                <button type="button" class="btn p-1 m-0 z-depth-0">
+                                                    <img class="icon m-0" src="/images/icons/create-white-18dp.svg"
+                                                        alt="">
+                                                </button>
+                                                <button type="button" class="btn p-1 m-0 z-depth-0">
+                                                    <img class="icon m-0"
+                                                        src="/images/icons/delete_forever-white-18dp.svg" alt="">
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+
+                            </div>
+                        </section>
                     </div>
                 </div>
             </div>
         </section>
-
     </section>
-
 </main>
+
+<!-- DataTables -->
+<script>
+    $('#tableRoom').DataTable({
+        "dom": '<"d-flex justify-content-between align-items-center mb-3"Bf>t<"d-flex justify-content-between align-items-center mt-4"ip>',
+        "buttons": {
+            dom: {
+                button: {
+                    tag: 'button',
+                    className: 'btn'
+                }
+            },
+            buttons: [
+                {
+
+                    className: 'btn-primary m-0 z-depth-0',
+                    text: `Add room`,
+                    action: function (e, dt, node, config) {
+                        $('#addRoomModal').modal('show')
+                    }
+                }
+            ]
+        },
+        "pageLength": 10
+    });
+
+    $('#tableTenant').DataTable({
+        "dom": '<"d-flex justify-content-between align-items-center mb-3"Bf>t<"d-flex justify-content-between align-items-center mt-4"ip>',
+        "buttons": {
+            dom: {
+                button: {
+                    tag: 'button',
+                    className: 'btn'
+                }
+            },
+            buttons: [
+                {
+
+                    className: 'btn-primary m-0 z-depth-0',
+                    text: `Add tenant`,
+                    action: function (e, dt, node, config) {
+                        $('#addTenantModal').modal('show')
+                    }
+                }
+            ]
+        },
+        "pageLength": 10
+    });
+
+    $('#tableBooking').DataTable({
+        "dom": '<"d-flex justify-content-end align-items-center mb-3"f>t<"d-flex justify-content-between align-items-center mt-4"ip>',
+        "pageLength": 10
+    });
+</script>
+
+<!-- Modal -->
+{{>modals/property/add/room}}

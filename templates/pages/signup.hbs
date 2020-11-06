@@ -1,51 +1,30 @@
 <!-- Main -->
 <main id="login">
-
-    <!-- Brand -->
-    <div class="brand-wrapper">
-        <a class="brand-link" href="/">
-            Dormitory<br>Management<br>System
-        </a>
-    </div>
-
     <!-- Content -->
     <div class="container-fluid">
         <div class="row justify-content-center">
-
             <div class="col-xl-4">
-                <form action="/user/signup" method="POST" enctype="multipart/form-data">
-                    <!-- Header -->
-                    <h4>Create an account</h4>
-
-                    <!-- Image -->
-                    <div class="upload">
-                        <label for="file">
-                            <div id="uploaded-image"></div>
-                            <span id="uploaded-message">Upload your profile photo</span>
-                        </label>
-                        <input class="inputfile" name="avatar" id="file" type="file"
-                            accept="image/png, image/jpeg, image/jpg" onchange="upload(this);" required />
+                <form action="/user/signup" method="POST">
+                    <h4>Create new account</h4>
+                    <div class="md-form mb-3">
+                        <input class="form-control" type="text" name="username" id="username" required>
+                        <label for="username">Username</label>
                     </div>
-
-                    <!-- Input -->
-                    <div class="form-group">
-                        <input class="form-control" type="username" name="username" placeholder="Username" required>
-                        <input class="form-control" type="email" name="email" placeholder="Email" required>
-                        <input class="form-control" style="background-image: none;" type="password" name="password"
-                            placeholder="Password" required>
+                    <div class="md-form mb-3">
+                        <input class="form-control" type="email" name="email" id="email" required>
+                        <label for="email">Email</label>
                     </div>
-
-                    <!-- Button -->
-                    <button class="btn btn-block" type="submit">Submit</button>
-
+                    <div class="md-form mb-4">
+                        <input class="form-control" type="password" name="password" id="password" required>
+                        <label for="password">Password</label>
+                    </div>
+                    <button class="btn btn-primary btn-block" type="submit">Sign up</button>
                     <div class="links">
-                        <!-- Log in -->
                         <p>
                             <span>Already have an account? </span>
                             <a href="/">Log in</a>
                         </p>
                     </div>
-
                 </form>
             </div>
         </div>

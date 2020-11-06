@@ -1,15 +1,18 @@
 <!--Topbar -->
 <nav class="navbar navbar-expand-lg topbar z-depth-0" id="topbar">
 
-    <!-- Brand -->
-    <a class="brand-link" href="/">
-        Dormitory<br>Management<br>System
-    </a>
+    <!-- Title -->
+    <div class="title-wrapper">
+        <span class="title">
+            {{header}}
+        </span>
+    </div>
 
     <!-- User -->
     <div class="user">
         <span class="name">{{user.username}}</span>
-        <img class="photo" src="data:image/png;base64,{{user.avatar.data}}">
+        {{#if user.avatar}} <img class="photo" src="data:image/png;base64,{{user.avatar.data}}"> {{else}} <img
+            class="photo" src="/images/icons/default-avatar.svg"> {{/if}}
     </div>
 
 </nav>
