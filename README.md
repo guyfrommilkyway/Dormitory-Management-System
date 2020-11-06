@@ -1,1 +1,1 @@
-Dormitory Management System
+Property Management System
