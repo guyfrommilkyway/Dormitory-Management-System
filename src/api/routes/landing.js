@@ -1,5 +1,6 @@
 const authentication = require('../middlewares/authentication')
 const { propertyList } = require('../../services/property')
+const { catalogList } = require('../../services/catalog')
 
 module.exports = async (app) => {
 
@@ -7,7 +8,8 @@ module.exports = async (app) => {
     app.get('/demo', async (req, res) => {
         res.render('pages/demo', {
             layout: 'index',
-            title: 'Demo'
+            title: 'Demo',
+            header: 'Demo'
         })
     })
 
@@ -20,6 +22,7 @@ module.exports = async (app) => {
                 .render('pages/landing/dashboard', {
                     layout: 'index',
                     title: 'Dashboard',
+                    header: 'Dashboard',
                     user: req.session.user,
                     properties
                 })
@@ -37,6 +40,7 @@ module.exports = async (app) => {
             res.render('pages/landing/dashboard', {
                 layout: 'index',
                 title: 'Dashboard',
+                header: 'Dashboard',
                 user: req.session.user,
                 properties
             })
@@ -48,6 +52,51 @@ module.exports = async (app) => {
         }
     })
 
+    // Property Management
+    app.get('/management/property', authentication ,async (req, res) => {
+        if (req.session.user && req.session.token) {
+            const { properties } = await propertyList(req.session.user)
+
+            res.status(200)
+                .render('pages/landing/management/property', {
+                    layout: 'index',
+                    title: 'Property management',
+                    header: 'Property management',
+                    user: req.session.user,
+                    properties
+                })
+        } else {
+            res.render('pages/login', {
+                layout: 'index',
+                title: 'Login'
+            })
+        }
+    })
+
+    // Catalog Management
+    app.get('/management/catalog', authentication ,async (req, res) => {
+        if (req.session.user && req.session.token) {
+            const { properties } = await propertyList(req.session.user)
+            const { catalogs } = await catalogList(req.session.user)
+
+            res.status(200)
+                .render('pages/landing/management/catalog', {
+                    layout: 'index',
+                    title: 'Catalog management',
+                    header: 'Catalog management',
+                    user: req.session.user,
+                    properties,
+                    catalogs
+                })
+        } else {
+            res.render('pages/login', {
+                layout: 'index',
+                title: 'Login'
+            })
+        }
+    })
+    
+
     // Edit profile
     app.get('/account/profile', authentication ,async (req, res) => {
         if (req.session.user && req.session.token) {
@@ -56,7 +105,8 @@ module.exports = async (app) => {
             res.status(200)
                 .render('pages/landing/account/profile', {
                     layout: 'index',
-                    title: 'Edit profile',
+                    title: 'Profile',
+                    header: 'Profile',
                     user: req.session.user,
                     properties
                 })
@@ -76,7 +126,8 @@ module.exports = async (app) => {
             res.status(200)
                 .render('pages/landing/account/password', {
                     layout: 'index',
-                    title: 'Change password',
+                    title: 'Security',
+                    header: 'Security',
                     user: req.session.user,
                     properties
                 })
