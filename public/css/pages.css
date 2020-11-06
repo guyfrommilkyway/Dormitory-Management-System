@@ -2,33 +2,21 @@
 
 .wrapper {
   display: flex;
+  min-height: 100vh;
 }
 
 .wrapper .content-wrapper {
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .wrapper .content-wrapper .content {
-  min-height: 100vh;
-  margin: 1rem;
+  margin: 1.5rem 2rem;
+  padding-bottom: 4rem;
 }
 
-/* Login */
-
-.brand-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  margin: 1rem;
-  line-height: 1rem;
-}
-
-.brand-link {
-  color: #ffeab2;
-  font-size: 1.4rem;
-  line-height: 1.2rem;
-  text-transform: uppercase;
-}
+/* Login & Sign up*/
 
 #login {
   display: flex;
@@ -42,7 +30,7 @@
   min-width: 320px;
   min-height: 360px;
   padding: 2rem 3rem;
-  margin: 0;
+  margin: 0 auto;
   background-color: #1b2432;
   border-radius: 3px;
 }
@@ -50,36 +38,7 @@
 #login form h4 {
   color: #ffffff;
   text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-#login .form-group {
-  margin-bottom: 1.5rem;
-}
-
-#login form .form-group .form-control {
-  padding-left: 0;
-  margin-bottom: 0.5rem;
-  color: #ffffff;
-  background: none;
-  border: none;
-  border-bottom: 1px solid #eeeeee;
-  border-radius: 0;
-}
-
-#login form .form-group .form-control:focus {
-  border-bottom: 1px solid #ffeab2;
-  box-shadow: none;
-}
-
-#login form .form-group .form-control::placeholder {
-  color: #ffffff;
-}
-
-#login form button {
-  display: block;
-  color: #1b2432;
-  background-color: #ffeab2;
+  margin-bottom: 1rem;
 }
 
 #login form .links {
@@ -93,133 +52,169 @@
   text-align: center;
 }
 
-#login form .links p a {
-  color: #ffeab2;
-}
-
-#login form .links p a:hover {
-  color: #ffeab2;
-  font-style: italic;
-  text-decoration: underline;
-}
-
-#login form .links p a:focus {
-  color: #ffeab2;
-  font-style: italic;
-}
-
-/* Sign up */
-
-#login form .upload {
-  margin-bottom: 1rem;
-  border: 1px dashed #ffffff;
-}
-
-#login form .upload label {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  cursor: pointer;
-}
-
-#login form .upload label #uploaded-image {
-  width: 4rem;
-  height: 4rem;
-  background-image: url("../images/placeholder.png");
-  background-position: center;
-  background-size: cover;
-}
-
-#login form .upload label span {
-  display: block;
-  width: 200px;
-  margin-top: 0.5rem;
-  color: #ffffff;
-  font-size: 0.9rem;
-  text-align: center;
-  word-wrap: break-word;
-}
-
-#login form .upload input[type="file"] {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-}
-
 /* Dashboard */
 
 .message {
   font-size: 1.2rem;
+  text-align: center;
 }
 
 /* Property */
 
-#property .container-fluid .row .col-12 #accordion {
-  margin: 1rem 0;
+#property header h4 {
+  color: #ffeab2;
 }
 
-#property .container-fluid .row .col-12 #accordion .card {
-  margin-bottom: 0.5rem;
+#property header div span {
+  font-size: 0.9rem;
 }
 
-#property .container-fluid .row .col-12 #accordion .card .card-header {
+#property #property-topbar {
+  margin: 2rem 0;
   padding: 0;
+  border-bottom: 1px solid #ffeab2;
+  box-shadow: none;
 }
 
-/* Edit profile */
-#profile header {
+#property #property-topbar .nav-tabs {
+  border: none;
+}
+
+#property #property-topbar .nav-tabs .nav-item .nav-link {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  padding: 0.75rem 1.5rem;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 400;
+  background: none;
+  border: none;
+  border-radius: 0 !important;
 }
 
-#profile .profile-info {
-  display: flex;
-  margin: 1rem 0;
+#property #property-topbar .nav-tabs .nav-item .nav-link.active {
+  background: none;
+  border: 1px solid #ffeab2;
+  border-bottom: 1px solid #47556b;
+  border-radius: 3px 3px 0 0 !important;
 }
 
-#profile .profile-info .upload {
+/* Management */
+.table a {
+  color: #ffeab2 !important;
+  font-size: 1rem;
+  text-transform: capitalize;
+  text-decoration: underline;
+}
+
+.table button {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.table thead {
+  color: #ffeab2;
+  background-color: #1b2432;
+}
+
+.table thead tr th {
+  font-size: 1rem;
+  border: none;
+}
+
+.table tbody {
+  color: #ffffff;
+}
+
+.table tbody td {
+  vertical-align: middle;
+}
+
+/* Edit profile  & change password*/
+
+#profile .upload-header {
+  position: absolute;
+  top: -1.6rem;
+  width: 85%;
+  margin: 0 auto;
+  padding: 1rem;
+  color: #000000;
+  background-color: #ffeab2;
+  border-radius: 3px;
+}
+
+#profile .upload-wrapper {
+  width: 100%;
+  background-color: #1b2432;
+  border-radius: 3px;
+}
+
+#profile .upload-wrapper .upload {
+  position: absolute;
+  top: -2.8rem;
+  right: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  width: 12rem;
-  height: 12rem;
+  align-items: center;
+  width: 8rem;
+  height: 8rem;
+  margin: 0 auto;
+  background-color: #1b2432;
+  border-radius: 4rem;
 }
 
-#profile .profile-info .upload #profile-avatar {
-  width: 12rem;
-  height: 12rem;
+#profile .upload-wrapper .upload #profile-avatar {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 4rem;
 }
 
-#profile .profile-info .upload a {
+#profile .upload-wrapper .upload a {
   position: absolute;
-  width: 12rem;
-  margin: 0;
-  font-size: 0.9rem;
-  font-weight: normal;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 0;
+  top: 6rem;
+  right: 1rem;
+  display: flex;
+  justify-content: center;
+  padding: 0.4rem;
+  background-color: rgba(156, 156, 156, 0.9);
+  border-radius: 6px;
 }
 
-#profile .profile-info form {
+#profile .upload-wrapper .upload a img {
+  width: 1rem;
+}
+
+#profile .info-header {
+  position: absolute;
+  top: -1.6rem;
+  width: 95%;
+  margin: 0 auto;
+  padding: 1rem;
+  color: #000000;
+  background-color: #ffeab2;
+  border-radius: 3px;
+}
+
+#profile .info-header span {
+  font-size: 1.2rem;
+}
+
+#profile form {
   width: 100%;
-  max-width: 500px;
-  margin-left: 3rem;
+  margin-bottom: 2rem;
+  padding: 4.2rem 2rem 2rem 2rem;
+  background-color: #1b2432;
+  border-radius: 3px;
 }
 
-#profile .profile-info form .btn-wrapper {
+#profile form .btn-wrapper {
   display: flex;
   justify-content: flex-end;
   width: 100%;
   margin-top: 2rem;
 }
 
-#profile .profile-info form .btn-wrapper .btn {
-  color: #1b2432;
-  background-color: #ffeab2;
+#profile form .btn-wrapper button {
+  margin-top: 1rem;
 }
