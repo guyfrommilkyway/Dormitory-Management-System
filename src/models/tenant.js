@@ -15,7 +15,6 @@ const tenantSchema = new mongoose.Schema({
     },
     age: {
         type: Number,
-        required: true,
         trim: true
     },
     contact: {
@@ -28,7 +27,6 @@ const tenantSchema = new mongoose.Schema({
     email: {
         type: String,
         unique: true,
-        required: true,
         trim: true,
         lowercase: true,
         validate(value) {

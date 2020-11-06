@@ -9,7 +9,9 @@ const roomSchema = new mongoose.Schema({
     },
     name: {
         type: String,
-        trim: true
+        unique: true,
+        trim: true,
+        uppercase: true
     },
     floor: {
         type: String,
