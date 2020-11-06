@@ -38,7 +38,7 @@
 #login form h4 {
   color: #ffffff;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 #login form .links {
@@ -70,33 +70,37 @@
 }
 
 #property #property-topbar {
+  justify-content: flex-end;
   margin: 2rem 0;
-  padding: 0;
-  border-bottom: 1px solid #ffeab2;
+  padding: 0.75rem;
+  background-color: #1b2432;
+  border-radius: 3px;
   box-shadow: none;
 }
 
 #property #property-topbar .nav-tabs {
-  border: none;
+  border: none !important;
+}
+
+#property #property-topbar .nav-tabs .nav-item .waves-ripple {
+  background: none !important;
 }
 
 #property #property-topbar .nav-tabs .nav-item .nav-link {
   display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 0.75rem 1.5rem;
+  padding: 0.5rem;
   color: #ffffff;
   font-size: 0.9rem;
   font-weight: 400;
-  background: none;
-  border: none;
-  border-radius: 0 !important;
+  border: none !important;
+  border-bottom: 1px solid #1b2432 !important;
 }
 
 #property #property-topbar .nav-tabs .nav-item .nav-link.active {
-  background: none;
-  border: 1px solid #ffeab2;
-  border-bottom: 1px solid #47556b;
-  border-radius: 3px 3px 0 0 !important;
+  background: none !important;
+  border-bottom: 1px solid #ffeab2 !important;
 }
 
 /* Management */
@@ -112,14 +116,10 @@
   font-size: 0.9rem;
 }
 
-.table thead {
-  color: #ffeab2;
-  background-color: #1b2432;
-}
-
 .table thead tr th {
+  color: #ffffff;
   font-size: 1rem;
-  border: none;
+  border-bottom: 2px solid #1b2432 !important;
 }
 
 .table tbody {

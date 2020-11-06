@@ -18,6 +18,22 @@ body {
   background-color: #47556b;
 }
 
+a {
+  color: #ffeab2;
+}
+
+a:hover {
+  color: #ffeab2;
+}
+
+a:focus {
+  color: #ffeab2;
+}
+
+a:active {
+  color: #ffeab2;
+}
+
 /* DataTables */
 
 .dataTables_filter {
@@ -42,7 +58,7 @@ body {
 
 .dataTables_filter .form-control:focus {
   color: #ffffff;
-  border-bottom: 2px solid #4285f4 !important;
+  border-bottom: 2px solid #ffeab2 !important;
   outline: none;
   box-shadow: none;
 }
@@ -52,7 +68,59 @@ body {
   font-size: 0.9rem;
 }
 
+.paginate_button.page-item a {
+  margin-right: 0.5rem;
+  color: #ffffff !important;
+}
+
+.paginate_button.page-item a:hover {
+  color: #1b2432 !important;
+  background-color: #ffeab2 !important;
+}
+
+.paginate_button.page-item.disabled a {
+  color: #abadb0 !important;
+}
+
+.paginate_button.page-item.disabled a {
+  background: none !important;
+}
+
+.paginate_button.page-item.active a {
+  color: #1b2432 !important;
+  background-color: #ffeab2 !important;
+}
+
+/* Icon */
+
+.icon {
+  width: 1.2em;
+  margin-right: 0.75rem;
+}
+
+/* Buttons */
+
+.btn-custom {
+  color: #1b2432;
+  background-color: #ffeab2;
+}
+
 /* Forms */
+
+.form-group {
+  margin: 0;
+}
+
+.form-control:focus {
+  border-color: #ffeab2;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(255, 234, 178, 0.25);
+}
+
+.form-control:disabled {
+  color: #bfc2c4 !important;
+  border-bottom: 1px solid #bfc2c4 !important;
+}
 
 .md-form {
   margin: 0;
@@ -67,9 +135,24 @@ body {
   color: #ffffff;
 }
 
-.icon {
-  width: 1.4rem;
-  margin-right: 0.75rem;
+.md-form .form-control:focus {
+  border-bottom: 1px solid #ffeab2 !important;
+  box-shadow: 0 1px 0 0 #ffeab2 !important;
+}
+
+.md-form select {
+  border: none !important;
+  border-bottom: 1px solid #ffffff !important;
+}
+
+.md-form select option {
+  color: #ffffff !important;
+  background-color: #47556b !important;
+}
+
+.form-group .select-label {
+  margin-bottom: 0 !important;
+  font-size: 0.8rem;
 }
 
 /* Modals */
