@@ -8,7 +8,7 @@ const catalogSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    price: {
+    rate: {
         type: String,
         required: true,
     },
