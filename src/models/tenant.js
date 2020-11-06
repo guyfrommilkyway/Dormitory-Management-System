@@ -3,7 +3,12 @@ const validator = require('validator')
 
 // Tenant model
 const tenantSchema = new mongoose.Schema({
-    name: {
+    first_name: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    last_name: {
         type: String,
         required: true,
         trim: true
