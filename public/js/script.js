@@ -4,7 +4,7 @@ function upload(input) {
         const reader = new FileReader();
         reader.onload = function (e) {
             $('#uploaded-image')
-                .attr('style', 'width: 7rem; height: 7rem; background-image: url(' + e.target.result + '); border-radius: 3.5rem;');
+                .attr('style', 'width: 6rem; height: 6rem; background-image: url(' + e.target.result + '); border-radius: 3rem;');
             $('#uploaded-message')
                 .attr('style', 'display: none;');
             $('.upload')
@@ -27,14 +27,3 @@ function update(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
-
-// Password confirmation
-$(document).ready(function() {
-    $('#newPassword, #confirmNewPassword').on('keyup', function () {
-        if ($('#newPassword').val() == $('#confirmNewPassword').val() ) {
-            $('#btnSave').attr('disabled', false);
-        } else {
-            $('#btnSave').attr('disabled', true);
-        }
-    });
-});
