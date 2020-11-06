@@ -1,7 +1,7 @@
 {
-  "name": "dormitory-management-system",
+  "name": "property-management-system",
   "version": "1.0.0",
-  "description": "Dormitory Management System",
+  "description": "Property Management System",
   "main": "index.js",
   "scripts": {
     "start": "node src/app.js",
@@ -33,10 +33,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/almertampus/Dormitory-Management-System.git"
+    "url": "git+https://github.com/almertampus/Property-Management-System.git"
   },
   "bugs": {
-    "url": "https://github.com/almertampus/Dormitory-Management-System/issues"
+    "url": "https://github.com/almertampus/Property-Management-System/issues"
   },
-  "homepage": "https://github.com/almertampus/Dormitory-Management-System#readme"
+  "homepage": "https://github.com/almertampus/Property-Management-System#readme"
 }
