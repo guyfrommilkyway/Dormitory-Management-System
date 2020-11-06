@@ -3,7 +3,7 @@ const express = require('express')
 const multer = require('multer')
 const { v4: uuidv4 } = require('uuid')
 const authentication = require('../middlewares/authentication')
-const { propertyNew, propertyList, propertyView } = require('../../services/property')
+const { propertyNew, propertyList, propertyView, propertyEdit, propertyDelete } = require('../../services/property')
 const { catalogList } = require('../../services/catalog')
 const { roomList } = require('../../services/room')
 
@@ -54,5 +54,33 @@ router.get('/property/:id', authentication, async(req, res) => {
             .send(e)
     }
 })
+
+
+// Update property info
+router.post('/user/property/edit', authentication, async(req, res) => {
+    try {
+        await propertyEdit(req.body)
+
+        res.status(201)
+            .redirect('/management/property')
+    } catch (e) {
+        res.status(400)
+            .send()
+    }
+})
+
+// Delete property info
+router.post('/user/property/delete', authentication, async(req, res) => {
+    try {
+        await propertyDelete(req.body, req.session.user)
+
+        res.status(200)
+            .redirect('/management/property')
+    } catch (e) {
+        res.status(400)
+            .send()
+    }
+})
+
 
 module.exports = router

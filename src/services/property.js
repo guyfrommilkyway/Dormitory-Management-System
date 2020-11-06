@@ -24,8 +24,25 @@ const propertyView = async (propertyId, userObject) => {
     return { property }
 }
 
+// Update property info
+const propertyEdit = async (propertyObject) => {
+    const property = await Property.findByIdAndUpdate(propertyObject._id, {
+        name: propertyObject.name,
+        location: propertyObject.location
+    })
+
+    return { property }
+}
+
+// Delete property info
+const propertyDelete = async (propertyObject, userObject) => {
+    await Property.findOneAndDelete({ _id: propertyObject._id, owner: userObject._id })
+}
+
 module.exports = {
     propertyNew,
     propertyList,
-    propertyView
+    propertyView,
+    propertyEdit,
+    propertyDelete
 } 
