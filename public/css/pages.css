@@ -82,6 +82,10 @@
   border: none !important;
 }
 
+#property #property-topbar .nav-tabs .nav-item {
+  margin-right: 1rem;
+}
+
 #property #property-topbar .nav-tabs .nav-item .waves-ripple {
   background: none !important;
 }
@@ -106,7 +110,7 @@
 /* Management */
 .table a {
   color: #ffeab2 !important;
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-transform: capitalize;
   text-decoration: underline;
 }
