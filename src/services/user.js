@@ -5,20 +5,8 @@ const bcrypt = require('bcryptjs')
 const User = require('../models/user')
 
 // Sign up
-const userSignup = async (userObject, fileObject) => {
-    const img = fs.readFileSync(fileObject[0].path)
-    const encoded_image = await sharp(img).resize({ width: 250, height: 250 }).png().toBuffer()
-    const type = fileObject[0].mimetype
-    
-    const user = new User({
-        username: userObject.username,
-        email: userObject.email,
-        password: userObject.password,
-        avatar: {
-            data: encoded_image,
-            contentType: type
-        }
-    })
+const userSignup = async (userObject) => {
+    const user = new User(userObject)
 
     await user.save()
 }
