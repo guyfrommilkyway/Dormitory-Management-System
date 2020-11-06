@@ -1,5 +1,5 @@
 const express = require('express')
-const { roomNew } = require('../../services/room')
+const { roomNew, roomEdit,roomDelete } = require('../../services/room')
 const authentication = require('../middlewares/authentication')
 
 const router = new express.Router()
@@ -12,6 +12,38 @@ router.post('/user/property/room/add', authentication, async (req, res) => {
         const id = req.body.property
 
         res.status(201)
+            .redirect(`/property/${id}`)
+    } catch (e) {
+        console.log(e)
+        res.status(400)
+            .send()
+    }
+})
+
+// Update room info
+router.post('/user/property/room/edit', authentication, async (req, res) => {
+    try {
+        await roomEdit(req.body)
+
+        const id = req.body.property
+
+        res.status(200)
+            .redirect(`/property/${id}`)
+    } catch (e) {
+        console.log(e)
+        res.status(400)
+            .send()
+    }
+})
+
+// Delete room
+router.post('/user/property/room/delete', authentication, async (req, res) => {
+    try {
+        await roomDelete(req.body)
+
+        const id = req.body.property
+
+        res.status(200)
             .redirect(`/property/${id}`)
     } catch (e) {
         console.log(e)

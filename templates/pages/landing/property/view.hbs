@@ -21,14 +21,7 @@
                         <nav class="navbar" id="property-topbar">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                        aria-controls="home" aria-selected="true">
-                                        <img class="icon" src="/images/icons/home-white-18dp.svg" alt="">
-                                        Home
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="room-tab" data-toggle="tab" href="#room" role="tab"
+                                    <a class="nav-link active" id="room-tab" data-toggle="tab" href="#room" role="tab"
                                         aria-controls="room" aria-selected="true">
                                         <img class="icon" src="/images/icons/room-white-18dp.svg" alt="">
                                         Room
@@ -58,10 +51,7 @@
                             </ul>
                         </nav>
                         <section class="tab-content" id="myTabContent">
-                            <div class="tab-pane show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-
-                            </div>
-                            <div class="tab-pane fade" id="room" role="tabpanel" aria-labelledby="room-tab">
+                            <div class="tab-pane show active" id="room" role="tabpanel" aria-labelledby="room-tab">
                                 <div id="demo-html"></div>
                                 <table id="tableRoom" class="table table-borderless table-striped">
                                     <thead>
@@ -69,7 +59,7 @@
                                             <th>Room</th>
                                             <th>Floor</th>
                                             <th>Catalog</th>
-                                            <th>Price</th>
+                                            <th>Rate</th>
                                             <th>Tenant</th>
                                             <th>Action</th>
                                         </tr>
@@ -80,14 +70,38 @@
                                             <td>{{name}}</td>
                                             <td>{{floor}}</td>
                                             <td>{{catalog.name}}</td>
-                                            <td>{{catalog.price}}</td>
-                                            <td>{{tenant.first_name}} {{tenant.last_name}}</td>
+                                            <td>{{catalog.rate}}</td>
+                                            {{#if tenant}}
                                             <td>
-                                                <button type="button" class="btn p-1 m-0 z-depth-0">
+                                                <div
+                                                    style="margin: 0 auto; padding: .5rem; text-align: center; background-color: #AD4857;  border-radius: 3px;">
+                                                    <span>{{tenant.first_name}} {{tenant.last_name}}</span>
+                                                </div>
+                                            </td>
+                                            {{else}}
+                                            <td>
+                                                <div
+                                                    style="margin: 0 auto; padding: .5rem; text-align: center; background-color: #088745;  border-radius: 3px;">
+                                                    <span>Available</span>
+                                                </div>
+                                            </td>
+                                            {{/if}}
+                                            <td>
+                                                <button class="btn p-3 m-0 z-depth-0" id="editRoomButton"
+                                                    data-id="{{_id}}" data-name="{{name}}" data-floor="{{floor}}"
+                                                    data-catalog="{{catalog}}" data-catalogid="{{catalog._id}}"
+                                                    data-catalogname="{{catalog.name}}"
+                                                    data-catalograte="{{catalog.rate}}" data-toggle="modal"
+                                                    data-target="#editRoomModal">
                                                     <img class="icon m-0" src="/images/icons/create-white-18dp.svg"
                                                         alt="">
                                                 </button>
-                                                <button type="button" class="btn p-1 m-0 z-depth-0">
+                                                <button class="btn p-3 m-0 z-depth-0" id="deleteRoomButton"
+                                                    data-id="{{_id}}" data-name="{{name}}" data-tenant="{{tenant._id}}"
+                                                    data-floor="{{floor}}" data-catalog="{{catalog}}"
+                                                    data-catalogid="{{catalog._id}}" data-catalogname="{{catalog.name}}"
+                                                    data-catalograte="{{catalog.rate}}" data-toggle="modal"
+                                                    data-target="#deleteRoomModal">
                                                     <img class="icon m-0"
                                                         src="/images/icons/delete_forever-white-18dp.svg" alt="">
                                                 </button>
@@ -118,11 +132,11 @@
                                             <td>{{contact}}</td>
                                             <td>{{email}}</td>
                                             <td>
-                                                <button type="button" class="btn p-1 m-0 z-depth-0">
+                                                <button type="button" class="btn p-3 m-0 z-depth-0">
                                                     <img class="icon m-0" src="/images/icons/create-white-18dp.svg"
                                                         alt="">
                                                 </button>
-                                                <button type="button" class="btn p-1 m-0 z-depth-0">
+                                                <button type="button" class="btn p-3 m-0 z-depth-0">
                                                     <img class="icon m-0"
                                                         src="/images/icons/delete_forever-white-18dp.svg" alt="">
                                                 </button>
@@ -153,11 +167,11 @@
                                             <td>{{contact}}</td>
                                             <td>{{email}}</td>
                                             <td>
-                                                <button type="button" class="btn p-1 m-0 z-depth-0">
+                                                <button type="button" class="btn p-3 m-0 z-depth-0">
                                                     <img class="icon m-0" src="/images/icons/create-white-18dp.svg"
                                                         alt="">
                                                 </button>
-                                                <button type="button" class="btn p-1 m-0 z-depth-0">
+                                                <button type="button" class="btn p-3 m-0 z-depth-0">
                                                     <img class="icon m-0"
                                                         src="/images/icons/delete_forever-white-18dp.svg" alt="">
                                                 </button>
@@ -178,8 +192,36 @@
     </section>
 </main>
 
-<!-- DataTables -->
+
+
 <script>
+    // Edit and delete rooms
+    $(document).on("click", "#editRoomButton, #deleteRoomButton", function () {
+        let _id = $(this).data('id');
+        let name = $(this).data('name');
+        let floor = $(this).data('floor');
+        let catalogid = $(this).data('catalogid');
+        let catalogname = $(this).data('catalogname');
+        let catalograte = $(this).data('catalograte');
+
+        // Edit
+        $("#inputEditRoom_id").val(_id);
+        $("#inputEditRoomName").val(name);
+        $("#inputEditRoomFloor").val(floor);
+        $(`#selectEditRoomCatalog option[value=${catalogid}]`).prop('selected', true).text(catalogname + ' - ' + catalograte + ' (Current)')
+
+        // Delete
+        $("#inputDeleteRoom_id").val(_id);
+        $("div #spanDeleteRoomName").text(name);
+        $("div #spanDeleteRoomFloor").text(floor);
+        $("div #spanDeleteRoomCatalogName").text(catalogname);
+        $("div #spanDeleteRoomCatalogRate").text(catalograte);
+
+        console.log(_id)
+    });
+
+
+    // DataTables
     $('#tableRoom').DataTable({
         "dom": '<"d-flex justify-content-between align-items-center mb-3"Bf>t<"d-flex justify-content-between align-items-center mt-4"ip>',
         "buttons": {
@@ -192,7 +234,7 @@
             buttons: [
                 {
 
-                    className: 'btn-primary m-0 z-depth-0',
+                    className: 'btn-custom m-0 z-depth-0',
                     text: `Add room`,
                     action: function (e, dt, node, config) {
                         $('#addRoomModal').modal('show')
@@ -200,7 +242,8 @@
                 }
             ]
         },
-        "pageLength": 10
+        "pageLength": 10,
+        "order": [[0, "asc"]]
     });
 
     $('#tableTenant').DataTable({
@@ -215,7 +258,7 @@
             buttons: [
                 {
 
-                    className: 'btn-primary m-0 z-depth-0',
+                    className: 'btn-custom m-0 z-depth-0',
                     text: `Add tenant`,
                     action: function (e, dt, node, config) {
                         $('#addTenantModal').modal('show')
@@ -234,3 +277,5 @@
 
 <!-- Modal -->
 {{>modals/property/add/room}}
+{{>modals/property/edit/room}}
+{{>modals/property/delete/room}}

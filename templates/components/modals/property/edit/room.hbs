@@ -1,0 +1,46 @@
+<!-- Edit room modal -->
+<form action="/user/property/room/edit" method="POST">
+    <div class="modal fade" id="editRoomModal" tabindex="-1" role="dialog" aria-labelledby="editRoomModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit room</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="md-form mt-2 mb-3">
+                        <label for="inputEditRoomName">Name</label>
+                        <input class="form-control" name="name" type="text" id="inputEditRoomName" value="placeholder"
+                            required>
+                        <input class="form-control" name="_id" id="inputEditRoom_id" type="hidden" required>
+                        <input class="form-control" name="property" id="property" value="{{property._id}}" type="hidden"
+                            required>
+                    </div>
+                    <div class="md-form mb-3">
+                        <label for="inputEditRoomFloor">Floor</label>
+                        <input class="form-control" name="floor" type="text" id="inputEditRoomFloor" value="placeholder"
+                            required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="select-label" for="selectEditRoomCatalog">Catalog</label>
+                        <div class="md-form">
+                            <select class="form-control" name="catalog" id="selectEditRoomCatalog" required>
+                                {{#if catalogs}}
+                                {{#each catalogs}}
+                                <option value="{{_id}}">{{name}} - Php{{rate}}</option>
+                                {{/each}}
+                                {{else}}
+                                <option value="" disabled><span>No catalogs found.</span></option>
+                                {{/if}}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-custom">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
