@@ -19,7 +19,7 @@ module.exports = async (app) => {
             const { properties } = await propertyList(req.session.user)
 
             res.status(200)
-                .render('pages/landing/dashboard', {
+                .render('pages/dashboard', {
                     layout: 'index',
                     title: 'Dashboard',
                     header: 'Dashboard',
@@ -37,7 +37,7 @@ module.exports = async (app) => {
     // Signup
     app.get('/signup', async (req, res) => {
         if (req.session.user && req.session.token) {
-            res.render('pages/landing/dashboard', {
+            res.render('pages/dashboard', {
                 layout: 'index',
                 title: 'Dashboard',
                 header: 'Dashboard',
@@ -53,12 +53,12 @@ module.exports = async (app) => {
     })
 
     // Property Management
-    app.get('/management/property', authentication ,async (req, res) => {
+    app.get('/management/property', authentication, async (req, res) => {
         if (req.session.user && req.session.token) {
             const { properties } = await propertyList(req.session.user)
 
             res.status(200)
-                .render('pages/landing/management/property', {
+                .render('pages/management/property', {
                     layout: 'index',
                     title: 'Property management',
                     header: 'Property management',
@@ -74,13 +74,13 @@ module.exports = async (app) => {
     })
 
     // Catalog Management
-    app.get('/management/catalog', authentication ,async (req, res) => {
+    app.get('/management/catalog', authentication, async (req, res) => {
         if (req.session.user && req.session.token) {
             const { properties } = await propertyList(req.session.user)
             const { catalogs } = await catalogList(req.session.user)
 
             res.status(200)
-                .render('pages/landing/management/catalog', {
+                .render('pages/management/catalog', {
                     layout: 'index',
                     title: 'Catalog management',
                     header: 'Catalog management',
@@ -95,15 +95,15 @@ module.exports = async (app) => {
             })
         }
     })
-    
+
 
     // Edit profile
-    app.get('/account/profile', authentication ,async (req, res) => {
+    app.get('/account/profile', authentication, async (req, res) => {
         if (req.session.user && req.session.token) {
             const { properties } = await propertyList(req.session.user)
 
             res.status(200)
-                .render('pages/landing/account/profile', {
+                .render('pages/account/profile', {
                     layout: 'index',
                     title: 'Profile',
                     header: 'Profile',
@@ -119,12 +119,12 @@ module.exports = async (app) => {
     })
 
     // Change password
-    app.get('/account/password', authentication ,async (req, res) => {
+    app.get('/account/password', authentication, async (req, res) => {
         if (req.session.user && req.session.token) {
             const { properties } = await propertyList(req.session.user)
 
             res.status(200)
-                .render('pages/landing/account/password', {
+                .render('pages/account/password', {
                     layout: 'index',
                     title: 'Security',
                     header: 'Security',

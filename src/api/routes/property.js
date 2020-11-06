@@ -11,14 +11,14 @@ const router = new express.Router()
 
 const storage = multer.diskStorage({
     destination: path.join(__dirname, '../../../public/uploads/property'),
-    filename: function(req, file, cb) {
+    filename: function (req, file, cb) {
         cb(null, uuidv4())
     }
 })
 const uploadPropertyAvatar = multer({ storage: storage })
 
 // Create new property
-router.post('/user/property/add', authentication, uploadPropertyAvatar.any(), async(req, res) => {
+router.post('/user/property/add', authentication, uploadPropertyAvatar.any(), async (req, res) => {
     try {
         await propertyNew(req.body, req.session.user)
 
@@ -31,7 +31,7 @@ router.post('/user/property/add', authentication, uploadPropertyAvatar.any(), as
 })
 
 // View property
-router.get('/property/:id', authentication, async(req, res) => {
+router.get('/property/:id', authentication, async (req, res) => {
     try {
         const { properties } = await propertyList(req.session.user)
         const { property } = await propertyView(req.params.id, req.session.user)
@@ -39,7 +39,7 @@ router.get('/property/:id', authentication, async(req, res) => {
         const { rooms } = await roomList(req.params.id)
 
         res.status(200)
-            .render('pages/landing/property/view', {
+            .render('pages/property/view', {
                 layout: 'index',
                 title: property.name,
                 header: 'Property',
@@ -57,7 +57,7 @@ router.get('/property/:id', authentication, async(req, res) => {
 
 
 // Update property info
-router.post('/user/property/edit', authentication, async(req, res) => {
+router.post('/user/property/edit', authentication, async (req, res) => {
     try {
         await propertyEdit(req.body)
 
@@ -70,7 +70,7 @@ router.post('/user/property/edit', authentication, async(req, res) => {
 })
 
 // Delete property info
-router.post('/user/property/delete', authentication, async(req, res) => {
+router.post('/user/property/delete', authentication, async (req, res) => {
     try {
         await propertyDelete(req.body, req.session.user)
 
