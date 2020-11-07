@@ -70,20 +70,16 @@
 }
 
 #property #property-topbar {
-  justify-content: flex-end;
-  margin: 2rem 0;
-  padding: 0.75rem;
-  background-color: #1b2432;
-  border-radius: 3px;
+  justify-content: flex-start;
+  margin: 2.5rem 0;
+  padding: 0;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #1b2432;
   box-shadow: none;
 }
 
 #property #property-topbar .nav-tabs {
   border: none !important;
-}
-
-#property #property-topbar .nav-tabs .nav-item {
-  margin-right: 1rem;
 }
 
 #property #property-topbar .nav-tabs .nav-item .waves-ripple {
@@ -94,23 +90,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem;
+  padding: 1rem 1.2rem;
   color: #ffffff;
   font-size: 0.9rem;
-  font-weight: 400;
-  border: none !important;
-  border-bottom: 1px solid #1b2432 !important;
+  font-weight: 300;
+  border-top: 3px solid #47556b !important;
+  border-right: none !important;
+  border-bottom: 3px solid #47556b !important;
+  border-left: none !important;
+}
+
+#property #property-topbar .nav-tabs .nav-item .nav-link:hover {
+  border-bottom: 3px solid #1b2432 !important;
 }
 
 #property #property-topbar .nav-tabs .nav-item .nav-link.active {
+  font-weight: bold;
   background: none !important;
-  border-bottom: 1px solid #ffeab2 !important;
+  border-bottom: 3px solid #ffeab2 !important;
 }
 
 /* Management */
 .table a {
   color: #ffeab2 !important;
-  font-size: 0.9rem;
+  font-size: 1rem;
   text-transform: capitalize;
   text-decoration: underline;
 }
@@ -121,9 +124,14 @@
   font-weight: 300;
 }
 
+.table thead {
+  background-color: #1b2432;
+}
+
 .table thead tr th {
   color: #ffffff;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  font-weight: 300;
   border-bottom: 2px solid #1b2432 !important;
 }
 
