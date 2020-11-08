@@ -4,7 +4,7 @@ const { v4: uuidv4 } = require('uuid')
 // Create room
 const roomNew = async (roomObject) => {
     let i = 0
- 
+
     for (i = 0; i < roomObject.number; i++) {
         const room = new Room({
             catalog: roomObject.catalog,
@@ -21,6 +21,7 @@ const roomNew = async (roomObject) => {
 const roomList = async (propertyId) => {
     const rooms = await Room.find({ property: propertyId })
         .populate('catalog')
+        .populate('tenant')
         .exec()
 
     return { rooms }
