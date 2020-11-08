@@ -16,7 +16,7 @@
   padding-bottom: 4rem;
 }
 
-/* Login & Sign up*/
+/* Login & Sign up */
 
 #login {
   display: flex;
@@ -50,6 +50,15 @@
   color: #ffffff;
   font-size: 0.9rem;
   text-align: center;
+}
+
+#login form .links p a {
+  color: #ffeab2;
+}
+
+#login form .links p a:hover {
+  font-style: italic;
+  text-decoration: underline;
 }
 
 /* Dashboard */
@@ -110,7 +119,7 @@
   border-bottom: 3px solid #ffeab2 !important;
 }
 
-/* Edit profile & change password*/
+/* Edit profile & change password */
 
 #profile .upload-header {
   position: absolute;

@@ -16,24 +16,6 @@ body {
   background-color: #47556b;
 }
 
-/* Links */
-
-a {
-  color: #ffeab2;
-}
-
-a:hover {
-  color: #ffeab2;
-}
-
-a:focus {
-  color: #ffeab2;
-}
-
-a:active {
-  color: #ffeab2;
-}
-
 /* DataTables Custom */
 
 .dataTables_filter {
