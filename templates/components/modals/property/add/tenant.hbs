@@ -1,0 +1,81 @@
+<!-- Add tenant modal -->
+<form action="/user/property/tenant/add" method="POST">
+    <div class="modal fade" id="addTenantModel" tabindex="-1" role="dialog" aria-labelledby="addTenantModel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add tenant</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row m-2">
+                        <div class="col-md-6">
+                            <div>
+                                <header>
+                                    <h5>Personal information</h5>
+                                </header>
+                                <section>
+                                    <div class="md-form mt-3 mb-3">
+                                        <label for="first_name">First name</label>
+                                        <input class="form-control" name="first_name" type="text" id="first_name"
+                                            required>
+                                        <input class="form-control" name="property" type="hidden"
+                                            value="{{property._id}}" required>
+                                    </div>
+                                    <div class="md-form mb-4">
+                                        <label for="last_name">Last name</label>
+                                        <input class="form-control" name="last_name" type="text" id="last_name"
+                                            required>
+                                    </div>
+                                </section>
+                            </div>
+                            <div>
+                                <header>
+                                    <h5>Contact information</h5>
+                                </header>
+                                <section>
+                                    <div class="md-form mt-3 mb-3">
+                                        <label for="mobile">Mobile</label>
+                                        <input class="form-control" name="mobile" type="text" id="mobile" required>
+                                    </div>
+                                    <div class="md-form mb-4">
+                                        <label for="email">Email</label>
+                                        <input class="form-control" name="email" type="email" id="email" required>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <header>
+                                <h5>Room information</h5>
+                            </header>
+                            <section>
+                                <div class="form-group mb-3">
+                                    <label class="select-label" for="room">Room</label>
+                                    <div class="md-form">
+                                        <select class="form-control" name="room" id="room" required>
+                                            {{#if rooms}}
+                                            {{#each rooms }}
+                                            }}
+                                            <option value="{{_id}}" {{#if tenant}} disabled {{/if}}>{{name}} -
+                                                {{catalog.name}} - Php{{catalog.rate}}
+                                            </option>
+                                            {{/each}}
+                                            {{else}}
+                                            <option value="" disabled><span>No rooms available.</span></option>
+                                            {{/if}}
+                                        </select>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-custom">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

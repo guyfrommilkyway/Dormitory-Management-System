@@ -53,7 +53,7 @@
                         <section class="tab-content" id="myTabContent">
                             <div class="tab-pane show active" id="room" role="tabpanel" aria-labelledby="room-tab">
                                 <div id="demo-html"></div>
-                                <table id="tableRoom" class="table table-borderless table-striped">
+                                <table id="tableRoom" class="table table-responsive-lg table-borderless table-striped">
                                     <thead>
                                         <tr>
                                             <th>Room</th>
@@ -72,18 +72,12 @@
                                             <td>{{catalog.name}}</td>
                                             <td>{{catalog.rate}}</td>
                                             {{#if tenant}}
-                                            <td>
-                                                <div
-                                                    style="margin: 0 auto; padding: .5rem; text-align: center; background-color: #AD4857;  border-radius: 3px;">
-                                                    <span>{{tenant.first_name}} {{tenant.last_name}}</span>
-                                                </div>
+                                            <td style="text-align: center; background-color: #AD4857;">
+                                                <span>{{tenant.first_name}} {{tenant.last_name}}</span>
                                             </td>
                                             {{else}}
-                                            <td>
-                                                <div
-                                                    style="margin: 0 auto; padding: .5rem; text-align: center; background-color: #088745;  border-radius: 3px;">
-                                                    <span>Available</span>
-                                                </div>
+                                            <td style="text-align: center; background-color: #088745;">
+                                                <span>Available</span>
                                             </td>
                                             {{/if}}
                                             <td>
@@ -112,13 +106,13 @@
                                 </table>
                             </div>
                             <div class="tab-pane fade" id="tenant" role="tabpanel" aria-labelledby="tenant-tab">
-                                <table id="tableTenant" class="table table-borderless table-striped">
+                                <table id="tableTenant"
+                                    class="table table-responsive-lg table-borderless table-striped">
                                     <thead>
                                         <tr>
                                             <th>First name</th>
                                             <th>Last name</th>
-                                            <th>Age</th>
-                                            <th>Contact</th>
+                                            <th>Mobile</th>
                                             <th>Email</th>
                                             <th>Action</th>
                                         </tr>
@@ -128,15 +122,24 @@
                                         <tr>
                                             <td>{{first_name}}</td>
                                             <td>{{last_name}}</td>
-                                            <td>{{age}}</td>
-                                            <td>{{contact}}</td>
+                                            <td>{{mobile}}</td>
                                             <td>{{email}}</td>
                                             <td>
-                                                <button type="button" class="btn p-3 m-0 z-depth-0">
+                                                <button type="button" class="btn p-3 m-0 z-depth-0"
+                                                    id="editTenantButton" data-id="{{_id}}"
+                                                    data-firstname="{{first_name}}" data-lastname="{{last_name}}"
+                                                    data-mobile="{{mobile}}" data-email="{{email}}"
+                                                    data-room="{{room._id}}" data-toggle="modal"
+                                                    data-target="#editTenantModal">
                                                     <img class="icon m-0" src="/images/icons/create-white-18dp.svg"
                                                         alt="">
                                                 </button>
-                                                <button type="button" class="btn p-3 m-0 z-depth-0">
+                                                <button type="button" class="btn p-3 m-0 z-depth-0"
+                                                    id="deleteTenantButton" data-id="{{_id}}"
+                                                    data-firstname="{{first_name}}" data-lastname="{{last_name}}"
+                                                    data-mobile="{{mobile}}" data-email="{{email}}"
+                                                    data-room="{{room._id}}" data-toggle="modal"
+                                                    data-target="#deleteTenantModal">
                                                     <img class="icon m-0"
                                                         src="/images/icons/delete_forever-white-18dp.svg" alt="">
                                                 </button>
@@ -147,7 +150,8 @@
                                 </table>
                             </div>
                             <div class="tab-pane fade" id="booking" role="tabpanel" aria-labelledby="booking-tab">
-                                <table id="tableBooking" class="table table-borderless table-striped">
+                                <table id="tableBooking"
+                                    class="table table-responsive-lg table-borderless table-striped">
                                     <thead>
                                         <tr>
                                             <th>First name</th>
@@ -159,7 +163,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{#each tenants}}
+                                        {{#each bookings}}
                                         <tr>
                                             <td>{{first_name}}</td>
                                             <td>{{last_name}}</td>
@@ -208,7 +212,9 @@
         $("#inputEditRoom_id").val(_id);
         $("#inputEditRoomName").val(name);
         $("#inputEditRoomFloor").val(floor);
-        $(`#selectEditRoomCatalog option[value=${catalogid}]`).prop('selected', true).text(catalogname + ' - ' + catalograte + ' (Current)')
+        $(`#selectEditRoomCatalog option[value=${catalogid}]`)
+            .prop('selected', true)
+            .text(catalogname + ' - ' + catalograte + ' (Current)')
 
         // Delete
         $("#inputDeleteRoom_id").val(_id);
@@ -216,10 +222,41 @@
         $("div #spanDeleteRoomFloor").text(floor);
         $("div #spanDeleteRoomCatalogName").text(catalogname);
         $("div #spanDeleteRoomCatalogRate").text(catalograte);
-
-        console.log(_id)
     });
 
+    // Edit and delete tenant
+    $(document).on("click", "#editTenantButton, #deleteTenantButton", function () {
+        let _id = $(this).data('id');
+        let first_name = $(this).data('firstname');
+        let last_name = $(this).data('lastname');
+        let mobile = $(this).data('mobile');
+        let email = $(this).data('email');
+        let room = $(this).data('room');
+
+        // Edit
+        $("#inputEditTenant_id").val(_id);
+        $("#inputEditTenantFirstName").val(first_name);
+        $("#inputEditTenantLastName").val(last_name);
+        $("#inputEditTenantMobile").val(mobile);
+        $("#inputEditTenantEmail").val(email);
+        $("#inputEditTenantRoom").val(room);
+        $(`#selectEditTenantRoom option[value=${room}]`)
+            .text($(`#selectEditTenantRoom option[value=${room}]`).text())
+            .attr({ 'disabled': false, 'selected': true });
+
+        // Delete
+        $("#inputDeleteTenant_id").val(_id);
+        $("div #spanDeleteTenantFirstName").text(first_name);
+        $("div #spanDeleteTenantLastName").text(last_name);
+        $("div #spanDeleteTenantMobile").text(mobile);
+        $("div #spanDeleteTenantEmail").text(email);
+    });
+
+    $(document).on("hide.bs.modal", "#editTenantModal", function () {
+        let room = $('#editTenantButton').data('room');
+        $(`#selectEditTenantRoom .occupied`)
+            .prop('disabled', true);
+    });
 
     // DataTables
     $('#tableRoom').DataTable({
@@ -261,7 +298,7 @@
                     className: 'btn-custom m-0 z-depth-0',
                     text: `Add tenant`,
                     action: function (e, dt, node, config) {
-                        $('#addTenantModal').modal('show')
+                        $('#addTenantModel').modal('show')
                     }
                 }
             ]
@@ -279,3 +316,6 @@
 {{>modals/property/add/room}}
 {{>modals/property/edit/room}}
 {{>modals/property/delete/room}}
+{{>modals/property/add/tenant}}
+{{>modals/property/edit/tenant}}
+{{>modals/property/delete/tenant}}
