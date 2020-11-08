@@ -30,6 +30,12 @@ const roomSchema = new mongoose.Schema({
     timestamps: true
 })
 
+roomSchema.virtual('tenants', {
+    ref: 'Tenant',
+    localField: 'tenant',
+    foreignField: '_id'
+})
+
 const Room = mongoose.model('Room', roomSchema)
 
 module.exports = Room 

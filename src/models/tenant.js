@@ -13,11 +13,7 @@ const tenantSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    age: {
-        type: Number,
-        trim: true
-    },
-    contact: {
+    mobile: {
         type: String,
         min: 11,
         max: 11,
@@ -28,6 +24,7 @@ const tenantSchema = new mongoose.Schema({
         type: String,
         unique: true,
         trim: true,
+        required: true,
         lowercase: true,
         validate(value) {
             if (!validator.isEmail(value)) {
@@ -46,12 +43,6 @@ const tenantSchema = new mongoose.Schema({
     },
 }, {
     timestamps: true
-})
-
-tenantSchema.virtual('rooms', {
-    ref: 'Room',
-    localField: '_id',
-    foreignField: 'tenant'
 })
 
 
