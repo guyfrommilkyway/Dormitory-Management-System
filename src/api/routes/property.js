@@ -6,6 +6,7 @@ const authentication = require('../middlewares/authentication')
 const { propertyNew, propertyList, propertyView, propertyEdit, propertyDelete } = require('../../services/property')
 const { catalogList } = require('../../services/catalog')
 const { roomList } = require('../../services/room')
+const { tenantList } = require('../../services/tenant')
 
 const router = new express.Router()
 
@@ -37,6 +38,7 @@ router.get('/property/:id', authentication, async (req, res) => {
         const { property } = await propertyView(req.params.id, req.session.user)
         const { catalogs } = await catalogList(req.session.user)
         const { rooms } = await roomList(req.params.id)
+        const { tenants } = await tenantList(req.params.id)
 
         res.status(200)
             .render('pages/property/view', {
@@ -47,7 +49,8 @@ router.get('/property/:id', authentication, async (req, res) => {
                 properties,
                 property,
                 catalogs,
-                rooms
+                rooms,
+                tenants
             })
     } catch (e) {
         res.status(400)
