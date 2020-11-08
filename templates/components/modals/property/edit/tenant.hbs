@@ -86,3 +86,15 @@
         </div>
     </div>
 </form>
+
+<script>
+    $(document).on("hide.bs.modal", "#editTenantModal", function () {
+        let room = $('#inputEditTenantRoom').val();
+
+        $(`#selectEditTenantRoom .occupied`)
+            .prop({ 'disabled': true });
+        $(`#selectEditTenantRoom option[value=${room}]`)
+            .text($(`#selectEditTenantRoom option[value=${room}]`).text().slice(10))
+            .prop({ 'selected': false });
+    });
+</script>

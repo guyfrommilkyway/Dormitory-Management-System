@@ -240,9 +240,15 @@
         $("#inputEditTenantMobile").val(mobile);
         $("#inputEditTenantEmail").val(email);
         $("#inputEditTenantRoom").val(room);
-        $(`#selectEditTenantRoom option[value=${room}]`)
-            .text($(`#selectEditTenantRoom option[value=${room}]`).text())
-            .attr({ 'disabled': false, 'selected': true });
+
+        if ($(`#selectEditTenantRoom option[value=${room}]`).text().includes('Current')) {
+            $(`#selectEditTenantRoom option[value=${room}]`)
+                .prop({ 'disabled': false, 'selected': true });
+        } else {
+            $(`#selectEditTenantRoom option[value=${room}]`)
+                .prop({ 'disabled': false, 'selected': true })
+                .text('(Current) ' + $(`#selectEditTenantRoom option[value=${room}]`).text());
+        }
 
         // Delete
         $("#inputDeleteTenant_id").val(_id);
@@ -250,12 +256,6 @@
         $("div #spanDeleteTenantLastName").text(last_name);
         $("div #spanDeleteTenantMobile").text(mobile);
         $("div #spanDeleteTenantEmail").text(email);
-    });
-
-    $(document).on("hide.bs.modal", "#editTenantModal", function () {
-        let room = $('#editTenantButton').data('room');
-        $(`#selectEditTenantRoom .occupied`)
-            .prop('disabled', true);
     });
 
     // DataTables
