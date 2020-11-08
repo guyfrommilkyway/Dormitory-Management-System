@@ -138,4 +138,20 @@ module.exports = async (app) => {
             })
         }
     })
+
+    // 404
+    app.get('*', async (req, res) => {
+        res.status(404)
+            .render('pages/404', {
+                layout: 'index',
+                title: '404',
+                header: '404'
+            })
+    })
+
+    // 404
+    app.get('/property/*', async (req, res) => {
+        res.status(404)
+            .send('404 not found')
+    })
 }
