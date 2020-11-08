@@ -25,7 +25,7 @@ const userAvatarUpdate = async (userObject, fileObject) => {
     const encoded_image = await sharp(img).resize({ width: 250, height: 250 }).png().toBuffer()
     const type = fileObject[0].mimetype
 
-    const user = await User.findByIdAndUpdate(userObject._id, { 
+    const user = await User.findByIdAndUpdate(userObject._id, {
         avatar: {
             data: encoded_image,
             contentType: type
@@ -38,8 +38,9 @@ const userAvatarUpdate = async (userObject, fileObject) => {
 // Update info
 const userInfoUpdate = async (userObject) => {
     const user = await User.findByIdAndUpdate(userObject._id, {
+        username: userObject.username,
         first_name: userObject.first_name,
-        last_name:userObject.last_name,
+        last_name: userObject.last_name,
         contact: userObject.contact,
         email: userObject.email
     }, { new: true })
