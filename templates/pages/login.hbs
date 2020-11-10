@@ -10,24 +10,26 @@
                         <input class="form-control" id="email" type="email" name="email" id="email" required>
                         <label for="email">Email</label>
                     </div>
-                    <div class="md-form mb-4">
+                    <div class="md-form mb-3">
                         <input class="form-control" type="password" name="password" id="password" required>
                         <label for="password">Password</label>
+                        {{#if message}}
+                        <span class="error_message">{{message}}</span>
+                        {{/if}}
                     </div>
                     <button class="btn btn-custom btn-block" type="submit">Log in</button>
                     <div class="links">
                         <p>
                             <span>Forgot password? </span>
-                            <a href="#reset">Reset</a>
+                            <a class="btn-link" href="#reset">Reset</a>
                         </p>
                         <p>
                             <span>Don't have an account yet? </span>
-                            <a href="/signup">Sign up</a>
+                            <a class="btn-link" href="/signup">Sign up</a>
                         </p>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
 </main>
