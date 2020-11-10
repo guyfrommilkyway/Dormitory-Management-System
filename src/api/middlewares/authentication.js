@@ -3,25 +3,13 @@ const User = require('../../models/user')
 
 const authentication = async (req, res, next) => {
     try {
-        if (req.cookies.sessionId === req.session.id) {
-            const token = req.session.token
-            const decoded = jwt.verify(token, process.env.JWT_SECRET)
-            const user = await User.findOne({ _id: decoded._id, 'tokens.token': token })
+        const token = req.session.token
+        const decoded = jwt.verify(token, process.env.JWT_SECRET)
+        await User.findOne({ _id: decoded._id, 'tokens.token': token })
 
-            if (!user) {
-                console.log('Authentication required!')
-                res.status(401)
-                    .redirect('/')
-            }
-
-            next()
-        } else {
-            console.log('Authentication required!')
-            res.status(401)
-                .redirect('/')
-        }
+        next()
     } catch (e) {
-        console.log('Authentication required!')
+        console.log('Authentication failed.')
         res.status(401)
             .redirect('/')
     }
