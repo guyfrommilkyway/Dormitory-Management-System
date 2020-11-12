@@ -56,9 +56,16 @@
   color: #ffeab2;
 }
 
-#login form .links p a:hover {
-  font-style: italic;
-  text-decoration: underline;
+#login .msg {
+  font-size: 0.8rem;
+}
+
+#login .err_msg {
+  color: red;
+}
+
+#login .suc_msg {
+  color: green;
 }
 
 /* Dashboard */
