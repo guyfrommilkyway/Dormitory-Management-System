@@ -1,25 +1,20 @@
-const path = require('path')
 const express = require('express')
-const multer = require('multer')
-const { v4: uuidv4 } = require('uuid')
 const authentication = require('../middlewares/authentication')
-const { propertyNew, propertyList, propertyView, propertyEdit, propertyDelete } = require('../../services/property')
+const {
+    propertyNew,
+    propertyList,
+    propertyView,
+    propertyEdit,
+    propertyDelete
+} = require('../../services/property')
 const { catalogList } = require('../../services/catalog')
 const { roomList } = require('../../services/room')
 const { tenantList } = require('../../services/tenant')
 
 const router = new express.Router()
 
-const storage = multer.diskStorage({
-    destination: path.join(__dirname, '../../../public/uploads/property'),
-    filename: function (req, file, cb) {
-        cb(null, uuidv4())
-    }
-})
-const uploadPropertyAvatar = multer({ storage: storage })
-
 // Create new property
-router.post('/user/property/add', authentication, uploadPropertyAvatar.any(), async (req, res) => {
+router.post('/user/property/add', authentication, async (req, res) => {
     try {
         await propertyNew(req.body, req.session.user)
 
