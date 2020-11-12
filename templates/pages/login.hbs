@@ -52,11 +52,12 @@
 
 <script>
     $('document').ready(function () {
-
         // Initial status of input fields
         $('#loginForm')
             .data('email', 'failed')
             .data('password', 'failed')
+
+        const err_svg = '<svg class="mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red" width="18px" height="18px"><path d="M11 15h2v2h-2v-2zm0-8h2v6h-2V7zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>'
 
         // Overall form validity check
         $('#loginForm').on('submit', function () {
@@ -66,21 +67,19 @@
             let emailCheck = $('#loginForm').data('email')
             let passwordCheck = $('#loginForm').data('password')
 
-            const error_svg = '<svg class="mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red" width="18px" height="18px"><path d="M11 15h2v2h-2v-2zm0-8h2v6h-2V7zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>'
-
             if (emailCheck == 'failed' || passwordCheck == 'failed') {
                 if (email == '') {
                     $('#email_indicator')
-                        .html(error_svg)
+                        .html(err_svg)
                     $('#email_indicator_msg')
-                        .text('Invalid email address.')
+                        .text('Cannot be empty.')
                 }
 
                 if (password == '') {
                     $('#password_indicator')
-                        .html(error_svg)
+                        .html(err_svg)
                     $('#password_indicator_msg')
-                        .text('Invalid password.')
+                        .text('Cannot be empty.')
                 }
 
                 return false
@@ -89,9 +88,8 @@
             }
         });
 
-        $('#email, #password').on('keyup blur', function () {
+        $('#email').on('keyup', function () {
             let email = $('#email').val()
-            let password = $('#password').val()
 
             if (email != '') {
                 $('#loginForm')
@@ -100,10 +98,19 @@
                     .html('')
                 $('#email_indicator_msg')
                     .text('')
+            } else if (email == '') {
+                $('#email_indicator')
+                    .html(err_svg)
+                $('#email_indicator_msg')
+                    .text('Cannot be empty.')
             } else {
                 $('#loginForm')
                     .data('email', 'failed')
             }
+        });
+
+        $('#password').on('keyup', function () {
+            let password = $('#password').val()
 
             if (password != '') {
                 $('#loginForm')
@@ -112,10 +119,15 @@
                     .html('')
                 $('#password_indicator_msg')
                     .text('')
+            } else if (password == '') {
+                $('#password_indicator')
+                    .html(err_svg)
+                $('#password_indicator_msg')
+                    .text('Cannot be empty.')
             } else {
                 $('#loginForm')
                     .data('password', 'failed')
             }
-        });
+        })
     });
 </script>
