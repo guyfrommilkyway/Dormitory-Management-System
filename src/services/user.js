@@ -4,6 +4,28 @@ const sharp = require('sharp')
 const bcrypt = require('bcryptjs')
 const User = require('../models/user')
 
+// Username check
+const usernameCheck = async (userObject) => {
+    const user = await User.findOne({ username: userObject.username })
+
+    if (user) {
+        throw new Error('Username is already taken.')
+    }
+
+    return true
+}
+
+// Email check
+const emailCheck = async (userObject) => {
+    const user = await User.findOne({ email: userObject.email })
+
+    if (user) {
+        throw new Error('Username is already taken.')
+    }
+
+    return true
+}
+
 // Sign up
 const userSignup = async (userObject) => {
     const user = new User(userObject)
@@ -77,6 +99,8 @@ const userLogout = async (token) => {
 }
 
 module.exports = {
+    usernameCheck,
+    emailCheck,
     userSignup,
     userLogin,
     userAvatarUpdate,
