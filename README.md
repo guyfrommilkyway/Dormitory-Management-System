@@ -5,9 +5,9 @@ An application design and develop to help property owners and maintenance person
 </p>
 
 ### Installation
-1. Download and install [Node.js](https://nodejs.org/en/download/) and [MongoDB Community Server](https://www.mongodb.com/try/download/community).
+Download and install [Node.js](https://nodejs.org/en/download/) and [MongoDB Community Server](https://www.mongodb.com/try/download/community).
 
-2. #### Setup the application
+#### Setup the application
 - Clone this repository and install the dependencies:
 ```bash
 git clone https://github.com/almertampus/Property-Management-System.git
@@ -40,7 +40,7 @@ npm run dev
 Note:
 Make sure you're inside the project directory.
 ```
-3. #### Setup the database
+#### Setup the database
 - Create a folder that will be used to store your database.
 ```
 For example, you created the folder in ~/Documents, and named it 'mongodb-data'.
@@ -51,7 +51,7 @@ For example, you created the folder in ~/Documents, and named it 'mongodb-data'.
 ```
 mongod --dbpath ~/Documents/mongodb-data
 ```
-4. Finally, you can now view and use the application by going to:
+Finally, you can now view and use the application by going to:
 ```
 localhost:3000
 ```
