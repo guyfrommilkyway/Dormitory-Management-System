@@ -1,13 +1,25 @@
 ## Property Management System
 
+### Overview
 <p>
 An application design and develop to help property owners and maintenance personnel manage the day-to-day operations of their properties.
 </p>
 
-### Installation
-Download and install [Node.js](https://nodejs.org/en/download/) and [MongoDB Community Server](https://www.mongodb.com/try/download/community).
+### Web Technologies
+- HTML5
+- CSS3
+- JavaScript
+- [Node.js](https://nodejs.org/)
+- [Express.js](https://expressjs.com/)
+- [Handlebars.js](https://handlebarsjs.com/)
+- [MongoDB](https://www.mongodb.com/)
+- [Material Design for Bootstrap](https://mdbootstrap.com/)
+- Icons from [Material Design](https://material.io/resources/icons/?style=baseline)
 
-#### Setup the application
+### Installation
+- Download and install [Node.js](https://nodejs.org/en/download/) and [MongoDB Community Server](https://www.mongodb.com/try/download/community).
+
+### Setup the application
 - Clone this repository and install the dependencies:
 ```bash
 git clone https://github.com/almertampus/Property-Management-System.git
@@ -40,7 +52,7 @@ npm run dev
 Note:
 Make sure you're inside the project directory.
 ```
-#### Setup the database
+### Setup the database
 - Create a folder that will be used to store your database.
 ```
 For example, you created the folder in ~/Documents, and named it 'mongodb-data'.
