@@ -14,19 +14,84 @@
 
 #topbar .user {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
+  min-width: 16rem;
+  margin: 0;
+  color: #ffffff;
+  cursor: pointer;
 }
 
-#topbar .user .name {
+#topbar .user .username {
   margin-right: 1rem;
   font-size: 0.9rem;
   text-transform: lowercase;
 }
 
 #topbar .user .photo {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 1rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 1.1rem;
+}
+
+#topbar .dropdown-menu {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0;
+  background: none !important;
+  border: none !important;
+  border-radius: 0.5rem !important;
+}
+
+#topbar .dropdown-menu .navbar-nav {
+  flex-direction: column;
+  width: 100%;
+  background-color: #1b2432;
+  border-radius: 0.5rem !important;
+}
+
+#topbar .dropdown-menu .navbar-nav .nav-item .name {
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+#topbar .dropdown-menu .navbar-nav .nav-item .email {
+  color: #ffffff;
+  font-size: 0.8rem;
+  text-transform: lowercase;
+}
+
+#topbar .dropdown-menu .navbar-nav .nav-item {
+  width: 100%;
+}
+
+#topbar .dropdown-menu .navbar-nav .nav-item .nav-link {
+  padding: 1rem 1.25rem;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+#topbar .dropdown-menu .navbar-nav .avatar {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 3px;
+}
+
+#topbar .dropdown-menu .navbar-nav .nav-item form {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+
+#topbar .dropdown-menu .navbar-nav .nav-item form button {
+  width: 100%;
+  margin: 0;
+  text-align: left;
+  text-transform: capitalize;
 }
 
 /* Sidebar */
