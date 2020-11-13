@@ -1,6 +1,6 @@
 const express = require('express')
-const { tenantNew, tenantInfoUpdate, tenantDelete } = require('../../services/tenant')
 const authentication = require('../middlewares/authentication')
+const { tenantNew, tenantInfoUpdate, tenantDelete } = require('../../services/tenant')
 
 const router = new express.Router()
 
@@ -14,7 +14,6 @@ router.post('/user/property/tenant/add', authentication, async (req, res) => {
         res.status(201)
             .redirect(`/property/${id}`)
     } catch (e) {
-        console.log(e)
         res.status(400)
             .send()
     }
@@ -30,7 +29,6 @@ router.post('/user/property/tenant/edit', authentication, async (req, res) => {
         res.status(200)
             .redirect(`/property/${id}`)
     } catch (e) {
-        console.log(e)
         res.status(400)
             .send()
     }
@@ -46,7 +44,6 @@ router.post('/user/property/tenant/delete', authentication, async (req, res) => 
         res.status(200)
             .redirect(`/property/${id}`)
     } catch (e) {
-        console.log(e)
         res.status(400)
             .send()
     }
