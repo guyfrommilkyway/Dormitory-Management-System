@@ -8,5 +8,5 @@ mongoose.connect(process.env.MONGODB_URL, {
 })
 
 mongoose.connection.once('open', function () {
-    console.log('A connection to the database has been established!')
+    console.log('Connected to the database.')
 });
