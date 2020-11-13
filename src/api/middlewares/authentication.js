@@ -1,15 +1,26 @@
+const { client, getAsync } = require('../../loaders/redis')
 const jwt = require('jsonwebtoken')
 const User = require('../../models/user')
 
 const authentication = async (req, res, next) => {
     try {
-        const token = req.session.token
-        const decoded = jwt.verify(token, process.env.JWT_SECRET)
-        await User.findOne({ _id: decoded._id, 'tokens.token': token })
+        async () => { client.get('token') }
+        const token = await getAsync('token')
 
-        next()
+        if (token != '') {
+            const decoded = jwt.verify(token, process.env.JWT_SECRET)
+            const userLogged = await User.findOne({ _id: decoded._id, 'tokens.token': token })
+
+            if (!userLogged) {
+                throw new Error()
+            }
+
+            next()
+        } else {
+            throw new Error()
+        }
     } catch (e) {
-        console.log('Authentication failed.')
+        console.log('Error: Authentication failed.')
         res.status(401)
             .redirect('/')
     }

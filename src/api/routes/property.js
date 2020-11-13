@@ -1,5 +1,6 @@
 const express = require('express')
 const authentication = require('../middlewares/authentication')
+const { client, getAsync } = require('../../loaders/redis')
 const {
     propertyNew,
     propertyList,
@@ -16,7 +17,11 @@ const router = new express.Router()
 // Create new property
 router.post('/user/property/add', authentication, async (req, res) => {
     try {
-        await propertyNew(req.body, req.session.user)
+        async () => { client.get('user') }
+        const userCached = await getAsync('user')
+        const user = JSON.parse(userCached)
+
+        await propertyNew(req.body, user)
 
         res.status(201)
             .redirect('/management/property')
@@ -29,9 +34,13 @@ router.post('/user/property/add', authentication, async (req, res) => {
 // View property
 router.get('/property/:id', authentication, async (req, res) => {
     try {
-        const { properties } = await propertyList(req.session.user)
-        const { property } = await propertyView(req.params.id, req.session.user)
-        const { catalogs } = await catalogList(req.session.user)
+        async () => { client.get('user') }
+        const userCached = await getAsync('user')
+        const user = JSON.parse(userCached)
+
+        const { properties } = await propertyList(user)
+        const { property } = await propertyView(req.params.id, user)
+        const { catalogs } = await catalogList(user)
         const { rooms } = await roomList(req.params.id)
         const { tenants } = await tenantList(req.params.id)
 
@@ -40,7 +49,7 @@ router.get('/property/:id', authentication, async (req, res) => {
                 layout: 'index',
                 title: property.name,
                 header: 'Property',
-                user: req.session.user,
+                user,
                 properties,
                 property,
                 catalogs,
@@ -70,7 +79,11 @@ router.post('/user/property/edit', authentication, async (req, res) => {
 // Delete property info
 router.post('/user/property/delete', authentication, async (req, res) => {
     try {
-        await propertyDelete(req.body, req.session.user)
+        async () => { client.get('user') }
+        const userCached = await getAsync('user')
+        const user = JSON.parse(userCached)
+
+        await propertyDelete(req.body, user)
 
         res.status(200)
             .redirect('/management/property')

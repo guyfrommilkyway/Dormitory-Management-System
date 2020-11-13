@@ -1,6 +1,7 @@
 const express = require('express')
 const authentication = require('../middlewares/authentication')
 const uploadUserAvatar = require('../middlewares/multer')
+const { client, getAsync } = require('../../loaders/redis')
 const {
     usernameCheck,
     emailCheck,
@@ -50,9 +51,8 @@ router.post('/user/signup', async (req, res) => {
         await userSignup(req.body)
 
         res.status(201)
-            .redirect('/')
+            .redirect('/signup')
     } catch (e) {
-        console.log(e.message)
         res.status(400)
             .redirect('/signup')
     }
@@ -61,19 +61,16 @@ router.post('/user/signup', async (req, res) => {
 // Log in
 router.post('/user/login', async (req, res) => {
     try {
-        const { user, token } = await userLogin(req.body)
+        const { userLogged, token } = await userLogin(req.body)
 
-        req.session.user = user
-        req.session.token = token
+        userLogged.toJSON()
+
+        client.set('user', [JSON.stringify(userLogged)])
+        client.set('token', token)
 
         res.status(202)
-            .cookie('sessionId', req.session.id, {
-                httpOnly: true
-            })
-            .redirect('/')
+            .redirect('/dashboard')
     } catch (e) {
-        console.log(e)
-
         res.status(401)
             .cookie('message', e.message, {
                 expire: 1000,
@@ -86,9 +83,15 @@ router.post('/user/login', async (req, res) => {
 // Update avatar
 router.post('/user/profile/avatar/update', authentication, uploadUserAvatar.any(), async (req, res) => {
     try {
-        const { user } = await userAvatarUpdate(req.session.user, req.files)
+        async () => { client.get('user') }
+        const userCached = await getAsync('user')
+        const user = JSON.parse(userCached)
 
-        req.session.user = user
+        const { userLogged } = await userAvatarUpdate(user, req.files)
+
+        userLogged.toJSON()
+
+        client.set('user', [JSON.stringify(userLogged)])
 
         res.status(200)
             .redirect('/account/profile')
@@ -101,9 +104,11 @@ router.post('/user/profile/avatar/update', authentication, uploadUserAvatar.any(
 // Update info
 router.post('/user/profile/info/update', authentication, async (req, res) => {
     try {
-        const { user } = await userInfoUpdate(req.body)
+        const { userLogged } = await userInfoUpdate(req.body)
 
-        req.session.user = user
+        userLogged.toJSON()
+
+        client.set('user', [JSON.stringify(userLogged)])
 
         res.status(200)
             .redirect('/account/profile')
@@ -117,9 +122,7 @@ router.post('/user/profile/info/update', authentication, async (req, res) => {
 // Update password
 router.post('/user/profile/password/change', authentication, async (req, res) => {
     try {
-        const { user } = await userPasswordChange(req.body)
-
-        req.session.user = user
+        await userPasswordChange(req.body)
 
         res.status(200)
             .redirect('/account/password')
@@ -132,11 +135,14 @@ router.post('/user/profile/password/change', authentication, async (req, res) =>
 // Log out
 router.post('/user/logout', authentication, async (req, res) => {
     try {
-        userLogout(req.session.token)
+        async () => { client.get('token') }
+        const tokenCached = await getAsync('token')
 
-        req.session.destroy()
+        await userLogout(tokenCached)
 
-        res.clearCookie('sessionId')
+        client.set('token', '')
+
+        res.status(200)
             .redirect('/')
     } catch (e) {
         res.status(500)

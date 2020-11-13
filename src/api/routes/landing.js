@@ -1,4 +1,5 @@
 const authentication = require('../middlewares/authentication')
+const { client, getAsync } = require('../../loaders/redis')
 const { propertyList } = require('../../services/property')
 const { catalogList } = require('../../services/catalog')
 
@@ -15,65 +16,74 @@ module.exports = async (app) => {
 
     // Index
     app.get('', async (req, res) => {
-        if (req.session.user && req.session.token) {
-            res.render('pages/dashboard', {
-                layout: 'index',
-                title: 'Dashboard',
-                header: 'Dashboard',
-                user: req.session.user
-            })
-        } else {
-            res.render('pages/login', {
-                layout: 'index',
-                title: 'Login',
-                message: req.cookies.message
-            })
-        }
+        res.render('pages/login', {
+            layout: 'index',
+            title: 'Log in',
+            message: req.cookies.message
+        })
     })
 
     // Sign up
     app.get('/signup', async (req, res) => {
-        if (req.session.user && req.session.token) {
-            res.render('pages/dashboard', {
-                layout: 'index',
-                title: 'Dashboard',
-                header: 'Dashboard',
-                user: req.session.user
-            })
-        } else {
-            res.render('pages/signup', {
-                layout: 'index',
-                title: 'Signup'
-            })
-        }
+        res.render('pages/signup', {
+            layout: 'index',
+            title: 'Sign up'
+        })
+    })
+
+    // Dashboard
+    app.get('/dashboard', authentication, async (req, res) => {
+        async () => { client.get('user') }
+        const userCached = await getAsync('user')
+        const user = JSON.parse(userCached)
+
+        const { properties } = await propertyList(user)
+
+        res.render('pages/dashboard', {
+            layout: 'index',
+            title: 'Dashboard',
+            header: 'Dashboard',
+            user,
+            properties
+        })
     })
 
     // Management
 
     // Property
     app.get('/management/property', authentication, async (req, res) => {
-        const { properties } = await propertyList(req.session.user)
+        async () => { client.get('user') }
+        const userCached = await getAsync('user')
+        const user = JSON.parse(userCached)
+
+        const { properties } = await propertyList(user)
 
         res.status(200)
             .render('pages/management/property', {
                 layout: 'index',
                 title: 'Property management',
                 header: 'Property management',
-                user: req.session.user,
+                user,
                 properties
             })
     })
 
     // Catalog
     app.get('/management/catalog', authentication, async (req, res) => {
-        const { catalogs } = await catalogList(req.session.user)
+        async () => { client.get('user') }
+        const userCached = await getAsync('user')
+        const user = JSON.parse(userCached)
+
+        const { properties } = await propertyList(user)
+        const { catalogs } = await catalogList(user)
 
         res.status(200)
             .render('pages/management/catalog', {
                 layout: 'index',
                 title: 'Catalog management',
                 header: 'Catalog management',
-                user: req.session.user,
+                user,
+                properties,
                 catalogs
             })
     })
@@ -82,23 +92,37 @@ module.exports = async (app) => {
 
     // Edit profile
     app.get('/account/profile', authentication, async (req, res) => {
+        async () => { client.get('user') }
+        const userCached = await getAsync('user')
+        const user = JSON.parse(userCached)
+
+        const { properties } = await propertyList(user)
+
         res.status(200)
             .render('pages/account/profile', {
                 layout: 'index',
                 title: 'Profile',
                 header: 'Profile',
-                user: req.session.user
+                user,
+                properties
             })
     })
 
     // Change password
     app.get('/account/password', authentication, async (req, res) => {
+        async () => { client.get('user') }
+        const userCached = await getAsync('user')
+        const user = JSON.parse(userCached)
+
+        const { properties } = await propertyList(user)
+
         res.status(200)
             .render('pages/account/password', {
                 layout: 'index',
                 title: 'Security',
                 header: 'Security',
-                user: req.session.user
+                user,
+                properties
             })
     })
 
