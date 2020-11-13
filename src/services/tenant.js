@@ -1,6 +1,5 @@
 const Tenant = require('../models/tenant')
 const Room = require('../models/room')
-const Catalog = require('../models/catalog')
 
 // Create tenant
 const tenantNew = async (tenantObject) => {
