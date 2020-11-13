@@ -13,13 +13,14 @@ An application design and develop to help property owners and maintenance person
 - [Express.js](https://expressjs.com/)
 - [Handlebars.js](https://handlebarsjs.com/)
 - [MongoDB](https://www.mongodb.com/)
+- [Redis](https://redis.io/)
 - [Material Design for Bootstrap](https://mdbootstrap.com/)
 - Icons from [Material Design](https://material.io/resources/icons/?style=baseline)
 
 ### Installation
-- Download and install [Node.js](https://nodejs.org/en/download/) and [MongoDB Community Server](https://www.mongodb.com/try/download/community).
+- Download and install [Node.js](https://nodejs.org/en/download/), [MongoDB Community Server](https://www.mongodb.com/try/download/community) and [Redis](https://redis.io/download).
 
-### Setup the application
+### Application
 - Clone this repository and install the dependencies:
 ```bash
 git clone https://github.com/almertampus/Property-Management-System.git
@@ -36,9 +37,9 @@ Property-Management-System
 - Paste this code inside the 'dev.env' file:
 ```
 PORT=3000
+REDIS_PORT=6380
 MONGODB_URL=mongodb://localhost:27017/pms
 JWT_SECRET=wjSAxckLggsSPEqtxUBOzIMaxVYTSKhYeQvkWqWzKFJYtWpUmp
-SESSION_SECRET=kLKFBmsYEovvlQAzgSnQAokqnFczXWPvafaSIJCMAGrcsnesVj
 ```
 ```
 Note:
@@ -52,7 +53,7 @@ npm run dev
 Note:
 Make sure you're inside the project directory.
 ```
-### Setup the database
+### Database
 - Create a folder that will be used to store your database.
 ```
 For example, you created the folder in ~/Documents, and named it 'mongodb-data'.
@@ -73,4 +74,9 @@ If everything is working correctly, you can view the following message in the te
 
 The server is up on port 3000.
 A connection to the database has been established!
+```
+### Redis
+Run 'redis-server' in the terminal:
+```
+redis-server --port 6380
 ```
