@@ -1,10 +1,16 @@
-<!-- Main -->
+{{#extend "main"}}
+
+{{#content "extra_css"}}
+{{/content}}
+
+{{#content "main-content"}}
+
+<!-- Content -->
 <main id="login">
-    <!-- Content -->
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-xl-4">
-                <form action="/user/login" method="POST" id="loginForm" novalidate>
+                <form action="/api/user/login" method="POST" id="loginForm" novalidate>
                     <h4>Log in</h4>
                     {{#if message}}
                     <div class="d-flex mb-4"
@@ -50,6 +56,9 @@
     </div>
 </main>
 
+{{/content}}
+
+{{#content "extra_js"}}
 <script>
     $('document').ready(function () {
         // Initial status of input fields
@@ -131,3 +140,6 @@
         })
     });
 </script>
+{{/content}}
+
+{{/extend}}

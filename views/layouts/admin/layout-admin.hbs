@@ -1,0 +1,175 @@
+{{#extend "main"}}
+
+{{#content "main-content"}}
+
+<!-- Main -->
+<main id="main-content-admin">
+
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <!-- Brand -->
+        <div class="brand-wrapper">
+            <a class="brand-link" href="/dashboard">
+                Property <br> Management <br> System
+            </a>
+        </div>
+        <!-- Links -->
+        <div class="navbar-nav">
+            <div class="nav-item">
+                <a class="nav-link" href="/dashboard">
+                    <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18px" height="18px">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path
+                            d="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z" />
+                    </svg>
+                    Dashboard
+                </a>
+            </div>
+            <div class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#collapseProperty" role="button" aria-expanded="false"
+                    aria-controls="collapseProperty">
+                    <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
+                        viewBox="0 0 24 24" width="18px" height="18px">
+                        <g>
+                            <rect fill="none" height="24" width="24" />
+                        </g>
+                        <g>
+                            <path
+                                d="M17,11V3H7v4H3v14h8v-4h2v4h8V11H17z M7,19H5v-2h2V19z M7,15H5v-2h2V15z M7,11H5V9h2V11z M11,15H9v-2h2V15z M11,11H9V9h2 V11z M11,7H9V5h2V7z M15,15h-2v-2h2V15z M15,11h-2V9h2V11z M15,7h-2V5h2V7z M19,19h-2v-2h2V19z M19,15h-2v-2h2V15z" />
+                        </g>
+                    </svg>
+                    Property
+                </a>
+                <div class="collapse" id="collapseProperty">
+                    <div class="card card-body z-depth-0">
+                        {{#if properties}}
+                        {{#each properties}}
+                        <a class="nav-link" href="/property/{{_id}}">
+                            <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18px"
+                                height="18px">
+                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z" /></svg>
+                            {{name}}
+                        </a>
+                        {{/each}}
+                        {{else}}
+                        <div class="nav-link">
+                            <span>No properties found.</span>
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#collapseSettings" role="button" aria-expanded="false"
+                    aria-controls="collapseSettings">
+                    <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18px" height="18px">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path
+                            d="M19.43 12.98c.04-.32.07-.64.07-.98 0-.34-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.09-.16-.26-.25-.44-.25-.06 0-.12.01-.17.03l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.06-.02-.12-.03-.18-.03-.17 0-.34.09-.43.25l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98 0 .33.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.09.16.26.25.44.25.06 0 .12-.01.17-.03l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.06.02.12.03.18.03.17 0 .34-.09.43-.25l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zm-1.98-1.71c.04.31.05.52.05.73 0 .21-.02.43-.05.73l-.14 1.13.89.7 1.08.84-.7 1.21-1.27-.51-1.04-.42-.9.68c-.43.32-.84.56-1.25.73l-1.06.43-.16 1.13-.2 1.35h-1.4l-.19-1.35-.16-1.13-1.06-.43c-.43-.18-.83-.41-1.23-.71l-.91-.7-1.06.43-1.27.51-.7-1.21 1.08-.84.89-.7-.14-1.13c-.03-.31-.05-.54-.05-.74s.02-.43.05-.73l.14-1.13-.89-.7-1.08-.84.7-1.21 1.27.51 1.04.42.9-.68c.43-.32.84-.56 1.25-.73l1.06-.43.16-1.13.2-1.35h1.39l.19 1.35.16 1.13 1.06.43c.43.18.83.41 1.23.71l.91.7 1.06-.43 1.27-.51.7 1.21-1.07.85-.89.7.14 1.13zM12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" />
+                    </svg>
+                    Management
+                </a>
+                <div class="collapse" id="collapseSettings">
+                    <div class="card card-body z-depth-0">
+                        <a class="nav-link" href="/management/property">
+                            <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
+                                viewBox="0 0 24 24" width="18px" height="18px">
+                                <g>
+                                    <rect fill="none" height="24" width="24" />
+                                </g>
+                                <g>
+                                    <path
+                                        d="M17,11V3H7v4H3v14h8v-4h2v4h8V11H17z M7,19H5v-2h2V19z M7,15H5v-2h2V15z M7,11H5V9h2V11z M11,15H9v-2h2V15z M11,11H9V9h2 V11z M11,7H9V5h2V7z M15,15h-2v-2h2V15z M15,11h-2V9h2V11z M15,7h-2V5h2V7z M19,19h-2v-2h2V19z M19,15h-2v-2h2V15z" />
+                                </g>
+                            </svg>
+                            Property
+                        </a>
+                        <a class="nav-link" href="/management/catalog">
+                            <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18px"
+                                height="18px">
+                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                <path
+                                    d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12 16zm0-11.47L17.74 9 12 13.47 6.26 9 12 4.53z" />
+                            </svg>
+                            Catalog
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <section id="content">
+
+        <!--Topbar -->
+        <nav class="navbar navbar-expand-lg topbar z-depth-0" id="topbar">
+            <!-- Title -->
+            <div class="title-wrapper">
+                <span class="title" id="title">
+                    {{header}}
+                </span>
+            </div>
+            <!-- User -->
+            <div class="btn-group">
+                <div class="user" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="username">{{user.username}}</span>
+                    {{#if user.avatar}} <img class="photo" src="data:image/png;base64,{{user.avatar.data}}"> {{else}}
+                    <img class="photo" src="/images/icons/default-avatar.svg"> {{/if}}
+                </div>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="navbar-nav">
+                        <div class="nav-item">
+                            <a class="nav-link" href="/account/profile">
+                                <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18px"
+                                    height="18px">
+                                    <path d="M0 0h24v24H0V0z" fill="none" />
+                                    <path
+                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM7.07 18.28c.43-.9 3.05-1.78 4.93-1.78s4.51.88 4.93 1.78C15.57 19.36 13.86 20 12 20s-3.57-.64-4.93-1.72zm11.29-1.45c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36 2.33C4.62 15.49 4 13.82 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.82-.62 3.49-1.64 4.83zM12 6c-1.94 0-3.5 1.56-3.5 3.5S10.06 13 12 13s3.5-1.56 3.5-3.5S13.94 6 12 6zm0 5c-.83 0-1.5-.67-1.5-1.5S11.17 8 12 8s1.5.67 1.5 1.5S12.83 11 12 11z" />
+                                </svg>
+                                Edit profile
+                            </a>
+                        </div>
+                        <div class="nav-item">
+                            <a class="nav-link" href="/account/password">
+                                <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18px"
+                                    height="18px">
+                                    <g fill="none">
+                                        <path d="M0 0h24v24H0V0z" />
+                                        <path d="M0 0h24v24H0V0z" opacity=".87" />
+                                    </g>
+                                    <path
+                                        d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z" />
+                                </svg>
+                                Change password
+                            </a>
+                        </div>
+                        <div class="nav-item">
+                            <form action="/api/user/logout" method="POST">
+                                <button class="nav-link btn z-depth-0">
+                                    <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                        width="18px" height="18px">
+                                        <path d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" />
+                                    </svg>
+                                    Logout
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        {{#block "content"}}
+
+        {{/block}}
+
+    </section>
+</main>
+
+{{/content}}
+
+{{/extend}}

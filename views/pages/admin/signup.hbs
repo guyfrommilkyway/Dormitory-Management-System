@@ -1,10 +1,16 @@
-<!-- Main -->
+{{#extend "main"}}
+
+{{#content "extra_css"}}
+{{/content}}
+
+{{#content "main-content"}}
+
+<!-- Content -->
 <main id="login">
-    <!-- Content -->
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-xl-4">
-                <form action="/user/signup" method="POST" id="signUpForm" novalidate>
+                <form action="/api/user/signup" method="POST" id="signUpForm" novalidate>
                     <h4>Sign up</h4>
                     <div class=" md-form mb-3">
                         <input class="form-control m-0" type="text" name="username" id="username" required>
@@ -43,6 +49,10 @@
         </div>
     </div>
 </main>
+
+{{/content}}
+
+{{#content "extra_js"}}
 
 <script type="text/javascript">
     $('document').ready(function () {
@@ -99,7 +109,7 @@
             let username = $('#username').val();
 
             $.ajax({
-                url: '/user/signup/username_check',
+                url: '/api/user/signup/username_check',
                 type: 'post',
                 data: {
                     'username': username
@@ -149,7 +159,7 @@
             }
 
             $.ajax({
-                url: '/user/signup/email_check',
+                url: '/api/user/signup/email_check',
                 type: 'post',
                 data: {
                     'email': email,
@@ -223,3 +233,7 @@
         });
     });
 </script>
+
+{{/content}}
+
+{{/extend}}

@@ -1,0 +1,666 @@
+{{#extend "layout-admin"}}
+
+{{#content "extra_css"}}
+{{/content}}
+
+{{#content "content"}}
+
+<!-- Content -->
+<main class="wrapper" id="property">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 p-0">
+                <header>
+                    <h4>{{property.name}}</h4>
+                    <div class="d-flex align-items-center">
+                        <img class="icon mr-2" src="/images/icons/location_on-white-18dp.svg" alt="">
+                        <span>{{property.location}}</span>
+                    </div>
+                </header>
+                <nav class="navbar" id="property-topbar">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="room-tab" data-toggle="tab" href="#room" role="tab"
+                                aria-controls="room" aria-selected="true">
+                                <img class="icon" src="/images/icons/room-white-18dp.svg" alt="">
+                                Room
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="tenant-tab" data-toggle="tab" href="#tenant" role="tab"
+                                aria-controls="tenant" aria-selected="false"><img class="icon"
+                                    src="/images/icons/account_circle-white-18dp.svg" alt="">
+                                Tenant
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="booking-tab" data-toggle="tab" href="#booking" role="tab"
+                                aria-controls="booking" aria-selected="false">
+                                <img class="icon" src="/images/icons/menu_book-white-18dp.svg" alt="">
+                                Booking
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab"
+                                aria-controls="settings" aria-selected="false">
+                                <img class="icon" src="/images/icons/settings-white-18dp.svg" alt="">
+                                Settings
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <section class="tab-content" id="myTabContent">
+                    <div class="tab-pane show active" id="room" role="tabpanel" aria-labelledby="room-tab">
+                        <div id="demo-html"></div>
+                        <table id="tableRoom" class="table table-responsive-lg table-borderless table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Room</th>
+                                    <th>Floor</th>
+                                    <th>Catalog</th>
+                                    <th>Rate</th>
+                                    <th>Tenant</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each rooms}}
+                                <tr>
+                                    <td>{{name}}</td>
+                                    <td>{{floor}}</td>
+                                    <td>{{catalog.name}}</td>
+                                    <td>{{catalog.rate}}</td>
+                                    {{#if tenant}}
+                                    <td>
+                                        <span>{{tenant.first_name}} {{tenant.last_name}}</span>
+                                    </td>
+                                    {{else}}
+                                    <td>
+                                        <span>Available</span>
+                                    </td>
+                                    {{/if}}
+                                    <td>
+                                        <button class="btn p-3 m-0 z-depth-0" id="editRoomButton" data-id="{{_id}}"
+                                            data-name="{{name}}" data-floor="{{floor}}" data-catalog="{{catalog}}"
+                                            data-catalogid="{{catalog._id}}" data-catalogname="{{catalog.name}}"
+                                            data-catalograte="{{catalog.rate}}" data-toggle="modal"
+                                            data-target="#editRoomModal">
+                                            <img class="icon m-0" src="/images/icons/create-white-18dp.svg" alt="">
+                                        </button>
+                                        <button class="btn p-3 m-0 z-depth-0" id="deleteRoomButton" data-id="{{_id}}"
+                                            data-name="{{name}}" data-tenant="{{tenant._id}}" data-floor="{{floor}}"
+                                            data-catalog="{{catalog}}" data-catalogid="{{catalog._id}}"
+                                            data-catalogname="{{catalog.name}}" data-catalograte="{{catalog.rate}}"
+                                            data-toggle="modal" data-target="#deleteRoomModal">
+                                            <img class="icon m-0" src="/images/icons/delete_forever-white-18dp.svg"
+                                                alt="">
+                                        </button>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="tenant" role="tabpanel" aria-labelledby="tenant-tab">
+                        <table id="tableTenant" class="table table-responsive-lg table-borderless table-striped">
+                            <thead>
+                                <tr>
+                                    <th>First name</th>
+                                    <th>Last name</th>
+                                    <th>Mobile</th>
+                                    <th>Email</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each tenants}}
+                                <tr>
+                                    <td>{{first_name}}</td>
+                                    <td>{{last_name}}</td>
+                                    <td>{{mobile}}</td>
+                                    <td>{{email}}</td>
+                                    <td>
+                                        <button type="button" class="btn p-3 m-0 z-depth-0" id="editTenantButton"
+                                            data-id="{{_id}}" data-firstname="{{first_name}}"
+                                            data-lastname="{{last_name}}" data-mobile="{{mobile}}"
+                                            data-email="{{email}}" data-room="{{room._id}}" data-toggle="modal"
+                                            data-target="#editTenantModal">
+                                            <img class="icon m-0" src="/images/icons/create-white-18dp.svg" alt="">
+                                        </button>
+                                        <button type="button" class="btn p-3 m-0 z-depth-0" id="deleteTenantButton"
+                                            data-id="{{_id}}" data-firstname="{{first_name}}"
+                                            data-lastname="{{last_name}}" data-mobile="{{mobile}}"
+                                            data-email="{{email}}" data-room="{{room._id}}" data-toggle="modal"
+                                            data-target="#deleteTenantModal">
+                                            <img class="icon m-0" src="/images/icons/delete_forever-white-18dp.svg"
+                                                alt="">
+                                        </button>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="booking" role="tabpanel" aria-labelledby="booking-tab">
+                        <table id="tableBooking" class="table table-responsive-lg table-borderless table-striped">
+                            <thead>
+                                <tr>
+                                    <th>First name</th>
+                                    <th>Last name</th>
+                                    <th>Age</th>
+                                    <th>Contact</th>
+                                    <th>Email</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each bookings}}
+                                <tr>
+                                    <td>{{first_name}}</td>
+                                    <td>{{last_name}}</td>
+                                    <td>{{age}}</td>
+                                    <td>{{contact}}</td>
+                                    <td>{{email}}</td>
+                                    <td>
+                                        <button type="button" class="btn p-3 m-0 z-depth-0">
+                                            <img class="icon m-0" src="/images/icons/create-white-18dp.svg" alt="">
+                                        </button>
+                                        <button type="button" class="btn p-3 m-0 z-depth-0">
+                                            <img class="icon m-0" src="/images/icons/delete_forever-white-18dp.svg"
+                                                alt="">
+                                        </button>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Add room modal -->
+<form action="/api/room/add" method="POST">
+    <div class="modal fade" id="addRoomModal" tabindex="-1" role="dialog" aria-labelledby="addRoomModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add room</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group mt-2 mb-3">
+                        <label class="select-label" for="catalog">Catalog</label>
+                        <div class="md-form">
+                            <select class="form-control" name="catalog" id="catalog" required>
+                                {{#if catalogs}}
+                                {{#each catalogs}}
+                                <option value="{{_id}}">{{name}} - Php{{rate}}</option>
+                                {{/each}}
+                                {{else}}
+                                <option value="" disabled><span>No catalogs found.</span></option>
+                                {{/if}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="md-form mb-3">
+                        <label for="number">Number of rooms</label>
+                        <input class="form-control" name="number" type="number" id="number" required>
+                    </div>
+                    <div class="md-form mb-3">
+                        <label for="floor">Floor</label>
+                        <input class="form-control" name="floor" type="number" id="floor" required>
+                        <input class="form-control" name="property" type="hidden" value="{{property._id}}" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-custom">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Edit room modal -->
+<form action="/api/room/edit" method="POST">
+    <div class="modal fade" id="editRoomModal" tabindex="-1" role="dialog" aria-labelledby="editRoomModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit room</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="md-form mt-2 mb-3">
+                        <label for="inputEditRoomName">Name</label>
+                        <input class="form-control" name="name" type="text" id="inputEditRoomName" value="placeholder"
+                            required>
+                        <input class="form-control" name="_id" id="inputEditRoom_id" type="hidden" required>
+                        <input class="form-control" name="property" id="property" value="{{property._id}}" type="hidden"
+                            required>
+                    </div>
+                    <div class="md-form mb-3">
+                        <label for="inputEditRoomFloor">Floor</label>
+                        <input class="form-control" name="floor" type="text" id="inputEditRoomFloor" value="placeholder"
+                            required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="select-label" for="selectEditRoomCatalog">Catalog</label>
+                        <div class="md-form">
+                            <select class="form-control" name="catalog" id="selectEditRoomCatalog" required>
+                                {{#if catalogs}}
+                                {{#each catalogs}}
+                                <option value="{{_id}}">{{name}} - Php{{rate}}</option>
+                                {{/each}}
+                                {{else}}
+                                <option value="" disabled><span>No catalogs found.</span></option>
+                                {{/if}}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-custom">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Delete room modal -->
+<form action="/api/room/delete" method="POST">
+    <div class="modal fade" id="deleteRoomModal" tabindex="-1" role="dialog" aria-labelledby="deleteRoomModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Are you sure you want to delete?</h4>
+                </div>
+                <div class="modal-body">
+                    <input class="form-control" name="_id" id="inputDeleteRoom_id" type="hidden" required>
+                    <input class="form-control" name="property" id="property" type="hidden" value="{{property._id}}"
+                        required>
+                    <div>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Floor</th>
+                                    <th>Catalog</th>
+                                    <th>Rate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span id="spanDeleteRoomName"></span></td>
+                                    <td><span id="spanDeleteRoomFloor"></span></td>
+                                    <td><span id="spanDeleteRoomCatalogName"></span></td>
+                                    <td><span id="spanDeleteRoomCatalogRate"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Confirm delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Add tenant modal -->
+<form action="/api/tenant/add" method="POST">
+    <div class="modal fade" id="addTenantModal" tabindex="-1" role="dialog" aria-labelledby="addTenantModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add tenant</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row m-2">
+                        <div class="col-md-6">
+                            <div>
+                                <header>
+                                    <h5>Personal information</h5>
+                                </header>
+                                <section>
+                                    <div class="md-form mt-3 mb-3">
+                                        <label for="first_name">First name</label>
+                                        <input class="form-control" name="first_name" type="text" id="first_name"
+                                            required>
+                                        <input class="form-control" name="property" type="hidden"
+                                            value="{{property._id}}" required>
+                                    </div>
+                                    <div class="md-form mb-4">
+                                        <label for="last_name">Last name</label>
+                                        <input class="form-control" name="last_name" type="text" id="last_name"
+                                            required>
+                                    </div>
+                                </section>
+                            </div>
+                            <div>
+                                <header>
+                                    <h5>Contact information</h5>
+                                </header>
+                                <section>
+                                    <div class="md-form mt-3 mb-3">
+                                        <label for="mobile">Mobile</label>
+                                        <input class="form-control" name="mobile" type="text" id="mobile" required>
+                                    </div>
+                                    <div class="md-form mb-4">
+                                        <label for="email">Email</label>
+                                        <input class="form-control" name="email" type="email" id="email" required>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <header>
+                                <h5>Room information</h5>
+                            </header>
+                            <section>
+                                <div class="form-group mb-3">
+                                    <label class="select-label" for="room">Room</label>
+                                    <div class="md-form">
+                                        <select class="form-control" name="room" id="room" required>
+                                            {{#if rooms}}
+                                            {{#each rooms }}
+                                            }}
+                                            <option value="{{_id}}" {{#if tenant}} disabled {{/if}}>{{name}} -
+                                                {{catalog.name}} - Php{{catalog.rate}}
+                                            </option>
+                                            {{/each}}
+                                            {{else}}
+                                            <option value="" disabled><span>No rooms available.</span></option>
+                                            {{/if}}
+                                        </select>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-custom">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Edit tenant modal -->
+<form action="/api/tenant/edit" method="POST">
+    <div class="modal fade" id="editTenantModal" tabindex="-1" role="dialog" aria-labelledby="editTenantModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit tenant</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row m-2">
+                        <div class="col-md-6">
+                            <div>
+                                <header>
+                                    <h5>Personal information</h5>
+                                </header>
+                                <section>
+                                    <div class="md-form mt-3 mb-3">
+                                        <label for="inputEditTenantFirstName">First name</label>
+                                        <input class="form-control" name="first_name" type="text"
+                                            id="inputEditTenantFirstName" value="placeholder" required>
+                                        <input class="form-control" name="_id" type="hidden" id="inputEditTenant_id"
+                                            value="placeholder" required>
+                                        <input class="form-control" name="currentRoom" type="hidden"
+                                            id="inputEditTenantRoom" value="placeholder" required>
+                                        <input class="form-control" name="property" type="hidden"
+                                            value="{{property._id}}" required>
+                                    </div>
+                                    <div class="md-form mb-4">
+                                        <label for="inputEditTenantLastName">Last name</label>
+                                        <input class="form-control" name="last_name" type="text"
+                                            id="inputEditTenantLastName" value="placeholder" required>
+                                    </div>
+                                </section>
+                            </div>
+                            <div>
+                                <header>
+                                    <h5>Contact information</h5>
+                                </header>
+                                <section>
+                                    <div class="md-form mt-3 mb-3">
+                                        <label for="inputEditTenantMobile">Mobile</label>
+                                        <input class="form-control" name="mobile" type="text" id="inputEditTenantMobile"
+                                            value="placeholder" required>
+                                    </div>
+                                    <div class="md-form mb-4">
+                                        <label for="inputEditTenantEmail">Email</label>
+                                        <input class="form-control" name="email" type="email" id="inputEditTenantEmail"
+                                            value="placeholder" required>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <header>
+                                <h5>Room information</h5>
+                            </header>
+                            <section>
+                                <div class="form-group mb-3">
+                                    <label class="select-label" for="selectEditTenantRoom">Room</label>
+                                    <div class="md-form">
+                                        <select class="form-control" name="room" id="selectEditTenantRoom"
+                                            value="placeholder" required>
+                                            {{#if rooms}}
+                                            {{#each rooms }}
+                                            <option value="{{_id}}" {{#if tenant}} class="occupied" disabled {{/if}}>
+                                                {{name}} -
+                                                {{catalog.name}} - Php{{catalog.rate}}
+                                            </option>
+                                            {{/each}}
+                                            {{else}}
+                                            <option value="" disabled><span>No rooms found.</span></option>
+                                            {{/if}}
+                                        </select>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-custom">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    $(document).on("hide.bs.modal", "#editTenantModal", function () {
+        let room = $('#inputEditTenantRoom').val();
+
+        $(`#selectEditTenantRoom .occupied`)
+            .prop({ 'disabled': true });
+        $(`#selectEditTenantRoom option[value=${room}]`)
+            .text($(`#selectEditTenantRoom option[value=${room}]`).text().slice(10))
+            .prop({ 'selected': false });
+    });
+</script>
+
+<!-- Delete tenant modal -->
+<form action="/api/tenant/delete" method="POST">
+    <div class="modal fade" id="deleteTenantModal" tabindex="-1" role="dialog" aria-labelledby="deleteTenantModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Are you sure you want to delete?</h4>
+                </div>
+                <div class="modal-body">
+                    <input class="form-control" name="_id" id="inputDeleteTenant_id" type="hidden" required>
+                    <input class="form-control" name="property" id="property" type="hidden" value="{{property._id}}"
+                        required>
+                    <div>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>First name</th>
+                                    <th>Last name</th>
+                                    <th>Mobile</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span id="spanDeleteTenantFirstName"></span></td>
+                                    <td><span id="spanDeleteTenantLastName"></span></td>
+                                    <td><span id="spanDeleteTenantMobile"></span></td>
+                                    <td><span id="spanDeleteTenantEmail"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Confirm delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{{/content}}
+
+{{#content "extra_js"}}
+
+<script>
+    // Edit and delete rooms
+    $(document).on("click", "#editRoomButton, #deleteRoomButton", function () {
+        let _id = $(this).data('id');
+        let name = $(this).data('name');
+        let floor = $(this).data('floor');
+        let catalogid = $(this).data('catalogid');
+        let catalogname = $(this).data('catalogname');
+        let catalograte = $(this).data('catalograte');
+
+        // Edit
+        $("#inputEditRoom_id").val(_id);
+        $("#inputEditRoomName").val(name);
+        $("#inputEditRoomFloor").val(floor);
+        $(`#selectEditRoomCatalog option[value=${catalogid}]`)
+            .prop('selected', true)
+            .text(catalogname + ' - ' + catalograte + ' (Current)')
+
+        // Delete
+        $("#inputDeleteRoom_id").val(_id);
+        $("div #spanDeleteRoomName").text(name);
+        $("div #spanDeleteRoomFloor").text(floor);
+        $("div #spanDeleteRoomCatalogName").text(catalogname);
+        $("div #spanDeleteRoomCatalogRate").text(catalograte);
+    });
+
+    // Edit and delete tenant
+    $(document).on("click", "#editTenantButton, #deleteTenantButton", function () {
+        let _id = $(this).data('id');
+        let first_name = $(this).data('firstname');
+        let last_name = $(this).data('lastname');
+        let mobile = $(this).data('mobile');
+        let email = $(this).data('email');
+        let room = $(this).data('room');
+
+        // Edit
+        $("#inputEditTenant_id").val(_id);
+        $("#inputEditTenantFirstName").val(first_name);
+        $("#inputEditTenantLastName").val(last_name);
+        $("#inputEditTenantMobile").val(mobile);
+        $("#inputEditTenantEmail").val(email);
+        $("#inputEditTenantRoom").val(room);
+
+        if ($(`#selectEditTenantRoom option[value=${room}]`).text().includes('Current')) {
+            $(`#selectEditTenantRoom option[value=${room}]`)
+                .prop({ 'disabled': false, 'selected': true });
+        } else {
+            $(`#selectEditTenantRoom option[value=${room}]`)
+                .prop({ 'disabled': false, 'selected': true })
+                .text('(Current) ' + $(`#selectEditTenantRoom option[value=${room}]`).text());
+        }
+
+        // Delete
+        $("#inputDeleteTenant_id").val(_id);
+        $("div #spanDeleteTenantFirstName").text(first_name);
+        $("div #spanDeleteTenantLastName").text(last_name);
+        $("div #spanDeleteTenantMobile").text(mobile);
+        $("div #spanDeleteTenantEmail").text(email);
+    });
+
+    // DataTables
+    $('#tableRoom').DataTable({
+        "dom": '<"d-flex justify-content-between align-items-center mb-3"Bf>t<"d-flex justify-content-between align-items-center mt-4"ip>',
+        "buttons": {
+            dom: {
+                button: {
+                    tag: 'button',
+                    className: 'btn'
+                }
+            },
+            buttons: [
+                {
+
+                    className: 'btn-custom m-0 z-depth-0',
+                    text: `Add room`,
+                    action: function (e, dt, node, config) {
+                        $('#addRoomModal').modal('show')
+                    }
+                }
+            ]
+        },
+        "pageLength": 10,
+        "order": [[0, "asc"]]
+    });
+
+    $('#tableTenant').DataTable({
+        "dom": '<"d-flex justify-content-between align-items-center mb-3"Bf>t<"d-flex justify-content-between align-items-center mt-4"ip>',
+        "buttons": {
+            dom: {
+                button: {
+                    tag: 'button',
+                    className: 'btn'
+                }
+            },
+            buttons: [
+                {
+
+                    className: 'btn-custom m-0 z-depth-0',
+                    text: `Add tenant`,
+                    action: function (e, dt, node, config) {
+                        $('#addTenantModal').modal('show')
+                    }
+                }
+            ]
+        },
+        "pageLength": 10
+    });
+
+    $('#tableBooking').DataTable({
+        "dom": '<"d-flex justify-content-end align-items-center mb-3"f>t<"d-flex justify-content-between align-items-center mt-4"ip>',
+        "pageLength": 10
+    });
+</script>
+
+{{/content}}
+
+{{/extend}}

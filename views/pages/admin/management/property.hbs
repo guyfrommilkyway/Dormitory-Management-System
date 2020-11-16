@@ -1,0 +1,197 @@
+{{#extend "layout-admin"}}
+
+{{#content "extra_css"}}
+{{/content}}
+
+{{#content "content"}}
+
+<!-- Content -->
+<main class="wrapper" id="management">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 p-0">
+                <table id="tableProperty" class="table table-borderless table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each properties}}
+                        <tr>
+                            <td>
+                                <a href="/property/{{_id}}">{{name}}</a>
+                            </td>
+                            <td>{{location}}</td>
+                            <td>
+                                <button type="button" class="btn p-3 z-depth-0" id="editPropertyButton"
+                                    data-id="{{_id}}" data-name="{{name}}" data-location="{{location}}"
+                                    data-toggle="modal" data-target="#editPropertyModal">
+                                    <img class="icon m-0" src="/images/icons/create-white-18dp.svg" alt="">
+                                </button>
+                                <button type="button" class="btn p-3 z-depth-0" id="deletePropertyButton"
+                                    data-id="{{_id}}" data-name="{{name}}" data-location="{{location}}"
+                                    data-toggle="modal" data-target="#deletePropertyModal">
+                                    <img class="icon m-0" src="/images/icons/delete_forever-white-18dp.svg" alt="">
+                                </button>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Add property modal -->
+<form action="/api/property/add" method="POST">
+    <div class="modal fade" id="addPropertyModal" tabindex="-1" role="dialog" aria-labelledby="addPropertyModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add property</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="md-form mt-2 mb-3">
+                        <label for="name">Name</label>
+                        <input class="form-control" name="name" id="name" type="text" required>
+                    </div>
+                    <div class="md-form mb-3">
+                        <label for="location">Location</label>
+                        <input class="form-control" name="location" id="location" type="text" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-custom">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Edit property modal -->
+<form action="/api/property/edit" method="POST">
+    <div class="modal fade" id="editPropertyModal" tabindex="-1" role="dialog" aria-labelledby="editPropertyModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit property</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="md-form mt-2 mb-3">
+                        <label for="inputEditPropertyName">Name</label>
+                        <input class="form-control" name="name" type="text" id="inputEditPropertyName"
+                            value="placeholder" required>
+                        <input class="form-control" name="_id" id="inputEditProperty_id" value="placeholder"
+                            type="hidden" required>
+                    </div>
+                    <div class="md-form mb-3">
+                        <label for="inputEditPropertyLocation">Location</label>
+                        <input class="form-control" name="location" type="text" id="inputEditPropertyLocation"
+                            value="placeholder" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-custom">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Delete property modal -->
+<form action="/api/property/delete" method="POST">
+    <div class="modal fade" id="deletePropertyModal" tabindex="-1" role="dialog" aria-labelledby="deletePropertyModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Are you sure you want to delete?</h4>
+                </div>
+                <div class="modal-body">
+                    <input class="form-control" name="_id" id="inputDeleteProperty_id" type="hidden" required>
+                    <div>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Location</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span id="spanPropertyName"></span></td>
+                                    <td><span id="spanPropertyLocation"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Confirm delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{{/content}}
+
+{{#content "extra_js"}}
+
+<script>
+    // Edit and delete property
+    $(document).on("click", "#editPropertyButton, #deletePropertyButton", function () {
+        let _id = $(this).data('id');
+        let name = $(this).data('name');
+        let location = $(this).data('location');
+
+        // Edit
+        $("#inputEditProperty_id").val(_id);
+        $("#inputEditPropertyName").val(name);
+        $("#inputEditPropertyLocation").val(location);
+
+        // Delete
+        $("#inputDeleteProperty_id").val(_id);
+        $("div #spanPropertyName").text(name);
+        $("div #spanPropertyLocation").text(location);
+
+        console.log(_id)
+    });
+
+    // DataTables
+    $('#tableProperty').DataTable({
+        "dom": '<"d-flex justify-content-between align-items-center mb-3"Bf>t<"d-flex justify-content-between align-items-center mt-4"ip>',
+        "buttons": {
+            dom: {
+                button: {
+                    tag: 'button',
+                    className: 'btn'
+                }
+            },
+            buttons: [
+                {
+
+                    className: 'btn-custom m-0 z-depth-0',
+                    text: `Add property`,
+                    action: function (e, dt, node, config) {
+                        $('#addPropertyModal').modal('show')
+                    }
+                },
+            ]
+        },
+        "pageLength": 5
+    });
+</script>
+
+{{/content}}
+
+{{/extend}}

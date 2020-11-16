@@ -1,0 +1,31 @@
+{{#extend "layout-admin"}}
+
+{{#content "extra_css"}}
+{{/content}}
+
+{{#content "content"}}
+
+<!-- Content -->
+<main id="dashboard">
+
+    {{#if properties}}
+    {{else}}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 p-0">
+                <div class="p-4 text-center">
+                    <span class="message">There are no properties registered under your account.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
+</main>
+
+{{/content}}
+
+{{#content "extra_js"}}
+{{/content}}
+
+{{/extend}}
