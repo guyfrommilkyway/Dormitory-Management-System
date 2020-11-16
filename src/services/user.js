@@ -6,9 +6,9 @@ const User = require('../models/user')
 
 // Username check
 const usernameCheck = async (userObject) => {
-    const userLogged = await User.findOne({ username: userObject.username })
+    const user = await User.findOne({ username: userObject.username })
 
-    if (userLogged) {
+    if (user) {
         throw new Error('Username is already taken.')
     }
 
@@ -17,9 +17,9 @@ const usernameCheck = async (userObject) => {
 
 // Email check
 const emailCheck = async (userObject) => {
-    const userLogged = await User.findOne({ email: userObject.email })
+    const user = await User.findOne({ email: userObject.email })
 
-    if (userLogged) {
+    if (user) {
         throw new Error('Username is already taken.')
     }
 
@@ -28,38 +28,38 @@ const emailCheck = async (userObject) => {
 
 // Sign up
 const userSignup = async (userObject) => {
-    const userLogged = new User(userObject)
+    const user = new User(userObject)
 
-    await userLogged.save()
+    await user.save()
 }
 
 // Log in
 const userLogin = async (userObject) => {
-    const userLogged = await User.findByCredentials(userObject.email, userObject.password)
-    const token = await userLogged.generateAuthToken()
+    const user = await User.findByCredentials(userObject.email, userObject.password)
+    const token = await user.generateAuthToken()
 
-    return { userLogged, token }
+    return { user, token }
 }
 
-// Update avatar
+// Update user avatar
 const userAvatarUpdate = async (userObject, fileObject) => {
     const img = fs.readFileSync(fileObject[0].path)
     const encoded_image = await sharp(img).resize({ width: 250, height: 250 }).png().toBuffer()
     const type = fileObject[0].mimetype
 
-    const userLogged = await User.findByIdAndUpdate(userObject._id, {
+    const userUpdated = await User.findByIdAndUpdate(userObject._id, {
         avatar: {
             data: encoded_image,
             contentType: type
         }
     }, { new: true })
 
-    return { userLogged }
+    return { userUpdated }
 }
 
-// Update info
+// Update user info
 const userInfoUpdate = async (userObject) => {
-    const userLogged = await User.findByIdAndUpdate(userObject._id, {
+    const userUpdated = await User.findByIdAndUpdate(userObject._id, {
         username: userObject.username,
         first_name: userObject.first_name,
         last_name: userObject.last_name,
@@ -67,7 +67,7 @@ const userInfoUpdate = async (userObject) => {
         email: userObject.email
     }, { new: true })
 
-    return { userLogged }
+    return { userUpdated }
 }
 
 // Update password
@@ -76,11 +76,11 @@ const userPasswordChange = async (userObject) => {
 
     if (userToFind) {
         const newPassword = await bcrypt.hash(userObject.newPassword, 8)
-        const userLogged = await User.findByIdAndUpdate(userObject._id, {
+        const user = await User.findByIdAndUpdate(userObject._id, {
             password: newPassword
         }, { new: true })
 
-        return { userLogged }
+        return { user }
     } else {
         throw new Error()
     }
@@ -89,13 +89,13 @@ const userPasswordChange = async (userObject) => {
 // Log out
 const userLogout = async (token) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET)
-    const userLogged = await User.findOne({ _id: decoded._id, 'tokens.token': token })
+    const user = await User.findOne({ _id: decoded._id, 'tokens.token': token })
 
-    userLogged.tokens = userLogged.tokens.filter((tokenFiltered) => {
+    user.tokens = user.tokens.filter((tokenFiltered) => {
         return tokenFiltered.token !== token
     })
 
-    await userLogged.save()
+    await user.save()
 }
 
 module.exports = {
