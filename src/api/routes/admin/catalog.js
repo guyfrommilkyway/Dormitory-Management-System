@@ -1,7 +1,7 @@
 const express = require('express')
 const authentication = require('../../middlewares/authentication')
 const { client, getAsync } = require('../../../loaders/redis')
-const { catalogNew, catalogEdit, catalogDelete } = require('../../../services/catalog')
+const { catalogNew, catalogList, catalogEdit, catalogDelete } = require('../../../services/catalog')
 
 const router = new express.Router()
 
@@ -15,6 +15,12 @@ router.post('/api/catalog/add', authentication, async (req, res) => {
 
         // Create new catalog
         await catalogNew(req.body, user)
+
+        // List catalogs
+        const { catalogs } = await catalogList(user)
+
+        // Update catalogs in cache
+        client.set('catalogs', [JSON.stringify(catalogs)])
 
         res.status(201)
             .redirect('/management/catalog')
@@ -35,6 +41,12 @@ router.post('/api/catalog/edit', authentication, async (req, res) => {
         // Update catalog
         await catalogEdit(req.body, user)
 
+        // List catalogs
+        const { catalogs } = await catalogList(user)
+
+        // Update catalogs in cache
+        client.set('catalogs', [JSON.stringify(catalogs)])
+
         res.status(201)
             .redirect('/management/catalog')
     } catch (e) {
@@ -53,6 +65,12 @@ router.post('/api/catalog/delete', authentication, async (req, res) => {
 
         // Delete catalog
         await catalogDelete(req.body, user)
+
+        // List catalogs
+        const { catalogs } = await catalogList(user)
+
+        // Update catalogs in cache
+        client.set('catalogs', [JSON.stringify(catalogs)])
 
         res.status(201)
             .redirect('/management/catalog')
