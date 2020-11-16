@@ -5,7 +5,7 @@ const { tenantNew, tenantInfoUpdate, tenantDelete } = require('../../../services
 const router = new express.Router()
 
 // Create new tenant
-router.post('/user/property/tenant/add', authentication, async (req, res) => {
+router.post('/api/tenant/add', authentication, async (req, res) => {
     try {
         // Create new tenant
         await tenantNew(req.body)
@@ -22,7 +22,7 @@ router.post('/user/property/tenant/add', authentication, async (req, res) => {
 })
 
 // Update tenant info
-router.post('/user/property/tenant/edit', authentication, async (req, res) => {
+router.post('/api/tenant/edit', authentication, async (req, res) => {
     try {
         // Update tenant
         await tenantInfoUpdate(req.body)
@@ -39,7 +39,7 @@ router.post('/user/property/tenant/edit', authentication, async (req, res) => {
 })
 
 // Delete tenant
-router.post('/user/property/tenant/delete', authentication, async (req, res) => {
+router.post('/api/tenant/delete', authentication, async (req, res) => {
     try {
         // Delete tenant
         await tenantDelete(req.body)

@@ -6,7 +6,7 @@ const { catalogNew, catalogEdit, catalogDelete } = require('../../../services/ca
 const router = new express.Router()
 
 // Create new catalog
-router.post('/user/catalog/add', authentication, async (req, res) => {
+router.post('/api/catalog/add', authentication, async (req, res) => {
     try {
         // Get user in cache
         async () => { client.get('user') }
@@ -25,7 +25,7 @@ router.post('/user/catalog/add', authentication, async (req, res) => {
 })
 
 // Update catalog info
-router.post('/user/catalog/edit', authentication, async (req, res) => {
+router.post('/api/catalog/edit', authentication, async (req, res) => {
     try {
         // Get user in cache
         async () => { client.get('user') }
@@ -44,7 +44,7 @@ router.post('/user/catalog/edit', authentication, async (req, res) => {
 })
 
 // Delete catalog
-router.post('/user/catalog/delete', authentication, async (req, res) => {
+router.post('/api/catalog/delete', authentication, async (req, res) => {
     try {
         // Get user in cache
         async () => { client.get('user') }
