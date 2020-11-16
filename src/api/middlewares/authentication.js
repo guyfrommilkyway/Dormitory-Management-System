@@ -1,5 +1,5 @@
-const { client, getAsync } = require('../../loaders/redis')
 const jwt = require('jsonwebtoken')
+const { client, getAsync } = require('../../loaders/redis')
 const User = require('../../models/user')
 
 const authentication = async (req, res, next) => {
@@ -9,15 +9,15 @@ const authentication = async (req, res, next) => {
 
         if (token != '') {
             const decoded = jwt.verify(token, process.env.JWT_SECRET)
-            const userLogged = await User.findOne({ _id: decoded._id, 'tokens.token': token })
+            const user = await User.findOne({ _id: decoded._id, 'tokens.token': token })
 
-            if (!userLogged) {
-                throw new Error()
+            if (!user) {
+                throw new Error('Error: Authentication failed.')
             }
 
             next()
         } else {
-            throw new Error()
+            throw new Error('Error: Authentication failed.')
         }
     } catch (e) {
         console.log('Error: Authentication failed.')
