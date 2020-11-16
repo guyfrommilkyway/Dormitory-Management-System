@@ -73,13 +73,6 @@ body {
   background-color: #ffeab2 !important;
 }
 
-/* Icon */
-
-.icon {
-  width: 1.2em;
-  margin-right: 1rem;
-}
-
 /* Buttons */
 
 .btn-custom {
@@ -152,8 +145,10 @@ body {
 }
 
 .upload .form-group label {
-  max-width: 20rem;
-  max-height: 20rem;
+  display: flex;
+  flex-direction: column;
+  min-width: 20rem;
+  min-height: 20rem;
   margin: 0 0 1rem 0;
   cursor: pointer;
 }
@@ -181,10 +176,10 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-  top: -46.38px;
+  top: -48px;
   width: 20rem;
-  padding: 0.2rem 0.5rem;
-  background: rgba(0, 0, 0, 0.5);
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .upload .form-group label .upload_text img {

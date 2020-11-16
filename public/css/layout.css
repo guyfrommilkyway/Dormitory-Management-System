@@ -66,6 +66,11 @@
   color: #ffffff;
   font-size: 15px;
   font-weight: 300;
+  border-right: 4px solid #1b2432;
+}
+
+#main-content-admin #sidebar .navbar-nav .nav-item .nav-link:hover {
+  border-right: 4px solid #ffeab2;
 }
 
 #main-content-admin #sidebar .navbar-nav .nav-item .nav-link svg {
