@@ -24,6 +24,7 @@ const tenantList = async (propertyId) => {
     })
 
     const tenants = await Tenant.find({ room: { $in: roomsFiltered } })
+        .lean()
         .populate('room')
         .exec()
 
@@ -54,6 +55,7 @@ const tenantInfoUpdate = async (tenantObject) => {
 // Delete tenant
 const tenantDelete = async (tenantObject) => {
     await Tenant.findOneAndDelete({ _id: tenantObject._id })
+        .lean()
 }
 
 module.exports = {

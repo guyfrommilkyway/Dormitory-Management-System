@@ -42,6 +42,7 @@ const roomEdit = async (roomObject) => {
 // Delete room
 const roomDelete = async (roomObject) => {
     await Room.findOneAndDelete({ _id: roomObject._id, property: roomObject.property })
+        .lean()
 }
 
 
