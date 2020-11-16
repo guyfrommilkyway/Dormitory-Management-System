@@ -14,7 +14,9 @@ const tenantNew = async (tenantObject) => {
 
 // List tenants
 const tenantList = async (propertyId) => {
-    const rooms = await Room.find({ property: propertyId }).select('_id')
+    const rooms = await Room.find({ property: propertyId })
+        .select('_id')
+        .lean()
 
     let roomsFiltered = []
     rooms.forEach(function (item) {

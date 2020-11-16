@@ -20,6 +20,7 @@ const roomNew = async (roomObject) => {
 // List rooms
 const roomList = async (propertyId) => {
     const rooms = await Room.find({ property: propertyId })
+        .lean()
         .populate('catalog')
         .populate('tenant')
         .exec()
