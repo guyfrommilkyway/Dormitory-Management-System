@@ -237,3 +237,27 @@ body {
 .table tbody td {
   vertical-align: middle;
 }
+
+/* Modal */
+
+form .modal .modal-dialog .modal-content {
+  border-radius: 3px;
+  background: none;
+}
+
+form .modal .modal-dialog .modal-content .modal-header {
+  padding: 1rem 1.5rem;
+  background-color: #1b2432;
+  border: none;
+}
+
+form .modal .modal-dialog .modal-content .modal-body {
+  padding: 1rem 1.5rem;
+  background-color: #47556b;
+}
+
+form .modal .modal-dialog .modal-content .modal-footer {
+  padding: 0.5rem 1rem;
+  background-color: #1b2432;
+  border: none;
+}
