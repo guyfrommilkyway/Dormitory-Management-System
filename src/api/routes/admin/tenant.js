@@ -17,7 +17,7 @@ router.post('/api/tenant/add', authentication, async (req, res) => {
             .redirect(`/property/${id}`)
     } catch (e) {
         res.status(400)
-            .send()
+            .redirect(`/property/${id}`)
     }
 })
 
@@ -33,8 +33,9 @@ router.post('/api/tenant/edit', authentication, async (req, res) => {
         res.status(200)
             .redirect(`/property/${id}`)
     } catch (e) {
+        console.log(e)
         res.status(400)
-            .send()
+            .redirect(`/property/${id}`)
     }
 })
 
@@ -51,7 +52,7 @@ router.post('/api/tenant/delete', authentication, async (req, res) => {
             .redirect(`/property/${id}`)
     } catch (e) {
         res.status(400)
-            .send()
+            .redirect(`/property/${id}`)
     }
 })
 

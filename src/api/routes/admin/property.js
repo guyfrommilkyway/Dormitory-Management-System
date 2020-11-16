@@ -31,7 +31,7 @@ router.post('/api/property/add', authentication, async (req, res) => {
             .redirect('/management/property')
     } catch (e) {
         res.status(400)
-            .send()
+            .redirect('/management/property')
     }
 })
 
@@ -56,7 +56,7 @@ router.post('/api/property/edit', authentication, async (req, res) => {
             .redirect('/management/property')
     } catch (e) {
         res.status(400)
-            .send()
+            .redirect('/management/property')
     }
 })
 
@@ -81,7 +81,7 @@ router.post('/api/property/delete', authentication, async (req, res) => {
             .redirect('/management/property')
     } catch (e) {
         res.status(400)
-            .send()
+            .redirect('/management/property')
     }
 })
 
