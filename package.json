@@ -35,10 +35,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/almertampus/Property-Management-System.git"
+    "url": "git+https://github.com/guyfrommilkyway/Property-Management-System.git"
   },
   "bugs": {
-    "url": "https://github.com/almertampus/Property-Management-System/issues"
+    "url": "https://github.com/guyfrommilkyway/Property-Management-System/issues"
   },
-  "homepage": "https://github.com/almertampus/Property-Management-System#readme"
+  "homepage": "https://github.com/guyfrommilkyway/Property-Management-System#readme"
 }
