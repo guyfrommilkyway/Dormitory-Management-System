@@ -27,6 +27,12 @@ propertySchema.virtual('rooms', {
     foreignField: 'owner'
 })
 
+propertySchema.virtual('tenants', {
+    ref: 'Tenant',
+    localField: '_id',
+    foreignField: 'property'
+})
+
 
 const Property = mongoose.model('Property', propertySchema)
 
