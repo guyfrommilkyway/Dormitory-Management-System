@@ -41,6 +41,11 @@ const tenantSchema = new mongoose.Schema({
         required: true,
         ref: 'Room'
     },
+    property: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Property'
+    },
 }, {
     timestamps: true
 })
