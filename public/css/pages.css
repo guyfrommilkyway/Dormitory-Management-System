@@ -120,10 +120,10 @@
 
 /* Edit profile & change password */
 
-#profile .upload-header {
+#profile .profile-info-header {
   position: absolute;
-  top: -1.6rem;
-  width: 85%;
+  top: -1.25rem;
+  width: 90%;
   margin: 0 auto;
   padding: 1rem;
   color: #000000;
@@ -131,62 +131,42 @@
   border-radius: 3px;
 }
 
-#profile .upload-wrapper {
-  width: 100%;
-  background-color: #1b2432;
-  border-radius: 3px;
-}
-
-#profile .upload-wrapper .upload {
+#profile .profile-photo-wrapper {
   position: absolute;
-  top: -2.8rem;
+  top: -3.25rem;
   right: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 8.2rem;
-  height: 8.2rem;
   margin: 0 auto;
   background-color: #1b2432;
-  border: 2px solid #1b2432;
-  border-radius: 4.1rem;
+  border-radius: 4.5rem;
 }
 
-#profile .upload-wrapper .upload #profile-avatar {
-  width: 8rem;
-  height: 8rem;
-  border-radius: 4rem;
+#profile .profile-photo-wrapper #profile-photo {
+  width: 9rem;
+  height: 9rem;
+  background-image: url("../img/default-profile-photo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  border-radius: 4.5rem;
 }
 
-#profile .upload-wrapper .upload a {
+#profile .profile-photo-wrapper .profile-photo-button {
   position: absolute;
-  top: 6rem;
-  right: 1rem;
+  top: 7rem;
+  right: 1.25rem;
   display: flex;
   justify-content: center;
-  padding: 0.4rem;
+  padding: 0.25rem;
   background-color: rgba(71, 85, 107, 0.75);
   border-radius: 6px;
 }
 
-#profile .upload-wrapper .upload a img {
+#profile .profile-photo-wrapper a img {
   width: 1rem;
-}
-
-#profile .info-header {
-  position: absolute;
-  top: -1.6rem;
-  width: 95%;
-  margin: 0 auto;
-  padding: 1rem;
-  color: #000000;
-  background-color: #ffeab2;
-  border-radius: 3px;
-}
-
-#profile .info-header span {
-  font-size: 1.2rem;
 }
 
 #profile form {
@@ -204,6 +184,59 @@
   margin-top: 2rem;
 }
 
-#profile form .btn-wrapper button {
-  margin-top: 1rem;
+.upload {
+  display: flex;
+  justify-content: center;
+}
+
+.upload label {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem auto;
+  cursor: pointer;
+}
+
+.upload label .upload-profile-photo {
+  display: flex;
+  align-items: flex-end;
+  width: 15rem;
+  height: 15rem;
+  margin: 0 auto;
+  background-color: #1b2432;
+  background-position: center;
+  background-size: cover;
+}
+
+.upload label #current_profile_photo {
+  background-image: url("../img/default-profile-photo.png");
+}
+
+.upload label #uploaded_profile_photo {
+  display: none;
+}
+
+.upload label #upload-profile-photo-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.upload label #upload-profile-photo-info img {
+  width: 40px;
+  height: 40px;
+  margin-right: 0.3rem;
+}
+
+.upload input[type="file"] {
+  width: 0.1px;
+  height: 0.1px;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
