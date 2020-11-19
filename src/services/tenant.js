@@ -14,16 +14,7 @@ const tenantNew = async (tenantObject) => {
 
 // List tenants
 const tenantList = async (propertyId) => {
-    const rooms = await Room.find({ property: propertyId })
-        .select('_id')
-        .lean()
-
-    let roomsFiltered = []
-    rooms.forEach(function (item) {
-        roomsFiltered.push(item._id)
-    })
-
-    const tenants = await Tenant.find({ room: { $in: roomsFiltered } })
+    const tenants = await Tenant.find({ property: propertyId })
         .lean()
         .populate('room')
         .exec()
@@ -56,6 +47,10 @@ const tenantInfoUpdate = async (tenantObject) => {
 const tenantDelete = async (tenantObject) => {
     await Tenant.findOneAndDelete({ _id: tenantObject._id })
         .lean()
+
+    await Room.findByIdAndUpdate(tenantObject.room, {
+        tenant: null
+    })
 }
 
 module.exports = {
