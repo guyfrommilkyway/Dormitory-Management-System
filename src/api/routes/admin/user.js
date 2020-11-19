@@ -55,7 +55,7 @@ router.post('/api/user/signup', async (req, res) => {
         await userSignup(req.body)
 
         res.status(201)
-            .redirect('/signup')
+            .redirect('/')
     } catch (e) {
         res.status(400)
             .redirect('/signup')
