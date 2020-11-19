@@ -30,7 +30,7 @@ This project was a partial fulfillment for the requirements of BSCOE-ELEC2 - Dat
 - Clone this repository and install the dependencies:
 
 ```bash
-$ git clone https://github.com/almertampus/Property-Management-System.git
+$ git clone https://github.com/guyfrommilkyway/Property-Management-System.git
 $ cd Property-Management-System
 $ npm install
 ```
@@ -48,9 +48,9 @@ Property-Management-System
 
 ```
 PORT=<your port>
-REDIS_HOST=127.0.0.1
+REDIS_HOST=<localhost>
 REDIS_PORT=<your redis port>
-MONGODB_URL=mongodb://localhost:27017/<your database name>
+MONGODB_URL=mongodb://localhost:<mongodb port>/<your database name>
 JWT_SECRET=<some random strings>
 ```
 
@@ -61,10 +61,10 @@ PORT=3000
 REDIS_HOST=127.0.0.1
 REDIS_PORT=6380
 MONGODB_URL=mongodb://localhost:27017/property-management-system
-JWT_SECRET=WCiYjAMZBZyAjccYMgEZCeWAqR
+JWT_SECRET=nIqxawqgGFcYwIUeCyeWCaQcxREFiV
 ```
 
-- To run the application in the terminal.
+- Run the application in the terminal.
 
 ```
 $ npm run dev
@@ -78,7 +78,7 @@ Otherwise, it will show an error message.
 
 ```
 
-- Finally, you can use the application by going to:
+- Finally, you can view and use the application by going to:
 
 ```
 localhost:<your port>
@@ -92,29 +92,29 @@ localhost:3000
 
 ### Database
 
-- Create a folder that will be used to store your database.
-- To run mongoDB in the terminal.
+- Create a folder that will be used as a database storage.
+- Run mongoDB in the terminal.
 
 ```
-mongod --dbpath <your database folder path>
+$ mongod --dbpath <your database folder path>
 ```
 
 ```
 Example:
 
-mongod --dbpath ~/Documents/mongodb-data
+$ mongod --dbpath ~/Documents/mongodb-database
 ```
 
 ### Redis
 
-- To run redis-server in the terminal:
+- Run redis-server in the terminal:
 
 ```
-redis-server --port <your port>
+$ redis-server --port <your port>
 ```
 
 ```
 Example:
 
-redis-server --port 6380
+$ redis-server --port 6380
 ```
