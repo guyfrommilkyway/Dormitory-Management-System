@@ -14,10 +14,13 @@ router.post('/api/room/add', authentication, async (req, res) => {
         const id = req.body.property
 
         res.status(201)
-            .redirect(`/property/${id}`)
+            .redirect(`/property/${id}` + '#room')
     } catch (e) {
+        // Assign id
+        const id = req.body.property
+
         res.status(400)
-            .redirect(`/property/${id}`)
+            .redirect(`/property/${id}` + '#room')
     }
 })
 
@@ -31,10 +34,13 @@ router.post('/api/room/edit', authentication, async (req, res) => {
         const id = req.body.property
 
         res.status(200)
-            .redirect(`/property/${id}`)
+            .redirect(`/property/${id}` + '#room')
     } catch (e) {
+        // Assign id
+        const id = req.body.property
+
         res.status(400)
-            .redirect(`/property/${id}`)
+            .redirect(`/property/${id}` + '#room')
     }
 })
 
@@ -48,10 +54,13 @@ router.post('/api/room/delete', authentication, async (req, res) => {
         const id = req.body.property
 
         res.status(200)
-            .redirect(`/property/${id}`)
+            .redirect(`/property/${id}` + '#room')
     } catch (e) {
+        // Assign id
+        const id = req.body.property
+
         res.status(400)
-            .redirect(`/property/${id}`)
+            .redirect(`/property/${id}` + '#room')
     }
 })
 
