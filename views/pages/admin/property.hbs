@@ -98,7 +98,7 @@
                                     <th>Floor</th>
                                     <th>Catalog</th>
                                     <th>Rate</th>
-                                    <th>Tenant</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -109,15 +109,17 @@
                                     <td>{{floor}}</td>
                                     <td>{{catalog.name}}</td>
                                     <td>{{catalog.rate}}</td>
-                                    {{#if tenant}}
                                     <td>
-                                        <span>{{tenant.first_name}} {{tenant.last_name}}</span>
+                                        {{#if tenant}}
+                                        <div class="red darken-2 rounded-pill p-3 w-100 text-center text-uppercase">
+                                            Occupied
+                                        </div>
+                                        {{else}}
+                                        <div class="green darken-3 rounded-pill p-3 w-100 text-center text-uppercase">
+                                            Vacant
+                                        </div>
+                                        {{/if}}
                                     </td>
-                                    {{else}}
-                                    <td>
-                                        <span>Available</span>
-                                    </td>
-                                    {{/if}}
                                     <td>
                                         <button class="btn p-2 m-0 z-depth-0" id="editRoomButton" data-id="{{_id}}"
                                             data-name="{{name}}" data-floor="{{floor}}" data-catalog="{{catalog}}"
@@ -554,18 +556,6 @@
     </div>
 </form>
 
-<script>
-    $(document).on("hide.bs.modal", "#editTenantModal", function () {
-        let room = $('#inputEditTenantRoom').val();
-
-        $(`#selectEditTenantRoom .occupied`)
-            .prop({ 'disabled': true });
-        $(`#selectEditTenantRoom option[value=${room}]`)
-            .text($(`#selectEditTenantRoom option[value=${room}]`).text().slice(10))
-            .prop({ 'selected': false });
-    });
-</script>
-
 <!-- Delete tenant modal -->
 <form action="/api/tenant/delete" method="POST">
     <div class="modal fade" id="deleteTenantModal" tabindex="-1" role="dialog" aria-labelledby="deleteTenantModal"
@@ -577,7 +567,7 @@
                 </div>
                 <div class="modal-body">
                     <input class="form-control" name="_id" id="inputDeleteTenant_id" type="hidden" required>
-                    <input class="form-control" name="property" id="property" type="hidden" value="{{property._id}}"
+                    <input class="form-control" name="room" id="property" type="hidden" value="{{property._id}}"
                         required>
                     <div>
                         <table class="table table-sm">
@@ -587,6 +577,7 @@
                                     <th>Last name</th>
                                     <th>Mobile</th>
                                     <th>Email</th>
+                                    <th>Room</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -614,6 +605,23 @@
 {{#content "extra_js"}}
 
 <script>
+    // Change active tabs based on hash
+    $(document).ready(function () {
+        if (location.hash === '#tenant') {
+            $('.active').removeClass('active');
+            $('.show').removeClass('show');
+            $('#tenant-tab').addClass('active');
+            $('#tenant').addClass('show active');
+            history.replaceState(null, null, ' ');
+        } else if (location.hash === '#room') {
+            $('.active').removeClass('active');
+            $('.show').removeClass('show');
+            $('#room-tab').addClass('active');
+            $('#room').addClass('show active');
+            history.replaceState(null, null, ' ');
+        }
+    });
+
     // Edit and delete rooms
     $(document).on("click", "#editRoomButton, #deleteRoomButton", function () {
         let _id = $(this).data('id');
@@ -662,7 +670,7 @@
         } else {
             $(`#selectEditTenantRoom option[value=${room}]`)
                 .prop({ 'disabled': false, 'selected': true })
-                .text('(Current) ' + $(`#selectEditTenantRoom option[value=${room}]`).text());
+                .text($(`#selectEditTenantRoom option[value=${room}]`).text() + ' (Current)');
         }
 
         // Delete
@@ -671,6 +679,18 @@
         $("div #spanDeleteTenantLastName").text(last_name);
         $("div #spanDeleteTenantMobile").text(mobile);
         $("div #spanDeleteTenantEmail").text(email);
+    });
+
+    // Delete the 'current' on modal close
+    $(document).on("hide.bs.modal", "#editTenantModal", function () {
+        let room = $('#inputEditTenantRoom').val();
+        let len = room.length
+
+        $(`#selectEditTenantRoom .occupied`)
+            .prop({ 'disabled': true });
+        $(`#selectEditTenantRoom option[value=${room}]`)
+            .text($(`#selectEditTenantRoom option[value=${room}]`).text().slice(len, -10))
+            .prop({ 'selected': false });
     });
 
     // DataTables
