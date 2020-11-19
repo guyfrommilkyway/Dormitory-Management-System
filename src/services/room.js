@@ -41,8 +41,15 @@ const roomEdit = async (roomObject) => {
 
 // Delete room
 const roomDelete = async (roomObject) => {
-    await Room.findOneAndDelete({ _id: roomObject._id, property: roomObject.property })
+    const room = await Room.findById(roomObject._id)
         .lean()
+
+    if (room.tenant) {
+        throw new Error('Error: Room deletion failed.')
+    } else {
+        await Room.findOneAndDelete({ _id: roomObject._id, property: roomObject.property })
+            .lean()
+    }
 }
 
 
