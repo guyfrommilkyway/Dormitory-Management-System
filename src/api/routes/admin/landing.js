@@ -244,18 +244,4 @@ module.exports = async (app, handlebars) => {
         res.status(200)
             .send(output)
     })
-
-    // 404
-    app.get('*', async (req, res) => {
-        // Compile template
-        const template = await handlebars.compile(fs.readFileSync(path.join(__dirname, '../../../../views/pages/admin/404.hbs'), 'utf8'));
-
-        // Render template
-        const output = template({
-            title: 'Page not found'
-        });
-
-        res.status(200)
-            .send(output)
-    })
 }
