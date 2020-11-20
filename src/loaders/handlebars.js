@@ -13,4 +13,7 @@ module.exports = async (handlebars, layouts) => {
 
     // Admin layout
     handlebars.registerPartial('layout-admin', fs.readFileSync(path.join(__dirname, '../../views/layouts/admin/layout-admin.hbs'), 'utf8'));
+
+    // Client layout
+    handlebars.registerPartial('layout', fs.readFileSync(path.join(__dirname, '../../views/layouts/client/layout.hbs'), 'utf8'));
 }
