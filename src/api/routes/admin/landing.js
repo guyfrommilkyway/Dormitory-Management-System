@@ -4,6 +4,7 @@ const authentication = require('../../middlewares/authentication')
 const { client, getAsync } = require('../../../loaders/redis')
 const { roomList } = require('../../../services/room')
 const { tenantList } = require('../../../services/tenant')
+const { bookingList } = require('../../../services/booking')
 
 module.exports = async (app, handlebars) => {
 
@@ -104,6 +105,8 @@ module.exports = async (app, handlebars) => {
         // Query tenants in specific property
         const { tenants } = await tenantList(req.params.id)
 
+        const { bookings } = await bookingList(req.params.id)
+
         // Compile template
         const template = await handlebars.compile(fs.readFileSync(path.join(__dirname, '../../../../views/pages/admin/property.hbs'), 'utf8'));
 
@@ -116,7 +119,8 @@ module.exports = async (app, handlebars) => {
             catalogs,
             property,
             rooms,
-            tenants
+            tenants,
+            bookings
         });
 
         res.status(200)
