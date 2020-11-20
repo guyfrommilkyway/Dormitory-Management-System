@@ -13,6 +13,11 @@ const bookingSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    birthday: {
+        type: String,
+        required: true,
+        trim: true
+    },
     mobile: {
         type: String,
         min: 11,
@@ -31,6 +36,11 @@ const bookingSchema = new mongoose.Schema({
                 throw new Error('Please provide a valid email address')
             }
         }
+    },
+    address: {
+        type: String,
+        required: true,
+        trim: true
     },
     property: {
         type: mongoose.Schema.Types.ObjectId,
