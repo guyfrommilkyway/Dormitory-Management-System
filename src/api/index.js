@@ -5,6 +5,7 @@ const propertyRouter = require('./routes/admin/property')
 const catalogRouter = require('./routes/admin/catalog')
 const roomRouter = require('./routes/admin/room')
 const tenantRouter = require('./routes/admin/tenant')
+const bookingRouter = require('./routes/admin/booking')
 
 module.exports = async (app, handlebars) => {
     // Landing endpoints
@@ -17,6 +18,7 @@ module.exports = async (app, handlebars) => {
     app.use(catalogRouter)
     app.use(roomRouter)
     app.use(tenantRouter)
+    app.use(bookingRouter)
 
     // 404 page
     app.get('*', async (req, res) => {
