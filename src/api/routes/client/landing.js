@@ -1,16 +1,21 @@
 const fs = require('fs')
 const path = require('path')
+const { propertyView } = require('../../../services/property')
 
 module.exports = async (app, handlebars) => {
 
     // Booking
     app.get('/booking', async (req, res) => {
+
+        const property = await propertyView(req.query.id)
+
         // Compile template
         const template = await handlebars.compile(fs.readFileSync(path.join(__dirname, '../../../../views/pages/client/booking/booking.hbs'), 'utf8'));
 
         // Render template
         const output = template({
-            title: 'Booking'
+            title: 'Booking',
+            property
         });
 
         res.status(200)
