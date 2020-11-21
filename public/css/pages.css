@@ -5,6 +5,8 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  color: #ffffff;
+  background-color: #47556b;
 }
 
 #login form {
@@ -239,4 +241,113 @@
   overflow: hidden;
   position: absolute;
   z-index: -1;
+}
+
+/* Client */
+
+/* Booking */
+
+#booking {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #e6e8e6;
+}
+
+#booking form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2rem 0 !important;
+}
+
+#booking .col-md-8 {
+  margin: 0 0 2rem 0;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+#booking form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#booking .nav.nav-tabs {
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+#booking .nav.nav-tabs .nav-item {
+  margin: 0;
+  padding: 0;
+}
+
+#booking .nav.nav-tabs .nav-item .nav-link {
+  margin: 0;
+  padding: 1rem 1.25rem;
+  color: #191919;
+  font-size: 1rem;
+  text-align: center;
+  border: none;
+  border-radius: 0 !important;
+}
+
+#booking .nav.nav-tabs .nav-item .nav-link.active {
+  font-weight: bold;
+  background: none !important;
+  border-bottom: 3px solid #f15025;
+  border-radius: 0;
+}
+
+#booking .tab-content {
+  width: 100%;
+  padding: 0 !important;
+}
+
+#booking .tab-content .tab-pane {
+  padding: 1rem;
+}
+
+#booking form .form-group {
+  width: 95%;
+}
+
+#booking form .form-group label {
+  font-size: 0.9rem;
+}
+
+#booking form .form-group .form-control:focus {
+  border-color: #f15025;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(241, 80, 37, 0.25);
+}
+
+@media screen and (max-width: 768px) {
+  #booking form .col-md-8 header {
+    padding-bottom: 0.5rem !important;
+  }
+
+  #booking form {
+    padding: 0 !important;
+  }
+
+  #booking form .form-row .col-md-6 {
+    margin-top: 1rem;
+  }
+
+  #booking form .form-group {
+    width: 100%;
+  }
 }
