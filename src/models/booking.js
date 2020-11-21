@@ -37,11 +37,6 @@ const bookingSchema = new mongoose.Schema({
             }
         }
     },
-    address: {
-        type: String,
-        required: true,
-        trim: true
-    },
     property: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
