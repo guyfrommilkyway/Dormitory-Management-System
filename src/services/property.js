@@ -1,16 +1,26 @@
+const { v4: uuidv4 } = require('uuid')
 const Property = require('../models/property')
 
 // Create property
 const propertyNew = async (propertyObject, userObject) => {
     const property = new Property({
         ...propertyObject,
+        bookingId: uuidv4(),
         owner: userObject._id
     })
 
     await property.save()
 }
 
-// List properties
+// List all properties
+const propertyListAll = async () => {
+    const properties = await Property.find({})
+        .lean()
+
+    return { properties }
+}
+
+// List all properties of specific user
 const propertyList = async (userObject) => {
     const properties = await Property.find({ owner: userObject._id })
 
@@ -18,8 +28,8 @@ const propertyList = async (userObject) => {
 }
 
 // View property
-const propertyView = async (propertyId, userObject) => {
-    const property = await Property.findOne({ _id: propertyId, owner: userObject._id })
+const propertyView = async (propertyBookingId) => {
+    const property = await Property.findOne({ bookingId: propertyBookingId })
 
     return { property }
 }
@@ -41,6 +51,7 @@ const propertyDelete = async (propertyObject, userObject) => {
 
 module.exports = {
     propertyNew,
+    propertyListAll,
     propertyList,
     propertyView,
     propertyEdit,
