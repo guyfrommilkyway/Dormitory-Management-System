@@ -25,8 +25,8 @@
                     </div>
                     <ul class="nav nav-tabs ml-auto" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="room-tab" data-toggle="tab" href="#room" role="tab"
-                                aria-controls="room" aria-selected="true">
+                            <a class="nav-link active" id="room-tab" data-toggle="tab" href="#room-panel" role="tab"
+                                aria-controls="room-panel" aria-selected="true">
                                 <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
                                     width="18px" height="18px">
                                     <path d="M0 0h24v24H0V0z" fill="none" />
@@ -36,8 +36,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="tenant-tab" data-toggle="tab" href="#tenant" role="tab"
-                                aria-controls="tenant" aria-selected="false">
+                            <a class="nav-link" id="tenant-tab" data-toggle="tab" href="#tenant-panel" role="tab"
+                                aria-controls="tenant-panel" aria-selected="false">
                                 <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
                                     width="18px" height="18px">
                                     <path d="M0 0h24v24H0V0z" fill="none" />
@@ -48,8 +48,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="booking-tab" data-toggle="tab" href="#booking" role="tab"
-                                aria-controls="booking" aria-selected="false">
+                            <a class="nav-link" id="booking-tab" data-toggle="tab" href="#booking-panel" role="tab"
+                                aria-controls="booking-panel" aria-selected="false">
                                 <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
                                     viewBox="0 0 24 24" fill="white" width="18px" height="18px">
                                     <g>
@@ -89,7 +89,7 @@
                     </ul>
                 </nav>
                 <section class="tab-content" id="myTabContent">
-                    <div class="tab-pane show active" id="room" role="tabpanel" aria-labelledby="room-tab">
+                    <div class="tab-pane show active" id="room-panel" role="tabpanel" aria-labelledby="room-tab">
                         <div id="demo-html"></div>
                         <table id="tableRoom" class="table table-responsive-lg table-borderless table-striped">
                             <thead>
@@ -151,7 +151,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="tab-pane fade" id="tenant" role="tabpanel" aria-labelledby="tenant-tab">
+                    <div class="tab-pane fade" id="tenant-panel" role="tabpanel" aria-labelledby="tenant-tab">
                         <table id="tableTenant" class="table table-responsive-lg table-borderless table-striped">
                             <thead>
                                 <tr>
@@ -200,7 +200,12 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="tab-pane fade" id="booking" role="tabpanel" aria-labelledby="booking-tab">
+                    <div class="tab-pane fade" id="booking-panel" role="tabpanel" aria-labelledby="booking-tab">
+                        <div>
+                            <span>
+                                <a href="/booking?id={{property.bookingId}}" target="_blank">Booking Id</a>
+                            </span>
+                        </div>
                         <table id="tableBooking" class="table table-responsive-lg table-borderless table-striped">
                             <thead>
                                 <tr>
@@ -209,7 +214,6 @@
                                     <th>Birthday</th>
                                     <th>Mobile</th>
                                     <th>Email</th>
-                                    <th>Address</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -221,7 +225,6 @@
                                     <td>{{birthday}}</td>
                                     <td>{{mobile}}</td>
                                     <td>{{email}}</td>
-                                    <td>{{address}}</td>
                                     <td>
                                         <button type="button" class="btn p-2 m-0 z-depth-0">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
@@ -245,7 +248,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                    <div class="tab-pane fade" id="settings-panel" role="tabpanel" aria-labelledby="settings-tab">
 
                     </div>
                 </section>
@@ -445,7 +448,6 @@
                                         <select class="form-control" name="room" id="room" required>
                                             {{#if rooms}}
                                             {{#each rooms }}
-                                            }}
                                             <option value="{{_id}}" {{#if tenant}} disabled {{/if}}>{{name}} -
                                                 {{catalog.name}} - Php{{catalog.rate}}
                                             </option>
