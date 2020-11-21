@@ -105,6 +105,7 @@ module.exports = async (app, handlebars) => {
         // Query tenants in specific property
         const { tenants } = await tenantList(req.params.id)
 
+        // Query bookings in specific property
         const { bookings } = await bookingList(req.params.id)
 
         // Compile template
