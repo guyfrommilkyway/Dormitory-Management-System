@@ -36,6 +36,7 @@ const userSignup = async (userObject) => {
 // Log in
 const userLogin = async (userObject) => {
     const user = await User.findByCredentials(userObject.email, userObject.password)
+        .lean()
     const token = await user.generateAuthToken()
 
     return { user, token }
@@ -52,7 +53,7 @@ const userAvatarUpdate = async (userObject, fileObject) => {
             data: encoded_image,
             contentType: type
         }
-    }, { new: true })
+    }, { new: true }).lean()
 
     return { userUpdated }
 }
@@ -73,6 +74,7 @@ const userInfoUpdate = async (userObject) => {
 // Update password
 const userPasswordChange = async (userObject) => {
     const userToFind = await User.findByCredentials(userObject.email, userObject.currentPassword)
+        .lean()
 
     if (userToFind) {
         const newPassword = await bcrypt.hash(userObject.newPassword, 8)

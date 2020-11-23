@@ -52,6 +52,7 @@ router.post('/api/user/signup/email_check', async (req, res) => {
 // Sign up
 router.post('/api/user/signup', async (req, res) => {
     try {
+        // Sign up
         await userSignup(req.body)
 
         res.status(201)

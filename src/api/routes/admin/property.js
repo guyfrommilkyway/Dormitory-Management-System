@@ -19,7 +19,7 @@ router.post('/api/property/add', authentication, async (req, res) => {
         const user = JSON.parse(userCached)
 
         // Create new property
-        await propertyNew(req.body, user)
+        await propertyNew(req.body, user._id)
 
         // List all properties
         const { properties } = await propertyList(user)
@@ -47,7 +47,7 @@ router.post('/api/property/edit', authentication, async (req, res) => {
         await propertyEdit(req.body)
 
         // List all properties
-        const { properties } = await propertyList(user)
+        const { properties } = await propertyList(user._id)
 
         // Update properties in cache
         client.set('properties', [JSON.stringify(properties)])
@@ -69,10 +69,10 @@ router.post('/api/property/delete', authentication, async (req, res) => {
         const user = JSON.parse(userCached)
 
         // Delete property
-        await propertyDelete(req.body, user)
+        await propertyDelete(req.body, user._id)
 
         // List all properties
-        const { properties } = await propertyList(user)
+        const { properties } = await propertyList(user._id)
 
         // Update properties in cache
         client.set('properties', [JSON.stringify(properties)])

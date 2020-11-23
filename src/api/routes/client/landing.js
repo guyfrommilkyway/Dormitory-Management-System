@@ -1,13 +1,17 @@
 const fs = require('fs')
 const path = require('path')
 const { propertyView } = require('../../../services/property')
+const { catalogList } = require('../../../services/catalog')
 
 module.exports = async (app, handlebars) => {
 
     // Booking
     app.get('/booking', async (req, res) => {
+        // Query property
+        const { property } = await propertyView(req.query.id)
 
-        const property = await propertyView(req.query.id)
+        // Query catalogs
+        const { catalogs } = await catalogList(property.owner)
 
         // Compile template
         const template = await handlebars.compile(fs.readFileSync(path.join(__dirname, '../../../../views/pages/client/booking/booking.hbs'), 'utf8'));
@@ -15,7 +19,8 @@ module.exports = async (app, handlebars) => {
         // Render template
         const output = template({
             title: 'Booking',
-            property
+            property,
+            catalogs
         });
 
         res.status(200)

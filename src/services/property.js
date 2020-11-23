@@ -2,11 +2,11 @@ const { v4: uuidv4 } = require('uuid')
 const Property = require('../models/property')
 
 // Create property
-const propertyNew = async (propertyObject, userObject) => {
+const propertyNew = async (propertyObject, _id) => {
     const property = new Property({
         ...propertyObject,
         bookingId: uuidv4(),
-        owner: userObject._id
+        owner: _id
     })
 
     await property.save()
@@ -21,15 +21,17 @@ const propertyListAll = async () => {
 }
 
 // List all properties of specific user
-const propertyList = async (userObject) => {
-    const properties = await Property.find({ owner: userObject._id })
+const propertyList = async (_id) => {
+    const properties = await Property.find({ owner: _id })
+        .lean()
 
     return { properties }
 }
 
 // View property
-const propertyView = async (propertyBookingId) => {
-    const property = await Property.findOne({ bookingId: propertyBookingId })
+const propertyView = async (_id) => {
+    const property = await Property.findOne({ bookingId: _id })
+        .lean()
 
     return { property }
 }
@@ -39,14 +41,14 @@ const propertyEdit = async (propertyObject) => {
     const property = await Property.findByIdAndUpdate(propertyObject._id, {
         name: propertyObject.name,
         location: propertyObject.location
-    })
+    }).lean()
 
     return { property }
 }
 
 // Delete property info
-const propertyDelete = async (propertyObject, userObject) => {
-    await Property.findOneAndDelete({ _id: propertyObject._id, owner: userObject._id })
+const propertyDelete = async (propertyObject, _id) => {
+    await Property.findOneAndDelete({ _id: propertyObject._id, owner: _id })
 }
 
 module.exports = {

@@ -13,8 +13,8 @@ const tenantNew = async (tenantObject) => {
 }
 
 // List tenants
-const tenantList = async (propertyId) => {
-    const tenants = await Tenant.find({ property: propertyId })
+const tenantList = async (_id) => {
+    const tenants = await Tenant.find({ property: _id })
         .lean()
         .populate('room')
         .exec()

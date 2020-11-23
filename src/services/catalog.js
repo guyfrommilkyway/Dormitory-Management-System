@@ -1,18 +1,19 @@
 const Catalog = require('../models/catalog')
 
 // Create new catalog
-const catalogNew = async (catalogObject, userObject) => {
+const catalogNew = async (catalogObject, _id) => {
     const catalog = new Catalog({
         ...catalogObject,
-        owner: userObject._id
+        owner: _id
     })
 
     await catalog.save()
 }
 
 // List catalog
-const catalogList = async (userObject) => {
-    const catalogs = await Catalog.find({ owner: userObject._id })
+const catalogList = async (_id) => {
+    const catalogs = await Catalog.find({ owner: _id })
+        .lean()
 
     return { catalogs }
 }
@@ -22,14 +23,14 @@ const catalogEdit = async (catalogObject) => {
     const catalog = await Catalog.findByIdAndUpdate(catalogObject._id, {
         name: catalogObject.name,
         rate: catalogObject.rate
-    })
+    }).lean()
 
     return { catalog }
 }
 
 // Delete catalog info
-const catalogDelete = async (catalogObject, userObject) => {
-    await Catalog.findOneAndDelete({ _id: catalogObject._id, owner: userObject._id })
+const catalogDelete = async (catalogObject, _id) => {
+    await Catalog.findOneAndDelete({ _id: catalogObject._id, owner: _id })
 }
 
 

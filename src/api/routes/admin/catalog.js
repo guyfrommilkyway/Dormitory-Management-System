@@ -14,10 +14,10 @@ router.post('/api/catalog/add', authentication, async (req, res) => {
         const user = JSON.parse(userCache)
 
         // Create new catalog
-        await catalogNew(req.body, user)
+        await catalogNew(req.body, user._id)
 
         // List catalogs
-        const { catalogs } = await catalogList(user)
+        const { catalogs } = await catalogList(user._id)
 
         // Update catalogs in cache
         client.set('catalogs', [JSON.stringify(catalogs)])
@@ -42,7 +42,7 @@ router.post('/api/catalog/edit', authentication, async (req, res) => {
         await catalogEdit(req.body, user)
 
         // List catalogs
-        const { catalogs } = await catalogList(user)
+        const { catalogs } = await catalogList(user._id)
 
         // Update catalogs in cache
         client.set('catalogs', [JSON.stringify(catalogs)])
@@ -64,10 +64,10 @@ router.post('/api/catalog/delete', authentication, async (req, res) => {
         const user = JSON.parse(userCache)
 
         // Delete catalog
-        await catalogDelete(req.body, user)
+        await catalogDelete(req.body, user._id)
 
         // List catalogs
-        const { catalogs } = await catalogList(user)
+        const { catalogs } = await catalogList(user._id)
 
         // Update catalogs in cache
         client.set('catalogs', [JSON.stringify(catalogs)])

@@ -18,8 +18,8 @@ const roomNew = async (roomObject) => {
 }
 
 // List rooms
-const roomList = async (propertyId) => {
-    const rooms = await Room.find({ property: propertyId })
+const roomList = async (_id) => {
+    const rooms = await Room.find({ property: _id })
         .lean()
         .populate('catalog')
         .populate('tenant')
@@ -34,7 +34,7 @@ const roomEdit = async (roomObject) => {
         name: roomObject.name,
         floor: roomObject.floor,
         catalog: roomObject.catalog
-    }, { new: true })
+    }, { new: true }).lean()
 
     return { room }
 }
@@ -48,7 +48,6 @@ const roomDelete = async (roomObject) => {
         throw new Error('Error: Room deletion failed.')
     } else {
         await Room.findOneAndDelete({ _id: roomObject._id, property: roomObject.property })
-            .lean()
     }
 }
 
