@@ -37,6 +37,11 @@ const bookingSchema = new mongoose.Schema({
             }
         }
     },
+    catalog: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Catalog'
+    },
     property: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
