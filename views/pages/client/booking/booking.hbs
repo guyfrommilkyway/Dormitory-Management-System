@@ -1,54 +1,121 @@
 {{#extend "layout"}}
 
 {{#content "extra_css"}}
+<style>
+    body {
+        background-color: #F4F5F4;
+    }
+</style>
 {{/content}}
 
 {{#content "content"}}
 
 <main id="booking">
     <div class="container-fluid">
-        <div class="row justify-content-center">
+        <div class="row">
             <form action="/api/booking/{{property.bookingId}}" method="post">
+                <div class="col-md-1"></div>
                 <!-- First tab -->
-                <div class="col-md-8 rounded">
-                    <header class="m-0 p-4">
-                        <h3 class="mb-0">Personal information</h3>
+                <div class="col-md-5 rounded" id="f_tab">
+                    <header class="mb-3">
+                        <h4 class="mb-0 font-weight-bold">Personal information</h4>
                     </header>
-                    <div class="form-row m-0 pr-4 pb-4 pl-4">
-                        <div class="col-md-6 p-0">
-                            <h5 class="mb-3">May we know about you...</h5>
-                            <div class="form-group mb-2">
-                                <label for="">First name</label>
-                                <input class="form-control" name="first_name" id="first_name" type="text" required>
-                            </div>
-                            <div class="form-group mb-2">
-                                <label for="">Last name</label>
-                                <input class="form-control" name="last_name" id="last_name" type="text" required>
-                            </div>
-                            <div class="form-group mb-2">
-                                <label for="">Birthday</label>
-                                <input class="form-control" name="birthday" id="birthday" type="date" required>
-                            </div>
+                    <section class="">
+                        <h5 class="mb-3 font-weight-normal">May we know about you?</h5>
+                        <div class="form-group mb-2">
+                            <label for="">First name</label>
+                            <input class="form-control" name="first_name" id="first_name" type="text">
                         </div>
-                        <div class="col-md-6 p-0">
-                            <h5 class="mb-3">How can we contact you?</h5>
-                            <div class="form-group mb-2">
-                                <label for="">Email</label>
-                                <input class="form-control" name="email" id="email" type="email" required>
-                            </div>
-                            <div class="form-group mb-2">
-                                <label for="">Mobile</label>
-                                <input class="form-control" name="mobile" id="mobile" type="number" required>
-                            </div>
+                        <div class="form-group mb-2">
+                            <label for="">Last name</label>
+                            <input class="form-control" name="last_name" id="last_name" type="text">
                         </div>
-                    </div>
-                    <div class="d-flex justify-content-end p-4">
-                        <button class="btn btn-dark m-0"> Submit</button>
-                    </div>
+                        <div class="form-group mb-2">
+                            <label for="">Birthday</label>
+                            <input class="form-control" name="birthday" id="birthday" type="date">
+                        </div>
+                        <h5 class="mt-4 mb-3 font-weight-normal">How can we contact you?</h5>
+                        <div class="form-group mb-2">
+                            <label for="">Email</label>
+                            <input class="form-control" name="email" id="email" type="email">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="">Mobile</label>
+                            <input class="form-control" name="mobile" id="mobile" type="number">
+                        </div>
+                        <button type="button" class="btn mt-4 m-0" id="f_tab_btn">Next</button>
+                    </section>
                 </div>
                 <!-- Second tab -->
-                <div class="col-md-8 rounded">
-
+                <div class="col-md-5 rounded d-none" id="s_tab">
+                    <header class="mb-3">
+                        <h4 class="mb-0 font-weight-bold">Room information</h4>
+                    </header>
+                    <section class="d-flex flex-column">
+                        <h5 class="mb-3 font-weight-normal">Choose your preferred room type</h5>
+                        {{#if catalogs}}
+                        {{#each catalogs}}
+                        <div class="form-group mb-0">
+                            <label class="radio-label" for="{{name}}" id="label-{{_id}}" onclick="radioSelected(this)"
+                                data-name="{{name}}" data-rate="{{rate}}">
+                                <div class="card mb-2 rounded-0 z-depth-0">
+                                    <div class="card-body">
+                                        <h4 class="card-title">{{name}}</h4>
+                                        <p class="card-text mb-0">P{{rate}}/month</p>
+                                        <input type="radio" name="catalog" id="{{name}}" value="{{_id}}">
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        {{/each}}
+                        {{/if}}
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="button" class="btn m-0 mr-3" id="s_tab_btn_prev">Previous</button>
+                            <button type="button" class="btn m-0" id="s_tab_btn_rev">Review</button>
+                        </div>
+                    </section>
+                </div>
+                <!-- Third tab -->
+                <div class="col-md-5 rounded d-none" id="t_tab">
+                    <header class="mb-3">
+                        <h4 class="mb-0 font-weight-bold">Review</h4>
+                    </header>
+                    <section class="d-flex flex-column">
+                        <h5 class="mb-3 font-weight-normal">Personal information</h5>
+                        <table class="table table-sm table-borderless">
+                            <tbody class="text-black-50">
+                                <tr>
+                                    <td>Name</td>
+                                    <td id="td_name"></td>
+                                </tr>
+                                <tr>
+                                    <td>Birthday</td>
+                                    <td id="td_birthday"></td>
+                                </tr>
+                                <tr>
+                                    <td>Mobile</td>
+                                    <td id="td_mobile"></td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td id="td_email"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h5 class="mb-3 font-weight-normal">Booking details</h5>
+                        <div class="">
+                            <div class="card mb-2 rounded-0 z-depth-0 bg-white">
+                                <div class="card-body">
+                                    <h4 class="card-title" id="review_catalog_name"></h4>
+                                    <p class="card-text mb-0" id="review_catalog_rate"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="button" class="btn m-0 mr-3" id="t_tab_btn_prev">Previous</button>
+                            <button type="submit" class="btn m-0" id="t_tab_btn_next">Submit</button>
+                        </div>
+                    </section>
                 </div>
             </form>
         </div>
@@ -58,6 +125,70 @@
 {{/content}}
 
 {{#content "extra_js"}}
+<script>
+    $('document').ready(function () {
+
+        $('#f_tab_btn').on('click', function () {
+            $('#f_tab')
+                .addClass('d-none')
+            $('#s_tab')
+                .removeClass('d-none')
+        })
+
+        $('#s_tab_btn_prev').on('click', function () {
+            $('#s_tab')
+                .addClass('d-none')
+            $('#f_tab')
+                .removeClass('d-none')
+        })
+
+        $('#s_tab_btn_rev').on('click', function () {
+            $('#s_tab')
+                .addClass('d-none')
+            $('#t_tab')
+                .removeClass('d-none')
+
+
+            let name = $('#first_name').val() + ' ' + $('#last_name').val()
+            let birthday = $('#birthday').val()
+            let mobile = $('#mobile').val()
+            let email = $('#email').val()
+
+            $('#td_name').text(name)
+            $('#td_birthday').text(birthday)
+            $('#td_mobile').text(mobile)
+            $('#td_email').text(email)
+        })
+
+        $('#t_tab_btn_prev').on('click', function () {
+            $('#t_tab')
+                .addClass('d-none')
+            $('#s_tab')
+                .removeClass('d-none')
+        })
+    })
+
+    function radioSelected(element) {
+        let selected = element.id
+
+        $('.radio-label')
+            .attr('style', 'background-color: #ffffff;')
+        $('#' + selected)
+            .attr('style', 'color: #ffffff !important;background-color: #17457e;')
+
+        let catalog_name = $(element).attr('data-name')
+        let catalog_rate = $(element).attr('data-rate')
+
+        console.log(catalog_name)
+
+        $('#review_catalog_name')
+            .text(catalog_name)
+        $('#review_catalog_rate')
+            .text('P' + catalog_rate + '/month')
+    }
+</script>
+
+
 {{/content}}
 
 {{/extend}}
