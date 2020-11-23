@@ -10,7 +10,7 @@ router.post('/api/booking/:id', async (req, res) => {
         await bookingNew(req.body, req.params.id)
 
         res.status(201)
-            .redirect('/booking')
+            .redirect('/booking/success')
     } catch (e) {
         res.status(400)
             .redirect('/booking')
