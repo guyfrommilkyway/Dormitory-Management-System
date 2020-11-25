@@ -169,3 +169,17 @@ form .modal .modal-dialog .modal-content .modal-footer {
   background-color: #1b2432;
   border: none;
 }
+
+/* Error message */
+
+.msg {
+  font-size: 0.8rem;
+}
+
+.err_msg {
+  color: red;
+}
+
+.suc_msg {
+  color: green;
+}

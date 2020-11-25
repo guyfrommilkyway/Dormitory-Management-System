@@ -40,18 +40,6 @@
   color: #ffeab2;
 }
 
-#login .msg {
-  font-size: 0.8rem;
-}
-
-#login .err_msg {
-  color: red;
-}
-
-#login .suc_msg {
-  color: green;
-}
-
 /* Dashboard */
 
 .message {
@@ -269,12 +257,13 @@
 #booking form .col-md-5 {
   min-width: 340px;
   max-width: 520px;
+  margin-left: 4rem;
   padding: 2rem 3rem;
   background-color: #a8dadc;
 }
 
 #booking form section .form-group label {
-  margin: 0;
+  font-size: 0.8rem;
 }
 
 #booking form section .form-group .form-control {
@@ -319,11 +308,8 @@
     justify-content: center;
   }
 
-  #booking form .col-md-1 {
-    display: none;
-  }
-
   #booking form .col-md-5 {
+    margin: auto;
     padding: 2rem;
   }
 }
