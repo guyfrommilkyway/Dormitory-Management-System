@@ -38,44 +38,47 @@ module.exports = async (app, handlebars) => {
 
     // Log in
     app.get('/', async (req, res) => {
-        // Compile template
-        const template = await handlebars.compile(fs.readFileSync(path.join(__dirname, '../../../../views/pages/admin/login.hbs'), 'utf8'));
+        // Check if a token is provided in the server
+        async () => { client.get('token') }
+        const token = await getAsync('token')
 
-        // Render template
-        const output = template({
-            title: 'Log in',
-            message: req.cookies.message
-        });
+        if (!token) {
+            // Compile template
+            const template = await handlebars.compile(fs.readFileSync(path.join(__dirname, '../../../../views/pages/admin/login.hbs'), 'utf8'));
 
-        res.status(200)
-            .send(output)
-    })
+            // Render template
+            const output = template({
+                title: 'Log in',
+                message: req.cookies.message
+            });
 
-    // Dashboard
-    app.get('/dashboard', authentication, async (req, res) => {
-        // Get user in cache
-        async () => { client.get('user') }
-        const userCache = await getAsync('user')
-        const user = JSON.parse(userCache)
+            res.status(200)
+                .send(output)
+        } else {
+            // Get user in cache
+            async () => { client.get('user') }
+            const userCache = await getAsync('user')
+            const user = JSON.parse(userCache)
 
-        // Get properties in cache
-        async () => { client.get('properties') }
-        const propertiesCache = await getAsync('properties')
-        const properties = JSON.parse(propertiesCache)
+            // Get properties in cache
+            async () => { client.get('properties') }
+            const propertiesCache = await getAsync('properties')
+            const properties = JSON.parse(propertiesCache)
 
-        // Compile template
-        const template = await handlebars.compile(fs.readFileSync(path.join(__dirname, '../../../../views/pages/admin/dashboard.hbs'), 'utf8'));
+            // Compile template
+            const template = await handlebars.compile(fs.readFileSync(path.join(__dirname, '../../../../views/pages/admin/dashboard.hbs'), 'utf8'));
 
-        // Render template
-        const output = template({
-            title: 'Dashboard',
-            header: 'Dashboard',
-            user,
-            properties
-        });
+            // Render template
+            const output = template({
+                title: 'Dashboard',
+                header: 'Dashboard',
+                user,
+                properties
+            });
 
-        res.status(200)
-            .send(output)
+            res.status(200)
+                .send(output)
+        }
     })
 
     // Property

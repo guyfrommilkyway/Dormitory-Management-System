@@ -85,7 +85,7 @@ router.post('/api/user/login', async (req, res) => {
         client.set('catalogs', [JSON.stringify(catalogs)])
 
         res.status(202)
-            .redirect('/dashboard')
+            .redirect('/')
     } catch (e) {
         res.status(401)
             .cookie('message', e.message, {
