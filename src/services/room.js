@@ -34,7 +34,7 @@ const roomEdit = async (roomObject) => {
         name: roomObject.name,
         floor: roomObject.floor,
         catalog: roomObject.catalog
-    }, { new: true }).lean()
+    }, { new: true })
 
     return { room }
 }

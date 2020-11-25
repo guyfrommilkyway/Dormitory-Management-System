@@ -23,7 +23,7 @@ const catalogEdit = async (catalogObject) => {
     const catalog = await Catalog.findByIdAndUpdate(catalogObject._id, {
         name: catalogObject.name,
         rate: catalogObject.rate
-    }).lean()
+    })
 
     return { catalog }
 }

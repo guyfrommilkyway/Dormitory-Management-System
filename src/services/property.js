@@ -41,7 +41,7 @@ const propertyEdit = async (propertyObject) => {
     const property = await Property.findByIdAndUpdate(propertyObject._id, {
         name: propertyObject.name,
         location: propertyObject.location
-    }).lean()
+    })
 
     return { property }
 }
