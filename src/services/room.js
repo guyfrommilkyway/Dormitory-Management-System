@@ -9,6 +9,7 @@ const roomNew = async (roomObject) => {
             catalog: roomObject.catalog,
             name: Date.now(),
             floor: roomObject.floor,
+            tenant: null,
             property: roomObject.property
         })
 
