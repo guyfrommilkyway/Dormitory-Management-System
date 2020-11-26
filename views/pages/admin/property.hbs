@@ -1,35 +1,20 @@
 {{#extend "layout-admin"}}
 
 {{#content "extra_css"}}
-
-<style>
-    .table.table-sm tbody td {
-        padding: 0.5rem 0.5rem 0.5rem 1.5rem;
-    }
-
-    .table.table-sm tbody .td-title {
-        background-color: #1B2432;
-    }
-
-    .table.table-sm tbody .td-content {
-        padding-left: 1.5rem;
-        background-color: #242F42;
-    }
-</style>
 {{/content}}
 
 {{#content "content"}}
 
 <!-- Content -->
-<main class="wrapper" id="property">
+<main class="wrapper" id="property" style="padding-bottom: 12rem;">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 p-0">
                 <nav class="navbar" id="property-topbar">
-                    <div class="mb-2">
+                    <div class="mb-4">
                         <h3>{{property.name}}</h3>
                         <div class="d-flex align-items-center">
-                            <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
+                            <svg class="mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red"
                                 width="18px" height="18px">
                                 <path d="M0 0h24v24H0V0z" fill="none" />
                                 <path
@@ -40,7 +25,18 @@
                     </div>
                     <ul class="nav nav-tabs ml-auto" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="room-tab" data-toggle="tab" href="#room-panel" role="tab"
+                            <a class="nav-link active" id="dashboard-tab" data-toggle="tab" href="#dashboard-panel"
+                                role="tab" aria-controls="dashboard" aria-selected="true">
+                                <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
+                                    width="18px" height="18px">
+                                    <path d="M0 0h24v24H0V0z" fill="none" />
+                                    <path d="M19 19V4h-4V3H5v16H3v2h12V6h2v15h4v-2h-2zm-6 0H7V5h6v14zm-3-8h2v2h-2z" />
+                                </svg>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="room-tab" data-toggle="tab" href="#room-panel" role="tab"
                                 aria-controls="room" aria-selected="true">
                                 <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
                                     width="18px" height="18px">
@@ -104,12 +100,101 @@
                     </ul>
                 </nav>
                 <section class="tab-content" id="myTabContent">
-                    <div class="tab-pane show active" id="room-panel" role="tabpanel" aria-labelledby="room-tab">
-                        <div id="demo-html"></div>
+                    <div class="tab-pane show active" id="dashboard-panel" role="tabpanel"
+                        aria-labelledby="dashboard-tab">
+                        <div class="row justify-content-center mt-5">
+                            <div class="col-md-4 mb-5">
+                                <div class="property-card rounded">
+                                    <div class="svg-container rounded">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
+                                            width="88px" height="88px">
+                                            <path d="M0 0h24v24H0V0z" fill="none" />
+                                            <path
+                                                d="M19 19V4h-4V3H5v16H3v2h12V6h2v15h4v-2h-2zm-6 0H7V5h6v14zm-3-8h2v2h-2z" />
+                                        </svg>
+                                    </div>
+                                    <div class="property-card-body">
+                                        <span class="property-card-title"><span
+                                                class="green-text">{{vacant_rooms}}</span><span
+                                                style="font-size: 20px;">/{{total_rooms}}</span></span>
+                                        <span class="property-card-content mt-1">Vacant
+                                            Room(s)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-5">
+                                <div class="property-card rounded">
+                                    <div class="svg-container rounded">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
+                                            width="88px" height="88px">
+                                            <path d="M0 0h24v24H0V0z" fill="none" />
+                                            <path
+                                                d="M19 19V4h-4V3H5v16H3v2h12V6h2v15h4v-2h-2zm-6 0H7V5h6v14zm-3-8h2v2h-2z" />
+                                        </svg>
+                                    </div>
+                                    <div class="property-card-body">
+                                        <span class="property-card-title">
+                                            <span class="red-text">{{occupied_rooms}}</span><span
+                                                style="font-size: 20px;">/{{total_rooms}}</span></span>
+                                        <span class="property-card-content mt-1">Occupied Room(s)
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-5">
+                                <div class="property-card rounded">
+                                    <div class="svg-container rounded">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
+                                            width="88px" height="88px">
+                                            <path d="M0 0h24v24H0z" fill="none" />
+                                            <path
+                                                d="M3 5v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.11 0-2 .9-2 2zm12 4c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm-9 8c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1H6v-1z" />
+                                        </svg>
+                                    </div>
+                                    <div class="property-card-body">
+                                        <span class="property-card-title">{{total_tenants}}</span>
+                                        <span class="property-card-content  mt-3">Tenant(s)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-5">
+                                <div class="property-card rounded">
+                                    <div class="svg-container rounded">
+                                        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
+                                            viewBox="0 0 24 24" fill="white" width="88px" height="88px">
+                                            <g>
+                                                <rect fill="none" height="24" width="24" />
+                                            </g>
+                                            <g>
+                                                <g />
+                                                <g>
+                                                    <path
+                                                        d="M21,5c-1.11-0.35-2.33-0.5-3.5-0.5c-1.95,0-4.05,0.4-5.5,1.5c-1.45-1.1-3.55-1.5-5.5-1.5S2.45,4.9,1,6v14.65 c0,0.25,0.25,0.5,0.5,0.5c0.1,0,0.15-0.05,0.25-0.05C3.1,20.45,5.05,20,6.5,20c1.95,0,4.05,0.4,5.5,1.5c1.35-0.85,3.8-1.5,5.5-1.5 c1.65,0,3.35,0.3,4.75,1.05c0.1,0.05,0.15,0.05,0.25,0.05c0.25,0,0.5-0.25,0.5-0.5V6C22.4,5.55,21.75,5.25,21,5z M21,18.5 c-1.1-0.35-2.3-0.5-3.5-0.5c-1.7,0-4.15,0.65-5.5,1.5V8c1.35-0.85,3.8-1.5,5.5-1.5c1.2,0,2.4,0.15,3.5,0.5V18.5z" />
+                                                    <g>
+                                                        <path
+                                                            d="M17.5,10.5c0.88,0,1.73,0.09,2.5,0.26V9.24C19.21,9.09,18.36,9,17.5,9c-1.7,0-3.24,0.29-4.5,0.83v1.66 C14.13,10.85,15.7,10.5,17.5,10.5z" />
+                                                        <path
+                                                            d="M13,12.49v1.66c1.13-0.64,2.7-0.99,4.5-0.99c0.88,0,1.73,0.09,2.5,0.26V11.9c-0.79-0.15-1.64-0.24-2.5-0.24 C15.8,11.66,14.26,11.96,13,12.49z" />
+                                                        <path
+                                                            d="M17.5,14.33c-1.7,0-3.24,0.29-4.5,0.83v1.66c1.13-0.64,2.7-0.99,4.5-0.99c0.88,0,1.73,0.09,2.5,0.26v-1.52 C19.21,14.41,18.36,14.33,17.5,14.33z" />
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="property-card-body">
+                                        <span class="property-card-title">{{total_bookings}}</span>
+                                        <span class="property-card-content mt-3">Booking(s)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="room-panel" role="tabpanel" aria-labelledby="room-tab">
                         <table id="tableRoom" class="table table-responsive-lg table-borderless table-striped">
                             <thead>
                                 <tr>
-                                    <th>Room</th>
+                                    <th style="min-width: 120px;">Room ID</th>
                                     <th>Floor</th>
                                     <th>Catalog</th>
                                     <th>Rate</th>
@@ -176,7 +261,7 @@
                                     <th>Name</th>
                                     <th>Mobile</th>
                                     <th>Email</th>
-                                    <th>Room</th>
+                                    <th>Room ID</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -268,374 +353,377 @@
                         </table>
                     </div>
                     <div class="tab-pane fade" id="settings-panel" role="tabpanel" aria-labelledby="settings-tab">
-
                     </div>
                 </section>
             </div>
         </div>
     </div>
-</main>
 
-<!-- Add room modal -->
-<form action="/api/room/add" method="POST">
-    <div class="modal fade" id="addRoomModal" tabindex="-1" role="dialog" aria-labelledby="addRoomModal"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Add room</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group mt-2 mb-3">
-                        <label class="select-label" for="catalog">Catalog</label>
-                        <div class="md-form">
-                            <select class="form-control" name="catalog" id="catalog" required>
-                                {{#if catalogs}}
-                                {{#each catalogs}}
-                                <option value="{{_id}}">{{name}} - Php{{rate}}</option>
-                                {{/each}}
-                                {{else}}
-                                <option value="" disabled><span>No catalogs found.</span></option>
-                                {{/if}}
-                            </select>
+    <!-- Add room modal -->
+    <form action="/api/room/add" method="POST">
+        <div class="modal fade" id="addRoomModal" tabindex="-1" role="dialog" aria-labelledby="addRoomModal"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add room</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group mt-2 mb-3">
+                            <label class="select-label" for="catalog">Catalog</label>
+                            <div class="md-form">
+                                <select class="form-control" name="catalog" id="catalog" required>
+                                    {{#if catalogs}}
+                                    {{#each catalogs}}
+                                    <option value="{{_id}}">{{name}} - Php{{rate}}</option>
+                                    {{/each}}
+                                    {{else}}
+                                    <option value="" disabled><span>No catalogs found.</span></option>
+                                    {{/if}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="md-form mb-3">
+                            <label for="number">Number of rooms</label>
+                            <input class="form-control" name="number" type="number" id="number" required>
+                        </div>
+                        <div class="md-form mb-3">
+                            <label for="floor">Floor</label>
+                            <input class="form-control" name="floor" type="number" id="floor" required>
+                            <input class="form-control" name="property" type="hidden" value="{{property._id}}" required>
                         </div>
                     </div>
-                    <div class="md-form mb-3">
-                        <label for="number">Number of rooms</label>
-                        <input class="form-control" name="number" type="number" id="number" required>
+                    <div class="modal-footer">
+                        <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-custom">Add</button>
                     </div>
-                    <div class="md-form mb-3">
-                        <label for="floor">Floor</label>
-                        <input class="form-control" name="floor" type="number" id="floor" required>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Edit room modal -->
+    <form action="/api/room/edit" method="POST">
+        <div class="modal fade" id="editRoomModal" tabindex="-1" role="dialog" aria-labelledby="editRoomModal"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit room</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="md-form mt-2 mb-3">
+                            <label for="inputEditRoomName">Name</label>
+                            <input class="form-control" name="name" type="text" id="inputEditRoomName"
+                                value="placeholder" required>
+                            <input class="form-control" name="_id" id="inputEditRoom_id" type="hidden" required>
+                            <input class="form-control" name="property" id="property" value="{{property._id}}"
+                                type="hidden" required>
+                        </div>
+                        <div class="md-form mb-3">
+                            <label for="inputEditRoomFloor">Floor</label>
+                            <input class="form-control" name="floor" type="text" id="inputEditRoomFloor"
+                                value="placeholder" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="select-label" for="selectEditRoomCatalog">Catalog</label>
+                            <div class="md-form">
+                                <select class="form-control" name="catalog" id="selectEditRoomCatalog" required>
+                                    {{#if catalogs}}
+                                    {{#each catalogs}}
+                                    <option value="{{_id}}">{{name}} - Php{{rate}}</option>
+                                    {{/each}}
+                                    {{else}}
+                                    <option value="" disabled><span>No catalogs found.</span></option>
+                                    {{/if}}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-custom">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Delete room modal -->
+    <form action="/api/room/delete" id="roomDeletionForm" method="POST">
+        <div class="modal fade" id="deleteRoomModal" tabindex="-1" role="dialog" aria-labelledby="deleteRoomModal"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Delete Room</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input class="form-control" name="_id" id="inputDeleteRoom_id" type="hidden" required>
+                        <input class="form-control" name="property" id="property" type="hidden" value="{{property._id}}"
+                            required>
+                        <span class="font-weight-normal">Room information</span>
+                        <table class="table table-sm table-borderless mt-2">
+                            <tbody>
+                                <tr>
+                                    <td class="td-title">Room</td>
+                                    <td class="td-content"><span id="spanDeleteRoomName"></span></td>
+                                </tr>
+                                <tr>
+                                    <td class="td-title">Floor</td>
+                                    <td class="td-content"><span id="spanDeleteRoomFloor"></span></td>
+                                </tr>
+                                <tr>
+                                    <td class="td-title">Catalog</td>
+                                    <td class="td-content"><span id="spanDeleteRoomCatalogName"></span></td>
+                                </tr>
+                                <tr>
+                                    <td class="td-title">Rate</td>
+                                    <td class="td-content"><span id="spanDeleteRoomCatalogRate"></span></td>
+                                </tr>
+                                <tr>
+                                    <td class="td-title">Status</td>
+                                    <td class="td-content"><span id="spanDeleteRoomStatus"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="mt-4">
+                            <span class="font-weight-normal" style="font-size: 14px;">Note:</span>
+                            <p class="mt-2 pt-3 pr-2 pb-3 pl-2 rounded border border-white" style="font-size: 14px;">
+                                Rooms that are currently <span
+                                    class="red-text font-weight-bold font-italic">occupied</span>
+                                cannot be
+                                deleted.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn red darken-3 text-white">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Add tenant modal -->
+    <form action="/api/tenant/add" method="POST">
+        <div class="modal fade" id="addTenantModal" tabindex="-1" role="dialog" aria-labelledby="addTenantModal"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add tenant</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row m-2">
+                            <div class="col-md-6">
+                                <div>
+                                    <header>
+                                        <h5>Personal information</h5>
+                                    </header>
+                                    <section>
+                                        <div class="md-form mt-3 mb-3">
+                                            <label for="first_name">First name</label>
+                                            <input class="form-control" name="first_name" type="text" id="first_name"
+                                                required>
+                                            <input class="form-control" name="property" type="hidden"
+                                                value="{{property._id}}" required>
+                                        </div>
+                                        <div class="md-form mb-4">
+                                            <label for="last_name">Last name</label>
+                                            <input class="form-control" name="last_name" type="text" id="last_name"
+                                                required>
+                                        </div>
+                                    </section>
+                                </div>
+                                <div>
+                                    <header>
+                                        <h5>Contact information</h5>
+                                    </header>
+                                    <section>
+                                        <div class="md-form mt-3 mb-3">
+                                            <label for="mobile">Mobile</label>
+                                            <input class="form-control" name="mobile" type="text" id="mobile" required>
+                                        </div>
+                                        <div class="md-form mb-4">
+                                            <label for="email">Email</label>
+                                            <input class="form-control" name="email" type="email" id="email" required>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>Room information</h5>
+                                </header>
+                                <section>
+                                    <div class="form-group mb-3">
+                                        <label class="select-label" for="room">Room</label>
+                                        <div class="md-form">
+                                            <select class="form-control" name="room" id="room-select" required>
+                                                {{#if rooms}}
+                                                {{#each rooms }}
+                                                <option value="{{_id}}" {{#if tenant}} disabled {{/if}}>{{name}} -
+                                                    Floor {{floor}} - {{catalog.name}} - Php{{catalog.rate}}
+                                                </option>
+                                                {{/each}}
+                                                {{else}}
+                                                <option value="" disabled><span>No rooms available.</span></option>
+                                                {{/if}}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-custom">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Edit tenant modal -->
+    <form action="/api/tenant/edit" method="POST">
+        <div class="modal fade" id="editTenantModal" tabindex="-1" role="dialog" aria-labelledby="editTenantModal"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit tenant</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row m-2">
+                            <div class="col-md-6">
+                                <div>
+                                    <header>
+                                        <h5>Personal information</h5>
+                                    </header>
+                                    <section>
+                                        <div class="md-form mt-3 mb-3">
+                                            <label for="inputEditTenantFirstName">First name</label>
+                                            <input class="form-control" name="first_name" type="text"
+                                                id="inputEditTenantFirstName" value="placeholder" required>
+                                            <input class="form-control" name="_id" type="hidden" id="inputEditTenant_id"
+                                                value="placeholder" required>
+                                            <input class="form-control" name="currentRoom" type="hidden"
+                                                id="inputEditTenantRoom" value="placeholder" required>
+                                            <input class="form-control" name="property" type="hidden"
+                                                value="{{property._id}}" required>
+                                        </div>
+                                        <div class="md-form mb-4">
+                                            <label for="inputEditTenantLastName">Last name</label>
+                                            <input class="form-control" name="last_name" type="text"
+                                                id="inputEditTenantLastName" value="placeholder" required>
+                                        </div>
+                                    </section>
+                                </div>
+                                <div>
+                                    <header>
+                                        <h5>Contact information</h5>
+                                    </header>
+                                    <section>
+                                        <div class="md-form mt-3 mb-3">
+                                            <label for="inputEditTenantMobile">Mobile</label>
+                                            <input class="form-control" name="mobile" type="text"
+                                                id="inputEditTenantMobile" value="placeholder" required>
+                                        </div>
+                                        <div class="md-form mb-4">
+                                            <label for="inputEditTenantEmail">Email</label>
+                                            <input class="form-control" name="email" type="email"
+                                                id="inputEditTenantEmail" value="placeholder" required>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>Room information</h5>
+                                </header>
+                                <section>
+                                    <div class="form-group mb-3">
+                                        <label class="select-label" for="selectEditTenantRoom">Room</label>
+                                        <div class="md-form">
+                                            <select class="form-control" name="room" id="selectEditTenantRoom"
+                                                value="placeholder" required>
+                                                {{#if rooms}}
+                                                {{#each rooms }}
+                                                <option value="{{_id}}" {{#if tenant}} class="occupied" disabled
+                                                    {{/if}}>
+                                                    {{name}} -
+                                                    {{catalog.name}} - Php{{catalog.rate}}
+                                                </option>
+                                                {{/each}}
+                                                {{else}}
+                                                <option value="" disabled><span>No rooms found.</span></option>
+                                                {{/if}}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-custom">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Delete tenant modal -->
+    <form action="/api/tenant/delete" method="POST">
+        <div class="modal fade" id="deleteTenantModal" tabindex="-1" role="dialog" aria-labelledby="deleteTenantModal"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Delete Tenant</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input class="form-control" name="_id" id="inputDeleteTenant_id" type="hidden" required>
+                        <input class="form-control" name="room" id="inputDeleteTenantRoom" type="hidden" required>
                         <input class="form-control" name="property" type="hidden" value="{{property._id}}" required>
+                        <span class="font-weight-normal">Tenant information</span>
+                        <table class="table table-sm table-borderless mt-2">
+                            <tbody>
+                                <tr>
+                                    <td class="td-title">Room</td>
+                                    <td class="td-content"><span id="spanDeleteTenantRoom"></span></td>
+                                </tr>
+                                <tr>
+                                    <td class="td-title">Name</td>
+                                    <td class="td-content">
+                                        <span id="spanDeleteTenantLastName"></span>,
+                                        <span id="spanDeleteTenantFirstName"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="td-title">Mobile</td>
+                                    <td class="td-content"><span id="spanDeleteTenantMobile"></span></td>
+                                </tr>
+                                <tr>
+                                    <td class="td-title">Email</td>
+                                    <td class="td-content"><span id="spanDeleteTenantEmail"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-custom">Add</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn red darken-3 text-white">Confirm</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</form>
-
-<!-- Edit room modal -->
-<form action="/api/room/edit" method="POST">
-    <div class="modal fade" id="editRoomModal" tabindex="-1" role="dialog" aria-labelledby="editRoomModal"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit room</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="md-form mt-2 mb-3">
-                        <label for="inputEditRoomName">Name</label>
-                        <input class="form-control" name="name" type="text" id="inputEditRoomName" value="placeholder"
-                            required>
-                        <input class="form-control" name="_id" id="inputEditRoom_id" type="hidden" required>
-                        <input class="form-control" name="property" id="property" value="{{property._id}}" type="hidden"
-                            required>
-                    </div>
-                    <div class="md-form mb-3">
-                        <label for="inputEditRoomFloor">Floor</label>
-                        <input class="form-control" name="floor" type="text" id="inputEditRoomFloor" value="placeholder"
-                            required>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label class="select-label" for="selectEditRoomCatalog">Catalog</label>
-                        <div class="md-form">
-                            <select class="form-control" name="catalog" id="selectEditRoomCatalog" required>
-                                {{#if catalogs}}
-                                {{#each catalogs}}
-                                <option value="{{_id}}">{{name}} - Php{{rate}}</option>
-                                {{/each}}
-                                {{else}}
-                                <option value="" disabled><span>No catalogs found.</span></option>
-                                {{/if}}
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-custom">Save</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
-
-<!-- Delete room modal -->
-<form action="/api/room/delete" id="roomDeletionForm" method="POST">
-    <div class="modal fade" id="deleteRoomModal" tabindex="-1" role="dialog" aria-labelledby="deleteRoomModal"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete Room</h4>
-                </div>
-                <div class="modal-body">
-                    <input class="form-control" name="_id" id="inputDeleteRoom_id" type="hidden" required>
-                    <input class="form-control" name="property" id="property" type="hidden" value="{{property._id}}"
-                        required>
-                    <span class="font-weight-normal">Room information</span>
-                    <table class="table table-sm table-borderless mt-2">
-                        <tbody>
-                            <tr>
-                                <td class="td-title">Room</td>
-                                <td class="td-content"><span id="spanDeleteRoomName"></span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-title">Floor</td>
-                                <td class="td-content"><span id="spanDeleteRoomFloor"></span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-title">Catalog</td>
-                                <td class="td-content"><span id="spanDeleteRoomCatalogName"></span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-title">Rate</td>
-                                <td class="td-content"><span id="spanDeleteRoomCatalogRate"></span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-title">Status</td>
-                                <td class="td-content"><span id="spanDeleteRoomStatus"></span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="mt-4">
-                        <span class="font-weight-normal" style="font-size: 14px;">Note:</span>
-                        <p class="mt-2 pt-3 pr-2 pb-3 pl-2 rounded border border-white" style="font-size: 14px;">
-                            Rooms that are currently occupied cannot be deleted.
-                        </p>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn red darken-3 text-white">Confirm</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
-
-<!-- Add tenant modal -->
-<form action="/api/tenant/add" method="POST">
-    <div class="modal fade" id="addTenantModal" tabindex="-1" role="dialog" aria-labelledby="addTenantModal"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Add tenant</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="row m-2">
-                        <div class="col-md-6">
-                            <div>
-                                <header>
-                                    <h5>Personal information</h5>
-                                </header>
-                                <section>
-                                    <div class="md-form mt-3 mb-3">
-                                        <label for="first_name">First name</label>
-                                        <input class="form-control" name="first_name" type="text" id="first_name"
-                                            required>
-                                        <input class="form-control" name="property" type="hidden"
-                                            value="{{property._id}}" required>
-                                    </div>
-                                    <div class="md-form mb-4">
-                                        <label for="last_name">Last name</label>
-                                        <input class="form-control" name="last_name" type="text" id="last_name"
-                                            required>
-                                    </div>
-                                </section>
-                            </div>
-                            <div>
-                                <header>
-                                    <h5>Contact information</h5>
-                                </header>
-                                <section>
-                                    <div class="md-form mt-3 mb-3">
-                                        <label for="mobile">Mobile</label>
-                                        <input class="form-control" name="mobile" type="text" id="mobile" required>
-                                    </div>
-                                    <div class="md-form mb-4">
-                                        <label for="email">Email</label>
-                                        <input class="form-control" name="email" type="email" id="email" required>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <header>
-                                <h5>Room information</h5>
-                            </header>
-                            <section>
-                                <div class="form-group mb-3">
-                                    <label class="select-label" for="room">Room</label>
-                                    <div class="md-form">
-                                        <select class="form-control" name="room" id="room-select" required>
-                                            {{#if rooms}}
-                                            {{#each rooms }}
-                                            <option value="{{_id}}" {{#if tenant}} disabled {{/if}}>{{name}} -
-                                                {{catalog.name}} - Php{{catalog.rate}}
-                                            </option>
-                                            {{/each}}
-                                            {{else}}
-                                            <option value="" disabled><span>No rooms available.</span></option>
-                                            {{/if}}
-                                        </select>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-custom">Add</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
-
-<!-- Edit tenant modal -->
-<form action="/api/tenant/edit" method="POST">
-    <div class="modal fade" id="editTenantModal" tabindex="-1" role="dialog" aria-labelledby="editTenantModal"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit tenant</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="row m-2">
-                        <div class="col-md-6">
-                            <div>
-                                <header>
-                                    <h5>Personal information</h5>
-                                </header>
-                                <section>
-                                    <div class="md-form mt-3 mb-3">
-                                        <label for="inputEditTenantFirstName">First name</label>
-                                        <input class="form-control" name="first_name" type="text"
-                                            id="inputEditTenantFirstName" value="placeholder" required>
-                                        <input class="form-control" name="_id" type="hidden" id="inputEditTenant_id"
-                                            value="placeholder" required>
-                                        <input class="form-control" name="currentRoom" type="hidden"
-                                            id="inputEditTenantRoom" value="placeholder" required>
-                                        <input class="form-control" name="property" type="hidden"
-                                            value="{{property._id}}" required>
-                                    </div>
-                                    <div class="md-form mb-4">
-                                        <label for="inputEditTenantLastName">Last name</label>
-                                        <input class="form-control" name="last_name" type="text"
-                                            id="inputEditTenantLastName" value="placeholder" required>
-                                    </div>
-                                </section>
-                            </div>
-                            <div>
-                                <header>
-                                    <h5>Contact information</h5>
-                                </header>
-                                <section>
-                                    <div class="md-form mt-3 mb-3">
-                                        <label for="inputEditTenantMobile">Mobile</label>
-                                        <input class="form-control" name="mobile" type="text" id="inputEditTenantMobile"
-                                            value="placeholder" required>
-                                    </div>
-                                    <div class="md-form mb-4">
-                                        <label for="inputEditTenantEmail">Email</label>
-                                        <input class="form-control" name="email" type="email" id="inputEditTenantEmail"
-                                            value="placeholder" required>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <header>
-                                <h5>Room information</h5>
-                            </header>
-                            <section>
-                                <div class="form-group mb-3">
-                                    <label class="select-label" for="selectEditTenantRoom">Room</label>
-                                    <div class="md-form">
-                                        <select class="form-control" name="room" id="selectEditTenantRoom"
-                                            value="placeholder" required>
-                                            {{#if rooms}}
-                                            {{#each rooms }}
-                                            <option value="{{_id}}" {{#if tenant}} class="occupied" disabled {{/if}}>
-                                                {{name}} -
-                                                {{catalog.name}} - Php{{catalog.rate}}
-                                            </option>
-                                            {{/each}}
-                                            {{else}}
-                                            <option value="" disabled><span>No rooms found.</span></option>
-                                            {{/if}}
-                                        </select>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-custom">Save</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
-
-<!-- Delete tenant modal -->
-<form action="/api/tenant/delete" method="POST">
-    <div class="modal fade" id="deleteTenantModal" tabindex="-1" role="dialog" aria-labelledby="deleteTenantModal"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete Tenant</h4>
-                </div>
-                <div class="modal-body">
-                    <input class="form-control" name="_id" id="inputDeleteTenant_id" type="hidden" required>
-                    <input class="form-control" name="room" id="property" type="hidden" value="{{property._id}}"
-                        required>
-                    <span class="font-weight-normal">Tenant information</span>
-                    <table class="table table-sm table-borderless mt-2">
-                        <tbody>
-                            <tr>
-                                <td class="td-title">Room</td>
-                                <td class="td-content"><span id="spanDeleteTenantRoom"></span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-title">Name</td>
-                                <td class="td-content">
-                                    <span id="spanDeleteTenantLastName"></span>,
-                                    <span id="spanDeleteTenantFirstName"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="td-title">Mobile</td>
-                                <td class="td-content"><span id="spanDeleteTenantMobile"></span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-title">Email</td>
-                                <td class="td-content"><span id="spanDeleteTenantEmail"></span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn red darken-3 text-white">Confirm</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
+    </form>
+</main>
 
 {{/content}}
 
