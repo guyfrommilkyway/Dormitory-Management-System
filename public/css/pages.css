@@ -54,7 +54,7 @@
   margin: 1rem 0 2rem 0;
   padding: 0;
   padding-bottom: 1px;
-  border-bottom: 1px solid #1b2432;
+  border: none !important;
   box-shadow: none;
 }
 
@@ -82,7 +82,7 @@
   display: flex;
   justify-content: start;
   align-items: center;
-  padding: 1.35rem 1.5rem;
+  padding: 1rem;
   color: #ffffff;
   font-size: 0.9rem;
   font-weight: 300;
@@ -98,14 +98,63 @@
 }
 
 #property #property-topbar .nav-tabs .nav-item .nav-link.active {
-  color: #ffeab2;
   font-weight: 500;
   background: none !important;
   border-bottom: 3px solid #ffeab2 !important;
 }
 
-#property #property-topbar .nav-tabs .nav-item .nav-link.active svg {
-  fill: #ffeab2;
+#property .table.table-sm tbody td {
+  padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+}
+
+#property .table.table-sm tbody .td-title {
+  font-weight: normal;
+  background-color: #1b2432;
+}
+
+#property .table.table-sm tbody .td-content {
+  padding-left: 1.5rem;
+  background-color: #242f42;
+}
+
+#property .property-card {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-width: 313px;
+  height: 140px;
+  padding: 1rem 2rem;
+  border: 2px solid #1b2432;
+}
+
+#property .property-card .svg-container {
+  position: absolute;
+  top: -15px;
+  left: 35px;
+  padding: 1rem;
+  background-color: #1b2432;
+}
+
+#property .property-card .property-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#property .property-card .property-card-title {
+  font-size: 54px;
+  font-weight: bold;
+  line-height: 2rem;
+}
+
+#property .property-card .property-card-content {
+  padding-top: 0.5rem;
+  color: #d5d5d7;
+  font-size: 13px;
+  font-weight: normal;
+  text-transform: uppercase;
+  border-top: 1px solid grey;
 }
 
 /* Edit profile & change password */
