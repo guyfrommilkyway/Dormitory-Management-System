@@ -1,4 +1,4 @@
-// Change active tabs based on hash
+// Change active tabs based on hash value
 $(document).ready(function () {
     if (location.hash === '#tenant') {
         $('.active').removeClass('active');
@@ -15,7 +15,7 @@ $(document).ready(function () {
     }
 });
 
-// Edit and delete rooms
+// Room
 $(document).on("click", "#editRoomButton, #deleteRoomButton", function () {
     let _id = $(this).data('id');
     let name = $(this).data('name');
@@ -25,7 +25,7 @@ $(document).on("click", "#editRoomButton, #deleteRoomButton", function () {
     let catalograte = $(this).data('catalograte');
     let status = $(this).data('status');
 
-    // Edit
+    // Pass data to edit room modal
     $("#inputEditRoom_id").val(_id);
     $("#inputEditRoomName").val(name);
     $("#inputEditRoomFloor").val(floor);
@@ -33,7 +33,7 @@ $(document).on("click", "#editRoomButton, #deleteRoomButton", function () {
         .prop('selected', true)
         .text(catalogname + ' - ' + catalograte + ' (Current)')
 
-    // Delete
+    // Pass data to delete room modal
     $("#inputDeleteRoom_id").val(_id);
     $("div #spanDeleteRoomName").text(name);
     $("div #spanDeleteRoomFloor").text(floor);
@@ -42,7 +42,7 @@ $(document).on("click", "#editRoomButton, #deleteRoomButton", function () {
     $("div #spanDeleteRoomStatus").text(status);
 });
 
-// Edit and delete tenant
+// Tenant
 $(document).on("click", "#editTenantButton, #deleteTenantButton", function () {
     let _id = $(this).data('id');
     let first_name = $(this).data('firstname');
@@ -52,7 +52,7 @@ $(document).on("click", "#editTenantButton, #deleteTenantButton", function () {
     let room = $(this).data('room');
     let roomname = $(this).data('roomname');
 
-    // Edit
+    // Pass data to edit tenant modal
     $("#inputEditTenant_id").val(_id);
     $("#inputEditTenantFirstName").val(first_name);
     $("#inputEditTenantLastName").val(last_name);
@@ -69,8 +69,9 @@ $(document).on("click", "#editTenantButton, #deleteTenantButton", function () {
             .text($(`#selectEditTenantRoom option[value=${room}]`).text() + ' (Current)');
     }
 
-    // Delete
+    // Pass data to delete tenant modal
     $("#inputDeleteTenant_id").val(_id);
+    $("#inputDeleteTenantRoom").val(room);
     $("div #spanDeleteTenantFirstName").text(first_name);
     $("div #spanDeleteTenantLastName").text(last_name);
     $("div #spanDeleteTenantMobile").text(mobile);
@@ -78,7 +79,7 @@ $(document).on("click", "#editTenantButton, #deleteTenantButton", function () {
     $("div #spanDeleteTenantRoom").text(roomname);
 });
 
-// Delete the 'current' on modal close
+// Delete 'current' on modal close
 $(document).on("hide.bs.modal", "#editTenantModal", function () {
     let room = $('#inputEditTenantRoom').val();
     let len = room.length
@@ -91,6 +92,8 @@ $(document).on("hide.bs.modal", "#editTenantModal", function () {
 });
 
 // DataTables
+
+// Room table
 $('#tableRoom').DataTable({
     "dom": '<"d-flex justify-content-between align-items-center mb-3"Bf>t<"d-flex justify-content-between align-items-center mt-4"ip>',
     "buttons": {
@@ -102,7 +105,6 @@ $('#tableRoom').DataTable({
         },
         buttons: [
             {
-
                 className: 'btn-custom m-0 z-depth-0',
                 text: `Add room`,
                 action: function (e, dt, node, config) {
@@ -115,6 +117,7 @@ $('#tableRoom').DataTable({
     "order": [[0, "asc"]]
 });
 
+// Tenant table
 $('#tableTenant').DataTable({
     "dom": '<"d-flex justify-content-between align-items-center mb-3"Bf>t<"d-flex justify-content-between align-items-center mt-4"ip>',
     "buttons": {
@@ -126,7 +129,6 @@ $('#tableTenant').DataTable({
         },
         buttons: [
             {
-
                 className: 'btn-custom m-0 z-depth-0',
                 text: `Add tenant`,
                 action: function (e, dt, node, config) {
@@ -138,6 +140,7 @@ $('#tableTenant').DataTable({
     "pageLength": 10
 });
 
+// Booking table
 $('#tableBooking').DataTable({
     "dom": '<"d-flex justify-content-end align-items-center mb-3"f>t<"d-flex justify-content-between align-items-center mt-4"ip>',
     "pageLength": 10
