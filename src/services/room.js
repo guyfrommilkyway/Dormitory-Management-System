@@ -1,5 +1,4 @@
 const Room = require('../models/room')
-const { v4: uuidv4 } = require('uuid')
 
 // Create room
 const roomNew = async (roomObject) => {
@@ -8,7 +7,7 @@ const roomNew = async (roomObject) => {
     for (i = 0; i < roomObject.number; i++) {
         const room = new Room({
             catalog: roomObject.catalog,
-            name: uuidv4(),
+            name: Date.now(),
             floor: roomObject.floor,
             property: roomObject.property
         })
