@@ -105,6 +105,24 @@ module.exports = async (app, handlebars) => {
         // Query rooms in specific property
         const { rooms } = await roomList(req.params.id)
 
+        // Vacant rooms
+        let vacant_rooms = []
+
+        for (let i = 0; i < rooms.length; i++) {
+            if (rooms[i].tenant === null) {
+                vacant_rooms.push(rooms[i]);
+            }
+        }
+
+        // Occupied rooms
+        let occupied_rooms = []
+
+        for (let i = 0; i < rooms.length; i++) {
+            if (rooms[i].tenant != null) {
+                occupied_rooms.push(rooms[i]);
+            }
+        }
+
         // Query tenants in specific property
         const { tenants } = await tenantList(req.params.id)
 
@@ -123,8 +141,13 @@ module.exports = async (app, handlebars) => {
             catalogs,
             property,
             rooms,
+            vacant_rooms: vacant_rooms.length,
+            occupied_rooms: occupied_rooms.length,
+            total_rooms: rooms.length,
             tenants,
-            bookings
+            total_tenants: tenants.length,
+            bookings,
+            total_bookings: bookings.length
         });
 
         res.status(200)
