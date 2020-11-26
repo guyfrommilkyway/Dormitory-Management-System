@@ -46,7 +46,6 @@ const tenantInfoUpdate = async (tenantObject) => {
 // Delete tenant
 const tenantDelete = async (tenantObject) => {
     await Tenant.findOneAndDelete({ _id: tenantObject._id })
-        .lean()
 
     await Room.findByIdAndUpdate(tenantObject.room, {
         tenant: null

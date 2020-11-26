@@ -42,7 +42,6 @@ const roomEdit = async (roomObject) => {
 // Delete room
 const roomDelete = async (roomObject) => {
     const room = await Room.findById(roomObject._id)
-        .lean()
 
     if (room.tenant) {
         throw new Error('Error: Room deletion failed.')
