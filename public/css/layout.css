@@ -141,7 +141,7 @@
   align-items: center;
   width: 2rem;
   min-height: 2rem;
-  background-image: url("../img/default-profile-photo.png");
+  background-image: url("../ico/default-avatar.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
