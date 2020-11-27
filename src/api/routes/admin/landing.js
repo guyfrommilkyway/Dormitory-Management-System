@@ -2,6 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const authentication = require('../../middlewares/authentication')
 const { client, getAsync } = require('../../../loaders/redis')
+const { catalogList } = require('../../../services/catalog')
 const { roomList } = require('../../../services/room')
 const { tenantList } = require('../../../services/tenant')
 const { bookingList } = require('../../../services/booking')
@@ -93,14 +94,12 @@ module.exports = async (app, handlebars) => {
         const propertiesCache = await getAsync('properties')
         const properties = JSON.parse(propertiesCache)
 
-        // Get catalogs in cache
-        async () => { client.get('catalogs') }
-        const catalogsCache = await getAsync('catalogs')
-        const catalogs = JSON.parse(catalogsCache)
-
         // Find specific property in properties
         const indexOfProperty = properties.findIndex(i => i._id === req.params.id);
         const property = properties[indexOfProperty]
+
+        // Query catalogs
+        const { catalogs } = await catalogList(user._id)
 
         // Query rooms in specific property
         const { rooms } = await roomList(req.params.id)
@@ -135,7 +134,7 @@ module.exports = async (app, handlebars) => {
         // Render template
         const output = template({
             title: property.name,
-            header: 'Property',
+            header: 'Property / ' + property.name,
             user,
             properties,
             catalogs,
@@ -174,7 +173,7 @@ module.exports = async (app, handlebars) => {
         // Render template
         const output = template({
             title: 'Property Management',
-            header: 'Property Management',
+            header: 'Management / Property',
             user,
             properties
         });
@@ -195,10 +194,8 @@ module.exports = async (app, handlebars) => {
         const propertiesCache = await getAsync('properties')
         const properties = JSON.parse(propertiesCache)
 
-        // Get catalogs in cache
-        async () => { client.get('catalogs') }
-        const catalogsCache = await getAsync('catalogs')
-        const catalogs = JSON.parse(catalogsCache)
+        // Query catalogs
+        const { catalogs } = await catalogList(user._id)
 
         // Compile template
         const template = await handlebars.compile(fs.readFileSync(path.join(__dirname, '../../../../views/pages/admin/management/catalog.hbs'), 'utf8'));
@@ -206,7 +203,7 @@ module.exports = async (app, handlebars) => {
         // Render template
         const output = template({
             title: 'Catalog Management',
-            header: 'Catalog Management',
+            header: 'Management / Catalog',
             user,
             properties,
             catalogs

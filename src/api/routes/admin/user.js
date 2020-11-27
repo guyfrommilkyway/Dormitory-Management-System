@@ -13,7 +13,6 @@ const {
     userLogout
 } = require('../../../services/user')
 const { propertyList } = require('../../../services/property')
-const { catalogList } = require('../../../services/catalog')
 
 const router = new express.Router()
 
@@ -75,14 +74,10 @@ router.post('/api/user/login', async (req, res) => {
         // List properties
         const { properties } = await propertyList(user)
 
-        // List catalogs
-        const { catalogs } = await catalogList(user)
-
         // Save data in cache
         client.set('user', [JSON.stringify(user)])
         client.set('token', token)
         client.set('properties', [JSON.stringify(properties)])
-        client.set('catalogs', [JSON.stringify(catalogs)])
 
         res.status(202)
             .redirect('/')
