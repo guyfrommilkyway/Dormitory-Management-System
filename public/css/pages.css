@@ -147,7 +147,7 @@
 
 #profile .profile-info-header {
   position: absolute;
-  top: -1.25rem;
+  top: 0;
   width: 90%;
   margin: 0 auto;
   padding: 1rem;
@@ -158,7 +158,7 @@
 
 #profile .profile-photo-wrapper {
   position: absolute;
-  top: -3.25rem;
+  top: -32px;
   right: 1rem;
   display: flex;
   flex-direction: column;
@@ -172,7 +172,7 @@
 #profile .profile-photo-wrapper #profile-photo {
   width: 9rem;
   height: 9rem;
-  background-image: url("../img/default-profile-photo.png");
+  background-image: url("../ico/default-avatar.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -233,7 +233,7 @@
 }
 
 .upload label #current_profile_photo {
-  background-image: url("../img/default-profile-photo.png");
+  background-image: url("../ico/default-avatar.svg");
 }
 
 .upload label #uploaded_profile_photo {
@@ -245,7 +245,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.5rem;
   background: rgba(0, 0, 0, 0.7);
 }
 
