@@ -22,12 +22,14 @@
 
 #main-content-admin #content-wrapper #content .wrapper {
   margin: 1rem 2rem;
-  padding: 1rem;
 }
 
 /* Sidebar */
 
 #main-content-admin #sidebar {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   width: 16rem;
   min-width: 16rem;
   min-height: 100%;
@@ -42,15 +44,22 @@
 }
 
 #main-content-admin #sidebar .brand-link {
+  display: flex;
+  flex-direction: column;
   color: #ffeab2;
   font-size: 1.4rem;
   line-height: 1.2rem;
   text-transform: uppercase;
 }
 
-#main-content-admin #sidebar .navbar-nav {
+#main-content-admin #sidebar .navbar-collapse {
+  align-items: flex-start;
   width: 100%;
-  margin-top: 1rem;
+}
+
+#main-content-admin #sidebar .navbar-nav {
+  flex-direction: column;
+  width: 100%;
 }
 
 #main-content-admin #sidebar .navbar-nav .nav-item {
@@ -98,7 +107,6 @@
 }
 
 /* Topbar */
-
 #main-content-admin #content #topbar {
   display: flex;
   justify-content: space-between;
