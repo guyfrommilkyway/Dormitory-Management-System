@@ -1,5 +1,6 @@
 const { v4: uuidv4 } = require('uuid')
 const Property = require('../models/property')
+const Room = require('../models/room')
 
 // Create property
 const propertyNew = async (propertyObject, _id) => {
@@ -48,7 +49,13 @@ const propertyEdit = async (propertyObject) => {
 
 // Delete property info
 const propertyDelete = async (propertyObject, _id) => {
-    await Property.findOneAndDelete({ _id: propertyObject._id, owner: _id })
+    const rooms = await Room.find({ property: propertyObject._id })
+
+    if (rooms.length > 0) {
+        throw new Error('Error: Property deletion failed.')
+    } else {
+        await Property.findOneAndDelete({ _id: propertyObject._id, owner: _id })
+    }
 }
 
 module.exports = {
