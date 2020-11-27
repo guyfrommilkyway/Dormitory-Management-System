@@ -10,47 +10,49 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 p-0">
-                <table id="tableProperty" class="table table-borderless table-striped">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Location</th>
-                            <th class="text-center">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{#each properties}}
-                        <tr>
-                            <td>
-                                <a class="font-weight-normal" href="/property/{{_id}}">{{name}}</a>
-                            </td>
-                            <td>{{location}}</td>
-                            <td class="text-center">
-                                <button type="button" class="btn p-2 m-0 z-depth-0" id="editPropertyButton"
-                                    data-id="{{_id}}" data-name="{{name}}" data-location="{{location}}"
-                                    data-toggle="modal" data-target="#editPropertyModal">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
-                                        width="22px" height="22px">
-                                        <path d="M0 0h24v24H0V0z" fill="none" />
-                                        <path
-                                            d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM5.92 19H5v-.92l9.06-9.06.92.92L5.92 19zM20.71 5.63l-2.34-2.34c-.2-.2-.45-.29-.71-.29s-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41z" />
-                                    </svg>
-                                </button>
-                                <button type="button" class="btn p-2 m-0 z-depth-0" id="deletePropertyButton"
-                                    data-id="{{_id}}" data-name="{{name}}" data-location="{{location}}"
-                                    data-toggle="modal" data-target="#deletePropertyModal">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
-                                        width="22px" height="22px">
-                                        <path d="M0 0h24v24H0V0z" fill="none" />
-                                        <path
-                                            d="M14.12 10.47L12 12.59l-2.13-2.12-1.41 1.41L10.59 14l-2.12 2.12 1.41 1.41L12 15.41l2.12 2.12 1.41-1.41L13.41 14l2.12-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z" />
-                                    </svg>
-                                </button>
-                            </td>
-                        </tr>
-                        {{/each}}
-                    </tbody>
-                </table>
+                <div class="table-responsive text-nowrap">
+                    <table id="tableProperty" class="table table-borderless" style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Location</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each properties}}
+                            <tr>
+                                <td>
+                                    <a class="font-weight-normal" href="/property/{{_id}}">{{name}}</a>
+                                </td>
+                                <td>{{location}}</td>
+                                <td class="text-center">
+                                    <button type="button" class="btn p-2 m-0 z-depth-0" id="editPropertyButton"
+                                        data-id="{{_id}}" data-name="{{name}}" data-location="{{location}}"
+                                        data-toggle="modal" data-target="#editPropertyModal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
+                                            width="22px" height="22px">
+                                            <path d="M0 0h24v24H0V0z" fill="none" />
+                                            <path
+                                                d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM5.92 19H5v-.92l9.06-9.06.92.92L5.92 19zM20.71 5.63l-2.34-2.34c-.2-.2-.45-.29-.71-.29s-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41z" />
+                                        </svg>
+                                    </button>
+                                    <button type="button" class="btn p-2 m-0 z-depth-0" id="deletePropertyButton"
+                                        data-id="{{_id}}" data-name="{{name}}" data-location="{{location}}"
+                                        data-toggle="modal" data-target="#deletePropertyModal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
+                                            width="22px" height="22px">
+                                            <path d="M0 0h24v24H0V0z" fill="none" />
+                                            <path
+                                                d="M14.12 10.47L12 12.59l-2.13-2.12-1.41 1.41L10.59 14l-2.12 2.12 1.41 1.41L12 15.41l2.12 2.12 1.41-1.41L13.41 14l2.12-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z" />
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -163,47 +165,55 @@
 {{#content "extra_js"}}
 
 <script>
-    // Edit and delete property
-    $(document).on("click", "#editPropertyButton, #deletePropertyButton", function () {
-        let _id = $(this).data('id');
-        let name = $(this).data('name');
-        let location = $(this).data('location');
+    $(document).ready(function () {
+        // Edit and delete property
+        $(document).on("click", "#editPropertyButton, #deletePropertyButton", function () {
+            let _id = $(this).data('id');
+            let name = $(this).data('name');
+            let location = $(this).data('location');
 
-        // Edit
-        $("#inputEditProperty_id").val(_id);
-        $("#inputEditPropertyName").val(name);
-        $("#inputEditPropertyLocation").val(location);
+            // Edit
+            $("#inputEditProperty_id").val(_id);
+            $("#inputEditPropertyName").val(name);
+            $("#inputEditPropertyLocation").val(location);
 
-        // Delete
-        $("#inputDeleteProperty_id").val(_id);
-        $("div #spanPropertyName").text(name);
-        $("div #spanPropertyLocation").text(location);
+            // Delete
+            $("#inputDeleteProperty_id").val(_id);
+            $("div #spanPropertyName").text(name);
+            $("div #spanPropertyLocation").text(location);
 
-        console.log(_id)
-    });
+            console.log(_id)
+        });
 
-    // DataTables
-    $('#tableProperty').DataTable({
-        "dom": '<"d-flex justify-content-between align-items-center mb-3"Bf>t<"d-flex justify-content-between align-items-center mt-4"ip>',
-        "buttons": {
-            dom: {
-                button: {
-                    tag: 'button',
-                    className: 'btn'
-                }
-            },
-            buttons: [
-                {
-
-                    className: 'btn-custom m-0 z-depth-0',
-                    text: `Add property`,
-                    action: function (e, dt, node, config) {
-                        $('#addPropertyModal').modal('show')
+        // DataTables
+        $('#tableProperty').DataTable({
+            "responsive": true,
+            "details": false,
+            "columnDefs": [
+                { responsivePriority: 1, targets: 0 },
+                { responsivePriority: 2, targets: 2 }
+            ],
+            "dom": '<"d-flex justify-content-between align-items-center mb-3"Bf>t<"d-flex justify-content-between align-items-center mt-4"ip>',
+            "buttons": {
+                dom: {
+                    button: {
+                        tag: 'button',
+                        className: 'btn'
                     }
                 },
-            ]
-        },
-        "pageLength": 5
+                buttons: [
+                    {
+
+                        className: 'btn-custom m-0 z-depth-0 text-nowrap',
+                        text: `Add property`,
+                        action: function (e, dt, node, config) {
+                            $('#addPropertyModal').modal('show')
+                        }
+                    },
+                ]
+            },
+            "pageLength": 5
+        });
     });
 </script>
 

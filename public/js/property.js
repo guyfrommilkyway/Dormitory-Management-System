@@ -95,6 +95,16 @@ $(document).on("hide.bs.modal", "#editTenantModal", function () {
 
 // Room table
 $('#tableRoom').DataTable({
+    "responsive": true,
+    "details": false,
+    "columnDefs": [
+        { responsivePriority: 1, targets: 0 },
+        { responsivePriority: 2, targets: 5 },
+        { responsivePriority: 3, targets: 4 },
+        { responsivePriority: 4, targets: 3 },
+        { responsivePriority: 5, targets: 2 },
+        { responsivePriority: 6, targets: 1 }
+    ],
     "dom": '<"d-flex justify-content-between align-items-center mb-3"Bf>t<"d-flex justify-content-between align-items-center mt-4"ip>',
     "buttons": {
         dom: {
@@ -105,7 +115,7 @@ $('#tableRoom').DataTable({
         },
         buttons: [
             {
-                className: 'btn-custom m-0 z-depth-0',
+                className: 'btn-custom m-0 z-depth-0 text-nowrap',
                 text: `Add room`,
                 action: function (e, dt, node, config) {
                     $('#addRoomModal').modal('show')
@@ -119,6 +129,16 @@ $('#tableRoom').DataTable({
 
 // Tenant table
 $('#tableTenant').DataTable({
+    "responsive": true,
+    "details": false,
+    "columnDefs": [
+        { responsivePriority: 1, targets: 0 },
+        { responsivePriority: 2, targets: 5 },
+        { responsivePriority: 3, targets: 4 },
+        { responsivePriority: 4, targets: 3 },
+        { responsivePriority: 5, targets: 2 },
+        { responsivePriority: 6, targets: 1 }
+    ],
     "dom": '<"d-flex justify-content-between align-items-center mb-3"Bf>t<"d-flex justify-content-between align-items-center mt-4"ip>',
     "buttons": {
         dom: {
@@ -129,7 +149,7 @@ $('#tableTenant').DataTable({
         },
         buttons: [
             {
-                className: 'btn-custom m-0 z-depth-0',
+                className: 'btn-custom m-0 z-depth-0 text-nowrap',
                 text: `Add tenant`,
                 action: function (e, dt, node, config) {
                     $('#addTenantModal').modal('show')
@@ -142,6 +162,16 @@ $('#tableTenant').DataTable({
 
 // Booking table
 $('#tableBooking').DataTable({
+    "responsive": true,
+    "details": false,
+    "columnDefs": [
+        { responsivePriority: 1, targets: 0 },
+        { responsivePriority: 2, targets: 5 },
+        { responsivePriority: 3, targets: 4 },
+        { responsivePriority: 4, targets: 3 },
+        { responsivePriority: 5, targets: 2 },
+        { responsivePriority: 6, targets: 1 }
+    ],
     "dom": '<"d-flex justify-content-end align-items-center mb-3"f>t<"d-flex justify-content-between align-items-center mt-4"ip>',
     "pageLength": 10
 });
