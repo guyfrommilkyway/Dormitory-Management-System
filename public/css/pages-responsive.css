@@ -1,0 +1,43 @@
+@media screen and (max-width: 768px) {
+  /* Property */
+  #property #property-topbar header .property-name {
+    font-size: 1.25rem;
+  }
+
+  #property #property-topbar header .property-location {
+    font-size: 0.8rem;
+  }
+
+  #property #property-topbar .nav-tabs {
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    border: none !important;
+    border-radius: 3px;
+  }
+
+  #property #property-topbar .nav-tabs .nav-item .nav-link {
+    padding: 1.25rem;
+    border: none !important;
+  }
+
+  #property #property-topbar .nav-tabs .nav-item .nav-link.active {
+    border-bottom: 2px solid #ffeab2 !important;
+  }
+
+  #property #property-topbar .nav-tabs .nav-item .nav-link svg {
+    display: block;
+    width: 24px;
+    margin: 0 !important;
+  }
+
+  #property #property-topbar .nav-tabs .nav-item .nav-link.active svg {
+    fill: #ffeab2;
+  }
+
+  #property #property-topbar .nav-tabs .nav-item .nav-link span {
+    display: none;
+  }
+}
