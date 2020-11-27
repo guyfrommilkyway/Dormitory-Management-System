@@ -9,11 +9,17 @@ router.post('/api/booking/:id', async (req, res) => {
         // Create new booking
         await bookingNew(req.body, req.params.id)
 
+        // Assign id
+        const id = req.params.id
+
         res.status(201)
-            .redirect('/booking/success')
+            .redirect(`/booking/${id}`)
     } catch (e) {
+        // Assign id
+        const id = req.params.id
+
         res.status(400)
-            .redirect('/booking')
+            .redirect(`/booking/${id}`)
     }
 })
 

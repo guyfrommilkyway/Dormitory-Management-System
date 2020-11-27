@@ -6,9 +6,9 @@ const { catalogList } = require('../../../services/catalog')
 module.exports = async (app, handlebars) => {
 
     // Booking
-    app.get('/booking', async (req, res) => {
+    app.get('/booking/:id', async (req, res) => {
         // Query property
-        const { property } = await propertyView(req.query.id)
+        const { property } = await propertyView(req.params.id)
 
         // Query catalogs
         const { catalogs } = await catalogList(property.owner)
@@ -21,20 +21,6 @@ module.exports = async (app, handlebars) => {
             title: 'Booking',
             property,
             catalogs
-        });
-
-        res.status(200)
-            .send(output)
-    })
-
-    // Booking success
-    app.get('/booking/success', async (req, res) => {
-        // Compile template
-        const template = await handlebars.compile(fs.readFileSync(path.join(__dirname, '../../../../views/pages/client/booking/success.hbs'), 'utf8'));
-
-        // Render template
-        const output = template({
-            title: 'Success!'
         });
 
         res.status(200)
