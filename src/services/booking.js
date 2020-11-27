@@ -5,7 +5,6 @@ const Booking = require('../models/booking')
 const bookingNew = async (bookingObject, propertyBookingId) => {
 
     const property = await Property.findOne({ bookingId: propertyBookingId })
-        .lean()
 
     if (!property) {
         throw new Error('Property doesn\'t exist.')
