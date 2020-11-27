@@ -51,7 +51,7 @@
 
 #property #property-topbar {
   justify-content: flex-start;
-  margin: 1rem 0 2rem 0;
+  margin: 0rem 0 2.5rem 0;
   padding: 0;
   padding-bottom: 1px;
   border: none !important;
@@ -86,35 +86,21 @@
   color: #ffffff;
   font-size: 0.9rem;
   font-weight: 300;
-  border-top: 3px solid #47556b !important;
+  border-top: 2px solid #47556b !important;
   border-right: none !important;
-  border-bottom: 3px solid #47556b !important;
+  border-bottom: 2px solid #47556b !important;
   border-left: none !important;
   border-color: #47556b;
 }
 
 #property #property-topbar .nav-tabs .nav-item .nav-link:hover {
-  border-bottom: 3px solid #1b2432 !important;
+  border-bottom: 2px solid #1b2432 !important;
 }
 
 #property #property-topbar .nav-tabs .nav-item .nav-link.active {
   font-weight: 500;
   background: none !important;
-  border-bottom: 3px solid #ffeab2 !important;
-}
-
-#property .table.table-sm tbody td {
-  padding: 0.5rem 0.5rem 0.5rem 1.5rem;
-}
-
-#property .table.table-sm tbody .td-title {
-  font-weight: normal;
-  background-color: #1b2432;
-}
-
-#property .table.table-sm tbody .td-content {
-  padding-left: 1.5rem;
-  background-color: #242f42;
+  border-bottom: 2px solid #ffeab2 !important;
 }
 
 #property .property-card {

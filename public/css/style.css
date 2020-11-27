@@ -133,7 +133,7 @@
 
 .table thead tr th {
   color: #ffffff;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 400;
   border-bottom: 2px solid #1b2432 !important;
 }
@@ -144,6 +144,20 @@
 
 .table tbody td {
   vertical-align: middle;
+}
+
+.table.table-sm tbody td {
+  padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+}
+
+.table.table-sm tbody .td-title {
+  font-weight: normal;
+  background-color: #1b2432;
+}
+
+.table.table-sm tbody .td-content {
+  padding-left: 1.5rem;
+  background-color: #242f42;
 }
 
 /* Modal */

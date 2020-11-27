@@ -104,11 +104,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #47556b;
+  background: none !important;
+  box-shadow: none !important;
 }
 
 #main-content-admin #content #topbar .title-wrapper .title {
-  font-size: 1.2rem;
+  font-size: 1rem;
+  font-weight: 400;
+  text-transform: uppercase;
 }
 
 #main-content-admin #content #topbar .user {
