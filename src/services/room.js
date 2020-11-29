@@ -1,3 +1,4 @@
+const randomstring = require('randomstring')
 const Room = require('../models/room')
 
 // Create room
@@ -7,7 +8,7 @@ const roomNew = async (roomObject) => {
     for (i = 0; i < roomObject.number; i++) {
         const room = new Room({
             catalog: roomObject.catalog,
-            name: Date.now(),
+            name: 'Room - ' + randomstring.generate({ length: 8, charset: 'alphanumeric' }),
             floor: roomObject.floor,
             tenant: null,
             property: roomObject.property
