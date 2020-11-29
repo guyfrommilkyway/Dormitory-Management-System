@@ -46,17 +46,21 @@ const userLogin = async (userObject) => {
 }
 
 // Update user avatar
-const userAvatarUpdate = async (userObject, fileObject) => {
+const userAvatarUpdate = async (userId, fileObject) => {
     const img = fs.readFileSync(fileObject[0].path)
     const encoded_image = await sharp(img).resize({ width: 250, height: 250 }).png().toBuffer()
     const type = fileObject[0].mimetype
 
-    const userUpdated = await User.findByIdAndUpdate(userObject._id, {
+    const userUpdated = await User.findByIdAndUpdate(userId, {
         avatar: {
             data: encoded_image,
             contentType: type
         }
     }, { new: true })
+
+    // Hide private data
+    userUpdated.password = null
+    userUpdated.tokens = null
 
     return { userUpdated }
 }
@@ -71,6 +75,10 @@ const userInfoUpdate = async (userObject) => {
         email: userObject.email
     }, { new: true })
 
+    // Hide private data
+    userUpdated.password = null
+    userUpdated.tokens = null
+
     return { userUpdated }
 }
 
@@ -79,16 +87,16 @@ const userPasswordChange = async (userObject) => {
     const userToFind = await User.findByCredentials(userObject.email, userObject.currentPassword)
         .lean()
 
-    if (userToFind) {
-        const newPassword = await bcrypt.hash(userObject.newPassword, 8)
-        const user = await User.findByIdAndUpdate(userObject._id, {
-            password: newPassword
-        }, { new: true })
-
-        return { user }
-    } else {
+    if (!userToFind) {
         throw new Error()
     }
+
+    const newPassword = await bcrypt.hash(userObject.newPassword, 8)
+    const user = await User.findByIdAndUpdate(userObject._id, {
+        password: newPassword
+    }, { new: true })
+
+    return { user }
 }
 
 // Log out
