@@ -35,13 +35,18 @@ $ cd Property-Management-System
 $ npm install
 ```
 
-- Create a folder named 'config' inside the src directory. Then, create a file named 'config.env'.
+- Create a file named 'config.env'.
 
 ```
 Property-Management-System
+└───public
 └───src
-    └───config
-        │   config.env
+└───views
+│   .gitignore
+│   config.env
+│   package-lock.json
+│   package.json
+│   README.md
 ```
 
 - Paste this code inside the 'config.env' file:
