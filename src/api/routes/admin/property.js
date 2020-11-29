@@ -13,10 +13,18 @@ const router = new express.Router()
 // Create new property
 router.post('/api/property/add', authentication, async (req, res) => {
     try {
+        // Get hash id in cookie
+        const hashId = req.signedCookies.id
+
+        // Check if hash id is associated with a record in the redis database
+        if (!hashId) {
+            throw new Error('Error: Access denied.')
+        }
+
         // Get user in cache
-        async () => { client.get('user') }
-        const userCached = await getAsync('user')
-        const user = JSON.parse(userCached)
+        async () => { client.hget(hashId, 'user') }
+        const userHash = await getAsync(hashId, 'user')
+        const user = await JSON.parse(userHash)
 
         // Create new property
         await propertyNew(req.body, user._id)
@@ -25,7 +33,7 @@ router.post('/api/property/add', authentication, async (req, res) => {
         const { properties } = await propertyList(user)
 
         // Update properties in cache
-        client.set('properties', [JSON.stringify(properties)])
+        client.hset(hashId, 'properties', JSON.stringify(properties))
 
         res.status(201)
             .redirect('/management/property')
@@ -38,10 +46,18 @@ router.post('/api/property/add', authentication, async (req, res) => {
 // Update property info
 router.post('/api/property/edit', authentication, async (req, res) => {
     try {
+        // Get hash id in cookie
+        const hashId = req.signedCookies.id
+
+        // Check if hash id is associated with a record in the redis database
+        if (!hashId) {
+            throw new Error('Error: Access denied.')
+        }
+
         // Get user in cache
-        async () => { client.get('user') }
-        const userCached = await getAsync('user')
-        const user = JSON.parse(userCached)
+        async () => { client.hget(hashId, 'user') }
+        const userHash = await getAsync(hashId, 'user')
+        const user = await JSON.parse(userHash)
 
         // Update property
         await propertyEdit(req.body)
@@ -50,7 +66,7 @@ router.post('/api/property/edit', authentication, async (req, res) => {
         const { properties } = await propertyList(user._id)
 
         // Update properties in cache
-        client.set('properties', [JSON.stringify(properties)])
+        client.hset(hashId, 'properties', JSON.stringify(properties))
 
         res.status(201)
             .redirect('/management/property')
@@ -63,10 +79,18 @@ router.post('/api/property/edit', authentication, async (req, res) => {
 // Delete property info
 router.post('/api/property/delete', authentication, async (req, res) => {
     try {
+        // Get hash id in cookie
+        const hashId = req.signedCookies.id
+
+        // Check if hash id is associated with a record in the redis database
+        if (!hashId) {
+            throw new Error('Error: Access denied.')
+        }
+
         // Get user in cache
-        async () => { client.get('user') }
-        const userCached = await getAsync('user')
-        const user = JSON.parse(userCached)
+        async () => { client.hget(hashId, 'user') }
+        const userHash = await getAsync(hashId, 'user')
+        const user = await JSON.parse(userHash)
 
         // Delete property
         await propertyDelete(req.body, user._id)
@@ -75,7 +99,7 @@ router.post('/api/property/delete', authentication, async (req, res) => {
         const { properties } = await propertyList(user._id)
 
         // Update properties in cache
-        client.set('properties', [JSON.stringify(properties)])
+        client.hset(hashId, 'properties', JSON.stringify(properties))
 
         res.status(200)
             .redirect('/management/property')

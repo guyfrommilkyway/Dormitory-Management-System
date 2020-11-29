@@ -8,10 +8,18 @@ const router = new express.Router()
 // Create new catalog
 router.post('/api/catalog/add', authentication, async (req, res) => {
     try {
+        // Get hash id in cookie
+        const hashId = req.signedCookies.id
+
+        // Check if hash id is associated with a record in the redis database
+        if (!hashId) {
+            throw new Error('Error: Access denied.')
+        }
+
         // Get user in cache
-        async () => { client.get('user') }
-        const userCache = await getAsync('user')
-        const user = JSON.parse(userCache)
+        async () => { client.hget(hashId, 'user') }
+        const userHash = await getAsync(hashId, 'user')
+        const user = await JSON.parse(userHash)
 
         // Create new catalog
         await catalogNew(req.body, user._id)
@@ -20,7 +28,7 @@ router.post('/api/catalog/add', authentication, async (req, res) => {
         const { catalogs } = await catalogList(user._id)
 
         // Update catalogs in cache
-        client.set('catalogs', [JSON.stringify(catalogs)])
+        client.hset(hashId, 'properties', JSON.stringify(properties))
 
         res.status(201)
             .redirect('/management/catalog')
@@ -33,10 +41,18 @@ router.post('/api/catalog/add', authentication, async (req, res) => {
 // Update catalog info
 router.post('/api/catalog/edit', authentication, async (req, res) => {
     try {
+        // Get hash id in cookie
+        const hashId = req.signedCookies.id
+
+        // Check if hash id is associated with a record in the redis database
+        if (!hashId) {
+            throw new Error('Error: Access denied.')
+        }
+
         // Get user in cache
-        async () => { client.get('user') }
-        const userCache = await getAsync('user')
-        const user = JSON.parse(userCache)
+        async () => { client.hget(hashId, 'user') }
+        const userHash = await getAsync(hashId, 'user')
+        const user = await JSON.parse(userHash)
 
         // Update catalog
         await catalogEdit(req.body, user)
@@ -45,7 +61,7 @@ router.post('/api/catalog/edit', authentication, async (req, res) => {
         const { catalogs } = await catalogList(user._id)
 
         // Update catalogs in cache
-        client.set('catalogs', [JSON.stringify(catalogs)])
+        client.hset(hashId, 'properties', JSON.stringify(properties))
 
         res.status(201)
             .redirect('/management/catalog')
@@ -58,10 +74,18 @@ router.post('/api/catalog/edit', authentication, async (req, res) => {
 // Delete catalog
 router.post('/api/catalog/delete', authentication, async (req, res) => {
     try {
+        // Get hash id in cookie
+        const hashId = req.signedCookies.id
+
+        // Check if hash id is associated with a record in the redis database
+        if (!hashId) {
+            throw new Error('Error: Access denied.')
+        }
+
         // Get user in cache
-        async () => { client.get('user') }
-        const userCache = await getAsync('user')
-        const user = JSON.parse(userCache)
+        async () => { client.hget(hashId, 'user') }
+        const userHash = await getAsync(hashId, 'user')
+        const user = await JSON.parse(userHash)
 
         // Delete catalog
         await catalogDelete(req.body, user._id)
@@ -70,7 +94,7 @@ router.post('/api/catalog/delete', authentication, async (req, res) => {
         const { catalogs } = await catalogList(user._id)
 
         // Update catalogs in cache
-        client.set('catalogs', [JSON.stringify(catalogs)])
+        client.hset(hashId, 'properties', JSON.stringify(properties))
 
         res.status(201)
             .redirect('/management/catalog')
