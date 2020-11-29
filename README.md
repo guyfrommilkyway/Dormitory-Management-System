@@ -52,6 +52,7 @@ REDIS_HOST=<localhost>
 REDIS_PORT=<your redis port>
 MONGODB_URL=mongodb://localhost:<mongodb port>/<your database name>
 JWT_SECRET=<some random strings>
+COOKIE_SECRET=<some random strings>
 ```
 
 ```
@@ -62,6 +63,7 @@ REDIS_HOST=127.0.0.1
 REDIS_PORT=6380
 MONGODB_URL=mongodb://localhost:27017/property-management-system
 JWT_SECRET=nIqxawqgGFcYwIUeCyeWCaQcxREFiV
+COOKIE_SECRET=cIBdzoGyyiMFgVQehkGQLJdAFedZxG
 ```
 
 - Run the application in the terminal.
