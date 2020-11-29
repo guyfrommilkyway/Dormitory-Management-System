@@ -67,9 +67,10 @@
 }
 
 #main-content-admin #sidebar .navbar-nav .nav-item .card {
-  margin: 0.25rem 0.75rem;
+  margin: 0 1rem;
   padding: 0;
-  background-color: #47556b;
+  background: none !important;
+  border: 2px solid #47556b;
   border-radius: 3px;
 }
 
