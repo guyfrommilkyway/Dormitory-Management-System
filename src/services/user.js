@@ -38,6 +38,10 @@ const userLogin = async (userObject) => {
     const user = await User.findByCredentials(userObject.email, userObject.password)
     const token = await user.generateAuthToken()
 
+    // Hide private data
+    user.password = null
+    user.tokens = null
+
     return { user, token }
 }
 
