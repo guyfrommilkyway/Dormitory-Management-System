@@ -1,4 +1,4 @@
 node_modules/
-src/config/
+config.env
 public/uploads/
 npm-debug.log
