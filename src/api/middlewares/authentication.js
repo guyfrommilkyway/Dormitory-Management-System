@@ -9,7 +9,7 @@ const authentication = async (req, res, next) => {
 
         // Check if sessionId is associated with a record in the redis database
         if (!sessionId || !sessionId === '') {
-            throw new Error('Error: Access denied.')
+            throw new Error()
         }
 
         // Check if sessionId has a token
@@ -17,7 +17,7 @@ const authentication = async (req, res, next) => {
         const token = await getAsync('user', sessionId)
 
         if (!token || token === '') {
-            throw new Error('Error: Invalid token.')
+            throw new Error()
         }
 
         // Validate token
@@ -25,7 +25,7 @@ const authentication = async (req, res, next) => {
         const user = await User.findOne({ _id: decoded._id, 'tokens.token': token })
 
         if (!user) {
-            throw new Error('Error: Invalid token.')
+            throw new Error()
         }
 
         let userStringified = JSON.stringify(user.toJSON())
@@ -35,10 +35,9 @@ const authentication = async (req, res, next) => {
 
         next()
     } catch (e) {
-        console.log(e)
+        console.log('Error: Authentication is required.')
 
-        res.status(401)
-            .redirect('/')
+        next()
     }
 }
 
