@@ -13,8 +13,8 @@ const tenantNew = async (tenantObject) => {
 }
 
 // List tenants
-const tenantList = async (_id) => {
-    const tenants = await Tenant.find({ property: _id })
+const tenantList = async (propertyId) => {
+    const tenants = await Tenant.find({ property: propertyId })
         .lean()
         .populate('room')
         .exec()
@@ -23,7 +23,7 @@ const tenantList = async (_id) => {
 }
 
 // Update tenant
-const tenantInfoUpdate = async (tenantObject) => {
+const tenantUpdate = async (tenantObject) => {
     const tenant = await Tenant.findByIdAndUpdate(tenantObject._id, {
         first_name: tenantObject.first_name,
         last_name: tenantObject.last_name,
@@ -55,6 +55,6 @@ const tenantDelete = async (tenantObject) => {
 module.exports = {
     tenantNew,
     tenantList,
-    tenantInfoUpdate,
+    tenantUpdate,
     tenantDelete
 }

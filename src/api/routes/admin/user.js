@@ -9,11 +9,10 @@ const {
     userSignup,
     userLogin,
     userAvatarUpdate,
-    userInfoUpdate,
+    userUpdate,
     userPasswordChange,
     userLogout
 } = require('../../../services/user')
-const { propertyList } = require('../../../services/property')
 
 const router = new express.Router()
 
@@ -69,28 +68,17 @@ router.post('/api/user/login', async (req, res) => {
         // Validate credentials
         const { user, token } = await userLogin(req.body)
 
-        // Get properties of user
-        const { properties } = await propertyList(user)
-
-        // Save user data in cache
-        client.set('user', [JSON.stringify(user)])
-        client.set('token', token)
-        client.set('properties', [JSON.stringify(properties)])
-
-        // Generate a unique id
-        const hashId = await randomstring.generate({
+        // Generate sessionId
+        const sessionId = await randomstring.generate({
             length: 255,
             charset: 'alphabetic'
-        });
+        })
 
         // Save data in cache
-        client.hset(hashId, 'user', JSON.stringify(user))
-        client.hset(hashId, 'token', token)
-        client.hset(hashId, 'properties', JSON.stringify(properties))
+        client.hset('user', sessionId, token)
 
         res.status(202)
-            .cookie('id', hashId, { httpOnly: true, signed: true })
-            .cookie('test', 'test')
+            .cookie('sessionId', sessionId, { httpOnly: true, signed: true })
             .redirect('/')
     } catch (e) {
         res.status(401)
@@ -105,25 +93,11 @@ router.post('/api/user/login', async (req, res) => {
 // Update user avatar
 router.post('/api/user/profile/avatar/update', authentication, uploadUserAvatar.any(), async (req, res) => {
     try {
-        // Get hash id in cookie
-        const hashId = req.signedCookies.id
-
-        // Check if hash id is associated with a record in the redis database
-        if (!hashId) {
-            throw new Error('Error: Access denied.')
-        }
-
-        // Get user in cache
-        async () => { client.hget(hashId, 'user') }
-        const userHash = await getAsync(hashId, 'user')
-        const user = await JSON.parse(userHash)
-
         // Update user avatar
-        const { userUpdated } = await userAvatarUpdate(user._id, req.files)
+        const { userUpdated } = await userAvatarUpdate(req.user._id, req.files)
 
-        // Update user in cache
-        client.hdel(hashId, 'user')
-        client.hset(hashId, 'user', JSON.stringify(userUpdated))
+        // Update user
+        req.user = userUpdated.toJSON()
 
         res.status(200)
             .redirect('/account/profile')
@@ -136,20 +110,11 @@ router.post('/api/user/profile/avatar/update', authentication, uploadUserAvatar.
 // Update user info
 router.post('/api/user/profile/info/update', authentication, async (req, res) => {
     try {
-        // Get hash id in cookie
-        const hashId = req.signedCookies.id
-
-        // Check if hash id is associated with a record in the redis database
-        if (!hashId) {
-            throw new Error('Error: Access denied.')
-        }
-
         // Update user info
-        const { userUpdated } = await userInfoUpdate(req.body)
+        const { userUpdated } = await userUpdate(req.body)
 
-        // Update user in cache
-        client.hdel(hashId, 'user')
-        client.hset(hashId, 'user', JSON.stringify(userUpdated))
+        // Update user
+        req.user = userUpdated.toJSON()
 
         res.status(200)
             .redirect('/account/profile')
@@ -177,24 +142,23 @@ router.post('/api/user/profile/password/update', authentication, async (req, res
 // Log out
 router.post('/api/user/logout', authentication, async (req, res) => {
     try {
-        // Get hash id in cookie
-        const hashId = req.signedCookies.id
+        // Get sessionId in cookie
+        const sessionId = req.signedCookies.sessionId
 
         // Get token
-        async () => { client.hget(hashId, 'token') }
-        const token = await getAsync(hashId, 'token')
+        async () => { client.hget('user', sessionId) }
+        const token = await getAsync('user', sessionId)
 
         // Log out
         await userLogout(token)
 
-        // Delete hash id record in the redis database
-        client.del(hashId)
+        // Delete hash record in the redis database
+        client.hdel('user', sessionId)
 
         res.status(200)
-            .clearCookie('id')
+            .clearCookie('sessionId')
             .redirect('/')
     } catch (e) {
-        console.log(e)
         res.status(500)
             .send()
     }

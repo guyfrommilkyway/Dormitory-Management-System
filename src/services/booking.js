@@ -2,25 +2,25 @@ const Property = require('../models/property')
 const Booking = require('../models/booking')
 
 // Create booking
-const bookingNew = async (bookingObject, propertyBookingId) => {
+const bookingNew = async (bookingObject, bookingId) => {
 
-    const property = await Property.findOne({ bookingId: propertyBookingId })
+    const property = await Property.findOne({ bookingId: bookingId })
 
     if (!property) {
         throw new Error('Property doesn\'t exist.')
-    } else {
-        const booking = new Booking({
-            first_name: bookingObject.first_name,
-            last_name: bookingObject.last_name,
-            birthday: bookingObject.birthday,
-            mobile: bookingObject.mobile,
-            email: bookingObject.email,
-            catalog: bookingObject.catalog,
-            property: property._id
-        })
-
-        await booking.save()
     }
+
+    const booking = new Booking({
+        first_name: bookingObject.first_name,
+        last_name: bookingObject.last_name,
+        birthday: bookingObject.birthday,
+        mobile: bookingObject.mobile,
+        email: bookingObject.email,
+        catalog: bookingObject.catalog,
+        property: property._id
+    })
+
+    await booking.save()
 }
 
 // List bookings
