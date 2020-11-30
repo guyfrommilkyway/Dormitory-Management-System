@@ -66,7 +66,7 @@ const userAvatarUpdate = async (userId, fileObject) => {
 }
 
 // Update user info
-const userInfoUpdate = async (userObject) => {
+const userUpdate = async (userObject) => {
     const userUpdated = await User.findByIdAndUpdate(userObject._id, {
         username: userObject.username,
         first_name: userObject.first_name,
@@ -85,7 +85,6 @@ const userInfoUpdate = async (userObject) => {
 // Update password
 const userPasswordChange = async (userObject) => {
     const userToFind = await User.findByCredentials(userObject.email, userObject.currentPassword)
-        .lean()
 
     if (!userToFind) {
         throw new Error()
@@ -117,7 +116,7 @@ module.exports = {
     userSignup,
     userLogin,
     userAvatarUpdate,
-    userInfoUpdate,
+    userUpdate,
     userPasswordChange,
     userLogout
 }

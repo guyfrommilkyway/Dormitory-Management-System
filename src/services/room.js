@@ -19,8 +19,8 @@ const roomNew = async (roomObject) => {
 }
 
 // List rooms
-const roomList = async (_id) => {
-    const rooms = await Room.find({ property: _id })
+const roomList = async (propertyId) => {
+    const rooms = await Room.find({ property: propertyId })
         .lean()
         .populate('catalog')
         .populate('tenant')
@@ -30,7 +30,7 @@ const roomList = async (_id) => {
 }
 
 // Update room info
-const roomEdit = async (roomObject) => {
+const roomUpdate = async (roomObject) => {
     const room = await Room.findByIdAndUpdate(roomObject._id, {
         name: roomObject.name,
         floor: roomObject.floor,
@@ -46,15 +46,15 @@ const roomDelete = async (roomObject) => {
 
     if (room.tenant) {
         throw new Error('Error: Room deletion failed.')
-    } else {
-        await Room.findOneAndDelete({ _id: roomObject._id, property: roomObject.property })
     }
+
+    await Room.findOneAndDelete({ _id: roomObject._id, property: roomObject.property })
 }
 
 
 module.exports = {
     roomNew,
     roomList,
-    roomEdit,
+    roomUpdate,
     roomDelete
 }
