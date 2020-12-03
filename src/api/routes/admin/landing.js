@@ -119,7 +119,8 @@ module.exports = async (app, handlebars) => {
             // Render template
             const output = template({
                 title: property.name,
-                header: 'Property / ' + property.name,
+                header: 'Property',
+                sub_header: property.name,
                 user: req.user,
                 properties,
                 catalogs,
@@ -156,7 +157,8 @@ module.exports = async (app, handlebars) => {
             // Render template
             const output = template({
                 title: 'Property Management',
-                header: 'Management / Property',
+                header: 'Management',
+                sub_header: 'Property',
                 user: req.user,
                 properties
             });
@@ -184,7 +186,8 @@ module.exports = async (app, handlebars) => {
             // Render template
             const output = template({
                 title: 'Catalog Management',
-                header: 'Management / Catalog',
+                header: 'Management',
+                sub_header: 'Catalog',
                 user: req.user,
                 properties,
                 catalogs
@@ -200,7 +203,7 @@ module.exports = async (app, handlebars) => {
 
     // Account
 
-    // Edit profile
+    // Profile
     app.get('/account/profile', authentication, async (req, res) => {
         if (req.user && req.token) {
             // Query properties
@@ -212,7 +215,8 @@ module.exports = async (app, handlebars) => {
             // Render template
             const output = template({
                 title: 'Profile',
-                header: 'Profile',
+                header: 'Account',
+                sub_header: 'Profile',
                 user: req.user,
                 properties
             });
@@ -225,19 +229,20 @@ module.exports = async (app, handlebars) => {
         }
     })
 
-    // Change password
-    app.get('/account/password', authentication, async (req, res) => {
+    // Security
+    app.get('/account/security', authentication, async (req, res) => {
         if (req.user && req.token) {
             // Query properties
             const { properties } = await propertyList(req.user._id)
 
             // Compile template
-            const template = await handlebars.compile(fs.readFileSync(path.join(__dirname, '../../../../views/pages/admin/account/password.hbs'), 'utf8'));
+            const template = await handlebars.compile(fs.readFileSync(path.join(__dirname, '../../../../views/pages/admin/account/security.hbs'), 'utf8'));
 
             // Render template
             const output = template({
                 title: 'Security',
-                header: 'Security',
+                header: 'Account',
+                sub_header: 'Security',
                 user: req.user,
                 properties
             });
