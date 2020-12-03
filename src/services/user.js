@@ -38,10 +38,6 @@ const userLogin = async (userObject) => {
     const user = await User.findByCredentials(userObject.email, userObject.password)
     const token = await user.generateAuthToken()
 
-    // Hide private data
-    user.password = null
-    user.tokens = null
-
     return { user, token }
 }
 
@@ -58,16 +54,12 @@ const userAvatarUpdate = async (userId, fileObject) => {
         }
     }, { new: true })
 
-    // Hide private data
-    userUpdated.password = null
-    userUpdated.tokens = null
-
     return { userUpdated }
 }
 
 // Update user info
-const userUpdate = async (userObject) => {
-    const userUpdated = await User.findByIdAndUpdate(userObject._id, {
+const userUpdate = async (userId, userObject) => {
+    const userUpdated = await User.findByIdAndUpdate(userId, {
         username: userObject.username,
         first_name: userObject.first_name,
         last_name: userObject.last_name,
@@ -75,27 +67,23 @@ const userUpdate = async (userObject) => {
         email: userObject.email
     }, { new: true })
 
-    // Hide private data
-    userUpdated.password = null
-    userUpdated.tokens = null
-
     return { userUpdated }
 }
 
 // Update password
-const userPasswordChange = async (userObject) => {
-    const userToFind = await User.findByCredentials(userObject.email, userObject.currentPassword)
+const userPasswordChange = async (userId, userObject) => {
+    const user = await User.findByCredentials(userObject.email, userObject.currentPassword)
 
-    if (!userToFind) {
+    if (!user) {
         throw new Error()
     }
 
     const newPassword = await bcrypt.hash(userObject.newPassword, 8)
-    const user = await User.findByIdAndUpdate(userObject._id, {
+    const userUpdated = await User.findByIdAndUpdate(userId, {
         password: newPassword
     }, { new: true })
 
-    return { user }
+    return { userUpdated }
 }
 
 // Log out
