@@ -11,32 +11,32 @@
         <div class="row justify-content-center">
             <div class="col-xl-4">
                 <form action="/api/user/signup" method="POST" id="signUpForm" novalidate>
-                    <h4>Sign up</h4>
-                    <div class=" md-form mb-3">
-                        <input class="form-control m-0" type="text" name="username" id="username" required>
+                    <h3>Sign up</h3>
+                    <div class="form-group mb-2">
                         <label class="d-flex align-items-center" for="username">
                             <div class="d-flex align-items-center" id="username_indicator"></div>
                             Username
                         </label>
+                        <input class="form-control m-0" type="text" name="username" id="username" required>
                         <span class="msg err_msg" id="username_indicator_msg"></span>
                     </div>
-                    <div class="md-form mb-3">
-                        <input class="form-control m-0" type="email" name="email" id="email" required>
+                    <div class="form-group mb-2">
                         <label class="d-flex align-items-center" for="email">
                             <div class="d-flex align-items-center" id="email_indicator"></div>
                             Email
                         </label>
+                        <input class="form-control m-0" type="email" name="email" id="email" required>
                         <span class="msg err_msg" id="email_indicator_msg"></span>
                     </div>
-                    <div class="md-form mb-3">
-                        <input class="form-control m-0" type="password" name="password" id="password" required>
+                    <div class="form-group mb-4">
                         <label class="d-flex align-items-center" for="password">
                             <div class="d-flex align-items-center" id="password_indicator"></div>
                             Password
                         </label>
+                        <input class="form-control m-0" type="password" name="password" id="password" required>
                         <span class="msg err_msg" id="password_indicator_msg"></span>
                     </div>
-                    <button class="btn btn-custom btn-block" type="submit">Create
+                    <button class="btn btn-custom btn-block rounded-pill" type="submit">Create
                         account</button>
                     <div class="links">
                         <p>

@@ -11,9 +11,9 @@
         <div class="row justify-content-center">
             <div class="col-xl-4">
                 <form action="/api/user/login" method="POST" id="loginForm" novalidate>
-                    <h4>Log in</h4>
+                    <h3>Log in</h3>
                     {{#if message}}
-                    <div class="d-flex rounded mb-4 pt-4 pr-3 pb-4 pl-3 border border-light">
+                    <div class="d-flex rounded mb-4 pt-1 pr-3 pb-1 pl-3">
                         <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red" width="18px"
                             height="18px">
                             <path
@@ -22,23 +22,23 @@
                         <span class="msg err_msg">{{message}}</span>
                     </div>
                     {{/if}}
-                    <div class="md-form mb-3">
-                        <input class="form-control m-0" id="email" type="email" name="email" id="email" required>
+                    <div class="form-group mb-2">
                         <label class="d-flex align-items-center" for="email">
                             <div class="d-flex align-items-center" id="email_indicator"></div>
                             Email
                         </label>
+                        <input class="form-control m-0" id="email" type="email" name="email" id="email" required>
                         <span class="msg err_msg" id="email_indicator_msg"></span>
                     </div>
-                    <div class="md-form mb-3">
-                        <input class="form-control m-0" type="password" name="password" id="password" required>
+                    <div class="form-group mb-4">
                         <label class="d-flex align-items-center" for="password">
                             <div class="d-flex align-items-center" id="password_indicator"></div>
                             Password
                         </label>
+                        <input class="form-control m-0" type="password" name="password" id="password" required>
                         <span class="msg err_msg" id="password_indicator_msg"></span>
                     </div>
-                    <button class="btn btn-custom btn-block" type="submit">Log in</button>
+                    <button class="btn btn-custom btn-block rounded-pill" type="submit">Log in</button>
                     <div class="links">
                         <p>
                             <span>Forgot password? </span>
