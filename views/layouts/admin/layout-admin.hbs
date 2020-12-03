@@ -58,17 +58,19 @@
                         <div class="card card-body z-depth-0">
                             {{#if properties}}
                             {{#each properties}}
-                            <a class="nav-link-custom" href="/property/{{_id}}">
-                                <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20px"
-                                    height="20px">
-                                    <path d="M0 0h24v24H0V0z" fill="none" />
-                                    <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z" /></svg>
-                                {{name}}
-                            </a>
+                            <div class="nav-item">
+                                <a class="nav-link" href="/property/{{_id}}">
+                                    <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                        width="20px" height="20px">
+                                        <path d="M0 0h24v24H0V0z" fill="none" />
+                                        <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z" /></svg>
+                                    {{name}}
+                                </a>
+                            </div>
                             {{/each}}
                             {{else}}
-                            <div class="nav-link-custom">
-                                <span>No properties found.</span>
+                            <div class="nav-item">
+                                <span class="nav-link">No properties found.</span>
                             </div>
                             {{/if}}
                         </div>
@@ -87,28 +89,33 @@
                     </a>
                     <div class="collapse mb-3" id="collapseSettings">
                         <div class="card card-body z-depth-0">
-                            <a class="nav-link-custom" href="/management/property">
-                                <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
-                                    viewBox="0 0 24 24" width="20px" height="20px">
-                                    <g>
-                                        <rect fill="none" height="24" width="24" />
-                                    </g>
-                                    <g>
+                            <div class="nav-item">
+                                <a class="nav-link" href="/management/property">
+                                    <svg class="mr-3" xmlns="http://www.w3.org/2000/svg"
+                                        enable-background="new 0 0 24 24" viewBox="0 0 24 24" width="20px"
+                                        height="20px">
+                                        <g>
+                                            <rect fill="none" height="24" width="24" />
+                                        </g>
+                                        <g>
+                                            <path
+                                                d="M17,11V3H7v4H3v14h8v-4h2v4h8V11H17z M7,19H5v-2h2V19z M7,15H5v-2h2V15z M7,11H5V9h2V11z M11,15H9v-2h2V15z M11,11H9V9h2 V11z M11,7H9V5h2V7z M15,15h-2v-2h2V15z M15,11h-2V9h2V11z M15,7h-2V5h2V7z M19,19h-2v-2h2V19z M19,15h-2v-2h2V15z" />
+                                        </g>
+                                    </svg>
+                                    Property
+                                </a>
+                            </div>
+                            <div class="nav-item">
+                                <a class="nav-link" href="/management/catalog">
+                                    <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                        width="20px" height="20px">
+                                        <path d="M0 0h24v24H0V0z" fill="none" />
                                         <path
-                                            d="M17,11V3H7v4H3v14h8v-4h2v4h8V11H17z M7,19H5v-2h2V19z M7,15H5v-2h2V15z M7,11H5V9h2V11z M11,15H9v-2h2V15z M11,11H9V9h2 V11z M11,7H9V5h2V7z M15,15h-2v-2h2V15z M15,11h-2V9h2V11z M15,7h-2V5h2V7z M19,19h-2v-2h2V19z M19,15h-2v-2h2V15z" />
-                                    </g>
-                                </svg>
-                                Property
-                            </a>
-                            <a class="nav-link-custom" href="/management/catalog">
-                                <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20px"
-                                    height="20px">
-                                    <path d="M0 0h24v24H0V0z" fill="none" />
-                                    <path
-                                        d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12 16zm0-11.47L17.74 9 12 13.47 6.26 9 12 4.53z" />
-                                </svg>
-                                Catalog
-                            </a>
+                                            d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12 16zm0-11.47L17.74 9 12 13.47 6.26 9 12 4.53z" />
+                                    </svg>
+                                    Catalog
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -125,11 +132,23 @@
 
             <!--Topbar -->
             <nav class="navbar navbar-expand-md" id="topbar">
-                <div class="title-wrapper">
-                    <span class="title" id="title">
-                        {{header}}
+                <div class="header-wrapper rounded">
+                    {{#if sub_header}}
+                    <span class="header" style="color: #ffffff; font-size: 0.9rem; font-weight: 400;"> {{header}}
                     </span>
+                    <svg class="m-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="22px"
+                        height="22px">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
+                    </svg>
+                    <span class="sub-header">{{sub_header}}</span>
+
+                    {{else}}
+
+                    <span class="header"> {{header}} </span>
+                    {{/if}}
                 </div>
+
                 <div class="btn-group">
                     <div class="user" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="username">{{user.username}}</span>
@@ -151,7 +170,7 @@
                                 </a>
                             </div>
                             <div class="nav-item">
-                                <a class="nav-link" href="/account/password">
+                                <a class="nav-link" href="/account/security">
                                     <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                         width="20px" height="20px">
                                         <g fill="none">
@@ -193,18 +212,56 @@
         <footer class="p-4 bg-dark text-white">
             <div class="d-flex justify-content-between align-items-center" style="line-height: 1rem;">
                 <div class="d-flex align-items-start" id="copyright-container">
-                    <span style="font-size: 12px;">All Rights Reserved. </span>
-                    <span style="font-size: 12px;">Copyright &copy; 2020 <span class="font-weight-bold">ALMER TAMPUS
-                            LLC</span></span>
+                    <span style="font-size: 12px;">&copy; 2020 <span class="font-weight-bold">PROPERTY MANAGEMENT SYSTEM
+                            BY ALMER TAMPUS</span></span>
                 </div>
-                <div class="d-flex justify-content-center align-items-center p-3 elegant-color rounded"
+                <div class="d-flex justify-content-center align-items-center elegant-color rounded"
                     id="powered-container" style="line-height: .75rem;">
-                    <div class="d-flex flex-column align-items-end mr-2 font-weight-normal">
-                        <span style="font-size: 10px;">POWERED</span>
-                        <span style="font-size: 10px;">BY</span>
+                    <div class="p-2 border-right border-dark">
+                        <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                        <svg class="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            viewBox="0 0 508.928 508.928" style="enable-background:new 0 0 508.928 508.928;"
+                            xml:space="preserve" width="22px" height="22px">
+                            <polygon style="fill:#FFD83B;"
+                                points="403.712,201.04 256.288,201.04 329.792,0 105.216,307.888 252.64,307.888 179.136,508.928" />
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                        </svg>
                     </div>
-                    <span style="font-size: 14px; font-weight: bold;">AFT.SPACE</span>
-                    </span>
+                    <div class="d-flex align-items-start mr-2 p-2 font-weight-normal">
+                        <span style="margin-right: 5px; font-size: 12px;">Powered</span>
+                        <span style="margin-right: 5px; font-size: 12px;">by</span>
+                        <span style="font-size: 12px; font-weight: bold;">ALMER TAMPUS</span>
+                        </span>
+                    </div>
                 </div>
             </div>
         </footer>
