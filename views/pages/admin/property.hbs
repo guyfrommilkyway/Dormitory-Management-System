@@ -95,66 +95,60 @@
                 <section class="tab-content" id="myTabContent">
                     <div class="tab-pane show active" id="dashboard-panel" role="tabpanel"
                         aria-labelledby="dashboard-tab">
-                        <div class="row flex-wrap justify-content-center mt-5">
-                            <div class="col-md-4 mb-5">
-                                <div class="property-card rounded">
-                                    <div class="svg-container rounded">
+                        <div class="row">
+                            <div class="col-md-6 d-flex flex-wrap justify-content-center">
+                                <div class="property-summary">
+                                    <div class="content-svg rounded-left">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
-                                            width="88px" height="88px">
+                                            width="72px" height="72px">
                                             <path d="M0 0h24v24H0V0z" fill="none" />
                                             <path
                                                 d="M19 19V4h-4V3H5v16H3v2h12V6h2v15h4v-2h-2zm-6 0H7V5h6v14zm-3-8h2v2h-2z" />
                                         </svg>
                                     </div>
-                                    <div class="property-card-body">
-                                        <span class="property-card-title"><span
-                                                class="green-text">{{vacant_rooms}}</span><span
-                                                style="font-size: 20px;">/{{total_rooms}}</span></span>
-                                        <span class="property-card-content mt-1">Vacant
+                                    <div class="content-body mr-3">
+                                        <span class="content">{{vacant_rooms}}<span
+                                                style="font-size: 1rem; line-height: 1rem;"> /
+                                                {{total_rooms}}</span></span>
+                                        <span class="content-title">Vacant
                                             Room(s)</span>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4 mb-5">
-                                <div class="property-card rounded">
-                                    <div class="svg-container rounded">
+                                <div class="property-summary">
+                                    <div class="content-svg rounded-left">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
-                                            width="88px" height="88px">
+                                            width="72px" height="72px">
                                             <path d="M0 0h24v24H0V0z" fill="none" />
                                             <path
                                                 d="M19 19V4h-4V3H5v16H3v2h12V6h2v15h4v-2h-2zm-6 0H7V5h6v14zm-3-8h2v2h-2z" />
                                         </svg>
                                     </div>
-                                    <div class="property-card-body">
-                                        <span class="property-card-title">
-                                            <span class="red-text">{{occupied_rooms}}</span><span
-                                                style="font-size: 20px;">/{{total_rooms}}</span></span>
-                                        <span class="property-card-content mt-1">Occupied Room(s)
-                                        </span>
+                                    <div class="content-body mr-3">
+                                        <span class="content">{{occupied_rooms}}<span
+                                                style="font-size: 1rem; line-height: 1rem;"> /
+                                                {{total_rooms}}</span></span>
+                                        <span class="content-title">Occupied
+                                            Room(s)</span>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4 mb-5">
-                                <div class="property-card rounded">
-                                    <div class="svg-container rounded">
+                                <div class="property-summary">
+                                    <div class="content-svg rounded-left">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
-                                            width="88px" height="88px">
+                                            width="72px" height="72px">
                                             <path d="M0 0h24v24H0z" fill="none" />
                                             <path
-                                                d="M3 5v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.11 0-2 .9-2 2zm12 4c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm-9 8c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1H6v-1z" />
+                                                d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
                                         </svg>
                                     </div>
-                                    <div class="property-card-body">
-                                        <span class="property-card-title">{{total_tenants}}</span>
-                                        <span class="property-card-content  mt-3">Tenant(s)</span>
+                                    <div class="content-body mr-3">
+                                        <span class="content">{{total_tenants}}</span>
+                                        <span class="content-title">Tenant(s)</span>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4 mb-5">
-                                <div class="property-card rounded">
-                                    <div class="svg-container rounded">
+                                <div class="property-summary">
+                                    <div class="content-svg rounded-left">
                                         <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
-                                            viewBox="0 0 24 24" fill="white" width="88px" height="88px">
+                                            viewBox="0 0 24 24" fill="white" width="72px" height="72px">
                                             <g>
                                                 <rect fill="none" height="24" width="24" />
                                             </g>
@@ -175,11 +169,14 @@
                                             </g>
                                         </svg>
                                     </div>
-                                    <div class="property-card-body">
-                                        <span class="property-card-title">{{total_bookings}}</span>
-                                        <span class="property-card-content mt-3">Booking(s)</span>
+                                    <div class="content-body mr-3">
+                                        <span class="content">{{total_tenants}}</span>
+                                        <span class="content-title">Booking(s)</span>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-md-6">
+
                             </div>
                         </div>
                     </div>
@@ -205,43 +202,34 @@
                                         <td>Php {{catalog.rate}}</td>
                                         <td>
                                             {{#if tenant}}
-                                            <div
-                                                class="red darken-3 rounded-pill p-2 w-100 font-weight-normal text-center text-uppercase">
+                                            <div class="red darken-3 rounded-pill p-2 w-100 font-weight-normal text-center text-uppercase"
+                                                style="font-size: 0.64rem;">
                                                 Occupied
                                             </div>
                                             {{else}}
-                                            <div
-                                                class="green darken-2 rounded-pill p-2 w-100 font-weight-normal text-center text-uppercase">
+                                            <div class="green darken-2 rounded-pill p-2 w-100 font-weight-normal text-center text-uppercase"
+                                                style="font-size: 0.64rem;">
                                                 Vacant
                                             </div>
                                             {{/if}}
                                         </td>
                                         <td class="text-center">
-                                            <button class="btn p-2 m-0 z-depth-0" id="editRoomButton" data-id="{{_id}}"
-                                                data-name="{{name}}" data-floor="{{floor}}" data-catalog="{{catalog}}"
+                                            <button class="btn btn-sm blue darken-2 text-white m-0 mr-2 z-depth-0"
+                                                id="editRoomButton" data-id="{{_id}}" data-name="{{name}}"
+                                                data-floor="{{floor}}" data-catalog="{{catalog}}"
                                                 data-catalogid="{{catalog._id}}" data-catalogname="{{catalog.name}}"
                                                 data-catalograte="{{catalog.rate}}" data-toggle="modal"
                                                 data-target="#editRoomModal">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
-                                                    width="20px" height="20px">
-                                                    <path d="M0 0h24v24H0V0z" fill="none" />
-                                                    <path
-                                                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM5.92 19H5v-.92l9.06-9.06.92.92L5.92 19zM20.71 5.63l-2.34-2.34c-.2-.2-.45-.29-.71-.29s-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41z" />
-                                                </svg>
+                                                Edit
                                             </button>
-                                            <button class="btn p-2 m-0 z-depth-0" id="deleteRoomButton"
-                                                data-id="{{_id}}" data-name="{{name}}" data-tenant="{{tenant._id}}"
-                                                data-floor="{{floor}}" data-catalog="{{catalog}}"
-                                                data-catalogid="{{catalog._id}}" data-catalogname="{{catalog.name}}"
-                                                data-catalograte="{{catalog.rate}}"
+                                            <button class="btn btn-sm red darken-3 text-white m-0 z-depth-0"
+                                                id="deleteRoomButton" data-id="{{_id}}" data-name="{{name}}"
+                                                data-tenant="{{tenant._id}}" data-floor="{{floor}}"
+                                                data-catalog="{{catalog}}" data-catalogid="{{catalog._id}}"
+                                                data-catalogname="{{catalog.name}}" data-catalograte="{{catalog.rate}}"
                                                 data-status="{{#if tenant}}Occupied{{else}}Vacant{{/if}}"
                                                 data-toggle="modal" data-target="#deleteRoomModal">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
-                                                    width="20px" height="20px">
-                                                    <path d="M0 0h24v24H0V0z" fill="none" />
-                                                    <path
-                                                        d="M14.12 10.47L12 12.59l-2.13-2.12-1.41 1.41L10.59 14l-2.12 2.12 1.41 1.41L12 15.41l2.12 2.12 1.41-1.41L13.41 14l2.12-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z" />
-                                                </svg>
+                                                Delete
                                             </button>
                                         </td>
                                     </tr>
@@ -266,36 +254,28 @@
                                 <tbody>
                                     {{#each tenants}}
                                     <tr>
-                                        <td>{{last_name}}, {{first_name}}</td>
+                                        <td>{{first_name}} {{last_name}}</td>
                                         <td>{{birthday}}</td>
                                         <td>{{mobile}}</td>
                                         <td>{{email}}</td>
                                         <td>{{room.name}}</td>
                                         <td class="text-center">
-                                            <button type="button" class="btn p-2 m-0 z-depth-0" id="editTenantButton"
-                                                data-id="{{_id}}" data-firstname="{{first_name}}"
+                                            <button type="button"
+                                                class="btn btn-sm blue darken-2 text-white m-0 mr-2 z-depth-0"
+                                                id="editTenantButton" data-id="{{_id}}" data-firstname="{{first_name}}"
                                                 data-lastname="{{last_name}}" data-mobile="{{mobile}}"
                                                 data-email="{{email}}" data-room="{{room._id}}" data-toggle="modal"
                                                 data-target="#editTenantModal">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
-                                                    width="20px" height="20px">
-                                                    <path d="M0 0h24v24H0V0z" fill="none" />
-                                                    <path
-                                                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM5.92 19H5v-.92l9.06-9.06.92.92L5.92 19zM20.71 5.63l-2.34-2.34c-.2-.2-.45-.29-.71-.29s-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41z" />
-                                                </svg>
+                                                Edit
                                             </button>
-                                            <button type="button" class="btn p-2 m-0 z-depth-0" id="deleteTenantButton"
-                                                data-id="{{_id}}" data-firstname="{{first_name}}"
-                                                data-lastname="{{last_name}}" data-mobile="{{mobile}}"
-                                                data-email="{{email}}" data-room="{{room._id}}"
+                                            <button type="button"
+                                                class="btn btn-sm red darken-3 text-white m-0 z-depth-0"
+                                                id="deleteTenantButton" data-id="{{_id}}"
+                                                data-firstname="{{first_name}}" data-lastname="{{last_name}}"
+                                                data-mobile="{{mobile}}" data-email="{{email}}" data-room="{{room._id}}"
                                                 data-roomname="{{room.name}}" data-toggle="modal"
                                                 data-target="#deleteTenantModal">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
-                                                    width="20px" height="20px">
-                                                    <path d="M0 0h24v24H0V0z" fill="none" />
-                                                    <path
-                                                        d="M14.12 10.47L12 12.59l-2.13-2.12-1.41 1.41L10.59 14l-2.12 2.12 1.41 1.41L12 15.41l2.12 2.12 1.41-1.41L13.41 14l2.12-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z" />
-                                                </svg>
+                                                Delete
                                             </button>
                                         </td>
                                     </tr>
@@ -317,8 +297,8 @@
                                         <th>Birthday</th>
                                         <th>Mobile</th>
                                         <th>Email</th>
-                                        <th>Catalog</th>
-                                        <th>Action</th>
+                                        <th>Preferred Room</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -329,22 +309,14 @@
                                         <td>{{mobile}}</td>
                                         <td>{{email}}</td>
                                         <td>{{catalog.name}}</td>
-                                        <td>
-                                            <button type="button" class="btn p-2 m-0 z-depth-0">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
-                                                    width="20px" height="20px">
-                                                    <path d="M0 0h24v24H0V0z" fill="none" />
-                                                    <path
-                                                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM5.92 19H5v-.92l9.06-9.06.92.92L5.92 19zM20.71 5.63l-2.34-2.34c-.2-.2-.45-.29-.71-.29s-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41z" />
-                                                </svg>
+                                        <td class="text-center">
+                                            <button type="button"
+                                                class="btn btn-sm green darken-2 text-white m-0 mr-2 z-depth-0">
+                                                accept
                                             </button>
-                                            <button type="button" class="btn p-2 m-0 z-depth-0">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
-                                                    width="20px" height="20px">
-                                                    <path d="M0 0h24v24H0V0z" fill="none" />
-                                                    <path
-                                                        d="M14.12 10.47L12 12.59l-2.13-2.12-1.41 1.41L10.59 14l-2.12 2.12 1.41 1.41L12 15.41l2.12 2.12 1.41-1.41L13.41 14l2.12-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z" />
-                                                </svg>
+                                            <button type="button"
+                                                class="btn btn-sm  red darken-3 text-white m-0 z-depth-0">
+                                                decline
                                             </button>
                                         </td>
                                     </tr>
@@ -370,9 +342,9 @@
                         <h4 class="modal-title">Add room</h4>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group mt-2 mb-3">
+                        <div class="form-group mt-2 mb-2">
                             <label class="select-label" for="catalog">Catalog</label>
-                            <div class="md-form">
+                            <div class="form-group">
                                 <select class="form-control" name="catalog" id="catalog" required>
                                     {{#if catalogs}}
                                     {{#each catalogs}}
@@ -384,11 +356,11 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="md-form mb-3">
+                        <div class="form-group mb-2">
                             <label for="number">Number of rooms</label>
                             <input class="form-control" name="number" type="number" id="number" required>
                         </div>
-                        <div class="md-form mb-3">
+                        <div class="form-group mb-3">
                             <label for="floor">Floor</label>
                             <input class="form-control" name="floor" type="number" id="floor" required>
                             <input class="form-control" name="property" type="hidden" value="{{property._id}}" required>
@@ -413,21 +385,21 @@
                         <h4 class="modal-title">Edit room</h4>
                     </div>
                     <div class="modal-body">
-                        <div class="md-form mt-2 mb-3">
+                        <div class="form-group mt-2 mb-3">
                             <label for="inputEditRoomName">Name</label>
                             <input class="form-control" name="name" type="text" id="inputEditRoomName"
-                                value="placeholder" required>
+                                value="placeholder_value" required>
                             <input class="form-control" name="_id" id="inputEditRoom_id" type="hidden" required>
                             <input class="form-control" name="property" type="hidden" value="{{property._id}}" required>
                         </div>
-                        <div class="md-form mb-3">
+                        <div class="form-group mb-3">
                             <label for="inputEditRoomFloor">Floor</label>
                             <input class="form-control" name="floor" type="text" id="inputEditRoomFloor"
-                                value="placeholder" required>
+                                value="placeholder_value" required>
                         </div>
                         <div class="form-group mb-3">
                             <label class="select-label" for="selectEditRoomCatalog">Catalog</label>
-                            <div class="md-form">
+                            <div class="form-group">
                                 <select class="form-control" name="catalog" id="selectEditRoomCatalog" required>
                                     {{#if catalogs}}
                                     {{#each catalogs}}
@@ -462,30 +434,32 @@
                         <input class="form-control" name="_id" id="inputDeleteRoom_id" type="hidden" required>
                         <input class="form-control" name="property" type="hidden" value="{{property._id}}" required>
                         <span class="font-weight-normal">Room information</span>
-                        <table class="table table-sm table-borderless mt-2">
-                            <tbody>
-                                <tr>
-                                    <td class="td-title">Room</td>
-                                    <td class="td-content"><span id="spanDeleteRoomName"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="td-title">Floor</td>
-                                    <td class="td-content"><span id="spanDeleteRoomFloor"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="td-title">Catalog</td>
-                                    <td class="td-content"><span id="spanDeleteRoomCatalogName"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="td-title">Rate</td>
-                                    <td class="td-content"><span id="spanDeleteRoomCatalogRate"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="td-title">Status</td>
-                                    <td class="td-content"><span id="spanDeleteRoomStatus"></span></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="table-responsive">
+                            <table class="table-sm table-borderless mt-2" style="width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td class="td-title">Room</td>
+                                        <td class="td-content"><span id="spanDeleteRoomName"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-title">Floor</td>
+                                        <td class="td-content"><span id="spanDeleteRoomFloor"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-title">Catalog</td>
+                                        <td class="td-content"><span id="spanDeleteRoomCatalogName"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-title">Rate</td>
+                                        <td class="td-content"><span id="spanDeleteRoomCatalogRate"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-title">Status</td>
+                                        <td class="td-content"><span id="spanDeleteRoomStatus"></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                         <div class="mt-4">
                             <span class="font-weight-normal" style="font-size: 14px;">Note:</span>
                             <p class="mt-2 pt-3 pr-2 pb-3 pl-2 rounded border border-white" style="font-size: 14px;">
@@ -522,16 +496,21 @@
                                         <h5>Personal information</h5>
                                     </header>
                                     <section>
-                                        <div class="md-form mt-3 mb-3">
+                                        <div class="form-group mt-3 mb-2">
                                             <label for="first_name">First name</label>
                                             <input class="form-control" name="first_name" type="text" id="first_name"
                                                 required>
                                             <input class="form-control" name="property" type="hidden"
                                                 value="{{property._id}}" required>
                                         </div>
-                                        <div class="md-form mb-4">
+                                        <div class="form-group mb-2">
                                             <label for="last_name">Last name</label>
                                             <input class="form-control" name="last_name" type="text" id="last_name"
+                                                required>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="birthday">Birthday</label>
+                                            <input class="form-control" name="birthday" type="date" id="birthday"
                                                 required>
                                         </div>
                                     </section>
@@ -541,11 +520,12 @@
                                         <h5>Contact information</h5>
                                     </header>
                                     <section>
-                                        <div class="md-form mt-3 mb-3">
+                                        <div class="form-group mt-3 mb-2">
                                             <label for="mobile">Mobile</label>
-                                            <input class="form-control" name="mobile" type="text" id="mobile" required>
+                                            <input class="form-control" name="mobile" type="number" id="mobile"
+                                                required>
                                         </div>
-                                        <div class="md-form mb-4">
+                                        <div class="form-group mb-4">
                                             <label for="email">Email</label>
                                             <input class="form-control" name="email" type="email" id="email" required>
                                         </div>
@@ -557,10 +537,10 @@
                                     <h5>Room information</h5>
                                 </header>
                                 <section>
-                                    <div class="form-group mb-3">
+                                    <div class="form-group mb-2">
                                         <label class="select-label" for="room">Room</label>
-                                        <div class="md-form">
-                                            <select class="form-control" name="room" id="room-select" required>
+                                        <div class="form-group">
+                                            <select class="form-control" name="room" id="room" required>
                                                 {{#if rooms}}
                                                 {{#each rooms }}
                                                 <option value="{{_id}}" {{#if tenant}} disabled {{/if}}>{{name}} -
@@ -603,21 +583,21 @@
                                         <h5>Personal information</h5>
                                     </header>
                                     <section>
-                                        <div class="md-form mt-3 mb-3">
+                                        <div class="form-group mt-3 mb-3">
                                             <label for="inputEditTenantFirstName">First name</label>
                                             <input class="form-control" name="first_name" type="text"
-                                                id="inputEditTenantFirstName" value="placeholder" required>
+                                                id="inputEditTenantFirstName" value="placeholder_value" required>
                                             <input class="form-control" name="_id" type="hidden" id="inputEditTenant_id"
-                                                value="placeholder" required>
+                                                value="placeholder_value" required>
                                             <input class="form-control" name="currentRoom" type="hidden"
-                                                id="inputEditTenantRoom" value="placeholder" required>
+                                                id="inputEditTenantRoom" value="placeholder_value" required>
                                             <input class="form-control" name="property" type="hidden"
                                                 value="{{property._id}}" required>
                                         </div>
-                                        <div class="md-form mb-4">
+                                        <div class="form-group mb-4">
                                             <label for="inputEditTenantLastName">Last name</label>
                                             <input class="form-control" name="last_name" type="text"
-                                                id="inputEditTenantLastName" value="placeholder" required>
+                                                id="inputEditTenantLastName" value="placeholder_value" required>
                                         </div>
                                     </section>
                                 </div>
@@ -626,15 +606,15 @@
                                         <h5>Contact information</h5>
                                     </header>
                                     <section>
-                                        <div class="md-form mt-3 mb-3">
+                                        <div class="form-group mt-3 mb-3">
                                             <label for="inputEditTenantMobile">Mobile</label>
                                             <input class="form-control" name="mobile" type="text"
-                                                id="inputEditTenantMobile" value="placeholder" required>
+                                                id="inputEditTenantMobile" value="placeholder_value" required>
                                         </div>
-                                        <div class="md-form mb-4">
+                                        <div class="form-group mb-4">
                                             <label for="inputEditTenantEmail">Email</label>
                                             <input class="form-control" name="email" type="email"
-                                                id="inputEditTenantEmail" value="placeholder" required>
+                                                id="inputEditTenantEmail" value="placeholder_value" required>
                                         </div>
                                     </section>
                                 </div>
@@ -646,9 +626,9 @@
                                 <section>
                                     <div class="form-group mb-3">
                                         <label class="select-label" for="selectEditTenantRoom">Room</label>
-                                        <div class="md-form">
+                                        <div class="form-group">
                                             <select class="form-control" name="room" id="selectEditTenantRoom"
-                                                value="placeholder" required>
+                                                value="placeholder_value" required>
                                                 {{#if rooms}}
                                                 {{#each rooms }}
                                                 <option value="{{_id}}" {{#if tenant}} class="occupied" disabled
@@ -690,29 +670,31 @@
                         <input class="form-control" name="room" id="inputDeleteTenantRoom" type="hidden" required>
                         <input class="form-control" name="property" type="hidden" value="{{property._id}}" required>
                         <span class="font-weight-normal">Tenant information</span>
-                        <table class="table table-sm table-borderless mt-2">
-                            <tbody>
-                                <tr>
-                                    <td class="td-title">Room</td>
-                                    <td class="td-content"><span id="spanDeleteTenantRoom"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="td-title">Name</td>
-                                    <td class="td-content">
-                                        <span id="spanDeleteTenantLastName"></span>,
-                                        <span id="spanDeleteTenantFirstName"></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="td-title">Mobile</td>
-                                    <td class="td-content"><span id="spanDeleteTenantMobile"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="td-title">Email</td>
-                                    <td class="td-content"><span id="spanDeleteTenantEmail"></span></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="table-responsive">
+                            <table class="table-sm table-borderless mt-2" style="width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td class="td-title">Room</td>
+                                        <td class="td-content"><span id="spanDeleteTenantRoom"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-title">Name</td>
+                                        <td class="td-content">
+                                            <span id="spanDeleteTenantFirstName"></span>
+                                            <span id="spanDeleteTenantLastName"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-title">Mobile</td>
+                                        <td class="td-content"><span id="spanDeleteTenantMobile"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-title">Email</td>
+                                        <td class="td-content"><span id="spanDeleteTenantEmail"></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
