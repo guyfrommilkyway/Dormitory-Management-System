@@ -1,60 +1,66 @@
 @media screen and (max-width: 768px) {
-  #main-content-admin {
-    flex-direction: column;
-  }
+    #main-content-admin {
+        flex-direction: column;
+    }
+    
+    #main-content-admin #content-wrapper #content .wrapper {
+        margin: 0;
+        padding: 1rem;
+    }
 
-  #main-content-admin #content-wrapper #content .wrapper {
-    margin: 0;
-    padding: 1rem;
-  }
+    /* Sidebar */
 
-  /* Sidebar */
-  #main-content-admin #sidebar {
-    width: 100%;
-    padding-bottom: 0;
-  }
+    #main-content-admin #sidebar {
+        width: 100%;
+        padding-bottom: 0;
+    }
 
-  #main-content-admin #sidebar .brand-wrapper {
-    margin: 1rem;
-  }
+    #main-content-admin #sidebar .brand-wrapper {
+        margin: 1rem;
+    }
 
-  #main-content-admin #sidebar .brand-link {
-    display: flex;
-    flex-direction: column;
-    color: #ffeab2;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 0.9rem;
-    text-transform: uppercase;
-  }
+    #main-content-admin #sidebar .brand-link {
+        display: flex;
+        flex-direction: column;
+        color: #ffeab2;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 0.9rem;
+        text-transform: uppercase;
+    }
 
-  #main-content-admin #sidebar .navbar-nav {
-    margin: 0;
-  }
+    #main-content-admin #sidebar .navbar-nav {
+        margin: 0;
+    }
 
-  #main-content-admin #sidebar .navbar-nav .nav-item .nav-link {
-    font-size: 0.9rem;
-  }
+    #main-content-admin #sidebar .navbar-nav .nav-item .nav-link {
+        font-size: 0.9rem;
+    }
 
-  /* Topbar */
-  #main-content-admin #content #topbar {
-    padding: 1rem;
-  }
+    /* Topbar */
 
-  #main-content-admin #content #topbar .title-wrapper .title {
-    font-size: 14px;
-  }
+    #main-content-admin #content #topbar {
+        padding: 1rem;
+    }
 
-  #main-content-admin #content #topbar .user .username {
-    display: none;
-  }
+    #main-content-admin #content #topbar .btn-group {
+        margin-left: auto;
+    }
 
-  footer div:first-child {
-    flex-direction: column;
-  }
+    #main-content-admin #content #topbar .title-wrapper .title {
+        font-size: 14px;
+    }
 
-  footer #copyright-container {
-    margin-bottom: 2rem !important;
-    align-items: center !important;
-  }
+    #main-content-admin #content #topbar .user .username {
+        display: none;
+    }
+
+    footer div:first-child {
+        flex-direction: column;
+    }
+
+    footer #copyright-container {
+        margin-bottom: 2rem !important;
+        align-items: center !important;
+    }
 }
