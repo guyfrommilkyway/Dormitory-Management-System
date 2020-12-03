@@ -111,7 +111,7 @@ router.post('/api/user/profile/avatar/update', authentication, uploadUserAvatar.
 router.post('/api/user/profile/info/update', authentication, async (req, res) => {
     try {
         // Update user info
-        const { userUpdated } = await userUpdate(req.body)
+        const { userUpdated } = await userUpdate(req.user._id, req.body)
 
         // Update user
         req.user = userUpdated.toJSON()
@@ -129,13 +129,17 @@ router.post('/api/user/profile/info/update', authentication, async (req, res) =>
 router.post('/api/user/profile/password/update', authentication, async (req, res) => {
     try {
         // Update password
-        await userPasswordChange(req.body)
+        const { userUpdated } = await userPasswordChange(req.user._id, req.body)
+
+        // Update user
+        req.user = userUpdated.toJSON()
 
         res.status(200)
-            .redirect('/account/password')
+            .redirect('/account/security')
     } catch (e) {
+        console.log(e)
         res.status(400)
-            .redirect('/account/password')
+            .redirect('/account/security')
     }
 })
 
