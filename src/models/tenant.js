@@ -13,6 +13,11 @@ const tenantSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    birthday: {
+        type: String,
+        required: true,
+        trim: true
+    },
     mobile: {
         type: String,
         min: 11,

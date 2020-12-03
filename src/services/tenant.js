@@ -27,6 +27,7 @@ const tenantUpdate = async (tenantObject) => {
     const tenant = await Tenant.findByIdAndUpdate(tenantObject._id, {
         first_name: tenantObject.first_name,
         last_name: tenantObject.last_name,
+        birthday: tenantObject.birthday,
         mobile: tenantObject.mobile,
         email: tenantObject.email,
         room: tenantObject.room
