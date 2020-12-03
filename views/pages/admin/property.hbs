@@ -108,7 +108,7 @@
                                     </div>
                                     <div class="content-body mr-3">
                                         <span class="content">{{vacant_rooms}}<span
-                                                style="font-size: 1rem; line-height: 1rem;"> /
+                                                style="font-size: 0.9rem; line-height: 1rem;"> /
                                                 {{total_rooms}}</span></span>
                                         <span class="content-title">Vacant
                                             Room(s)</span>
@@ -125,7 +125,7 @@
                                     </div>
                                     <div class="content-body mr-3">
                                         <span class="content">{{occupied_rooms}}<span
-                                                style="font-size: 1rem; line-height: 1rem;"> /
+                                                style="font-size: 0.9rem; line-height: 1rem;"> /
                                                 {{total_rooms}}</span></span>
                                         <span class="content-title">Occupied
                                             Room(s)</span>
@@ -285,10 +285,7 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="booking-panel" role="tabpanel" aria-labelledby="booking-tab">
-                        <a class="btn btn-custom m-0 mb-3 text-nowrap" style="float: left;"
-                            href="/booking/{{property.bookingId}}" target="_blank">
-                            Booking Link
-                        </a>
+                        <input id="booking_id" type="hidden" value="/booking/{{property.bookingId}}">
                         <div class="table-responsive-md text-nowrap">
                             <table id="tableBooking" class="table table-borderless" style="width: 100%;">
                                 <thead>
