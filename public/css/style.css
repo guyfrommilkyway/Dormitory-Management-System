@@ -1,8 +1,23 @@
 /* DataTables Custom */
 
+.dataTables_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.dataTables_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
 .dataTables_filter {
   display: flex;
   align-items: center;
+  margin-bottom: 0;
 }
 
 .dataTables_filter label {
@@ -41,16 +56,25 @@
 }
 
 .paginate_button.page-item.disabled a {
-  color: #abadb0 !important;
-}
-
-.paginate_button.page-item.disabled a {
-  background: none !important;
+  color: #8b8e92 !important;
 }
 
 .paginate_button.page-item.active a {
   color: #1b2432 !important;
   background-color: #ffeab2 !important;
+}
+
+@media screen and (max-width: 768px) {
+  .dataTables_header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dataTables_footer {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
 }
 
 /* Buttons */
