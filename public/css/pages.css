@@ -1,3 +1,9 @@
+/* 404 */
+
+#page_not_found {
+  background-color: #47556b;
+}
+
 /* Login & Sign up */
 
 #login {
@@ -16,10 +22,10 @@
   padding: 2rem 3rem;
   margin: 0 auto;
   background-color: #1b2432;
-  border-radius: 3px;
+  border-radius: 0.25rem;
 }
 
-#login form h4 {
+#login form h3 {
   color: #ffffff;
   text-align: center;
   margin-bottom: 2rem;
@@ -99,151 +105,109 @@
   font-weight: bold;
 }
 
-#property .property-card {
+#property .property-summary {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  min-width: 313px;
-  height: 140px;
-  padding: 1rem 2rem;
-  border: 2px solid #1b2432;
+  width: 220px;
+  min-height: 100px;
+  margin: 0 0.75rem 0.75rem 0;
+  background-color: #6c7789;
+  border-radius: 0.25rem;
 }
 
-#property .property-card .svg-container {
-  position: absolute;
-  top: -15px;
-  left: 35px;
-  padding: 1rem;
-  background-color: #1b2432;
+#property .property-summary .content-svg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+  padding: 0.5rem;
 }
 
-#property .property-card .property-card-body {
+#property .property-summary .content-body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: flex-end;
 }
 
-#property .property-card .property-card-title {
-  font-size: 54px;
-  font-weight: bold;
-  line-height: 2rem;
-}
-
-#property .property-card .property-card-content {
-  padding-top: 0.5rem;
-  color: #d5d5d7;
-  font-size: 13px;
-  font-weight: normal;
+#property .property-summary .content-body .content-title {
+  font-size: 12px;
+  font-weight: 400;
   text-transform: uppercase;
-  border-top: 1px solid grey;
 }
 
-@media screen and (max-width: 768px) {
-  #property #property-topbar .nav-tabs {
-    flex-direction: column;
-    background-color: #1b2432;
-  }
-
-  #property #property-topbar .nav-tabs .nav-item .waves-ripple {
-    background: ;
-  }
-
-  #property #property-topbar .nav-tabs .nav-item .nav-link {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    padding: 1rem;
-    color: #ffffff;
-    font-size: 0.9rem;
-    font-weight: 300;
-    border: none !important;
-  }
-
-  #property #property-topbar .nav-tabs .nav-item .nav-link:hover {
-    border: none !important;
-  }
-
-  #property #property-topbar .nav-tabs .nav-item .nav-link.active {
-    font-weight: 500;
-    background: none !important;
-    border: none !important;
-  }
+#property .property-summary .content-body .content {
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 2.5rem;
 }
 
-/* Management */
+/* Account profile & security */
 
-@media screen and (max-width: 768px) {
-  #management {
-    margin: 0 auto !important;
-    padding: 0;
-  }
+#profile .profile-header {
+  margin-bottom: 1rem;
 }
 
-/* Edit profile & change password */
-
-#profile .profile-info-header {
-  position: absolute;
-  top: 0;
-  width: 90%;
-  margin: 0 auto;
-  padding: 1rem;
-  color: #000000;
-  background-color: #ffeab2;
-  border-radius: 3px;
+#profile .profile-header span {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-#profile .profile-photo-wrapper {
-  position: absolute;
-  top: -32px;
-  right: 1rem;
+#profile .profile-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#profile .profile-content form {
+  min-width: 300px;
+  margin-right: 10rem;
+  border-radius: 0.25rem;
+}
+
+#profile .profile-content form .form-control:focus {
+  border: 1px solid #ffeab2;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0 0.2rem rgba(255, 234, 178, 0.25);
+}
+
+#profile .profile-content form .btn-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 4rem;
+}
+
+#profile .profile-content .profile-photo-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  background-color: #1b2432;
-  border-radius: 4.5rem;
+  justify-content: start;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
 }
 
-#profile .profile-photo-wrapper #profile-photo {
-  width: 9rem;
-  height: 9rem;
+#profile .profile-content .profile-photo-wrapper #profile-photo {
+  width: 12rem;
+  height: 12rem;
+  margin-top: 0.25rem;
   background-image: url("../ico/default-avatar.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  border-radius: 4.5rem;
+  border-radius: 6rem;
 }
 
-#profile .profile-photo-wrapper .profile-photo-button {
-  position: absolute;
-  top: 7rem;
-  right: 1.25rem;
+#profile .profile-content .profile-photo-wrapper .profile-photo-button {
+  position: relative;
+  top: -2.5rem;
+  left: 0;
   display: flex;
   justify-content: center;
-  padding: 0.25rem;
-  background-color: rgba(71, 85, 107, 0.75);
-  border-radius: 6px;
-}
-
-#profile .profile-photo-wrapper a img {
-  width: 1rem;
-}
-
-#profile form {
-  width: 100%;
-  margin-bottom: 2rem;
-  padding: 4.2rem 2rem 2rem 2rem;
-  background-color: #1b2432;
-  border-radius: 3px;
-}
-
-#profile form .btn-wrapper {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  margin-top: 2rem;
+  align-items: center;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.9rem;
+  background-color: rgba(7, 3, 3, 0.85);
 }
 
 .upload {
@@ -283,7 +247,9 @@
   align-items: center;
   width: 100%;
   padding: 0.5rem;
-  background: rgba(0, 0, 0, 0.7);
+  font-size: 0.9rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .upload label #upload-profile-photo-info img {
@@ -331,20 +297,23 @@
   max-width: 520px;
   margin-left: 4rem;
   padding: 2rem 3rem;
-  background-color: #a8dadc;
+  background-color: #8aced0;
 }
 
 #booking form section .form-group label {
-  font-size: 0.8rem;
+  color: #141414;
+  font-size: 0.9rem;
 }
 
 #booking form section .form-group .form-control {
+  color: #141414 !important;
+  background-color: #cbeaec !important;
   border: none !important;
   border-radius: 0 !important;
 }
 
 #booking form section .form-group .form-control:focus {
-  border-color: #17457e;
+  border-color: #17457e !important;
   box-shadow: 0 0 0 0.2rem rgba(23, 69, 126, 0.3);
 }
 
@@ -373,15 +342,4 @@
 #booking form section .btn {
   color: #ffffff;
   background-color: #17457e;
-}
-
-@media screen and (max-width: 768px) {
-  #booking form {
-    justify-content: center;
-  }
-
-  #booking form .col-md-5 {
-    margin: auto;
-    padding: 2rem;
-  }
 }

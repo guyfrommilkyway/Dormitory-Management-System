@@ -19,17 +19,13 @@
   }
 
   #property #property-topbar .nav-tabs .nav-item .nav-link {
-    padding: 1.25rem;
+    padding: 0.85rem;
     border: none !important;
-  }
-
-  #property #property-topbar .nav-tabs .nav-item .nav-link.active {
-    border-bottom: 2px solid #ffeab2 !important;
   }
 
   #property #property-topbar .nav-tabs .nav-item .nav-link svg {
     display: block;
-    width: 24px;
+    width: 32px;
     margin: 0 !important;
   }
 
@@ -39,5 +35,22 @@
 
   #property #property-topbar .nav-tabs .nav-item .nav-link span {
     display: none;
+  }
+}
+
+/* Profile */
+
+@media screen and (max-width: 1178px) {
+  #profile .profile-content {
+    flex-direction: column-reverse;
+  }
+
+  #profile .profile-content form {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  #profile .profile-content .profile-photo-wrapper {
+    margin: 0 auto;
   }
 }
