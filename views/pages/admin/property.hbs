@@ -95,11 +95,22 @@
                 <section class="tab-content" id="myTabContent">
                     <div class="tab-pane show active" id="dashboard-panel" role="tabpanel"
                         aria-labelledby="dashboard-tab">
-                        <div class="row">
-                            <div class="col-md-6 d-flex flex-wrap justify-content-center">
+
+                        <style>
+                            @media screen and (max-width: 768px) {
+                                .shit {
+                                    flex-wrap: wrap;
+                                    justify-content: center;
+                                }
+                            }
+                        </style>
+
+
+                        <div class="shit d-flex justify-content-between">
+                            <div class="d-flex flex-wrap align-content-start" style="width: 100%; max-width: 520px;">
                                 <div class="property-summary">
                                     <div class="content-svg rounded-left">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#394456"
                                             width="72px" height="72px">
                                             <path d="M0 0h24v24H0V0z" fill="none" />
                                             <path
@@ -116,7 +127,7 @@
                                 </div>
                                 <div class="property-summary">
                                     <div class="content-svg rounded-left">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#394456"
                                             width="72px" height="72px">
                                             <path d="M0 0h24v24H0V0z" fill="none" />
                                             <path
@@ -133,7 +144,7 @@
                                 </div>
                                 <div class="property-summary">
                                     <div class="content-svg rounded-left">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#394456"
                                             width="72px" height="72px">
                                             <path d="M0 0h24v24H0z" fill="none" />
                                             <path
@@ -148,7 +159,7 @@
                                 <div class="property-summary">
                                     <div class="content-svg rounded-left">
                                         <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
-                                            viewBox="0 0 24 24" fill="white" width="72px" height="72px">
+                                            viewBox="0 0 24 24" fill="#394456" width="72px" height="72px">
                                             <g>
                                                 <rect fill="none" height="24" width="24" />
                                             </g>
@@ -160,6 +171,7 @@
                                                     <g>
                                                         <path
                                                             d="M17.5,10.5c0.88,0,1.73,0.09,2.5,0.26V9.24C19.21,9.09,18.36,9,17.5,9c-1.7,0-3.24,0.29-4.5,0.83v1.66 C14.13,10.85,15.7,10.5,17.5,10.5z" />
+                                                        right
                                                         <path
                                                             d="M13,12.49v1.66c1.13-0.64,2.7-0.99,4.5-0.99c0.88,0,1.73,0.09,2.5,0.26V11.9c-0.79-0.15-1.64-0.24-2.5-0.24 C15.8,11.66,14.26,11.96,13,12.49z" />
                                                         <path
@@ -175,8 +187,122 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-
+                            <div class="d-flex flex-column" style="width: 100%; max-width: 480px;">
+                                <div class="mb-3 pt-3 pr-4 pb-3 pl-4 rounded" style="background-color: #6C7789;">
+                                    <header class="d-flex justify-content-between align-items-center">
+                                        <span style="font-weight: bold;text-transform: uppercase;">Catalog</span>
+                                        <button class="btn btn-sm btn-custom m-0" data-toggle="modal"
+                                            data-target="#addCatalogModal">
+                                            Add
+                                        </button>
+                                    </header>
+                                    <div class="table-responsive text-nowrap mt-2">
+                                        <table id="tableCatalog" class="table-sm table-borderless" style="width: 100%;">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Rate</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {{#each catalogs}}
+                                                <tr>
+                                                    <td>
+                                                        {{name}}
+                                                    </td>
+                                                    <td>{{rate}}</td>
+                                                    <td class="text-center">
+                                                        <button type="button"
+                                                            class="btn p-1 blue darken-2 text-white m-0 mr-2 z-depth-0"
+                                                            id="editCatalogButton" data-id="{{_id}}"
+                                                            data-name="{{name}}" data-rate="{{rate}}"
+                                                            data-toggle="modal" data-target="#editCatalogModal">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                                fill="white" width="18px" height="18px">
+                                                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                                                <path
+                                                                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM5.92 19H5v-.92l9.06-9.06.92.92L5.92 19zM20.71 5.63l-2.34-2.34c-.2-.2-.45-.29-.71-.29s-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41z" />
+                                                            </svg>
+                                                        </button>
+                                                        <button type="button"
+                                                            class="btn p-1 red darken-3 text-white m-0 z-depth-0"
+                                                            id="deleteCatalogButton" data-id="{{_id}}"
+                                                            data-name="{{name}}" data-rate="{{rate}}"
+                                                            data-toggle="modal" data-target="#deleteCatalogModal">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                                fill="white" width="18px" height="18px">
+                                                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                                                <path
+                                                                    d="M14.12 10.47L12 12.59l-2.13-2.12-1.41 1.41L10.59 14l-2.12 2.12 1.41 1.41L12 15.41l2.12 2.12 1.41-1.41L13.41 14l2.12-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z" />
+                                                            </svg>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                {{/each}}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="pt-3 pr-4 pb-3 pl-4 rounded" style="background-color: #6C7789;">
+                                    <header class="d-flex justify-content-between align-items-center">
+                                        <span style="font-weight: bold;text-transform: uppercase;">Add-on</span>
+                                        <button class="btn btn-sm btn-custom m-0" data-toggle="modal"
+                                            data-target="#addAddOnModal">
+                                            Add
+                                        </button>
+                                    </header>
+                                    <div class="table-responsive text-nowrap mt-2">
+                                        <table id="tableAddOn" class="table-sm table-borderless" style="width: 100%;">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Rate</th>
+                                                    <th>Payment Type</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {{#each addOns}}
+                                                <tr>
+                                                    <td>
+                                                        {{name}}
+                                                    </td>
+                                                    <td>{{rate}}</td>
+                                                    <td>{{type}}</td>
+                                                    <td class="text-center">
+                                                        <button type="button"
+                                                            class="btn p-1 blue darken-2 text-white m-0 mr-2 z-depth-0"
+                                                            id="editAddOnButton" data-id="{{_id}}" data-name="{{name}}"
+                                                            data-rate="{{rate}}" data-type="{{type}}"
+                                                            data-toggle="modal" data-target="#editAddOnModal">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                                fill="white" width="18px" height="18px">
+                                                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                                                <path
+                                                                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM5.92 19H5v-.92l9.06-9.06.92.92L5.92 19zM20.71 5.63l-2.34-2.34c-.2-.2-.45-.29-.71-.29s-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41z" />
+                                                            </svg>
+                                                        </button>
+                                                        <button type="button"
+                                                            class="btn p-1 red darken-3 text-white m-0 z-depth-0"
+                                                            id="deleteAddOnButton" data-id="{{_id}}"
+                                                            data-name="{{name}}" data-rate="{{rate}}"
+                                                            data-type="{{type}}" data-toggle="modal"
+                                                            data-target="#deleteAddOnModal">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                                fill="white" width="18px" height="18px">
+                                                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                                                <path
+                                                                    d="M14.12 10.47L12 12.59l-2.13-2.12-1.41 1.41L10.59 14l-2.12 2.12 1.41 1.41L12 15.41l2.12 2.12 1.41-1.41L13.41 14l2.12-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z" />
+                                                            </svg>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                {{/each}}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -190,7 +316,7 @@
                                         <th>Catalog</th>
                                         <th>Rate</th>
                                         <th>Status</th>
-                                        <th class="text-center">Action</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -248,7 +374,7 @@
                                         <th>Mobile</th>
                                         <th>Email</th>
                                         <th>Room</th>
-                                        <th class="text-center">Action</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -295,7 +421,7 @@
                                         <th>Mobile</th>
                                         <th>Email</th>
                                         <th>Preferred Room</th>
-                                        <th class="text-center">Action</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -329,6 +455,236 @@
         </div>
     </div>
 
+    <!-- Add catalog modal -->
+    <form action="/api/catalog/add" method="POST">
+        <div class="modal fade" id="addCatalogModal" tabindex="-1" role="dialog" aria-labelledby="addCatalogModal"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add catalog</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input name="property" type="hidden" value="{{property._id}}" required>
+                        <div class="form-group mt-2 mb-2">
+                            <label for="name">Name</label>
+                            <input class="form-control" name="name" type="text" id="name" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="rate">Rate</label>
+                            <input class="form-control" name="rate" type="number" id="rate" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-custom">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Update catalog modal -->
+    <form action="/api/catalog/update" method="POST">
+        <div class="modal fade" id="editCatalogModal" tabindex="-1" role="dialog" aria-labelledby="editCatalogModal"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit catalog</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input name="property" type="hidden" value="{{property._id}}" required>
+                        <div class="form-group mt-2 mb-2">
+                            <label for="inputEditCatalogName">Name</label>
+                            <input class="form-control" name="name" type="text" id="inputEditCatalogName"
+                                value="placeholder" required>
+                            <input name="_id" type="hidden" id="inputEditCatalog_id" value="placeholder" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="inputEditCatalogRate">Rate</label>
+                            <input class="form-control" name="rate" type="text" id="inputEditCatalogRate"
+                                value="placeholder" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-custom">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Delete catalog modal -->
+    <form action="/api/catalog/delete" method="POST">
+        <div class="modal fade" id="deleteCatalogModal" tabindex="-1" role="dialog" aria-labelledby="deleteCatalogModal"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Delete Catalog</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input name="property" type="hidden" value="{{property._id}}" required>
+                        <input name="_id" id="inputDeleteCatalog_id" type="hidden" required>
+                        <span class="font-weight-normal">Catalog information</span>
+                        <div class="table-responsive text-nowrap">
+                            <table class="table-sm table-borderless mt-2" style="width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td class="td-title">Name</td>
+                                        <td class="td-content"><span id="spanDeleteAddOnName"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-title">Rate</td>
+                                        <td class="td-content"><span id="spanDeleteCatalogRate"></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-4 p-1">
+                            <div class="d-flex flex-column" style="font-size: 13px;">
+                                <span>Note:</span>
+                                <p style="font-style: italic;">
+                                    Catalogs that are currently being used cannot be deleted.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn red darken-3 text-white">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Add add-on modal -->
+    <form action="/api/addOn/add" method="POST">
+        <div class="modal fade" id="addAddOnModal" tabindex="-1" role="dialog" aria-labelledby="addAddOnModal"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add add-on</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input name="property" type="hidden" value="{{property._id}}" required>
+                        <div class="form-group mt-2 mb-2">
+                            <label for="name">Name</label>
+                            <input class="form-control" name="name" type="text" id="name" required>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="rate">Rate</label>
+                            <input class="form-control" name="rate" type="number" id="rate" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="type">Payment type</label>
+                            <select class="form-control" name="type" id="type">
+                                <option value="One-time">One-time</option>
+                                <option value="Monthly">Monthly</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-custom">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Update add-on modal -->
+    <form action="/api/addOn/update" method="POST">
+        <div class="modal fade" id="editAddOnModal" tabindex="-Type1" role="dialog" aria-labelledby="editAddOnModal"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit add-on</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input name="property" type="hidden" value="{{property._id}}" required>
+                        <input name="_id" type="hidden" id="inputEditAddOn_id" value="placeholder" required>
+                        <div class="form-group mt-2 mb-2">
+                            <label for="inputEditAddOnName">Name</label>
+                            <input class="form-control" name="name" type="text" id="inputEditAddOnName"
+                                value="placeholder" required>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="inputEditAddOnRate">Rate</label>
+                            <input class="form-control" name="rate" type="text" id="inputEditAddOnRate"
+                                value="placeholder" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="selectEditAddOnType">Payment type</label>
+                            <select class="form-control" name="type" id="selectEditAddOnType">
+                                <option value="One-time">One-time</option>
+                                <option value="Monthly">Monthly</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-custom">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Delete add-on modal -->
+    <form action="/api/addOn/delete" method="POST">
+        <div class="modal fade" id="deleteAddOnModal" tabindex="-1" role="dialog" aria-labelledby="deleteAddOnModal"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Delete Add-on</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input name="property" type="hidden" value="{{property._id}}" required>
+                        <input name="_id" id="inputDeleteAddOn_id" type="hidden" required>
+                        <span class="font-weight-normal">Add-on information</span>
+                        <div class="table-responsive">
+                            <table class="table-sm table-borderless mt-2" style="width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td class="td-title">Name</td>
+                                        <td class="td-content"><span id="spanDeleteAddOnName"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-title">Rate</td>
+                                        <td class="td-content"><span id="spanDeleteAddOnRate"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-title">Payment type</td>
+                                        <td class="td-content"><span id="spanDeleteAddOnType"></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-4 p-1">
+                            <div class="d-flex flex-column" style="font-size: 13px;">
+                                <span>Note:</span>
+                                <p style="font-style: italic;">
+                                    Add-ons that are currently being used cannot be deleted.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn red darken-3 text-white">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
     <!-- Add room modal -->
     <form action="/api/room/add" method="POST">
         <div class="modal fade" id="addRoomModal" tabindex="-1" role="dialog" aria-labelledby="addRoomModal"
@@ -345,7 +701,7 @@
                                 <select class="form-control" name="catalog" id="catalog" required>
                                     {{#if catalogs}}
                                     {{#each catalogs}}
-                                    <option value="{{_id}}">{{name}} - Php{{rate}}</option>
+                                    <option value="{{_id}}">{{name}} - {{rate}}</option>
                                     {{/each}}
                                     {{else}}
                                     <option value="" disabled><span>No catalogs found.</span></option>
@@ -360,7 +716,7 @@
                         <div class="form-group mb-3">
                             <label for="floor">Floor</label>
                             <input class="form-control" name="floor" type="number" id="floor" required>
-                            <input class="form-control" name="property" type="hidden" value="{{property._id}}" required>
+                            <input name="property" type="hidden" value="{{property._id}}" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -382,14 +738,14 @@
                         <h4 class="modal-title">Edit room</h4>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group mt-2 mb-3">
+                        <div class="form-group mt-2 mb-2">
                             <label for="inputEditRoomName">Name</label>
                             <input class="form-control" name="name" type="text" id="inputEditRoomName"
                                 value="placeholder_value" required>
-                            <input class="form-control" name="_id" id="inputEditRoom_id" type="hidden" required>
-                            <input class="form-control" name="property" type="hidden" value="{{property._id}}" required>
+                            <input name="_id" id="inputEditRoom_id" type="hidden" required>
+                            <input name="property" type="hidden" value="{{property._id}}" required>
                         </div>
-                        <div class="form-group mb-3">
+                        <div class="form-group mb-2">
                             <label for="inputEditRoomFloor">Floor</label>
                             <input class="form-control" name="floor" type="text" id="inputEditRoomFloor"
                                 value="placeholder_value" required>
@@ -400,7 +756,7 @@
                                 <select class="form-control" name="catalog" id="selectEditRoomCatalog" required>
                                     {{#if catalogs}}
                                     {{#each catalogs}}
-                                    <option value="{{_id}}">{{name}} - Php{{rate}}</option>
+                                    <option value="{{_id}}">{{name}} - {{rate}}</option>
                                     {{/each}}
                                     {{else}}
                                     <option value="" disabled><span>No catalogs found.</span></option>
@@ -428,8 +784,8 @@
                         <h4 class="modal-title">Delete Room</h4>
                     </div>
                     <div class="modal-body">
-                        <input class="form-control" name="_id" id="inputDeleteRoom_id" type="hidden" required>
-                        <input class="form-control" name="property" type="hidden" value="{{property._id}}" required>
+                        <input name="_id" id="inputDeleteRoom_id" type="hidden" required>
+                        <input name="property" type="hidden" value="{{property._id}}" required>
                         <span class="font-weight-normal">Room information</span>
                         <div class="table-responsive">
                             <table class="table-sm table-borderless mt-2" style="width: 100%;">
@@ -457,19 +813,18 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="mt-4">
-                            <span class="font-weight-normal" style="font-size: 14px;">Note:</span>
-                            <p class="mt-2 pt-3 pr-2 pb-3 pl-2 rounded border border-white" style="font-size: 14px;">
-                                Rooms that are currently <span
-                                    class="red-text font-weight-bold font-italic">occupied</span>
-                                cannot be
-                                deleted.
-                            </p>
+                        <div class="mt-4 p-1">
+                            <div class="d-flex flex-column" style="font-size: 13px;">
+                                <span>Note:</span>
+                                <p style="font-style: italic;">
+                                    Rooms that are currently occupied cannot be deleted.
+                                </p>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn red darken-3 text-white">Confirm</button>
+                        <button type="submit" class="btn red darken-3 text-white text-white">Confirm</button>
                     </div>
                 </div>
             </div>
@@ -497,8 +852,7 @@
                                             <label for="first_name">First name</label>
                                             <input class="form-control" name="first_name" type="text" id="first_name"
                                                 required>
-                                            <input class="form-control" name="property" type="hidden"
-                                                value="{{property._id}}" required>
+                                            <input name="property" type="hidden" value="{{property._id}}" required>
                                         </div>
                                         <div class="form-group mb-2">
                                             <label for="last_name">Last name</label>
@@ -522,7 +876,7 @@
                                             <input class="form-control" name="mobile" type="number" id="mobile"
                                                 required>
                                         </div>
-                                        <div class="form-group mb-4">
+                                        <div class="form-group mb-3">
                                             <label for="email">Email</label>
                                             <input class="form-control" name="email" type="email" id="email" required>
                                         </div>
@@ -541,7 +895,7 @@
                                                 {{#if rooms}}
                                                 {{#each rooms }}
                                                 <option value="{{_id}}" {{#if tenant}} disabled {{/if}}>{{name}} -
-                                                    Floor {{floor}} - {{catalog.name}} - Php{{catalog.rate}}
+                                                    Floor {{floor}} - {{catalog.name}} - {{catalog.rate}}
                                                 </option>
                                                 {{/each}}
                                                 {{else}}
@@ -580,16 +934,15 @@
                                         <h5>Personal information</h5>
                                     </header>
                                     <section>
-                                        <div class="form-group mt-3 mb-3">
+                                        <div class="form-group mt-3 mb-2">
                                             <label for="inputEditTenantFirstName">First name</label>
                                             <input class="form-control" name="first_name" type="text"
                                                 id="inputEditTenantFirstName" value="placeholder_value" required>
-                                            <input class="form-control" name="_id" type="hidden" id="inputEditTenant_id"
+                                            <input name="_id" type="hidden" id="inputEditTenant_id"
                                                 value="placeholder_value" required>
-                                            <input class="form-control" name="currentRoom" type="hidden"
-                                                id="inputEditTenantRoom" value="placeholder_value" required>
-                                            <input class="form-control" name="property" type="hidden"
-                                                value="{{property._id}}" required>
+                                            <input name="currentRoom" type="hidden" id="inputEditTenantRoom"
+                                                value="placeholder_value" required>
+                                            <input name="property" type="hidden" value="{{property._id}}" required>
                                         </div>
                                         <div class="form-group mb-4">
                                             <label for="inputEditTenantLastName">Last name</label>
@@ -603,12 +956,12 @@
                                         <h5>Contact information</h5>
                                     </header>
                                     <section>
-                                        <div class="form-group mt-3 mb-3">
+                                        <div class="form-group mt-3 mb-2">
                                             <label for="inputEditTenantMobile">Mobile</label>
                                             <input class="form-control" name="mobile" type="text"
                                                 id="inputEditTenantMobile" value="placeholder_value" required>
                                         </div>
-                                        <div class="form-group mb-4">
+                                        <div class="form-group mb-3">
                                             <label for="inputEditTenantEmail">Email</label>
                                             <input class="form-control" name="email" type="email"
                                                 id="inputEditTenantEmail" value="placeholder_value" required>
@@ -631,7 +984,7 @@
                                                 <option value="{{_id}}" {{#if tenant}} class="occupied" disabled
                                                     {{/if}}>
                                                     {{name}} -
-                                                    {{catalog.name}} - Php{{catalog.rate}}
+                                                    {{catalog.name}} - {{catalog.rate}}
                                                 </option>
                                                 {{/each}}
                                                 {{else}}
@@ -663,9 +1016,9 @@
                         <h4 class="modal-title">Delete Tenant</h4>
                     </div>
                     <div class="modal-body">
-                        <input class="form-control" name="_id" id="inputDeleteTenant_id" type="hidden" required>
-                        <input class="form-control" name="room" id="inputDeleteTenantRoom" type="hidden" required>
-                        <input class="form-control" name="property" type="hidden" value="{{property._id}}" required>
+                        <input name="_id" id="inputDeleteTenant_id" type="hidden" required>
+                        <input name="room" id="inputDeleteTenantRoom" type="hidden" required>
+                        <input name="property" type="hidden" value="{{property._id}}" required>
                         <span class="font-weight-normal">Tenant information</span>
                         <div class="table-responsive">
                             <table class="table-sm table-borderless mt-2" style="width: 100%;">
@@ -695,7 +1048,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn red darken-3 text-white">Confirm</button>
+                        <button type="submit" class="btn red darken-3 text-white text-white">Confirm</button>
                     </div>
                 </div>
             </div>
