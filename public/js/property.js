@@ -16,6 +16,56 @@ $(document).ready(function () {
         history.replaceState(null, null, ' ');
     }
 
+    // Catalog
+    $(document).on("click", "#editCatalogButton, #deleteCatalogButton", function () {
+        let _id = $(this).data('id');
+        let name = $(this).data('name');
+        let rate = $(this).data('rate');
+
+        // Pass data to edit catalog modal
+        $("#inputEditCatalog_id").val(_id);
+        $("#inputEditCatalogName").val(name);
+        $("#inputEditCatalogRate").val(rate);
+
+        // Pass data to edit catalog modal
+        $("#inputDeleteCatalog_id").val(_id);
+        $("div #spanDeleteCatalogName").text(name);
+        $("div #spanDeleteCatalogRate").text(rate);
+    });
+
+    // Add-on
+    $(document).on("click", "#editAddOnButton, #deleteAddOnButton", function () {
+        let _id = $(this).data('id');
+        let name = $(this).data('name');
+        let rate = $(this).data('rate');
+        let type = $(this).data('type');
+
+        // Pass data to edit add-on modal
+        $("#inputEditAddOn_id").val(_id);
+        $("#inputEditAddOnName").val(name);
+        $("#inputEditAddOnRate").val(rate);
+        $("#inputEditAddOnType").val(type);
+        $(`#selectEditAddOnType option[value=${type}]`)
+            .prop('selected', true)
+            .text(type + ' (Current)');
+
+        // Pass data to edit add-on modal
+        $("#inputDeleteAddOn_id").val(_id);
+        $("div #spanDeleteAddOnName").text(name); ``
+        $("div #spanDeleteAddOnRate").text(rate);
+        $("div #spanDeleteAddOnType").text(type);
+    });
+
+    // Delete 'current' on modal close
+    $(document).on("hide.bs.modal", "#editAddOnModal", function () {
+        let type = $(`#selectEditAddOnType option:selected`).val();
+        let len = type.length;
+
+        $(`#selectEditAddOnType option[value=${type}]`)
+            .text($(`#selectEditAddOnType option[value=${type}]`).text().substring(len, -10))
+            .prop({ 'selected': false });
+    });
+
     // Room
     $(document).on("click", "#editRoomButton, #deleteRoomButton", function () {
         let _id = $(this).data('id');
@@ -93,6 +143,32 @@ $(document).ready(function () {
     });
 
     // DataTables
+
+    // Catalog table
+    $('#tableCatalog').DataTable({
+        "responsive": true,
+        "details": false,
+        "columnDefs": [
+            { responsivePriority: 1, targets: 0 },
+            { responsivePriority: 2, targets: 1 }
+        ],
+        "dom": 't<"dataTables_footer"ip>',
+        "pageLength": 5
+    });
+
+    // Add-on table
+    $('#tableAddOn').DataTable({
+        "responsive": true,
+        "details": false,
+        "columnDefs": [
+            { responsivePriority: 1, targets: 0 },
+            { responsivePriority: 4, targets: 1 },
+            { responsivePriority: 3, targets: 2 },
+            { responsivePriority: 2, targets: 3 }
+        ],
+        "dom": 't<"dataTables_footer"ip>',
+        "pageLength": 5
+    });
 
     // Room table
     $('#tableRoom').DataTable({
