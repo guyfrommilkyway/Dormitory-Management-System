@@ -12,11 +12,11 @@ const catalogSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    owner: {
+    property: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'User'
-    }
+        ref: 'Property'
+    },
 }, {
     timestamps: true
 })
