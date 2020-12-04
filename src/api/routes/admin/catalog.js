@@ -8,13 +8,19 @@ const router = new express.Router()
 router.post('/api/catalog/add', authentication, async (req, res) => {
     try {
         // Create new catalog
-        await catalogNew(req.body, req.user._id)
+        await catalogNew(req.body)
+
+        // Assign id
+        const _id = req.body.property
 
         res.status(201)
-            .redirect('/management/catalog')
+            .redirect(`/property/${_id}`)
     } catch (e) {
+        // Assign id
+        const _id = req.body.property
+
         res.status(400)
-            .redirect('/management/catalog')
+            .redirect(`/property/${_id}`)
     }
 })
 
@@ -24,11 +30,17 @@ router.post('/api/catalog/update', authentication, async (req, res) => {
         // Update catalog
         await catalogUpdate(req.body)
 
+        // Assign id
+        const _id = req.body.property
+
         res.status(201)
-            .redirect('/management/catalog')
+            .redirect(`/property/${_id}`)
     } catch (e) {
+        // Assign id
+        const _id = req.body.property
+
         res.status(400)
-            .redirect('/management/catalog')
+            .redirect(`/property/${_id}`)
     }
 })
 
@@ -36,13 +48,19 @@ router.post('/api/catalog/update', authentication, async (req, res) => {
 router.post('/api/catalog/delete', authentication, async (req, res) => {
     try {
         // Delete catalog
-        await catalogDelete(req.body, req.user._id)
+        await catalogDelete(req.body)
+
+        // Assign id
+        const _id = req.body.property
 
         res.status(201)
-            .redirect('/management/catalog')
+            .redirect(`/property/${_id}`)
     } catch (e) {
+        // Assign id
+        const _id = req.body.property
+
         res.status(400)
-            .redirect('/management/catalog')
+            .redirect(`/property/${_id}`)
     }
 })
 
