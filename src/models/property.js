@@ -25,6 +25,18 @@ const propertySchema = new mongoose.Schema({
     timestamps: true
 })
 
+propertySchema.virtual('catalogs', {
+    ref: 'Catalog',
+    localField: '_id',
+    foreignField: 'property'
+})
+
+propertySchema.virtual('addOns', {
+    ref: 'AddOn',
+    localField: '_id',
+    foreignField: 'property'
+})
+
 propertySchema.virtual('rooms', {
     ref: 'Room',
     localField: '_id',
@@ -36,7 +48,6 @@ propertySchema.virtual('tenants', {
     localField: '_id',
     foreignField: 'property'
 })
-
 
 const Property = mongoose.model('Property', propertySchema)
 

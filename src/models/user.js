@@ -66,12 +66,6 @@ userSchema.virtual('properties', {
     foreignField: 'owner'
 })
 
-userSchema.virtual('catalogs', {
-    ref: 'Catalog',
-    localField: '_id',
-    foreignField: 'owner'
-})
-
 // Hide private data
 userSchema.methods.toJSON = function () {
     const userObject = this.toObject()
