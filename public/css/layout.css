@@ -71,7 +71,7 @@
   margin: 0 0.5rem;
   padding: 0;
   background-color: #ffeab2;
-  border-radius: 0 !important;
+  border-radius: 0.25rem !important;
 }
 
 #main-content-admin #sidebar .navbar-nav .nav-item .card button {
