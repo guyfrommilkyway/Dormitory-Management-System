@@ -3,6 +3,7 @@ const path = require("path");
 const authentication = require("../../middlewares/authentication");
 const { propertyList, propertyGet } = require("../../../services/property");
 const { catalogList } = require("../../../services/catalog");
+const { addOnList } = require("../../../services/add-on");
 const { roomList } = require("../../../services/room");
 const { tenantList } = require("../../../services/tenant");
 const { bookingList } = require("../../../services/booking");
@@ -102,7 +103,10 @@ module.exports = async (app, handlebars) => {
             const { property } = await propertyGet(req.params.id);
 
             // Query catalogs
-            const { catalogs } = await catalogList(req.user._id);
+            const { catalogs } = await catalogList(req.params.id);
+
+            // Query catalogs
+            const { addOns } = await addOnList(req.params.id);
 
             // Query rooms in specific property
             const { rooms } = await roomList(req.params.id);
@@ -144,6 +148,7 @@ module.exports = async (app, handlebars) => {
                 user: req.user,
                 properties,
                 catalogs,
+                addOns,
                 property,
                 rooms,
                 vacant_rooms: vacant_rooms.length,
