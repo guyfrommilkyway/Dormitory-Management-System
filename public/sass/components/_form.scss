@@ -1,0 +1,46 @@
+.form {
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+
+.form__submit {
+  color: #1b2432;
+  background-color: #ffeab2;
+}
+
+.form--login {
+}
+
+.form--logout {
+  .form__submit {
+    width: 100%;
+    margin: 0;
+    text-align: left;
+    text-transform: capitalize;
+  }
+}
+
+.form-group {
+  margin-bottom: 0.5rem;
+}
+
+.form-group label {
+  margin-bottom: 0.25rem !important;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.form-control {
+  color: #ffffff !important;
+  font-weight: 300 !important;
+  background-color: #6c7789 !important;
+  border: none;
+  border-radius: 0 !important;
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(255, 234, 178, 0.7) !important;
+}

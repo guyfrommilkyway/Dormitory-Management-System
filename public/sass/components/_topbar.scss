@@ -1,0 +1,92 @@
+.main--admin {
+  .content {
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: none !important;
+      box-shadow: none !important;
+
+      .header {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem 1rem 0.5rem 0;
+        text-transform: uppercase;
+
+        .header__title {
+          color: color(color-1);
+          font-weight: 500;
+        }
+
+        .header__subtitle {
+          color: color(color-1);
+          font-weight: 500;
+        }
+      }
+
+      .btn-group {
+        .user {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          margin: 0;
+          color: #ffffff;
+          cursor: pointer;
+
+          .user__username {
+            margin-right: 1rem;
+            font-size: 0.9rem;
+            text-transform: lowercase;
+          }
+
+          .user__avatar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 2rem;
+            min-height: 2rem;
+            background-image: url("../ico/default-avatar.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            border-radius: 1rem;
+          }
+        }
+
+        .dropdown-menu {
+          margin-top: 0.5rem;
+          padding: 0;
+          background: none !important;
+          border: none !important;
+
+          .navbar-nav {
+            flex-direction: column;
+            width: 100%;
+            background-color: #ffeab2;
+            border-radius: 3px;
+
+            .nav-item {
+              width: 100%;
+
+              .nav-link {
+                display: flex;
+                align-items: center;
+                padding: 1rem 1.5rem;
+                color: #1b2432;
+                font-size: 0.9rem;
+                font-weight: 400;
+
+                svg {
+                  width: 20px;
+                  height: 20px;
+                  fill: #1b2432;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

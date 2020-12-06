@@ -1,0 +1,12 @@
+.msg {
+  display: flex;
+  font-size: 12px;
+}
+
+.msg--status--success {
+  color: green !important;
+}
+
+.msg--status--error {
+  color: red !important;
+}

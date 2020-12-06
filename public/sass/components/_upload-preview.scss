@@ -1,0 +1,30 @@
+.upload {
+  display: flex;
+  justify-content: center;
+
+  .upload__label {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem auto;
+    cursor: pointer;
+
+    .upload__photo {
+      display: flex;
+      align-items: flex-end;
+      width: 15rem;
+      height: 15rem;
+      margin: 0 auto;
+      background-color: #1b2432;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .upload__photo--current {
+      background-image: url("../ico/default-avatar.svg");
+    }
+
+    .upload__photo--uploaded {
+      display: none;
+    }
+  }
+}

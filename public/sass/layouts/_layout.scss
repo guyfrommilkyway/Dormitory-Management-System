@@ -1,0 +1,30 @@
+.main {
+  width: 100%;
+  height: 100%;
+}
+
+.main__content {
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  width: 100%;
+}
+
+.main--admin {
+  display: flex;
+  background-color: color(color-3);
+  min-height: 100vh;
+
+  .main__content {
+    display: flex;
+    flex-direction: column;
+
+    .content {
+      width: calc(100% - 4rem);
+      min-height: 100vh;
+      margin: 0 2rem;
+    }
+  }
+}

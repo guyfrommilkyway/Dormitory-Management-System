@@ -1,0 +1,11 @@
+$color-palette: (
+  "color-1": #ffeab2,
+  "color-2": #1b2432,
+  "color-3": #394456,
+  "color-4": #47556b,
+  "color-5": #6c7789,
+);
+
+@function color($color-name) {
+  @return map-get($color-palette, $color-name);
+}

@@ -1,0 +1,88 @@
+.content--login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #ffffff;
+
+  .content__body {
+    width: 100%;
+    min-width: 300px;
+    max-width: 420px;
+    min-height: 360px;
+    padding: 2rem 3rem;
+    margin: 0 auto;
+    background-color: #1b2432;
+    border-radius: 0.25rem;
+
+    .header {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .content .form .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.content--profile {
+  .header {
+    margin-bottom: 1rem;
+
+    .header__title {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+  }
+
+  .content__body {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    .form--profile-update {
+      min-width: 300px;
+      margin-right: 10rem;
+      border-radius: 0.25rem;
+    }
+
+    .user {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: flex-start;
+      margin: 0;
+      padding: 0;
+
+      .user__avatar {
+        width: 12rem;
+        height: 12rem;
+        margin-top: 0.25rem;
+        background-image: url("../ico/default-avatar.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        border-radius: 6rem;
+      }
+
+      .user__button {
+        position: relative;
+        top: -2.5rem;
+        left: 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.35rem 0.5rem;
+        font-size: 0.9rem;
+        background-color: rgba(7, 3, 3, 0.85);
+        border-radius: 0.25rem;
+      }
+    }
+  }
+}
