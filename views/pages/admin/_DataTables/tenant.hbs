@@ -1,0 +1,40 @@
+<div class="table-responsive-md text-nowrap">
+    <table id="tableTenant" class="table table-borderless" style="Width: 100%;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Birthday</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Room</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each tenants}}
+            <tr>
+                <td>{{first_name}} {{last_name}}</td>
+                <td>{{birthday}}</td>
+                <td>{{mobile}}</td>
+                <td>{{email}}</td>
+                <td>{{room.name}}</td>
+                <td class="text-center">
+                    <button type="button" class="btn btn-sm blue darken-2 text-white m-0 mr-2 z-depth-0"
+                        id="editTenantButton" data-id="{{_id}}" data-firstname="{{first_name}}"
+                        data-lastname="{{last_name}}" data-mobile="{{mobile}}" data-email="{{email}}"
+                        data-room="{{room._id}}" data-toggle="modal" data-target="#editTenantModal">
+                        Edit
+                    </button>
+                    <button type="button" class="btn btn-sm red darken-3 text-white m-0 z-depth-0"
+                        id="deleteTenantButton" data-id="{{_id}}" data-firstname="{{first_name}}"
+                        data-lastname="{{last_name}}" data-mobile="{{mobile}}" data-email="{{email}}"
+                        data-room="{{room._id}}" data-roomname="{{room.name}}" data-toggle="modal"
+                        data-target="#deleteTenantModal">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
