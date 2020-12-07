@@ -1,0 +1,123 @@
+<!-- Add add-on modal -->
+<form action="/api/addOn/add" method="POST">
+    <div class="modal fade" id="addAddOnModal" tabindex="-1" role="dialog" aria-labelledby="addAddOnModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add add-on</h4>
+                </div>
+                <div class="modal-body">
+                    <input name="property" type="hidden" value="{{property._id}}" required>
+                    <div class="form-group mt-2 mb-2">
+                        <label for="name">Name</label>
+                        <input class="form-control" name="name" type="text" id="name" required>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="rate">Rate</label>
+                        <input class="form-control" name="rate" type="number" id="rate" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="type">Type</label>
+                        <select class="form-control" name="type" id="type">
+                            <option value="One-time">One-time</option>
+                            <option value="Monthly">Monthly</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn--submit btn">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Update add-on modal -->
+<form action="/api/addOn/update" method="POST">
+    <div class="modal fade" id="editAddOnModal" tabindex="-Type1" role="dialog" aria-labelledby="editAddOnModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit add-on</h4>
+                </div>
+                <div class="modal-body">
+                    <input name="property" type="hidden" value="{{property._id}}" required>
+                    <input name="_id" type="hidden" id="inputEditAddOn_id" value="placeholder" required>
+                    <div class="form-group mt-2 mb-2">
+                        <label for="inputEditAddOnName">Name</label>
+                        <input class="form-control" name="name" type="text" id="inputEditAddOnName" value="placeholder"
+                            required>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="inputEditAddOnRate">Rate</label>
+                        <input class="form-control" name="rate" type="text" id="inputEditAddOnRate" value="placeholder"
+                            required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="selectEditAddOnType">Type</label>
+                        <select class="form-control" name="type" id="selectEditAddOnType">
+                            <option value="One-time">One-time</option>
+                            <option value="Monthly">Monthly</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn--submit btn">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Delete add-on modal -->
+<form action="/api/addOn/delete" method="POST">
+    <div class="modal fade" id="deleteAddOnModal" tabindex="-1" role="dialog" aria-labelledby="deleteAddOnModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Add-on</h4>
+                </div>
+                <div class="modal-body">
+                    <input name="property" type="hidden" value="{{property._id}}" required>
+                    <input name="_id" id="inputDeleteAddOn_id" type="hidden" required>
+                    <span class="font-weight-normal">Add-on information</span>
+                    <div class="table-responsive">
+                        <table class="table-sm table-borderless mt-2" style="width: 100%;">
+                            <tbody>
+                                <tr>
+                                    <td class="td-title">Name</td>
+                                    <td class="td-content"><span id="spanDeleteAddOnName"></span></td>
+                                </tr>
+                                <tr>
+                                    <td class="td-title">Rate</td>
+                                    <td class="td-content"><span id="spanDeleteAddOnRate"></span></td>
+                                </tr>
+                                <tr>
+                                    <td class="td-title">Type</td>
+                                    <td class="td-content"><span id="spanDeleteAddOnType"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mt-4 p-1">
+                        <div class="d-flex flex-column" style="font-size: 13px;">
+                            <span>Note:</span>
+                            <p style="font-style: italic;">
+                                Add-ons that are currently being used cannot be deleted.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn red darken-3 text-white">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
