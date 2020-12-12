@@ -4,40 +4,31 @@
 {{/content}}
 
 {{#content "content"}}
-
-<!-- Content -->
-<main class="wrapper" id="profile">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12 p-0">
-                <header class="profile-header">
-                    <span>Change password</span>
-                </header>
-                <section class="profile-content">
-                    <form action="/api/user/profile/password/update" method="POST">
-                        <input name="email" type="hidden" value="{{user.email}}" required>
-                        <div class="form-group mt-0 mb-2">
-                            <label for="currentPassword">Current password</label>
-                            <input class="form-control" name="currentPassword" id="currentPassword" type="password"
-                                required>
-                        </div>
-                        <div class="form-group mt-0 mb-2">
-                            <label for="newPassword">New password</label>
-                            <input class="form-control" name="newPassword" id="newPassword" type="password" required>
-                        </div>
-                        <div class="form-group mt-0 mb-2">
-                            <label for="confirmNewPassword">Confirm password</label>
-                            <input class="form-control" name="confirmNewPassword" id="confirmNewPassword"
-                                type="password" required>
-                        </div>
-                        <button type="submit" class="btn btn-custom m-0 mt-5">Update password</button>
-                    </form>
-                </section>
-            </div>
-        </div>
+<div class="page page--profile">
+    <div class="page__content">
+        <header class="page__header">
+            <h3 class="page__title">Change password</h3>
+        </header>
+        <section class="page__body d-flex flex-wrap">
+            <form class="form form--user-password--update" action="/api/user/profile/password/update" method="POST">
+                <input name="email" type="hidden" value="{{user.email}}" required>
+                <div class="form-group">
+                    <label>Current password</label>
+                    <input class="form-control" name="currentPassword" type="password" required>
+                </div>
+                <div class="form-group">
+                    <label>New password</label>
+                    <input class="form-control" name="newPassword" type="password" required>
+                </div>
+                <div class="form-group">
+                    <label>Confirm password</label>
+                    <input class="form-control" name="confirmNewPassword" type="password" required>
+                </div>
+                <button type="submit" class="btn--submit btn m-0 mt-5">Update password</button>
+            </form>
+        </section>
     </div>
-</main>
-
+</div>
 {{/content}}
 
 {{#content "extra_js"}}

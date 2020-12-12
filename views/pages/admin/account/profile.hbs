@@ -4,77 +4,59 @@
 {{/content}}
 
 {{#content "content"}}
-
-<!-- Content -->
-<main class="wrapper" id="profile">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12 p-0">
-                <header class="profile-header">
-                    <span>Profile information</span>
-                </header>
-                <section class="profile-content" style="width: 100%;">
-                    <form action="/api/user/profile/info/update" method="POST">
-                        <div class="form-group mt-0 mb-2">
-                            <label for="username">Username</label>
-                            <input class="form-control" name="username" id="username" type="text"
-                                value="{{user.username}}" required>
-                        </div>
-                        <div class="form-row">
-                            <div class="col">
-                                <div class="form-group mt-0 mb-2">
-                                    <label for="first_name">First name</label>
-                                    <input class="form-control" name="first_name" id="first_name" type="text"
-                                        value="{{user.first_name}}">
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-group mt-0 mb-2">
-                                    <label for="last_name">Last name</label>
-                                    <input class="form-control" name="last_name" id="last_name" type="text"
-                                        value="{{user.last_name}}">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group mt-0 mb-2">
-                            <label for="contact">Contact</label>
-                            <input class="form-control" name="contact" id="contact" type="text"
-                                value="{{user.contact}}">
-                        </div>
-                        <div class="form-group mt-0 mb-2">
-                            <label for="email">Email</label>
-                            <input class="form-control" name="email" id="email" type="email" value="{{user.email}}"
-                                required>
-                        </div>
-                        <button type="submit" class="btn btn-custom m-0 mt-5">Update profile</button>
-                    </form>
-
-                    <div class="profile-photo-wrapper">
-                        <div id="profile-photo" {{#if user.avatar}}
-                            style="background-image: url('data:image/png;base64,{{user.avatar.data}}');" {{/if}}>
-                        </div>
-                        <a class="profile-photo-button rounded z-depth-0" data-toggle="modal"
-                            data-target="#editProfileModal">
-                            <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
-                                width="18px" height="18px">
-                                <path d="M0 0h24v24H0z" fill="none" />
-                                <circle cx="12" cy="12" r="3.2" />
-                                <path
-                                    d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" />
-                            </svg>
-                            Change
-                        </a>
+<div class="page page--profile">
+    <div class="page__content">
+        <header class="page__header">
+            <h3 class="page__title">Edit your profile</h3>
+        </header>
+        <section class="page__body d-flex flex-wrap">
+            <div class="col-lg p-0">
+                <form class="form form--user-profile--update w-100" action="/api/user/profile/info/update"
+                    method="POST">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input class="form-control" name="username" type="text" value="{{user.username}}" required>
                     </div>
-
-                </section>
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label>First name</label>
+                                <input class="form-control" name="first_name" type="text" value="{{user.first_name}}">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label>Last name</label>
+                                <input class="form-control" name="last_name" type="text" value="{{user.last_name}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Mobile</label>
+                        <input class="form-control" name="mobile" type="text" value="{{user.mobile}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input class="form-control" name="email" type="email" value="{{user.email}}" required>
+                    </div>
+                    <button type="submit" class="btn--submit btn m-0 mt-5">Update profile</button>
+                </form>
             </div>
-        </div>
+            <div class="col-lg d-flex justify-content-center p-0">
+                <div class="user">
+                    <div class="user__avatar" {{#if user.avatar}}
+                        style="background-image: url('data:image/png;base64,{{user.avatar.data}}');" {{/if}}>
+                    </div>
+                    <a class="user__button" data-toggle="modal" data-target="#editProfileModal">Change</a>
+                </div>
+            </div>
+        </section>
     </div>
-    </div>
-</main>
+</div>
 
 <!-- Update profile modal -->
-<form action="/api/user/profile/avatar/update" method="POST" enctype="multipart/form-data">
+<form class="form form--user-avatar-update" action="/api/user/profile/avatar/update" method="POST"
+    enctype="multipart/form-data">
     <div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModal"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -84,12 +66,11 @@
                 </div>
                 <div class="modal-body">
                     <div class="upload">
-                        <input name="avatar" id="avatar" type="file" accept="image/png, image/jpeg, image/jpg"
-                            onchange="updateProfilePhoto(this);" required />
-                        <label for="avatar">
-                            <div class="upload-profile-photo" id="current_profile_photo"
-                                {{#if user.avatar}}style="background-image: url('data:image/png;base64,{{user.avatar.data}}');"
-                                {{/if}}>
+                        <input class="upload__input" name="avatar" id="upload__photo" type="file"
+                            accept="image/png, image/jpeg, image/jpg" onchange="updatePhoto(this);" required />
+                        <label class="upload__label" for="upload__photo">
+                            <div class="upload__photo upload__photo--current js-photo--current" {{#if user.avatar}}
+                                style="background-image: url('data:image/png;base64,{{user.avatar.data}}');" {{/if}}>
                                 <div id="upload-profile-photo-info">
                                     <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                         fill="white" width="20px" height="20px">
@@ -98,10 +79,10 @@
                                         <path
                                             d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" />
                                     </svg>
-                                    <span>Upload photo</span>
+                                    <span>Upload a photo</span>
                                 </div>
                             </div>
-                            <div class="upload-profile-photo" id="uploaded_profile_photo">
+                            <div class="upload__photo upload__photo--uploaded js-photo--uploaded">
                                 <div id="upload-profile-photo-info">
                                     <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                         fill="white" width="20px" height="20px">
@@ -110,15 +91,15 @@
                                         <path
                                             d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" />
                                     </svg>
-                                    <span>Upload photo</span>
+                                    <span>Upload a photo</span>
                                 </div>
                             </div>
                         </label>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-custom">Set new profile photo</button>
+                    <button type="button" class="btn--cancel btn" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn--submit btn">Set new profile photo</button>
                 </div>
             </div>
         </div>
@@ -128,21 +109,7 @@
 {{/content}}
 
 {{#content "extra_js"}}
-<script>
-    // Upload profile photo preview
-    function updateProfilePhoto(input) {
-        if (input.files && input.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                $('#current_profile_photo')
-                    .attr('style', 'display: none;');
-                $('#uploaded_profile_photo')
-                    .attr('style', 'display: flex; background-image: url(' + e.target.result + ');');
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-</script>
+<script src="/js/upload-preview.js"></script>
 {{/content}}
 
 {{/extend}}

@@ -3,237 +3,46 @@
 {{#content "extra_css"}}
 {{/content}}
 
-{{#content "main-content"}}
-
-<!-- Content -->
-<main id="login">
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-xl-4">
-                <form action="/api/user/signup" method="POST" id="signUpForm" novalidate>
-                    <h3>Sign up</h3>
-                    <div class="form-group mb-2">
-                        <label class="d-flex align-items-center" for="username">
-                            <div class="d-flex align-items-center" id="username_indicator"></div>
-                            Username
-                        </label>
-                        <input class="form-control m-0" type="text" name="username" id="username" required>
-                        <span class="msg err_msg" id="username_indicator_msg"></span>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label class="d-flex align-items-center" for="email">
-                            <div class="d-flex align-items-center" id="email_indicator"></div>
-                            Email
-                        </label>
-                        <input class="form-control m-0" type="email" name="email" id="email" required>
-                        <span class="msg err_msg" id="email_indicator_msg"></span>
-                    </div>
-                    <div class="form-group mb-4">
-                        <label class="d-flex align-items-center" for="password">
-                            <div class="d-flex align-items-center" id="password_indicator"></div>
-                            Password
-                        </label>
-                        <input class="form-control m-0" type="password" name="password" id="password" required>
-                        <span class="msg err_msg" id="password_indicator_msg"></span>
-                    </div>
-                    <button class="btn btn-custom btn-block rounded-pill" type="submit">Create
-                        account</button>
-                    <div class="links">
-                        <p>
-                            <span>Already have an account? </span>
-                            <a class="btn-link" href="/">Log in</a>
-                        </p>
-                    </div>
-                </form>
+{{#content "main"}}
+<main class="main main--admin">
+    <section class="main__content">
+        <div class="page page--login">
+            <div class="page__content">
+                <header class="page__header text-center mb-4">
+                    <h3 class="page__title">Sign up</h3>
+                </header>
+                <section class="page__body">
+                    <form class="form form--user-login js-form--user-signup" action="/api/user/signup" method="POST"
+                        novalidate>
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input class="form-control js-form-input-username" type="text" name="username" required>
+                            <span class="msg js-username-indicator mt-1"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input class="form-control js-form-input-email" type="email" name="email" required>
+                            <span class="msg js-email-indicator mt-1"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input class="form-control js-form-input-password" type="password" name="password" required>
+                            <span class="msg js-password-indicator mt-1"></span>
+                        </div>
+                        <button class="btn--submit btn btn-block rounded-pill mt-4">Create account</button>
+                    </form>
+                </section>
+                <div class="d-flex flex-column align-items-center mt-5" style="font-size: 14px;">
+                    <span>Already have an account? <a class="link" href="/">Log in</a></span>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 </main>
-
 {{/content}}
 
 {{#content "extra_js"}}
-
-<script type="text/javascript">
-    $('document').ready(function () {
-        // Initial status of input fields
-        $('#signUpForm')
-            .data('username', 'failed')
-            .data('email', 'failed')
-            .data('password', 'failed')
-
-        const err_svg = '<svg class="mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red" width="18px" height="18px"><path d="M11 15h2v2h-2v-2zm0-8h2v6h-2V7zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>'
-        const succ_svg = '<svg class="mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="green" width="18px" height="18px"><path d="M0 0h24v24H0V0zm0 0h24v24H0V0z" fill="none"/><path d="M16.59 7.58L10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>'
-
-        // Overall form validity check
-        $('#signUpForm').on('submit', function () {
-            let username = $('#username').val();
-            let email = $('#email').val();
-            let password = $('#password').val();
-
-            let usernameCheck = $('#signUpForm').data('username')
-            let emailCheck = $('#signUpForm').data('email')
-            let passwordCheck = $('#signUpForm').data('password')
-
-            if (usernameCheck == 'failed' || emailCheck == 'failed' || passwordCheck == 'failed') {
-
-                if (username == '') {
-                    $('#username_indicator')
-                        .html(err_svg)
-                    $('#username_indicator_msg')
-                        .text('Cannot be empty.')
-                }
-
-                if (email == '') {
-                    $('#email_indicator')
-                        .html(err_svg)
-                    $('#email_indicator_msg')
-                        .text('Cannot be empty.')
-                }
-
-                if (password == '') {
-                    $('#password_indicator')
-                        .html(err_svg)
-                    $('#password_indicator_msg')
-                        .text('Cannot be empty.')
-                }
-
-                return false
-            } else {
-                return true
-            }
-        });
-
-        // Username validity check
-        $('#username').on('keyup', function () {
-            let username = $('#username').val();
-
-            $.ajax({
-                url: '/api/user/signup/username_check',
-                type: 'post',
-                data: {
-                    'username': username
-                },
-                success: function (res) {
-                    if (res.result == 'taken') {
-                        $('#signUpForm')
-                            .data('username', 'failed')
-                        $('#username_indicator')
-                            .html(err_svg)
-                        $('#username_indicator_msg')
-                            .text('Username is already taken.')
-                    } else if (res.result == 'available' && username != '') {
-                        $('#signUpForm')
-                            .data('username', 'passed')
-                        $('#username_indicator')
-                            .html(succ_svg)
-                        $('#username_indicator_msg')
-                            .text('')
-                    } else if (username == '') {
-                        $('#username_indicator')
-                            .html(err_svg)
-                        $('#username_indicator_msg')
-                            .text('Cannot be empty.')
-                    } else {
-                        $('#username_indicator')
-                            .html('')
-                        $('#username_indicator_msg')
-                            .text('')
-                    }
-                }
-            });
-        });
-
-        // Email validity check
-        $('#email').on('keyup', function () {
-            let email = $('#email').val();
-
-            function validEmail(email) {
-                let regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-
-                if (!regex.test(email)) {
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-
-            $.ajax({
-                url: '/api/user/signup/email_check',
-                type: 'post',
-                data: {
-                    'email': email,
-                },
-                success: function (res) {
-                    if (res.result == 'taken' || email != '' && validEmail(email) == false) {
-                        $('#signUpForm')
-                            .data('email', 'failed')
-                        $('#email_indicator')
-                            .html(err_svg)
-                        $('#email_indicator_msg')
-
-                        if (validEmail(email) == false) {
-                            $('#email_indicator_msg')
-                                .text('Invalid email address.')
-                        } else {
-                            $('#email_indicator_msg')
-                                .text('Email address is already taken.')
-                        }
-                    } else if (res.result == 'available' && email != '' && validEmail(email) == true) {
-                        $('#signUpForm')
-                            .data('email', 'passed')
-                        $('#email_indicator')
-                            .html(succ_svg)
-                        $('#email_indicator_msg')
-                            .text('')
-                    } else if (email == '') {
-                        $('#email_indicator')
-                            .html(err_svg)
-                        $('#email_indicator_msg')
-                            .text('Cannot be empty.')
-                    } else {
-                        $('#email_indicator')
-                            .html('')
-                        $('#email_indicator_msg')
-                            .text('')
-                    }
-                }
-            });
-        });
-
-        // Password validity check
-        $('#password').on('keyup', function () {
-            let password = $('#password').val();
-
-            if (password != '' && password.length < 6) {
-                $('#signUpForm')
-                    .data('password', 'failed')
-                $('#password_indicator')
-                    .html(err_svg)
-                $('#password_indicator_msg')
-                    .text('Must be at least 6 characters.')
-            } else if (password.length >= 6) {
-                $('#signUpForm')
-                    .data('password', 'passed')
-                $('#password_indicator')
-                    .html(succ_svg)
-                $('#password_indicator_msg')
-                    .text('')
-            } else if (password == '') {
-                $('#password_indicator')
-                    .html(err_svg)
-                $('#password_indicator_msg')
-                    .text('Cannot be empty.')
-            } else {
-                $('#password_indicator')
-                    .html('')
-                $('#password_indicator_msg')
-                    .text('')
-            }
-        });
-    });
-</script>
-
+<script src="/js/form-validation/signup.js"></script>
 {{/content}}
 
 {{/extend}}
