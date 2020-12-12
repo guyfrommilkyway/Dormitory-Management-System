@@ -85,7 +85,7 @@ module.exports = async (app, handlebars) => {
             // Render template
             const output = template({
                 title: "Log in",
-                message: req.cookies.message,
+                msg: req.cookies.message,
             });
 
             res.status(200)
@@ -190,48 +190,9 @@ module.exports = async (app, handlebars) => {
             // Render template
             const output = template({
                 title: "Property Management",
-                header: "Management",
-                sub_header: "Property",
+                header: "Property Management",
                 user: req.user,
                 properties,
-            });
-
-            res.status(200)
-                .send(output);
-        } else {
-            res.status(401)
-                .redirect("/");
-        }
-    });
-
-    // Catalog
-    app.get("/management/catalog", authentication, async (req, res) => {
-        if (req.user && req.token) {
-            // Query properties
-            const { properties } = await propertyList(req.user._id);
-
-            // Query catalogs
-            const { catalogs } = await catalogList(req.user._id);
-
-            // Compile template
-            const template = await handlebars.compile(
-                fs.readFileSync(
-                    path.join(
-                        __dirname,
-                        "../../../../views/pages/admin/management/catalog.hbs"
-                    ),
-                    "utf8"
-                )
-            );
-
-            // Render template
-            const output = template({
-                title: "Catalog Management",
-                header: "Management",
-                sub_header: "Catalog",
-                user: req.user,
-                properties,
-                catalogs,
             });
 
             res.status(200)
@@ -265,7 +226,6 @@ module.exports = async (app, handlebars) => {
             const output = template({
                 title: "Profile",
                 header: "Account",
-                sub_header: "Profile",
                 user: req.user,
                 properties,
             });
@@ -298,8 +258,7 @@ module.exports = async (app, handlebars) => {
             // Render template
             const output = template({
                 title: "Security",
-                header: "Account",
-                sub_header: "Security",
+                header: "Security",
                 user: req.user,
                 properties,
             });
