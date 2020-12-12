@@ -4,23 +4,6 @@
   background: none;
 }
 
-.form__submit {
-  color: #1b2432;
-  background-color: #ffeab2;
-}
-
-.form--login {
-}
-
-.form--logout {
-  .form__submit {
-    width: 100%;
-    margin: 0;
-    text-align: left;
-    text-transform: capitalize;
-  }
-}
-
 .form-group {
   margin-bottom: 0.5rem;
 }
@@ -43,4 +26,26 @@
 .form-control:focus {
   outline: none;
   box-shadow: 0 0 0 0.2rem rgba(255, 234, 178, 0.7) !important;
+}
+
+.form--user-login {
+}
+
+.form--user-logout {
+  .form__submit {
+    width: 100%;
+    margin: 0;
+    text-align: left;
+    text-transform: capitalize;
+  }
+}
+
+.form--user-profile--update {
+  margin-right: 10rem;
+  border-radius: 0.25rem;
+}
+
+.form--user-password--update {
+  width: 100%;
+  max-width: 420px;
 }

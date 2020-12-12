@@ -1,30 +1,29 @@
 .main {
   width: 100%;
+  min-width: 100%;
   height: 100%;
+  min-height: 100vh;
+}
+
+.main.main--admin {
+  width: 100%;
+  display: flex;
+  color: white;
+  background-color: color(color-4);
 }
 
 .main__content {
-  width: 100%;
+  width: calc(100% - 16rem);
   height: 100%;
-}
-
-.content {
-  width: 100%;
-}
-
-.main--admin {
-  display: flex;
-  background-color: color(color-3);
   min-height: 100vh;
+}
 
-  .main__content {
-    display: flex;
+@media screen and (max-width: 768px) {
+  .main.main--admin {
     flex-direction: column;
 
-    .content {
-      width: calc(100% - 4rem);
-      min-height: 100vh;
-      margin: 0 2rem;
+    .main__content {
+      width: 100% !important;
     }
   }
 }

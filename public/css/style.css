@@ -1,3 +1,7 @@
+body {
+  color: white;
+}
+
 /* DataTables Custom */
 
 .dataTables_header {
@@ -41,13 +45,14 @@
 }
 
 .dataTables_info {
+  margin-bottom: 1rem;
   padding: 0 !important;
   font-size: 0.9rem;
 }
 
 .paginate_button.page-item a {
-  margin-right: 0.25rem;
-  padding: 0.5rem 1rem;
+  margin: 0 0.25rem 0.75rem 0;
+  padding: 0.5rem 0.75rem;
   color: #ffffff !important;
   font-size: 0.9rem !important;
 }
@@ -61,6 +66,7 @@
 }
 
 .paginate_button.page-item.active a {
+  font-weight: bold;
   background-color: #1b2432 !important;
 }
 
@@ -75,41 +81,6 @@
     justify-content: flex-start;
     align-items: center;
   }
-}
-
-/* Buttons */
-
-.btn-custom {
-  color: #1b2432;
-  background-color: #ffeab2;
-}
-
-/* Forms */
-
-form .form-group label {
-  top: -0.2rem;
-  margin-bottom: 0.25rem !important;
-  color: #ffffff;
-  font-size: 15px;
-  font-weight: 400 !important;
-}
-
-form .form-group .form-control {
-  color: #ffffff !important;
-  font-weight: 300 !important;
-  background-color: #6c7789;
-  border: none;
-  border-radius: 0 !important;
-}
-
-form .form-group .form-control:focus {
-  border: 1px solid #ffeab2;
-  outline: none;
-  box-shadow: 0 0 0 0.2rem rgba(255, 234, 178, 0.25);
-}
-
-form .form-group .form-control option {
-  color: #ffffff !important;
 }
 
 /* Table */
@@ -203,15 +174,3 @@ form .modal .modal-dialog .modal-content .modal-footer {
 }
 
 /* Error message */
-
-.msg {
-  font-size: 0.8rem;
-}
-
-.err_msg {
-  color: red;
-}
-
-.suc_msg {
-  color: green;
-}

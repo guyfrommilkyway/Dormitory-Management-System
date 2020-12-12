@@ -1,88 +1,178 @@
-.content--login {
+.page {
+  height: 100%;
+  min-height: 100vh;
+  margin: 0 2rem;
+  padding: 1.25rem 0 4rem 0;
+}
+
+// Login
+.page.page--login {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  color: #ffffff;
 
-  .content__body {
+  .page__content {
     width: 100%;
-    min-width: 300px;
     max-width: 420px;
     min-height: 360px;
     padding: 2rem 3rem;
-    margin: 0 auto;
+    margin: 0 1rem;
     background-color: #1b2432;
     border-radius: 0.25rem;
+  }
+}
 
-    .header {
-      margin-bottom: 2rem;
-      text-align: center;
-    }
+// Property
+.page.page--property {
+  .page__content {
+    .page__body {
+      .tab-content {
+        .tab-dashboard__body {
+          display: flex;
+          flex-wrap: wrap;
 
-    .content .form .wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 2rem;
-      font-size: 0.9rem;
+          .property-summary {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+
+            .property-summary__card {
+              display: flex;
+              justify-items: center;
+              align-items: center;
+              width: 100%;
+              min-width: 240px;
+              max-width: 240px;
+              max-height: 100px;
+              margin: 0 0.75rem 0.75rem 0;
+              padding: 1rem;
+              background-color: color(color-5);
+              border-radius: 0.25rem;
+
+              svg {
+                fill: color(color-3) !important;
+              }
+            }
+
+            .property-summary__body {
+              display: flex;
+              flex-direction: column;
+              justify-items: baseline;
+              align-items: flex-end;
+              width: 100%;
+            }
+
+            .property-summary__text {
+              font-size: 3.5rem;
+              line-height: 3rem;
+            }
+
+            .property-summary__title {
+              font-size: 10px;
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
     }
   }
 }
 
-.content--profile {
-  .header {
-    margin-bottom: 1rem;
+// Profile
+.page.page--profile {
+  .page__content {
+    .page__body {
+      .user {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: flex-start;
+        margin: 0;
+        padding: 0;
 
-    .header__title {
-      font-size: 1.5rem;
-      font-weight: 500;
+        .user__avatar {
+          width: 12rem;
+          height: 12rem;
+          margin-top: 0.25rem;
+          background-image: url("../ico/default-avatar.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+          border-radius: 6rem;
+        }
+
+        .user__button {
+          position: relative;
+          top: -2.5rem;
+          left: 0.5rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 0.35rem 0.5rem;
+          font-size: 0.9rem;
+          background-color: rgba(7, 3, 3, 0.85);
+          border-radius: 0.25rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 978px) {
+  .page {
+    margin: 0 1rem;
+  }
+
+  // Login
+  .page.page--login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .page__content {
+      padding: 1.5rem 2rem;
     }
   }
 
-  .content__body {
-    display: flex;
-    flex-wrap: wrap;
+  // Property
+  .page.page--property {
+    .page__body {
+      .tab-content {
+        .tab-dashboard__body {
+          justify-content: center;
+
+          .property-summary {
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+
+  // Profile
+  .page.page--profile {
+    .page__body {
+      flex-direction: column-reverse;
+
+      .col-lg:last-child {
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  .page.page--profile .profile-content form {
     width: 100%;
+    margin-right: 0;
+  }
 
-    .form--profile-update {
-      min-width: 300px;
-      margin-right: 10rem;
-      border-radius: 0.25rem;
-    }
-
-    .user {
-      display: flex;
-      flex-direction: column;
-      justify-content: start;
-      align-items: flex-start;
-      margin: 0;
-      padding: 0;
-
-      .user__avatar {
-        width: 12rem;
-        height: 12rem;
-        margin-top: 0.25rem;
-        background-image: url("../ico/default-avatar.svg");
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center;
-        border-radius: 6rem;
-      }
-
-      .user__button {
-        position: relative;
-        top: -2.5rem;
-        left: 0.5rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0.35rem 0.5rem;
-        font-size: 0.9rem;
-        background-color: rgba(7, 3, 3, 0.85);
-        border-radius: 0.25rem;
-      }
-    }
+  .page.page--profile .profile-content .profile-photo-wrapper {
+    margin: 0 auto;
   }
 }
