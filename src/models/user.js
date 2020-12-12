@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    contact: {
+    mobile: {
         type: String,
         trim: true
     },
@@ -91,13 +91,13 @@ userSchema.statics.findByCredentials = async (email, password) => {
     const user = await User.findOne({ email })
 
     if (!user) {
-        throw new Error('The email or password you\'ve entered is incorrect.')
+        throw new Error('Incorrect email or password.')
     }
 
     const isMatch = await bcrypt.compare(password, user.password)
 
     if (!isMatch) {
-        throw new Error('The email or password you\'ve entered is incorrect.')
+        throw new Error('Incorrect email or password.')
     }
 
     return user

@@ -63,7 +63,7 @@ const userUpdate = async (userId, userObject) => {
         username: userObject.username,
         first_name: userObject.first_name,
         last_name: userObject.last_name,
-        contact: userObject.contact,
+        mobile: userObject.mobile,
         email: userObject.email
     }, { new: true })
 
