@@ -9,20 +9,17 @@
                 </div>
                 <div class="modal-body">
                     <input name="property" type="hidden" value="{{property._id}}" required>
-                    <div class="form-group mt-2 mb-2">
-                        <label for="name">Name</label>
-                        <input class="form-control" name="name" type="text" id="name" required>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input class="form-control" name="name" type="text" required>
                     </div>
-                    <div class="form-group mb-2">
-                        <label for="rate">Rate</label>
-                        <input class="form-control" name="rate" type="number" id="rate" required>
+                    <div class="form-group">
+                        <label>Rate</label>
+                        <input class="form-control" name="rate" type="number" required>
                     </div>
-                    <div class="form-group mb-3">
-                        <label for="type">Type</label>
-                        <select class="form-control" name="type" id="type">
-                            <option value="One-time">One-time</option>
-                            <option value="Monthly">Monthly</option>
-                        </select>
+                    <div class="form-group">
+                        <label>Payment Type</label>
+                        <input class="form-control" name="type" type="text" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -45,23 +42,18 @@
                 </div>
                 <div class="modal-body">
                     <input name="property" type="hidden" value="{{property._id}}" required>
-                    <input name="_id" type="hidden" id="inputEditAddOn_id" value="placeholder" required>
-                    <div class="form-group mt-2 mb-2">
-                        <label for="inputEditAddOnName">Name</label>
-                        <input class="form-control" name="name" type="text" id="inputEditAddOnName" value="placeholder"
-                            required>
+                    <input class="js-input-add-on-id" name="_id" type="hidden" required>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input class="form-control js-input-add-on-name" name="name" type="text" required>
                     </div>
-                    <div class="form-group mb-2">
-                        <label for="inputEditAddOnRate">Rate</label>
-                        <input class="form-control" name="rate" type="text" id="inputEditAddOnRate" value="placeholder"
-                            required>
+                    <div class="form-group">
+                        <label>Rate</label>
+                        <input class="form-control js-input-add-on-rate" name="rate" type="text" required>
                     </div>
-                    <div class="form-group mb-3">
-                        <label for="selectEditAddOnType">Type</label>
-                        <select class="form-control" name="type" id="selectEditAddOnType">
-                            <option value="One-time">One-time</option>
-                            <option value="Monthly">Monthly</option>
-                        </select>
+                    <div class="form-group">
+                        <label>Payment Type</label>
+                        <input class="form-control js-input-add-on-type" name="type" type="text" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -84,25 +76,18 @@
                 </div>
                 <div class="modal-body">
                     <input name="property" type="hidden" value="{{property._id}}" required>
-                    <input name="_id" id="inputDeleteAddOn_id" type="hidden" required>
-                    <span class="font-weight-normal">Add-on information</span>
-                    <div class="table-responsive">
-                        <table class="table-sm table-borderless mt-2" style="width: 100%;">
-                            <tbody>
-                                <tr>
-                                    <td class="td-title">Name</td>
-                                    <td class="td-content"><span id="spanDeleteAddOnName"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="td-title">Rate</td>
-                                    <td class="td-content"><span id="spanDeleteAddOnRate"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="td-title">Type</td>
-                                    <td class="td-content"><span id="spanDeleteAddOnType"></span></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <input class="js-input-add-on-id" name="_id" type="hidden" required>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input class="form-control js-input-add-on-name" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Rate</label>
+                        <input class="form-control js-input-add-on-rate" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Payment Type</label>
+                        <input class="form-control js-input-add-on-type" disabled>
                     </div>
                     <div class="mt-4 p-1">
                         <div class="d-flex flex-column" style="font-size: 13px;">

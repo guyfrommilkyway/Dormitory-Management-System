@@ -8,7 +8,7 @@
                     <h4 class="modal-title">Add room</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group mt-2 mb-2">
+                    <div class="form-group">
                         <label class="select-label" for="catalog">Catalog</label>
                         <div class="form-group">
                             <select class="form-control" name="catalog" id="catalog" required>
@@ -22,13 +22,13 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group mb-2">
-                        <label for="number">Number of rooms</label>
-                        <input class="form-control" name="number" type="number" id="number" required>
+                    <div class="form-group">
+                        <label>How many rooms?</label>
+                        <input class="form-control" name="number" type="number" required>
                     </div>
-                    <div class="form-group mb-3">
-                        <label for="floor">Floor</label>
-                        <input class="form-control" name="floor" type="number" id="floor" required>
+                    <div class="form-group">
+                        <label>Floor No.</label>
+                        <input class="form-control" name="floor" type="number" required>
                         <input name="property" type="hidden" value="{{property._id}}" required>
                     </div>
                 </div>
@@ -51,29 +51,23 @@
                     <h4 class="modal-title">Edit room</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group mt-2 mb-2">
-                        <label for="inputEditRoomName">Name</label>
-                        <input class="form-control" name="name" type="text" id="inputEditRoomName"
-                            value="placeholder_value" required>
-                        <input name="_id" id="inputEditRoom_id" type="hidden" required>
-                        <input name="property" type="hidden" value="{{property._id}}" required>
+                    <input name="property" type="hidden" value="{{property._id}}" required>
+                    <input class="js-input-room-id" name="_id" type="hidden" required>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input class="form-control js-input-room-name" name="name" type="text" required>
                     </div>
-                    <div class="form-group mb-2">
-                        <label for="inputEditRoomFloor">Floor</label>
-                        <input class="form-control" name="floor" type="text" id="inputEditRoomFloor"
-                            value="placeholder_value" required>
+                    <div class="form-group">
+                        <label>Floor</label>
+                        <input class="form-control js-input-room-floor" name="floor" type="text" required>
                     </div>
-                    <div class="form-group mb-3">
-                        <label class="select-label" for="selectEditRoomCatalog">Catalog</label>
+                    <div class="form-group">
+                        <label class="select-label">Catalog</label>
                         <div class="form-group">
-                            <select class="form-control" name="catalog" id="selectEditRoomCatalog" required>
-                                {{#if catalogs}}
+                            <select class="form-control js-input-room-catalog" name="catalog" required>
                                 {{#each catalogs}}
                                 <option value="{{_id}}">{{name}} - {{rate}}</option>
                                 {{/each}}
-                                {{else}}
-                                <option value="" disabled><span>No catalogs found.</span></option>
-                                {{/if}}
                             </select>
                         </div>
                     </div>
@@ -97,34 +91,29 @@
                     <h4 class="modal-title">Delete Room</h4>
                 </div>
                 <div class="modal-body">
-                    <input name="_id" id="inputDeleteRoom_id" type="hidden" required>
                     <input name="property" type="hidden" value="{{property._id}}" required>
-                    <span class="font-weight-normal">Room information</span>
-                    <div class="table-responsive">
-                        <table class="table-sm table-borderless mt-2" style="width: 100%;">
-                            <tbody>
-                                <tr>
-                                    <td class="td-title">Room</td>
-                                    <td class="td-content"><span id="spanDeleteRoomName"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="td-title">Floor</td>
-                                    <td class="td-content"><span id="spanDeleteRoomFloor"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="td-title">Catalog</td>
-                                    <td class="td-content"><span id="spanDeleteRoomCatalogName"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="td-title">Rate</td>
-                                    <td class="td-content"><span id="spanDeleteRoomCatalogRate"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="td-title">Status</td>
-                                    <td class="td-content"><span id="spanDeleteRoomStatus"></span></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <input class="js-input-room-id" name="_id" type="hidden" required>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input class="form-control js-input-room-name" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Floor</label>
+                        <input class="form-control js-input-room-floor" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label class="select-label">Catalog</label>
+                        <div class="form-group">
+                            <select class="form-control js-input-room-catalog" disabled>
+                                {{#each catalogs}}
+                                <option value="{{_id}}">{{name}} - {{rate}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <input class="form-control js-input-room-status" disabled>
                     </div>
                     <div class="mt-4 p-1">
                         <div class="d-flex flex-column" style="font-size: 13px;">

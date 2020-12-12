@@ -10,53 +10,51 @@
                 <div class="modal-body">
                     <div class="row m-2">
                         <div class="col-md-6">
-                            <div>
+                            <section>
                                 <header>
                                     <h5>Personal information</h5>
                                 </header>
                                 <section>
-                                    <div class="form-group mt-3 mb-2">
-                                        <label for="first_name">First name</label>
-                                        <input class="form-control" name="first_name" type="text" id="first_name"
-                                            required>
-                                        <input name="property" type="hidden" value="{{property._id}}" required>
+                                    <input name="property" type="hidden" value="{{property._id}}" required>
+                                    <div class="form-group">
+                                        <label>First name</label>
+                                        <input class="form-control" name="first_name" type="text" required>
                                     </div>
-                                    <div class="form-group mb-2">
-                                        <label for="last_name">Last name</label>
-                                        <input class="form-control" name="last_name" type="text" id="last_name"
-                                            required>
+                                    <div class="form-group">
+                                        <label>Last name</label>
+                                        <input class="form-control" name="last_name" type="text" required>
                                     </div>
-                                    <div class="form-group mb-3">
-                                        <label for="birthday">Birthday</label>
-                                        <input class="form-control" name="birthday" type="date" id="birthday" required>
+                                    <div class="form-group">
+                                        <label>Birthday</label>
+                                        <input class="form-control" name="birthday" type="date" required>
                                     </div>
                                 </section>
-                            </div>
-                            <div>
+                            </section>
+                            <section>
                                 <header>
                                     <h5>Contact information</h5>
                                 </header>
                                 <section>
-                                    <div class="form-group mt-3 mb-2">
-                                        <label for="mobile">Mobile</label>
-                                        <input class="form-control" name="mobile" type="number" id="mobile" required>
+                                    <div class="form-group">
+                                        <label>Mobile</label>
+                                        <input class="form-control" name="mobile" type="number" required>
                                     </div>
-                                    <div class="form-group mb-3">
-                                        <label for="email">Email</label>
-                                        <input class="form-control" name="email" type="email" id="email" required>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input class="form-control" name="email" type="email" required>
                                     </div>
                                 </section>
-                            </div>
+                            </section>
                         </div>
                         <div class="col-md-6">
                             <header>
                                 <h5>Room information</h5>
                             </header>
                             <section>
-                                <div class="form-group mb-2">
-                                    <label class="select-label" for="room">Room</label>
+                                <div class="form-group">
+                                    <label>Room</label>
                                     <div class="form-group">
-                                        <select class="form-control" name="room" id="room" required>
+                                        <select class="form-control" name="room" required>
                                             {{#if rooms}}
                                             {{#each rooms }}
                                             <option value="{{_id}}" {{#if tenant}} disabled {{/if}}>{{name}} -
@@ -94,66 +92,64 @@
                 <div class="modal-body">
                     <div class="row m-2">
                         <div class="col-md-6">
-                            <div>
+                            <input name="property" type="hidden" value="{{property._id}}" required>
+                            <input class="js-input-tenant-id" name="_id" type="hidden" required>
+                            <input class="js-input-tenant-current-room" name="currentRoom" type="hidden" required>
+                            <section>
                                 <header>
                                     <h5>Personal information</h5>
                                 </header>
                                 <section>
-                                    <div class="form-group mt-3 mb-2">
-                                        <label for="inputEditTenantFirstName">First name</label>
-                                        <input class="form-control" name="first_name" type="text"
-                                            id="inputEditTenantFirstName" value="placeholder_value" required>
-                                        <input name="_id" type="hidden" id="inputEditTenant_id"
-                                            value="placeholder_value" required>
-                                        <input name="currentRoom" type="hidden" id="inputEditTenantRoom"
-                                            value="placeholder_value" required>
-                                        <input name="property" type="hidden" value="{{property._id}}" required>
+                                    <div class="form-group">
+                                        <label>First name</label>
+                                        <input class="form-control js-input-tenant-first-name" name="first_name"
+                                            type="text" required>
                                     </div>
-                                    <div class="form-group mb-4">
-                                        <label for="inputEditTenantLastName">Last name</label>
-                                        <input class="form-control" name="last_name" type="text"
-                                            id="inputEditTenantLastName" value="placeholder_value" required>
+                                    <div class="form-group">
+                                        <label>Last name</label>
+                                        <input class="form-control js-input-tenant-last-name" name="last_name"
+                                            type="text" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Birthday</label>
+                                        <input class="form-control js-input-tenant-birthday" name="birthday" type="date"
+                                            required>
                                     </div>
                                 </section>
-                            </div>
-                            <div>
+                            </section>
+                            <section>
                                 <header>
                                     <h5>Contact information</h5>
                                 </header>
                                 <section>
-                                    <div class="form-group mt-3 mb-2">
-                                        <label for="inputEditTenantMobile">Mobile</label>
-                                        <input class="form-control" name="mobile" type="text" id="inputEditTenantMobile"
-                                            value="placeholder_value" required>
+                                    <div class="form-group">
+                                        <label>Mobile</label>
+                                        <input class="form-control js-input-tenant-mobile" name="mobile" type="text"
+                                            required>
                                     </div>
-                                    <div class="form-group mb-3">
-                                        <label for="inputEditTenantEmail">Email</label>
-                                        <input class="form-control" name="email" type="email" id="inputEditTenantEmail"
-                                            value="placeholder_value" required>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input class="form-control js-input-tenant-email" name="email" type="email"
+                                            required>
                                     </div>
                                 </section>
-                            </div>
+                            </section>
                         </div>
                         <div class="col-md-6">
                             <header>
                                 <h5>Room information</h5>
                             </header>
                             <section>
-                                <div class="form-group mb-3">
-                                    <label class="select-label" for="selectEditTenantRoom">Room</label>
+                                <div class="form-group">
+                                    <label>Room</label>
                                     <div class="form-group">
-                                        <select class="form-control" name="room" id="selectEditTenantRoom"
-                                            value="placeholder_value" required>
-                                            {{#if rooms}}
+                                        <select class="form-control js-select-tenant-room" name="room" required>
                                             {{#each rooms }}
-                                            <option value="{{_id}}" {{#if tenant}} class="occupied" disabled {{/if}}>
+                                            <option {{#if tenant}}class="occupied" disabled{{/if}} value="{{_id}}">
                                                 {{name}} -
-                                                {{catalog.name}} - {{catalog.rate}}
+                                                Floor {{floor}} - {{catalog.name}} - {{catalog.rate}}
                                             </option>
                                             {{/each}}
-                                            {{else}}
-                                            <option value="" disabled><span>No rooms found.</span></option>
-                                            {{/if}}
                                         </select>
                                     </div>
                                 </div>
@@ -174,40 +170,63 @@
 <form action="/api/tenant/delete" method="POST">
     <div class="modal fade" id="deleteTenantModal" tabindex="-1" role="dialog" aria-labelledby="deleteTenantModal"
         aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Delete Tenant</h4>
                 </div>
                 <div class="modal-body">
-                    <input name="_id" id="inputDeleteTenant_id" type="hidden" required>
-                    <input name="room" id="inputDeleteTenantRoom" type="hidden" required>
-                    <input name="property" type="hidden" value="{{property._id}}" required>
-                    <span class="font-weight-normal">Tenant information</span>
-                    <div class="table-responsive">
-                        <table class="table-sm table-borderless mt-2" style="width: 100%;">
-                            <tbody>
-                                <tr>
-                                    <td class="td-title">Room</td>
-                                    <td class="td-content"><span id="spanDeleteTenantRoom"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="td-title">Name</td>
-                                    <td class="td-content">
-                                        <span id="spanDeleteTenantFirstName"></span>
-                                        <span id="spanDeleteTenantLastName"></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="td-title">Mobile</td>
-                                    <td class="td-content"><span id="spanDeleteTenantMobile"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="td-title">Email</td>
-                                    <td class="td-content"><span id="spanDeleteTenantEmail"></span></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="row m-2">
+                        <div class="col-md-6">
+                            <input name="property" type="hidden" value="{{property._id}}" required>
+                            <input class="js-input-tenant-id" name="_id" type="hidden" required>
+                            <input class="js-input-tenant-current-room" name="currentRoom" type="hidden" required>
+                            <section>
+                                <header>
+                                    <h5>Personal information</h5>
+                                </header>
+                                <section>
+                                    <div class="form-group">
+                                        <label>First name</label>
+                                        <input class="form-control js-input-tenant-first-name" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Last name</label>
+                                        <input class="form-control js-input-tenant-last-name" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Birthday</label>
+                                        <input class="form-control js-input-tenant-birthday" disabled>
+                                    </div>
+                                </section>
+                            </section>
+                            <section>
+                                <header>
+                                    <h5>Contact information</h5>
+                                </header>
+                                <section>
+                                    <div class="form-group">
+                                        <label>Mobile</label>
+                                        <input class="form-control js-input-tenant-mobile" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input class="form-control js-input-tenant-email" disabled>
+                                    </div>
+                                </section>
+                            </section>
+                        </div>
+                        <div class="col-md-6">
+                            <header>
+                                <h5>Room information</h5>
+                            </header>
+                            <section>
+                                <div class="form-group">
+                                    <label>Room</label>
+                                    <input class="form-control js-input-tenant-room" disabled>
+                                </div>
+                            </section>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

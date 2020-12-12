@@ -10,12 +10,12 @@
                 <div class="modal-body">
                     <input name="property" type="hidden" value="{{property._id}}" required>
                     <div class="form-group mt-2 mb-2">
-                        <label for="name">Name</label>
-                        <input class="form-control" name="name" type="text" id="name" required>
+                        <label>Name</label>
+                        <input class="form-control" name="name" type="text" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="rate">Rate</label>
-                        <input class="form-control" name="rate" type="number" id="rate" required>
+                        <label>Rate</label>
+                        <input class="form-control" name="rate" type="number" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -38,16 +38,14 @@
                 </div>
                 <div class="modal-body">
                     <input name="property" type="hidden" value="{{property._id}}" required>
+                    <input class="js-input-catalog-id" name="_id" type="hidden" required>
                     <div class="form-group mt-2 mb-2">
-                        <label for="inputEditCatalogName">Name</label>
-                        <input class="form-control" name="name" type="text" id="inputEditCatalogName"
-                            value="placeholder" required>
-                        <input name="_id" type="hidden" id="inputEditCatalog_id" value="placeholder" required>
+                        <label>Name</label>
+                        <input class="form-control js-input-catalog-name" name="name" type="text" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="inputEditCatalogRate">Rate</label>
-                        <input class="form-control" name="rate" type="text" id="inputEditCatalogRate"
-                            value="placeholder" required>
+                        <label>Rate</label>
+                        <input class="form-control js-input-catalog-rate" name="rate" type="text" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -70,21 +68,14 @@
                 </div>
                 <div class="modal-body">
                     <input name="property" type="hidden" value="{{property._id}}" required>
-                    <input name="_id" id="inputDeleteCatalog_id" type="hidden" required>
-                    <span class="font-weight-normal">Catalog information</span>
-                    <div class="table-responsive text-nowrap">
-                        <table class="table-sm table-borderless mt-2" style="width: 100%;">
-                            <tbody>
-                                <tr>
-                                    <td class="td-title">Name</td>
-                                    <td class="td-content"><span id="spanDeleteCatalogName"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="td-title">Rate</td>
-                                    <td class="td-content"><span id="spanDeleteCatalogRate"></span></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <input class="js-input-catalog-id" name="_id" type="hidden" required>
+                    <div class="form-group mt-2 mb-2">
+                        <label>Name</label>
+                        <input class="form-control js-input-catalog-name" disabled>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>Rate</label>
+                        <input class="form-control js-input-catalog-rate" disabled>
                     </div>
                     <div class="mt-4 p-1">
                         <div class="d-flex flex-column" style="font-size: 13px;">
