@@ -1,20 +1,8 @@
-
 $(document).ready(function () {
-
     // Change active tabs based on hash value
-    if (location.hash === '#tenant') {
-        $('.active').removeClass('active');
-        $('.show').removeClass('show');
-        $('#tenant-tab').addClass('active');
-        $('#tenant-panel').addClass('show active');
-        history.replaceState(null, null, ' ');
-    } else if (location.hash === '#room') {
-        $('.active').removeClass('active');
-        $('.show').removeClass('show');
-        $('#room-tab').addClass('active');
-        $('#room-panel').addClass('show active');
-        history.replaceState(null, null, ' ');
-    }
+    let current_tab = location.hash + '-panel'
+
+    $(`.js-property-nav-tab a[href='${current_tab}']`).tab('show')
 
     // Catalog
     $(document).on("click", "#editCatalogButton, #deleteCatalogButton", function () {
@@ -22,15 +10,10 @@ $(document).ready(function () {
         let name = $(this).data('name');
         let rate = $(this).data('rate');
 
-        // Pass data to edit catalog modal
-        $("#inputEditCatalog_id").val(_id);
-        $("#inputEditCatalogName").val(name);
-        $("#inputEditCatalogRate").val(rate);
-
-        // Pass data to edit catalog modal
-        $("#inputDeleteCatalog_id").val(_id);
-        $("div #spanDeleteCatalogName").text(name);
-        $("div #spanDeleteCatalogRate").text(rate);
+        // Pass data to catalog modal
+        $(".js-input-catalog-id").val(_id);
+        $(".js-input-catalog-name").val(name);
+        $(".js-input-catalog-rate").val(rate);
     });
 
     // Add-on
@@ -40,30 +23,11 @@ $(document).ready(function () {
         let rate = $(this).data('rate');
         let type = $(this).data('type');
 
-        // Pass data to edit add-on modal
-        $("#inputEditAddOn_id").val(_id);
-        $("#inputEditAddOnName").val(name);
-        $("#inputEditAddOnRate").val(rate);
-        $("#inputEditAddOnType").val(type);
-        $(`#selectEditAddOnType option[value=${type}]`)
-            .prop('selected', true)
-            .text(type + ' (Current)');
-
-        // Pass data to edit add-on modal
-        $("#inputDeleteAddOn_id").val(_id);
-        $("div #spanDeleteAddOnName").text(name); ``
-        $("div #spanDeleteAddOnRate").text(rate);
-        $("div #spanDeleteAddOnType").text(type);
-    });
-
-    // Delete 'current' on modal close
-    $(document).on("hide.bs.modal", "#editAddOnModal", function () {
-        let type = $(`#selectEditAddOnType option:selected`).val();
-        let len = type.length;
-
-        $(`#selectEditAddOnType option[value=${type}]`)
-            .text($(`#selectEditAddOnType option[value=${type}]`).text().substring(len, -10))
-            .prop({ 'selected': false });
+        // Pass data to add-on modal
+        $(".js-input-add-on-id").val(_id);
+        $(".js-input-add-on-name").val(name);
+        $(".js-input-add-on-rate").val(rate);
+        $(".js-input-add-on-type").val(type);
     });
 
     // Room
@@ -76,21 +40,16 @@ $(document).ready(function () {
         let catalograte = $(this).data('catalograte');
         let status = $(this).data('status');
 
-        // Pass data to edit room modal
-        $("#inputEditRoom_id").val(_id);
-        $("#inputEditRoomName").val(name);
-        $("#inputEditRoomFloor").val(floor);
-        $(`#selectEditRoomCatalog option[value=${catalogid}]`)
+        // Pass data to room modal
+        $(".js-input-room-id").val(_id);
+        $(".js-input-room-name").val(name);
+        $(".js-input-room-floor").val(floor);
+        $(".js-input-room-catalog-name").val(catalogname);
+        $(".js-input-room-catalog-rate").val(catalograte);
+        $(".js-input-room-status").val(status);
+        $(`.js-input-room-catalog option[value=${catalogid}]`)
             .prop('selected', true)
             .text(catalogname + ' - ' + catalograte + ' (Current)')
-
-        // Pass data to delete room modal
-        $("#inputDeleteRoom_id").val(_id);
-        $("div #spanDeleteRoomName").text(name);
-        $("div #spanDeleteRoomFloor").text(floor);
-        $("div #spanDeleteRoomCatalogName").text(catalogname);
-        $("div #spanDeleteRoomCatalogRate").text(catalograte);
-        $("div #spanDeleteRoomStatus").text(status);
     });
 
     // Tenant
@@ -98,47 +57,40 @@ $(document).ready(function () {
         let _id = $(this).data('id');
         let first_name = $(this).data('firstname');
         let last_name = $(this).data('lastname');
+        let birthday = $(this).data('birthday');
         let mobile = $(this).data('mobile');
         let email = $(this).data('email');
         let room = $(this).data('room');
         let roomname = $(this).data('roomname');
 
-        // Pass data to edit tenant modal
-        $("#inputEditTenant_id").val(_id);
-        $("#inputEditTenantFirstName").val(first_name);
-        $("#inputEditTenantLastName").val(last_name);
-        $("#inputEditTenantMobile").val(mobile);
-        $("#inputEditTenantEmail").val(email);
-        $("#inputEditTenantRoom").val(room);
+        // Pass data to tenant modal
+        $(".js-input-tenant-id").val(_id);
+        $(".js-input-tenant-first-name").val(first_name);
+        $(".js-input-tenant-last-name").val(last_name);
+        $(".js-input-tenant-birthday").val(birthday);
+        $(".js-input-tenant-mobile").val(mobile);
+        $(".js-input-tenant-email").val(email);
+        $(".js-input-tenant-current-room").val(room);
+        $(".js-input-tenant-room").val(roomname);
+        $(`.js-select-tenant-room option[value=${room}]`)
+            .prop({ 'disabled': false, 'selected': true })
 
-        if ($(`#selectEditTenantRoom option[value=${room}]`).text().includes('Current')) {
-            $(`#selectEditTenantRoom option[value=${room}]`)
-                .prop({ 'disabled': false, 'selected': true });
-        } else {
-            $(`#selectEditTenantRoom option[value=${room}]`)
-                .prop({ 'disabled': false, 'selected': true })
-                .text($(`#selectEditTenantRoom option[value=${room}]`).text() + ' (Current)');
+        let selectedOption = $('.js-select-tenant-room option:selected').text()
+
+        if (!selectedOption.includes('Current')) {
+            $('.js-select-tenant-room option:selected')
+                .text($(`.js-select-tenant-room option[value=${room}]`).text() + ' (Current)');
         }
-
-        // Pass data to delete tenant modal
-        $("#inputDeleteTenant_id").val(_id);
-        $("#inputDeleteTenantRoom").val(room);
-        $("div #spanDeleteTenantFirstName").text(first_name);
-        $("div #spanDeleteTenantLastName").text(last_name);
-        $("div #spanDeleteTenantMobile").text(mobile);
-        $("div #spanDeleteTenantEmail").text(email);
-        $("div #spanDeleteTenantRoom").text(roomname);
     });
 
     // Delete 'current' on modal close
     $(document).on("hide.bs.modal", "#editTenantModal", function () {
-        let room = $('#inputEditTenantRoom').val();
-        let len = room.length
+        let room = $('.js-select-tenant-room option:selected').text();
 
-        $(`#selectEditTenantRoom .occupied`)
+        $(`.js-select-tenant-room .occupied`)
             .prop({ 'disabled': true });
-        $(`#selectEditTenantRoom option[value=${room}]`)
-            .text($(`#selectEditTenantRoom option[value=${room}]`).text().slice(len, -10))
+        $('.js-select-tenant-room option:selected')
+            .text(room.replace(' (Current)', ''))
             .prop({ 'selected': false });
     });
 });
