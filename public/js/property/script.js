@@ -1,8 +1,12 @@
 $(document).ready(function () {
     // Change active tabs based on hash value
     let current_tab = location.hash + '-panel'
-
     $(`.js-property-nav-tab a[href='${current_tab}']`).tab('show')
+
+    // Delete hash value on url
+    setTimeout(function () {
+        history.replaceState(null, null, ' ');
+    }, 20000)
 
     // Catalog
     $(document).on("click", "#editCatalogButton, #deleteCatalogButton", function () {
@@ -62,6 +66,7 @@ $(document).ready(function () {
         let email = $(this).data('email');
         let room = $(this).data('room');
         let roomname = $(this).data('roomname');
+        let roomfloor = $(this).data('roomfloor');
 
         // Pass data to tenant modal
         $(".js-input-tenant-id").val(_id);
@@ -71,7 +76,7 @@ $(document).ready(function () {
         $(".js-input-tenant-mobile").val(mobile);
         $(".js-input-tenant-email").val(email);
         $(".js-input-tenant-current-room").val(room);
-        $(".js-input-tenant-room").val(roomname);
+        $(".js-input-tenant-room").val(roomname + ' - Floor ' + roomfloor);
         $(`.js-select-tenant-room option[value=${room}]`)
             .prop({ 'disabled': false, 'selected': true })
 
