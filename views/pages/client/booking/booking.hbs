@@ -67,7 +67,6 @@
                     </header>
                     <section class="d-flex flex-column">
                         <h5 class="mb-3 font-weight-normal">Choose your preferred room type</h5>
-                        {{#if catalogs}}
                         {{#each catalogs}}
                         <div class="form-group mb-0">
                             <label class="radio-label" for="{{name}}" id="label-{{_id}}" onclick="radioSelected(this)"
@@ -82,7 +81,6 @@
                             </label>
                         </div>
                         {{/each}}
-                        {{/if}}
                         <div class="d-flex justify-content-between mt-4">
                             <button type="button" class="btn m-0 mr-3" id="s_tab_btn_prev">Previous</button>
                             <button type="button" class="btn m-0" id="s_tab_btn_rev">Review</button>
