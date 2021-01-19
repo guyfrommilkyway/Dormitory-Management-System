@@ -1,59 +1,51 @@
-.sidebar {
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 16rem;
-  min-width: 16rem;
-  min-height: 100%;
-  padding: 0 0 4rem 0;
-  color: #ffffff;
-  line-height: 1rem;
-  background-color: #1b2432;
-
-  .sidebar__header {
-    margin: 1.25rem;
-  }
-
-  .sidebar__title {
+.main.main--admin {
+  .sidebar {
     display: flex;
     flex-direction: column;
-    color: #ffeab2;
-    font-size: 1.4rem;
-    font-weight: 400;
-    line-height: 1.2rem;
-    text-transform: uppercase;
-  }
+    width: 16rem;
+    min-width: 16rem;
+    margin: 0;
+    padding: 0;
+    background-color: color(color-2);
+    box-shadow: none;
 
-  .navbar-collapse {
-    align-items: flex-start;
-    width: 100%;
+    .sidebar-header {
+      margin: 1rem;
+      line-height: 1.2rem;
+    }
 
-    .navbar-nav {
+    .sidebar-title {
+      display: flex;
       flex-direction: column;
+      color: color(color-1);
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .navbar-collapse {
+      align-items: flex-start;
       width: 100%;
+      margin: 1rem 0 0 0;
+      padding-bottom: 2rem;
 
-      .nav-item {
+      .navbar-nav {
+        flex-direction: column;
         width: 100%;
+        margin: 0;
 
-        .card {
-          margin: 0 0.5rem;
-          padding: 0;
-          background-color: #ffeab2;
-          border-radius: 0.25rem !important;
-
+        .nav-item {
           .nav-link {
-            color: #1b2432;
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            color: white;
           }
-        }
 
-        .nav-link {
-          display: flex;
-          align-items: center;
-          width: 100%;
-          padding: 0.9rem 1.25rem;
-          color: #ffffff;
-          font-size: 15px;
-          font-weight: 400;
+          .card {
+            margin: 0;
+            padding: 0 0.75rem;
+            background: none;
+          }
         }
       }
     }
@@ -61,30 +53,9 @@
 }
 
 @media screen and (max-width: 768px) {
-  .sidebar {
-    width: 100%;
-    padding-bottom: 0;
-  }
-
-  .sidebar .sidebar__header {
-    margin: 1rem;
-  }
-
-  .sidebar .sidebar__title {
-    display: flex;
-    flex-direction: column;
-    color: #ffeab2;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 0.9rem;
-    text-transform: uppercase;
-  }
-
-  .sidebar .navbar-nav {
-    margin: 0;
-  }
-
-  .sidebar .navbar-nav .nav-item .nav-link {
-    font-size: 0.9rem;
+  .main.main--admin {
+    .sidebar {
+      width: 100%;
+    }
   }
 }
