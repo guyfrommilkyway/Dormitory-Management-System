@@ -48,7 +48,7 @@ $(document).ready(function () {
             },
             buttons: [
                 {
-                    className: 'btn--submit m-0 mb-1 text-nowrap',
+                    className: 'btn-submit m-0 mb-1 text-nowrap',
                     text: `Add room`,
                     action: function (e, dt, node, config) {
                         $('#addRoomModal').modal('show')
@@ -82,7 +82,7 @@ $(document).ready(function () {
             },
             buttons: [
                 {
-                    className: 'btn--submit m-0 mb-1 text-nowrap',
+                    className: 'btn-submit m-0 mb-1 text-nowrap',
                     text: `Add tenant`,
                     action: function (e, dt, node, config) {
                         $('#addTenantModal').modal('show')
@@ -115,7 +115,7 @@ $(document).ready(function () {
             },
             buttons: [
                 {
-                    className: 'btn--submit booking-link m-0 mb-1 text-nowrap',
+                    className: 'btn-submit booking-link m-0 mb-1 text-nowrap',
                     text: `Booking Link`,
                     action: function (e, dt, node, config) {
                         let booking_link = document.querySelector("#booking_id").value;
