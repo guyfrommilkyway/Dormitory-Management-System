@@ -22,26 +22,26 @@ $('document').ready(function () {
                     $('.js-form--user-signup')
                         .data('username', 'failed')
                     $('.js-username-indicator')
-                        .removeClass('msg--status--success')
-                        .addClass('msg--status--error')
+                        .removeClass('msg-status--success')
+                        .addClass('msg-status--error')
                         .html(error + 'Already taken')
                 } else if (res.result === 'available' && username != '') {
                     $('.js-form--user-signup')
                         .data('username', 'passed')
                     $('.js-username-indicator')
-                        .removeClass('msg--status--error')
-                        .addClass('msg--status--success')
+                        .removeClass('msg-status--error')
+                        .addClass('msg-status--success')
                         .html(success + 'Available')
                 } else if (username === '') {
                     $('.js-username-indicator')
-                        .removeClass('msg--status--success')
-                        .addClass('msg--status--error')
+                        .removeClass('msg-status--success')
+                        .addClass('msg-status--error')
                         .html(error + 'Cannot be empty')
                 } else {
                     $('.js-form--user-signup')
                         .data('username', 'failed')
                     $('.js-username-indicator')
-                        .removeClass('msg--status--success msg--status--error')
+                        .removeClass('msg-status--success msg-status--error')
                         .html('')
                 }
             }
@@ -72,32 +72,32 @@ $('document').ready(function () {
 
                     if (!isValidEmail(email)) {
                         $('.js-email-indicator')
-                            .removeClass('msg--status--success')
-                            .addClass('msg--status--error')
+                            .removeClass('msg-status--success')
+                            .addClass('msg-status--error')
                             .html(error + 'Invalid email')
                     } else {
                         $('.js-email-indicator')
-                            .removeClass('msg--status--success')
-                            .addClass('msg--status--error')
+                            .removeClass('msg-status--success')
+                            .addClass('msg-status--error')
                             .html(error + 'Already taken')
                     }
                 } else if (res.result === 'available' && isValidEmail(email)) {
                     $('.js-form--user-signup')
                         .data('email', 'passed')
                     $('.js-email-indicator')
-                        .removeClass('msg--status--error')
-                        .addClass('msg--status--success')
+                        .removeClass('msg-status--error')
+                        .addClass('msg-status--success')
                         .html(success + 'Available')
                 } else if (email === '') {
                     $('.js-email-indicator')
-                        .removeClass('msg--status--success')
-                        .addClass('msg--status--error')
+                        .removeClass('msg-status--success')
+                        .addClass('msg-status--error')
                         .html(error + 'Cannot be empty')
                 } else {
                     $('.js-form--user-signup')
                         .data('email', 'failed')
                     $('.js-email-indicator')
-                        .removeClass('msg--status--success msg--status--error')
+                        .removeClass('msg-status--success msg-status--error')
                         .html('')
                 }
             }
@@ -111,19 +111,19 @@ $('document').ready(function () {
             $('.js-form--user-signup')
                 .data('password', 'passed')
             $('.js-password-indicator')
-                .removeClass('msg--status--error')
-                .addClass('msg--status--success')
-                .html(success + 'Valid')
+                .removeClass('msg-status--error')
+                .addClass('msg-status--success')
+                .html(success + 'Must be at least 6 characters')
         } else if (password === '') {
             $('.js-password-indicator')
-                .removeClass('msg--status--success')
-                .addClass('msg--status--error')
+                .removeClass('msg-status--success')
+                .addClass('msg-status--error')
                 .html(error + 'Cannot be empty')
         } else {
             $('.js-form--user-signup')
                 .data('password', 'failed')
             $('.js-password-indicator')
-                .addClass('msg--status--error')
+                .addClass('msg-status--error')
                 .html(error + 'Must be at least 6 characters')
         }
     }
