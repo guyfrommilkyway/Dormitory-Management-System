@@ -1,31 +1,104 @@
-.main.main--admin {
-  .main-content {
-    .topbar {
-      padding: 1rem 1.5rem;
-      justify-content: space-between;
-      background: none;
-      box-shadow: none;
+.topbar {
+  padding: 1rem 1.5rem;
+  justify-content: space-between;
+  background: none;
+  box-shadow: none;
 
-      .topbar-title {
-        text-transform: uppercase;
-      }
+  .topbar-title {
+    text-transform: uppercase;
+  }
+}
 
-      .user {
+.topbar-property {
+  margin-bottom: 1rem;
+
+  .topbar-title {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .topbar-subtitle {
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+
+  .nav-tabs {
+    margin-left: auto;
+    border: none;
+    background: none;
+
+    .nav-item {
+      .nav-link {
         display: flex;
         align-items: center;
+        color: white;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        border: none;
 
-        .user-username {
-          margin-right: 0.75rem;
-          font-size: 15px;
+        svg {
+          display: none;
         }
+      }
 
-        .user-avatar {
-          width: 2rem;
-          height: 2rem;
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: cover;
-          border-radius: 50%;
+      .nav-link.active {
+        color: color(color-1);
+        font-weight: bold;
+        border: none;
+        background: none;
+      }
+
+      .nav-link:hover {
+      }
+
+      .nav-link:focus {
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .topbar-property {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .topbar-title {
+      color: color(color-1);
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .topbar-subtitle {
+      font-size: 0.9rem;
+    }
+
+    .nav-tabs {
+      justify-content: space-between;
+      width: 100%;
+      margin: 1rem 0 0 0;
+      padding: 0.25rem 0.75rem;
+      background-color: color(color-3);
+
+      .nav-item {
+        .nav-link {
+          display: flex;
+          align-items: center;
+          color: white;
+          font-size: 0.8rem;
+          text-transform: uppercase;
+          border: none;
+
+          span {
+            display: none;
+          }
+
+          svg {
+            display: block;
+            margin: 0 !important;
+          }
         }
       }
     }

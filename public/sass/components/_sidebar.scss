@@ -1,51 +1,49 @@
-.main.main--admin {
-  .sidebar {
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 16rem;
+  min-width: 16rem;
+  margin: 0;
+  padding: 0;
+  background-color: color(color-2);
+  box-shadow: none;
+
+  .sidebar-header {
+    margin: 1rem;
+    line-height: 1.2rem;
+  }
+
+  .sidebar-title {
     display: flex;
     flex-direction: column;
-    width: 16rem;
-    min-width: 16rem;
-    margin: 0;
-    padding: 0;
-    background-color: color(color-2);
-    box-shadow: none;
+    color: color(color-1);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
 
-    .sidebar-header {
-      margin: 1rem;
-      line-height: 1.2rem;
-    }
+  .navbar-collapse {
+    align-items: flex-start;
+    width: 100%;
+    margin: 1rem 0 0 0;
+    padding-bottom: 2rem;
 
-    .sidebar-title {
-      display: flex;
+    .navbar-nav {
       flex-direction: column;
-      color: color(color-1);
-      font-size: 1.5rem;
-      text-transform: uppercase;
-    }
-
-    .navbar-collapse {
-      align-items: flex-start;
       width: 100%;
-      margin: 1rem 0 0 0;
-      padding-bottom: 2rem;
+      margin: 0;
 
-      .navbar-nav {
-        flex-direction: column;
-        width: 100%;
-        margin: 0;
+      .nav-item {
+        .nav-link {
+          display: flex;
+          align-items: center;
+          padding: 0.75rem 1rem;
+          color: white;
+        }
 
-        .nav-item {
-          .nav-link {
-            display: flex;
-            align-items: center;
-            padding: 0.75rem 1rem;
-            color: white;
-          }
-
-          .card {
-            margin: 0;
-            padding: 0 0.75rem;
-            background: none;
-          }
+        .card {
+          margin: 0;
+          padding: 0 0.75rem;
+          background: none;
         }
       }
     }
@@ -53,9 +51,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .main.main--admin {
-    .sidebar {
-      width: 100%;
-    }
+  .sidebar {
+    width: 100%;
   }
 }

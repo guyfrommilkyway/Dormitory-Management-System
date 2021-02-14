@@ -51,7 +51,7 @@ body {
 }
 
 .paginate_button.page-item a {
-  margin: 0 0.25rem 0.75rem 0;
+  margin: 0 0.5rem 0.75rem 0;
   padding: 0.5rem 0.75rem;
   color: #ffffff !important;
   font-size: 0.9rem !important;

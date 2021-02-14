@@ -2,29 +2,52 @@
   display: flex;
   justify-content: center;
 
-  .upload__label {
+  .upload-input {
+    width: 0.1px;
+    height: 0.1px;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .upload-label {
     display: flex;
     flex-direction: column;
     margin: 2rem auto;
     cursor: pointer;
+  }
 
-    .upload__photo {
-      display: flex;
-      align-items: flex-end;
-      width: 15rem;
-      height: 15rem;
-      margin: 0 auto;
-      background-color: #1b2432;
-      background-position: center;
-      background-size: cover;
-    }
+  .upload-photo {
+    display: flex;
+    align-items: flex-end;
+    width: 15rem;
+    height: 15rem;
+    margin: 0 auto;
+    background-color: #1b2432;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
 
-    .upload__photo--current {
-      background-image: url("../ico/default-avatar.svg");
-    }
+  .upload-photo--current {
+    background-image: url("../ico/default-avatar.svg");
+  }
 
-    .upload__photo--uploaded {
-      display: none;
-    }
+  .upload-photo--uploaded {
+    display: none;
+  }
+
+  .upload-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
   }
 }
