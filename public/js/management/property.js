@@ -1,17 +1,17 @@
 $(document).ready(function () {
     // Edit and delete property
-    $(document).on("click", "#editPropertyButton, #deletePropertyButton", function () {
+    $(document).on("click", ".js-update-property-button, .js-delete-property-button", function () {
         let _id = $(this).data('id');
         let name = $(this).data('name');
         let location = $(this).data('location');
 
         // Edit
-        $("#inputEditProperty_id").val(_id);
-        $("#inputEditPropertyName").val(name);
-        $("#inputEditPropertyLocation").val(location);
+        $(".js-input-property-id").val(_id);
+        $(".js-input-property-name").val(name);
+        $(".js-input-property-location").val(location);
 
         // Delete
-        $("#inputDeleteProperty_id").val(_id);
+        $(".js").val(_id);
         $("div #spanPropertyName").text(name);
         $("div #spanPropertyLocation").text(location);
 
@@ -41,7 +41,7 @@ $(document).ready(function () {
                     className: 'btn-submit m-0 mb-1 text-nowrap',
                     text: `Add property`,
                     action: function (e, dt, node, config) {
-                        $('#addPropertyModal').modal('show')
+                        $('.js-add-property-modal').modal('show')
                     }
                 },
             ]

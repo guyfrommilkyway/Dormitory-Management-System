@@ -1,7 +1,7 @@
 // DataTables
 $(document).ready(function () {
     // Catalog table
-    $('#tableCatalog').DataTable({
+    $('.js-table-catalog').DataTable({
         "responsive": true,
         "details": false,
         "columnDefs": [
@@ -13,7 +13,7 @@ $(document).ready(function () {
     });
 
     // Add-on table
-    $('#tableAddOn').DataTable({
+    $('.js-table-addOn').DataTable({
         "responsive": true,
         "details": false,
         "columnDefs": [
@@ -27,7 +27,7 @@ $(document).ready(function () {
     });
 
     // Room table
-    $('#tableRoom').DataTable({
+    $('.js-table-room').DataTable({
         "responsive": true,
         "details": false,
         "columnDefs": [
@@ -51,7 +51,7 @@ $(document).ready(function () {
                     className: 'btn-submit m-0 mb-1 text-nowrap',
                     text: `Add room`,
                     action: function (e, dt, node, config) {
-                        $('#addRoomModal').modal('show')
+                        $('.js-add-room-modal').modal('show')
                     }
                 }
             ]
@@ -61,7 +61,7 @@ $(document).ready(function () {
     });
 
     // Tenant table
-    $('#tableTenant').DataTable({
+    $('.js-table-tenant').DataTable({
         "responsive": true,
         "details": false,
         "columnDefs": [
@@ -85,7 +85,7 @@ $(document).ready(function () {
                     className: 'btn-submit m-0 mb-1 text-nowrap',
                     text: `Add tenant`,
                     action: function (e, dt, node, config) {
-                        $('#addTenantModal').modal('show')
+                        $('.js-add-tenant-modal').modal('show')
                     }
                 }
             ]
@@ -94,7 +94,7 @@ $(document).ready(function () {
     });
 
     // Booking table
-    $('#tableBooking').DataTable({
+    $('.js-table-booking').DataTable({
         "responsive": true,
         "details": false,
         "columnDefs": [

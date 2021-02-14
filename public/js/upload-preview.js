@@ -1,4 +1,4 @@
-// Upload photo preview
+// Upload profile photo preview
 function updatePhoto(input) {
     if (input.files && input.files[0]) {
         const reader = new FileReader();

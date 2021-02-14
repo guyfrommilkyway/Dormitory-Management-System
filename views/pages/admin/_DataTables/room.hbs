@@ -1,5 +1,5 @@
 <div class="table-responsive-md text-nowrap">
-    <table id="tableRoom" class="table table-borderless" style="width: 100%;">
+    <table class="table table-borderless js-table-room" style="width: 100%;">
         <thead>
             <tr>
                 <th>Room</th>
@@ -31,17 +31,17 @@
                     {{/if}}
                 </td>
                 <td class="text-center">
-                    <button class="btn btn-sm blue darken-2 text-white m-0 mr-2 z-depth-0" id="editRoomButton"
+                    <button class="btn btn-sm blue darken-2 text-white m-0 mr-2 z-depth-0 js-update-room-button"
                         data-id="{{_id}}" data-name="{{name}}" data-floor="{{floor}}" data-catalog="{{catalog}}"
                         data-catalogid="{{catalog._id}}" data-catalogname="{{catalog.name}}"
-                        data-catalograte="{{catalog.rate}}" data-toggle="modal" data-target="#editRoomModal">
+                        data-catalograte="{{catalog.rate}}" data-toggle="modal" data-target=".js-update-room-modal">
                         Edit
                     </button>
-                    <button class="btn btn-sm red darken-3 text-white m-0 z-depth-0" id="deleteRoomButton"
+                    <button class="btn btn-sm red darken-3 text-white m-0 z-depth-0 js-delete-room-button"
                         data-id="{{_id}}" data-name="{{name}}" data-tenant="{{tenant._id}}" data-floor="{{floor}}"
                         data-catalog="{{catalog}}" data-catalogid="{{catalog._id}}" data-catalogname="{{catalog.name}}"
                         data-catalograte="{{catalog.rate}}" data-status="{{#if tenant}}Occupied{{else}}Vacant{{/if}}"
-                        data-toggle="modal" data-target="#deleteRoomModal">
+                        data-toggle="modal" data-target=".js-delete-room-modal">
                         Delete
                     </button>
                 </td>

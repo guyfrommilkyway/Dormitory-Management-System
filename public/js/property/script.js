@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // Change active tabs based on hash value
-    let current_tab = location.hash + '-panel'
+    let current_tab = location.hash.slice(1)
     $(`.js-property-nav-tab a[href='${current_tab}']`).tab('show')
 
     // Delete hash value on url
@@ -9,7 +9,7 @@ $(document).ready(function () {
     }, 20000)
 
     // Catalog
-    $(document).on("click", "#editCatalogButton, #deleteCatalogButton", function () {
+    $(document).on("click", ".js-update-catalog-button, .js-delete-catalog-button", function () {
         let _id = $(this).data('id');
         let name = $(this).data('name');
         let rate = $(this).data('rate');
@@ -21,21 +21,21 @@ $(document).ready(function () {
     });
 
     // Add-on
-    $(document).on("click", "#editAddOnButton, #deleteAddOnButton", function () {
+    $(document).on("click", ".js-update-addOn-button, .js-delete-addOn-button", function () {
         let _id = $(this).data('id');
         let name = $(this).data('name');
         let rate = $(this).data('rate');
         let type = $(this).data('type');
 
         // Pass data to add-on modal
-        $(".js-input-add-on-id").val(_id);
-        $(".js-input-add-on-name").val(name);
-        $(".js-input-add-on-rate").val(rate);
-        $(".js-input-add-on-type").val(type);
+        $(".js-input-addOn-id").val(_id);
+        $(".js-input-addOn-name").val(name);
+        $(".js-input-addOn-rate").val(rate);
+        $(".js-input-addOn-type").val(type);
     });
 
     // Room
-    $(document).on("click", "#editRoomButton, #deleteRoomButton", function () {
+    $(document).on("click", ".js-update-room-button, .js-delete-room-button", function () {
         let _id = $(this).data('id');
         let name = $(this).data('name');
         let floor = $(this).data('floor');
@@ -57,7 +57,7 @@ $(document).ready(function () {
     });
 
     // Tenant
-    $(document).on("click", "#editTenantButton, #deleteTenantButton", function () {
+    $(document).on("click", ".js-update-tenant-button, .js-delete-tenant-button", function () {
         let _id = $(this).data('id');
         let first_name = $(this).data('firstname');
         let last_name = $(this).data('lastname');

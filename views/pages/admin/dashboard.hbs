@@ -3,25 +3,21 @@
 {{#content "extra_css"}}
 {{/content}}
 
-{{#content "content"}}
-
-<main class="main main--admin">
-    <section class="main__content">
-        <div class="page page--dashboard">
-            <div class="page__content">
-                <section class="page__body">
-                    {{#if properties}}
-                    {{else}}
-                    <div class="p-4 text-center">
-                        <span class="message">There are no properties registered under your account.</span>
-                    </div>
-                    {{/if}}
-                </section>
+{{#content "page-content"}}
+<div class="page page--dashboard">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 p-0">
+                {{#if properties}}
+                {{else}}
+                <div class="p-4 text-center">
+                    <span class="message">There are no properties registered under your account.</span>
+                </div>
+                {{/if}}
             </div>
         </div>
-    </section>
-</main>
-
+    </div>
+</div>
 {{/content}}
 
 {{#content "extra_js"}}

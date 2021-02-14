@@ -1,11 +1,11 @@
 <!-- Add property modal -->
 <form action="/api/property/add" method="POST">
-    <div class="modal fade" id="addPropertyModal" tabindex="-1" role="dialog" aria-labelledby="addPropertyModal"
+    <div class="modal fade js-add-property-modal" tabindex="-1" role="dialog" aria-labelledby="js-add-property-modal"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add property</h4>
+                    <h4 class="modal-title">Add Property</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group mt-2 mb-3">
@@ -18,40 +18,39 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn--submit btn">Add</button>
+                    <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-submit">Add</button>
                 </div>
             </div>
         </div>
     </div>
 </form>
 
-<!-- Edit property modal -->
+<!-- Update property modal -->
 <form action="/api/property/edit" method="POST">
-    <div class="modal fade" id="editPropertyModal" tabindex="-1" role="dialog" aria-labelledby="editPropertyModal"
-        aria-hidden="true">
+    <div class="modal fade js-update-property-modal" tabindex="-1" role="dialog"
+        aria-labelledby="js-update-property-modal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Edit property</h4>
+                    <h4 class="modal-title">Update Property</h4>
                 </div>
                 <div class="modal-body">
+                    <input class="form-control js-input-property-id" name="_id" type="hidden" required>
                     <div class="form-group mt-2 mb-3">
-                        <label for="inputEditPropertyName">Name</label>
-                        <input class="form-control" name="name" type="text" id="inputEditPropertyName"
-                            value="placeholder" required>
-                        <input class="form-control" name="_id" id="inputEditProperty_id" value="placeholder"
-                            type="hidden" required>
+                        <label>Name</label>
+                        <input class="form-control js-input-property-name" name="name" type="text" value="placeholder"
+                            required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="inputEditPropertyLocation">Location</label>
-                        <input class="form-control" name="location" type="text" id="inputEditPropertyLocation"
+                        <label>Location</label>
+                        <input class="form-control js-input-property-location" name="location" type="text"
                             value="placeholder" required>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn--submit btn">Save</button>
+                    <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-submit">Save</button>
                 </div>
             </div>
         </div>
@@ -60,40 +59,35 @@
 
 <!-- Delete property modal -->
 <form action="/api/property/delete" method="POST">
-    <div class="modal fade" id="deletePropertyModal" tabindex="-1" role="dialog" aria-labelledby="deletePropertyModal"
-        aria-hidden="true">
+    <div class="modal fade js-delete-property-modal" tabindex="-1" role="dialog"
+        aria-labelledby="js-delete-property-modal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Delete Property</h4>
                 </div>
                 <div class="modal-body">
-                    <input class="form-control" name="_id" id="inputDeleteProperty_id" type="hidden" required>
-                    <span class="font-weight-normal">Property information</span>
-                    <table class="table table-sm table-borderless mt-2">
-                        <tbody>
-                            <tr>
-                                <td class="td-title">Name</td>
-                                <td class="td-content"><span id="spanPropertyName"></span></td>
-
-                            </tr>
-                            <tr>
-                                <td class="td-title">Location</td>
-                                <td class="td-content"><span id="spanPropertyLocation"></span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="mt-4">
-                        <span class="font-weight-normal" style="font-size: 14px;">Note:</span>
-                        <p class="mt-2 pt-3 pr-2 pb-3 pl-2 rounded border border-white" style="font-size: 14px;">
-                            Properties that have <span class="green-text font-weight-bold font-italic">rooms</span>
-                            cannot be deleted.
-                        </p>
+                    <input class="form-control js-input-property-id" name="_id" type="hidden" required>
+                    <div class="form-group mt-2 mb-2">
+                        <label>Name</label>
+                        <input class="form-control js-input-property-name" disabled>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>Location</label>
+                        <input class="form-control js-input-property-location" disabled>
+                    </div>
+                    <div class="mt-4 p-1">
+                        <div class="d-flex flex-column" style="font-size: 13px;">
+                            <span>Note:</span>
+                            <p style="font-style: italic;">
+                                Properties that have rooms cannot be deleted.
+                            </p>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn red darken-3">Confirm</button>
+                    <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn red darken-3 text-white">Confirm</button>
                 </div>
             </div>
         </div>

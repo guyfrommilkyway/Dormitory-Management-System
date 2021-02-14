@@ -1,0 +1,51 @@
+<!-- Update profile photo modal -->
+<form class="form form--update-user-avatar" action="/api/user/profile/avatar/update" method="POST"
+    enctype="multipart/form-data">
+    <div class="modal fade js-edit-profile-modal" tabindex="-1" role="dialog" aria-labelledby="editProfileModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Update profile photo</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="upload">
+                        <input class="upload-input" name="avatar" id="upload-input" type="file"
+                            accept="image/png, image/jpeg, image/jpg" onchange="updatePhoto(this);" required />
+                        <label class="upload-label" for="upload-input">
+                            <div class="upload-photo upload-photo--current js-photo--current" {{#if user.avatar}}
+                                style="background-image: url('data:image/png;base64,{{user.avatar.data}}');" {{/if}}>
+                                <div class="upload-info">
+                                    <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                        fill="white" width="20px" height="20px">
+                                        <path d="M0 0h24v24H0z" fill="none" />
+                                        <circle cx="12" cy="12" r="3.2" />
+                                        <path
+                                            d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" />
+                                    </svg>
+                                    <span>Upload a photo</span>
+                                </div>
+                            </div>
+                            <div class="upload-photo upload-photo--uploaded js-photo--uploaded">
+                                <div class="upload-info">
+                                    <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                        fill="white" width="20px" height="20px">
+                                        <path d="M0 0h24v24H0z" fill="none" />
+                                        <circle cx="12" cy="12" r="3.2" />
+                                        <path
+                                            d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" />
+                                    </svg>
+                                    <span>Upload a photo</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-submit">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

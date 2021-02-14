@@ -1,11 +1,11 @@
 <!-- Add add-on modal -->
 <form action="/api/addOn/add" method="POST">
-    <div class="modal fade" id="addAddOnModal" tabindex="-1" role="dialog" aria-labelledby="addAddOnModal"
+    <div class="modal fade js-add-addOn-modal" tabindex="-1" role="dialog" aria-labelledby="js-add-addOn-modal"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add add-on</h4>
+                    <h4 class="modal-title">Add Add-on</h4>
                 </div>
                 <div class="modal-body">
                     <input name="property" type="hidden" value="{{property._id}}" required>
@@ -18,13 +18,13 @@
                         <input class="form-control" name="rate" type="number" required>
                     </div>
                     <div class="form-group">
-                        <label>Payment Type</label>
+                        <label>Payment Type <span class="font-italic">(One-time, monthly, etc.)</span></label>
                         <input class="form-control" name="type" type="text" required>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn--submit btn">Add</button>
+                    <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-submit">Add</button>
                 </div>
             </div>
         </div>
@@ -33,32 +33,32 @@
 
 <!-- Update add-on modal -->
 <form action="/api/addOn/update" method="POST">
-    <div class="modal fade" id="editAddOnModal" tabindex="-Type1" role="dialog" aria-labelledby="editAddOnModal"
-        aria-hidden="true">
+    <div class="modal fade js-update-addOn-modal" tabindex="-Type1" role="dialog"
+        aria-labelledby="js-update-addOn-modal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Edit add-on</h4>
+                    <h4 class="modal-title">Update Add-on</h4>
                 </div>
                 <div class="modal-body">
                     <input name="property" type="hidden" value="{{property._id}}" required>
-                    <input class="js-input-add-on-id" name="_id" type="hidden" required>
+                    <input class="js-input-addOn-id" name="_id" type="hidden" required>
                     <div class="form-group">
                         <label>Name</label>
-                        <input class="form-control js-input-add-on-name" name="name" type="text" required>
+                        <input class="form-control js-input-addOn-name" name="name" type="text" required>
                     </div>
                     <div class="form-group">
                         <label>Rate</label>
-                        <input class="form-control js-input-add-on-rate" name="rate" type="text" required>
+                        <input class="form-control js-input-addOn-rate" name="rate" type="number" required>
                     </div>
                     <div class="form-group">
-                        <label>Payment Type</label>
-                        <input class="form-control js-input-add-on-type" name="type" type="text" required>
+                        <label>Payment Type <span class="font-italic">(One-time, monthly, etc.)</span></label>
+                        <input class="form-control js-input-addOn-type" name="type" type="text" required>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn--submit btn">Save</button>
+                    <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-submit">Save</button>
                 </div>
             </div>
         </div>
@@ -67,7 +67,7 @@
 
 <!-- Delete add-on modal -->
 <form action="/api/addOn/delete" method="POST">
-    <div class="modal fade" id="deleteAddOnModal" tabindex="-1" role="dialog" aria-labelledby="deleteAddOnModal"
+    <div class="modal fade js-delete-addOn-modal" tabindex="-1" role="dialog" aria-labelledby="js-delete-addOn-modal"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -76,18 +76,18 @@
                 </div>
                 <div class="modal-body">
                     <input name="property" type="hidden" value="{{property._id}}" required>
-                    <input class="js-input-add-on-id" name="_id" type="hidden" required>
+                    <input class="js-input-addOn-id" name="_id" type="hidden" required>
                     <div class="form-group">
                         <label>Name</label>
-                        <input class="form-control js-input-add-on-name" disabled>
+                        <input class="form-control js-input-addOn-name" disabled>
                     </div>
                     <div class="form-group">
                         <label>Rate</label>
-                        <input class="form-control js-input-add-on-rate" disabled>
+                        <input class="form-control js-input-addOn-rate" disabled>
                     </div>
                     <div class="form-group">
                         <label>Payment Type</label>
-                        <input class="form-control js-input-add-on-type" disabled>
+                        <input class="form-control js-input-addOn-type" disabled>
                     </div>
                     <div class="mt-4 p-1">
                         <div class="d-flex flex-column" style="font-size: 13px;">
@@ -99,7 +99,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn z-depth-0 text-white" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn red darken-3 text-white">Confirm</button>
                 </div>
             </div>

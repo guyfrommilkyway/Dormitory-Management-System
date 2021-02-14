@@ -14,13 +14,13 @@ router.post('/api/tenant/add', authentication, async (req, res) => {
         const _id = req.body.property
 
         res.status(201)
-            .redirect(`/property/${_id}` + '#tenant')
+            .redirect(`/property/${_id}` + '#.js-tenant-panel')
     } catch (e) {
         //Assign id
         const _id = req.body.property
 
         res.status(400)
-            .redirect(`/property/${_id}` + '#tenant')
+            .redirect(`/property/${_id}` + '#.js-tenant-panel')
     }
 })
 
@@ -34,13 +34,13 @@ router.post('/api/tenant/update', authentication, async (req, res) => {
         const _id = req.body.property
 
         res.status(200)
-            .redirect(`/property/${_id}` + '#tenant')
+            .redirect(`/property/${_id}` + '#.js-tenant-panel')
     } catch (e) {
         //Assign id
         const _id = req.body.property
 
         res.status(400)
-            .redirect(`/property/${_id}` + '#tenant')
+            .redirect(`/property/${_id}` + '#.js-tenant-panel')
     }
 })
 
@@ -54,13 +54,13 @@ router.post('/api/tenant/delete', authentication, async (req, res) => {
         const _id = req.body.property
 
         res.status(200)
-            .redirect(`/property/${_id}` + '#tenant')
+            .redirect(`/property/${_id}` + '#.js-tenant-panel')
     } catch (e) {
         //Assign id
         const _id = req.body.property
 
         res.status(400)
-            .redirect(`/property/${_id}` + '#tenant')
+            .redirect(`/property/${_id}` + '#.js-tenant-panel')
     }
 })
 
