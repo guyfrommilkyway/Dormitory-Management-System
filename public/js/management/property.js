@@ -19,7 +19,7 @@ $(document).ready(function () {
     });
 
     // DataTable
-    $('#tableProperty').DataTable({
+    $('.js-table-property').DataTable({
         "responsive": true,
         "details": false,
         "columnDefs": [
