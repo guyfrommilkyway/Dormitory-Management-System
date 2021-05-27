@@ -57,7 +57,7 @@ $(document).ready(function () {
             ]
         },
         "pageLength": 10,
-        "order": [[0, "asc"]]
+        "order": [[1, "asc"]]
     });
 
     // Tenant table
@@ -128,7 +128,7 @@ $(document).ready(function () {
                         if (text.includes('Copied')) {
                             btn.text()
                         } else {
-                            btn.text(btn.text() + ' - Copied')
+                            btn.text('Link copied')
 
                             setTimeout(function () {
                                 btn.text('Booking Link')
