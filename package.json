@@ -1,7 +1,7 @@
 {
-  "name": "property-management-system",
+  "name": "dormitory-management-system",
   "version": "1.0.0",
-  "description": "Property Management System",
+  "description": "Dormitory Management System",
   "main": "index.js",
   "scripts": {
     "start": "node src/app.js",
@@ -38,10 +38,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/guyfrommilkyway/Property-Management-System.git"
+    "url": "git+https://github.com/guyfrommilkyway/Dormitory-Management-System.git"
   },
   "bugs": {
-    "url": "https://github.com/guyfrommilkyway/Property-Management-System/issues"
+    "url": "https://github.com/guyfrommilkyway/Dormitory-Management-System/issues"
   },
-  "homepage": "https://github.com/guyfrommilkyway/Property-Management-System#readme"
+  "homepage": "https://github.com/guyfrommilkyway/Dormitory-Management-System#readme"
 }

@@ -1,4 +1,4 @@
-## [Property Management System](https://github.com/guyfrommilkyway/Property-Management-System)
+## [Dormitory Management System](https://github.com/guyfrommilkyway/Dormitory-Management-System)
 
 <p>
 An application design and develop to help property owners and maintenance personnel manage the day-to-day operations of their properties.
@@ -30,15 +30,15 @@ This project was a partial fulfillment for the requirements of BSCOE-ELEC2 - Dat
 - Clone this repository and install the dependencies:
 
 ```bash
-$ git clone https://github.com/guyfrommilkyway/Property-Management-System.git
-$ cd Property-Management-System
+$ git clone https://github.com/guyfrommilkyway/Dormitory-Management-System.git
+$ cd Dormitory-Management-System
 $ npm install
 ```
 
 - Create a file named 'config.env'.
 
 ```
-Property-Management-System
+Dormitory-Management-System
 └───public
 └───src
 └───views
@@ -66,7 +66,7 @@ Example:
 PORT=3000
 REDIS_HOST=127.0.0.1
 REDIS_PORT=6380
-MONGODB_URL=mongodb://localhost:27017/property-management-system
+MONGODB_URL=mongodb://localhost:27017/dormitory-management-system
 JWT_SECRET=nIqxawqgGFcYwIUeCyeWCaQcxREFiV
 COOKIE_SECRET=cIBdzoGyyiMFgVQehkGQLJdAFedZxG
 ```
