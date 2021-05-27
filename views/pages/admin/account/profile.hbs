@@ -7,7 +7,7 @@
 <div class="page page--profile">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-lg-6">
                 <form class="form form--user-profile--update w-100" action="/api/user/profile/info/update"
                     method="POST">
                     <div class="form-group">
@@ -39,8 +39,8 @@
                     <button type="submit" class="btn btn-submit m-0 mt-5">Save</button>
                 </form>
             </div>
-            <div class="col-md-6">
-                <div class="user">
+            <div class="col-lg-6">
+                <div class="user flex-column">
                     <div class="user-avatar user-avatar-12x12" {{#if user.avatar}}
                         style="background-image: url('data:image/png;base64,{{user.avatar.data}}');" {{/if}}>
                         <a class="user-avatar-button" data-toggle="modal"
