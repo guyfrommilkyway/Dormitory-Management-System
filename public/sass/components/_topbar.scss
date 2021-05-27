@@ -10,7 +10,7 @@
 }
 
 .topbar-property {
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 
   .topbar-title {
     color: #ffffff;
@@ -48,58 +48,6 @@
         font-weight: bold;
         border: none;
         background: none;
-      }
-
-      .nav-link:hover {
-      }
-
-      .nav-link:focus {
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .topbar-property {
-    flex-direction: column;
-    align-items: flex-start;
-
-    .topbar-title {
-      color: color(color-1);
-      font-size: 1.2rem;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-
-    .topbar-subtitle {
-      font-size: 0.9rem;
-    }
-
-    .nav-tabs {
-      justify-content: space-between;
-      width: 100%;
-      margin: 1rem 0 0 0;
-      padding: 0.25rem 0.75rem;
-      background-color: color(color-3);
-
-      .nav-item {
-        .nav-link {
-          display: flex;
-          align-items: center;
-          color: white;
-          font-size: 0.8rem;
-          text-transform: uppercase;
-          border: none;
-
-          span {
-            display: none;
-          }
-
-          svg {
-            display: block;
-            margin: 0 !important;
-          }
-        }
       }
     }
   }
