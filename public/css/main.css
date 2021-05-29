@@ -1,21 +1,21 @@
 .custom-color-1 {
-  color: #ffeab2;
+  color: #ffeab2 !important;
 }
 
 .custom-color-2 {
-  color: #1b2432;
+  color: #1b2432 !important;
 }
 
 .custom-color-3 {
-  color: #394456;
+  color: #394456 !important;
 }
 
 .custom-color-4 {
-  color: #47556b;
+  color: #47556b !important;
 }
 
 .custom-color-5 {
-  color: #6c7789;
+  color: #6c7789 !important;
 }
 
 .custom-bg-1 {
@@ -420,9 +420,9 @@
           box-shadow: 0 0 0 0.2rem rgba(255, 234, 178, 0.7) !important;
 }
 
-.btn-submit {
-  color: #1b2432;
-  background-color: #ffeab2;
+.btn-back {
+  color: white !important;
+  background-color: #1b2432;
 }
 
 .btn-cancel {
@@ -430,6 +430,11 @@
   background: none !important;
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
+}
+
+.btn-submit {
+  color: #1b2432;
+  background-color: #ffeab2;
 }
 
 .msg {
@@ -445,6 +450,10 @@
 
 .msg-status--error {
   color: red !important;
+}
+
+.msg-status--error2 {
+  color: #74070e !important;
 }
 
 .link {

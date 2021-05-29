@@ -1,10 +1,15 @@
-.btn-submit {
-  color: #1b2432;
-  background-color: #ffeab2;
+.btn-back {
+  color: white !important;
+  background-color: color(color-2);
 }
 
 .btn-cancel {
   color: white !important;
   background: none !important;
   box-shadow: none !important;
+}
+
+.btn-submit {
+  color: #1b2432;
+  background-color: #ffeab2;
 }
