@@ -88,6 +88,24 @@ $(document).ready(function () {
         }
     });
 
+    // Booking
+    $(document).on("click", ".js-accept-booking-button, .js-decline-booking-button", function () {
+        let first_name = $(this).data('firstname');
+        let last_name = $(this).data('lastname');
+        let birthday = $(this).data('birthday');
+        let mobile = $(this).data('mobile');
+        let email = $(this).data('email');
+        let room = $(this).data('room');
+
+        // Pass data to accept-booking modal
+        $(".js-accept-booking-first-name").val(first_name);
+        $(".js-accept-booking-last-name").val(last_name);
+        $(".js-accept-booking-birthday").val(birthday);
+        $(".js-accept-booking-mobile").val(mobile);
+        $(".js-accept-booking-email").val(email);
+        $(".js-accept-booking-room").val(room);
+    });
+
     // Delete 'current' on modal close
     $(document).on("hide.bs.modal", "#editTenantModal", function () {
         let room = $('.js-select-tenant-room option:selected').text();
