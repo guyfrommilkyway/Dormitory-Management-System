@@ -33,7 +33,13 @@ const bookingList = async (propertyId) => {
     return { bookings }
 }
 
+// Decline booking
+const bookingDecline = async (bookingObject) => {
+    await Booking.findOneAndDelete({ _id: bookingObject._id })
+}
+
 module.exports = {
     bookingNew,
-    bookingList
+    bookingList,
+    bookingDecline
 }
