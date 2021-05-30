@@ -8,7 +8,7 @@ const roomNew = async (roomObject) => {
     for (i = 0; i < roomObject.number; i++) {
         const room = new Room({
             catalog: roomObject.catalog,
-            name: 'F' + roomObject.floor + '-' + randomstring.generate({ length: 5, charset: 'alphanumeric' }),
+            name: randomstring.generate({ length: 5, charset: 'alphanumeric' }),
             floor: roomObject.floor,
             tenant: null,
             property: roomObject.property
