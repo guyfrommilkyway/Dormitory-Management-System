@@ -1,5 +1,6 @@
 const Tenant = require('../models/tenant')
 const Room = require('../models/room')
+const Booking = require('../models/booking')
 
 // Create tenant
 const tenantNew = async (tenantObject) => {
@@ -7,6 +8,10 @@ const tenantNew = async (tenantObject) => {
     const room = await Room.findByIdAndUpdate(tenantObject.room, {
         tenant: tenant._id
     })
+
+    if (tenantObject.booking) {
+        await Booking.findOneAndDelete({ _id: tenantObject.booking })
+    }
 
     await tenant.save()
     await room.save()
