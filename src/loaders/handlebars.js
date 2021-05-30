@@ -24,6 +24,8 @@ module.exports = async (handlebars, layouts) => {
     handlebars.registerPartial('modals_room', fs.readFileSync(path.join(__dirname, '../../views/pages/admin/_modals/room.hbs'), 'utf8'));
     // Tenant
     handlebars.registerPartial('modals_tenant', fs.readFileSync(path.join(__dirname, '../../views/pages/admin/_modals/tenant.hbs'), 'utf8'));
+    // Booking
+    handlebars.registerPartial('modals_booking', fs.readFileSync(path.join(__dirname, '../../views/pages/admin/_modals/booking.hbs'), 'utf8'));
     // Profile Picture
     handlebars.registerPartial('modals_profile_photo', fs.readFileSync(path.join(__dirname, '../../views/pages/admin/_modals/profile-photo.hbs'), 'utf8'));
 
