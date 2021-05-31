@@ -90,6 +90,7 @@ $(document).ready(function () {
 
     // Booking
     $(document).on("click", ".js-accept-booking-button, .js-decline-booking-button", function () {
+        let _id = $(this).data('id');
         let first_name = $(this).data('firstname');
         let last_name = $(this).data('lastname');
         let birthday = $(this).data('birthday');
@@ -98,12 +99,13 @@ $(document).ready(function () {
         let room = $(this).data('room');
 
         // Pass data to accept-booking modal
-        $(".js-accept-booking-first-name").val(first_name);
-        $(".js-accept-booking-last-name").val(last_name);
-        $(".js-accept-booking-birthday").val(birthday);
-        $(".js-accept-booking-mobile").val(mobile);
-        $(".js-accept-booking-email").val(email);
-        $(".js-accept-booking-room").val(room);
+        $(".js-input-booking-id").val(_id);
+        $(".js-input-booking-first-name").val(first_name);
+        $(".js-input-booking-last-name").val(last_name);
+        $(".js-input-booking-birthday").val(birthday);
+        $(".js-input-booking-mobile").val(mobile);
+        $(".js-input-booking-email").val(email);
+        $(".js-input-booking-room").val(room);
     });
 
     // Delete 'current' on modal close
