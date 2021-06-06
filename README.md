@@ -1,7 +1,7 @@
 ## [Dormitory Management System](https://github.com/guyfrommilkyway/Dormitory-Management-System)
 
 <p>
-An application design and develop to help property owners and maintenance personnel manage the day-to-day operations of their properties.
+An application design and develop to help dormitory owners and maintenance personnel manage the day-to-day operations of their dormitories.
 <br><br>
 This project was a partial fulfillment for the requirements of BSCOE-ELEC2 - Database Management System.
 </p>
