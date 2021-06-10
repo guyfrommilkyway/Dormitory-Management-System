@@ -18,9 +18,7 @@ module.exports = async(app, outputTemplate) => {
             property,
             catalogs
         };
-        const output = await outputTemplate('../../../views/pages/client/booking/booking.hbs', header);
-        res.status(200)
-            .send(output);
+        const output = await outputTemplate('../../views/pages/booking/booking.hbs', header);
         res.status(200)
             .send(output);
     })
