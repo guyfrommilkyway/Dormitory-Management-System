@@ -1,38 +1,39 @@
 const fs = require('fs')
 const path = require('path')
-const userRouter = require('./routes/admin/user')
-const propertyRouter = require('./routes/admin/property')
-const catalogRouter = require('./routes/admin/catalog')
-const addOnRouter = require('./routes/admin/add-on')
-const roomRouter = require('./routes/admin/room')
-const tenantRouter = require('./routes/admin/tenant')
-const bookingRouter = require('./routes/admin/booking')
+const routerUser = require('./routes/user')
+const routerProperty = require('./routes/property')
+const routerCatalog = require('./routes/catalog')
+const routerAddOn = require('./routes/add-on')
+const routerRoom = require('./routes/room')
+const routerTenant = require('./routes/tenant')
+const routerBooking = require('./routes/booking')
 
-module.exports = async (app, handlebars) => {
-    // Landing endpoints
-    await require('./routes/admin/landing')(app, handlebars)
-    await require('./routes/client/landing')(app, handlebars)
+module.exports = async(app, handlebars) => {
+    // Compile template
+    const outputTemplate = async(directory, object) => {
+        const template = await handlebars.compile(
+            fs.readFileSync(
+                path.join(__dirname, directory),
+                'utf8'
+            ));
+        const output = await template(object);
+        return output;
+    };
 
-    // API
-    app.use(userRouter)
-    app.use(propertyRouter)
-    app.use(catalogRouter)
-    app.use(addOnRouter)
-    app.use(roomRouter)
-    app.use(tenantRouter)
-    app.use(bookingRouter)
+    await require('./routes/landing')(app, outputTemplate);
+
+    const routersArray = [routerUser, routerProperty, routerCatalog, routerAddOn, routerRoom, routerTenant, routerBooking];
+    for (i = 0; i < routersArray.length; i++) {
+        app.use(routersArray[i])
+    };
 
     // 404 page
-    app.get('*', async (req, res) => {
-        // Compile template
-        const template = await handlebars.compile(fs.readFileSync(path.join(__dirname, '../../views/pages/404.hbs'), 'utf8'));
-
-        // Render template
-        const output = template({
+    app.get('*', async(req, res) => {
+        const header = {
             title: 'Page not found'
-        });
-
+        };
+        const output = await outputTemplate('../../views/pages/404.hbs', header);
         res.status(200)
-            .send(output)
-    })
-}
+            .send(output);
+    });
+};
