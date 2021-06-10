@@ -21,18 +21,49 @@ This project was a partial fulfillment for the requirements of BSCOE-ELEC2 - Dat
 - [Material Design for Bootstrap](https://mdbootstrap.com/)
 - Icons from [Material Design](https://material.io/resources/icons/?style=baseline)
 
-### Installation
+### Download and Install on your PC
 
-- Download and install [Node.js](https://nodejs.org/en/download/), [MongoDB Community Server](https://www.mongodb.com/try/download/community) and [Redis](https://redis.io/download).
+- [Node.js](https://nodejs.org/en/download/)
+- [MongoDB Community Server](https://www.mongodb.com/try/download/community)
+- [Redis](https://redis.io/download)
 
-### Application
+### Setup Database
+
+- Create a folder that will be used as a database storage.
+- Run mongoDB in the terminal.
+
+```
+$ mongod --dbpath <your database folder path>
+```
+
+```
+Example:
+
+$ mongod --dbpath ~/Documents/mongodb-database
+```
+
+### Setup Redis
+
+- Run redis-server in the terminal:
+
+```
+$ redis-server --port <your port>
+```
+
+```
+Example:
+
+$ redis-server --port 6380
+```
+
+### Setup Application
 
 - Clone this repository and install the dependencies:
 
 ```bash
 $ git clone https://github.com/guyfrommilkyway/Dormitory-Management-System.git
 $ cd Dormitory-Management-System
-$ npm install
+$ npm i
 ```
 
 - Create a file named 'config.env'.
@@ -95,33 +126,4 @@ localhost:<your port>
 Example:
 
 localhost:3000
-```
-
-### Database
-
-- Create a folder that will be used as a database storage.
-- Run mongoDB in the terminal.
-
-```
-$ mongod --dbpath <your database folder path>
-```
-
-```
-Example:
-
-$ mongod --dbpath ~/Documents/mongodb-database
-```
-
-### Redis
-
-- Run redis-server in the terminal:
-
-```
-$ redis-server --port <your port>
-```
-
-```
-Example:
-
-$ redis-server --port 6380
 ```
