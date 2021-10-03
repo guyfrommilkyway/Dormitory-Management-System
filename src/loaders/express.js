@@ -1,6 +1,6 @@
 const path = require('path')
 const express = require('express')
-const hbs = require('hbs')
+const exphbs = require('express-handlebars')
 const cookieParser = require('cookie-parser')
 const handlebars = require('handlebars')
 const layouts = require('handlebars-layouts')
@@ -9,8 +9,8 @@ const layouts = require('handlebars-layouts')
 const app = express()
 
 // Setup
-app.engine('hbs', hbs.__express)
-app.set('view engine', 'hbs')
+app.engine('hbs', exphbs());
+app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, '../../views/'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
