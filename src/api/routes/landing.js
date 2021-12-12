@@ -43,12 +43,12 @@ module.exports = async(app, outputTemplate) => {
         if (req.user && req.token) {
             const { properties } = await propertyList(req.user._id);
             const header = {
-                title: 'Dashboard',
-                header: 'Dashboard',
+                title: 'Property',
+                header: 'Property',
                 user: req.user,
                 properties,
             };
-            const output = await outputTemplate('../../views/pages/dashboard.hbs', header);
+            const output = await outputTemplate('../../views/pages/property-management.hbs', header);
             res.status(200)
                 .send(output);
         } else {
@@ -98,25 +98,6 @@ module.exports = async(app, outputTemplate) => {
                 totalBookings: bookings.length,
             };
             const output = await outputTemplate('../../views/pages/property.hbs', header);
-            res.status(200)
-                .send(output);
-        } else {
-            res.status(401)
-                .redirect('/');
-        }
-    });
-
-    // Property
-    app.get('/management/property', authentication, async(req, res) => {
-        if (req.user && req.token) {
-            const { properties } = await propertyList(req.user._id);
-            const header = {
-                title: 'Property Management',
-                header: 'Property Management',
-                user: req.user,
-                properties,
-            };
-            const output = await outputTemplate('../../views/pages/management/property.hbs', header);
             res.status(200)
                 .send(output);
         } else {
