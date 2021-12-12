@@ -116,7 +116,7 @@ module.exports = async(app, outputTemplate) => {
                 user: req.user,
                 properties,
             };
-            const output = await outputTemplate('../../views/pages/account/profile.hbs', header);
+            const output = await outputTemplate('../../views/pages/profile.hbs', header);
             res.status(200)
                 .send(output);
         } else {
@@ -135,7 +135,7 @@ module.exports = async(app, outputTemplate) => {
                 user: req.user,
                 properties,
             };
-            const output = await outputTemplate('../../views/pages/account/security.hbs', header);
+            const output = await outputTemplate('../../views/pages/security.hbs', header);
             res.status(200)
                 .send(output);
         } else {
