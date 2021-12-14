@@ -1,10 +1,10 @@
 <div class="table-responsive text-nowrap mt-2">
-    <table class="table-sm table-borderless js-table-catalog" style="width: 100%;">
-        <thead>
+    <table class="table-sm js-table-catalog" style="width: 100%;">
+        <thead class="table-dark">
             <tr>
                 <th>Name</th>
                 <th>Rate</th>
-                <th>Action</th>
+                <th class="text-right">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -14,7 +14,7 @@
                     {{name}}
                 </td>
                 <td>{{rate}}</td>
-                <td class="text-center">
+                <td class="text-right">
                     <button type="button"
                         class="btn p-1 blue darken-2 text-white m-0 mr-2 z-depth-0 js-update-catalog-button"
                         data-id="{{_id}}" data-name="{{name}}" data-rate="{{rate}}" data-toggle="modal"
