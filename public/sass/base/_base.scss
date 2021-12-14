@@ -24,12 +24,38 @@ html {
 /**
  * Basic styles for links
  */
-a {
-  color: $brand-color;
-  text-decoration: none;
+a:link {
+  color: $primary !important;
+}
 
-  @include on-event {
-    color: $text-color;
-    text-decoration: underline;
-  }
+a:visited {
+  color: $primary !important;
+}
+
+a:hover {
+  color          : $primary !important;
+  text-decoration: underline !important;
+}
+
+a:active {
+  color: $primary !important;
+}
+
+/**
+ * Basic styles for scrollbar
+ */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $light-grey;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $dark-grey;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $secondary;
 }
