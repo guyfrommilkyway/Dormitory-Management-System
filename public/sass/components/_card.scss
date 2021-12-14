@@ -1,31 +1,21 @@
-.card--property-summary {
-  width: 220px;
-  margin: 0 1rem 3rem 0;
-  padding: 1rem 1.5rem;
-  background-color: color(color-5);
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the card component.
+// -----------------------------------------------------------------------------
 
-  .card-title {
-    font-size: 3rem;
-    line-height: 2rem;
-  }
-
-  .card-text {
-    color: white !important;
-    font-size: 12px;
-    text-transform: uppercase;
-  }
+.card-custom {
+    display        : flex;
+    flex-direction : row !important;
+    justify-content: flex-start;
+    align-items    : center;
+    flex           : 1;
+    min-width      : 200px;
+    margin-right   : 12px;
+    margin-bottom  : 12px;
+    background     : linear-gradient(0deg, $primary, $primary-darker) !important;
 }
 
-.card-svg {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  top: -1rem;
-  left: 1rem;
-  width: 65px;
-  height: 65px;
-  margin-bottom: -65px;
-  z-index: 1;
-  background-color: color(color-3);
+.card-custom:hover {
+    cursor    : pointer;
+    transform : scale(1.02);
+    background: linear-gradient(180deg, $primary, $primary-darker) !important;
 }

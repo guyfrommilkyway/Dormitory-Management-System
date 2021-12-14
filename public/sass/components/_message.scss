@@ -1,16 +1,15 @@
-.msg {
-  display: flex;
-  font-size: 12px;
-}
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the message component.
+// -----------------------------------------------------------------------------
 
-.msg-status--success {
-  color: green !important;
+.msg {
+    font-size: $text-10 !important;
 }
 
 .msg-status--error {
-  color: red !important;
+    color: #FF0000;
 }
 
-.msg-status--error2 {
-  color: #74070e !important;
+.msg-status--success {
+    color: #00FF00;
 }

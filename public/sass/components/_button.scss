@@ -1,15 +1,19 @@
-.btn-back {
-  color: white !important;
-  background-color: color(color-2);
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+
+.btn-custom-primary {
+    background-color: $primary !important;
 }
 
-.btn-cancel {
-  color: white !important;
-  background: none !important;
-  box-shadow: none !important;
+.btn-custom-dark-grey {
+    background-color: $dark-grey !important;
 }
 
-.btn-submit {
-  color: #1b2432;
-  background-color: #ffeab2;
+.btn-custom-cancel {
+    color           : #000000 !important;
+    background-color: none !important;
+    border          : none !important;
+    outline         : none !important;
+    box-shadow      : none !important;
 }

@@ -6,7 +6,8 @@ $(document).ready(function () {
         "details": false,
         "columnDefs": [
             { responsivePriority: 1, targets: 0 },
-            { responsivePriority: 2, targets: 1 }
+            { responsivePriority: 3, targets: 1 },
+            { responsivePriority: 2, targets: 2 }
         ],
         "dom": 't<"dataTables_footer"ip>',
         "pageLength": 5
@@ -18,8 +19,8 @@ $(document).ready(function () {
         "details": false,
         "columnDefs": [
             { responsivePriority: 1, targets: 0 },
-            { responsivePriority: 4, targets: 1 },
-            { responsivePriority: 3, targets: 2 },
+            { responsivePriority: 3, targets: 1 },
+            { responsivePriority: 4, targets: 2 },
             { responsivePriority: 2, targets: 3 }
         ],
         "dom": 't<"dataTables_footer"ip>',
@@ -32,13 +33,13 @@ $(document).ready(function () {
         "details": false,
         "columnDefs": [
             { responsivePriority: 1, targets: 0 },
-            { responsivePriority: 2, targets: 5 },
-            { responsivePriority: 3, targets: 4 },
-            { responsivePriority: 4, targets: 3 },
+            { responsivePriority: 6, targets: 1 },
             { responsivePriority: 5, targets: 2 },
-            { responsivePriority: 6, targets: 1 }
+            { responsivePriority: 4, targets: 3 },
+            { responsivePriority: 3, targets: 4 },
+            { responsivePriority: 2, targets: 5 }
         ],
-        "dom": '<"dataTables_header"Bf>t<"dataTables_footer"ip>',
+        "dom": '<"dataTables_header"fB>t<"dataTables_footer"ip>',
         "buttons": {
             dom: {
                 button: {
@@ -48,7 +49,7 @@ $(document).ready(function () {
             },
             buttons: [
                 {
-                    className: 'btn-submit m-0 mb-1 text-nowrap',
+                    className: 'btn-custom-primary m-0 text-dark text-nowrap',
                     text: `Add room`,
                     action: function (e, dt, node, config) {
                         $('.js-add-room-modal').modal('show')
@@ -57,7 +58,7 @@ $(document).ready(function () {
             ]
         },
         "pageLength": 10,
-        "order": [[1, "asc"]]
+        "language": { search: '', searchPlaceholder: "Search..." },
     });
 
     // Tenant table
@@ -66,13 +67,13 @@ $(document).ready(function () {
         "details": false,
         "columnDefs": [
             { responsivePriority: 1, targets: 0 },
-            { responsivePriority: 2, targets: 5 },
-            { responsivePriority: 3, targets: 4 },
-            { responsivePriority: 4, targets: 3 },
+            { responsivePriority: 6, targets: 1 },
             { responsivePriority: 5, targets: 2 },
-            { responsivePriority: 6, targets: 1 }
+            { responsivePriority: 4, targets: 3 },
+            { responsivePriority: 3, targets: 4 },
+            { responsivePriority: 2, targets: 5 }
         ],
-        "dom": '<"dataTables_header"Bf>t<"dataTables_footer"ip>',
+        "dom": '<"dataTables_header"fB>t<"dataTables_footer"ip>',
         "buttons": {
             dom: {
                 button: {
@@ -82,7 +83,7 @@ $(document).ready(function () {
             },
             buttons: [
                 {
-                    className: 'btn-submit m-0 mb-1 text-nowrap',
+                    className: 'btn-custom-primary m-0 text-dark text-nowrap',
                     text: `Add tenant`,
                     action: function (e, dt, node, config) {
                         $('.js-add-tenant-modal').modal('show')
@@ -90,7 +91,8 @@ $(document).ready(function () {
                 }
             ]
         },
-        "pageLength": 10
+        "pageLength": 10,
+        "language": { search: '', searchPlaceholder: "Search..." },
     });
 
     // Booking table
@@ -99,13 +101,13 @@ $(document).ready(function () {
         "details": false,
         "columnDefs": [
             { responsivePriority: 1, targets: 0 },
-            { responsivePriority: 2, targets: 5 },
-            { responsivePriority: 3, targets: 4 },
-            { responsivePriority: 4, targets: 3 },
+            { responsivePriority: 6, targets: 1 },
             { responsivePriority: 5, targets: 2 },
-            { responsivePriority: 6, targets: 1 }
+            { responsivePriority: 4, targets: 3 },
+            { responsivePriority: 3, targets: 4 },
+            { responsivePriority: 2, targets: 5 }
         ],
-        "dom": '<"dataTables_header"Bf>t<"dataTables_footer"ip>',
+        "dom": '<"dataTables_header"fB>t<"dataTables_footer"ip>',
         "buttons": {
             dom: {
                 button: {
@@ -115,7 +117,7 @@ $(document).ready(function () {
             },
             buttons: [
                 {
-                    className: 'btn-submit booking-link m-0 mb-1 text-nowrap',
+                    className: 'btn-custom-primary booking-ltext-dark ink m-0 text-nowrap',
                     text: `Booking Link`,
                     action: function (e, dt, node, config) {
                         let booking_link = document.querySelector("#booking_id").value;
@@ -138,7 +140,8 @@ $(document).ready(function () {
                 }
             ]
         },
-        "pageLength": 10
+        "pageLength": 10,
+        "language": { search: '', searchPlaceholder: "Search..." },
     });
 
     // Remove form-control-sm to all table' search input
@@ -146,6 +149,7 @@ $(document).ready(function () {
 
     // Recalculate responsiveness of tables
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-        $($.fn.dataTable.tables(true)).DataTable().responsive.recalc();
-    })
+        $($.fn.dataTable.tables(true)).DataTable()
+            .responsive.recalc();
+    });
 })

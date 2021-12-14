@@ -27,7 +27,7 @@ $(document).ready(function () {
             { responsivePriority: 2, targets: 2 },
             { responsivePriority: 3, targets: 1 }
         ],
-        "dom": '<"dataTables_header"Bf>t<"dataTables_footer"ip>',
+        "dom": '<"dataTables_header"fB>t<"dataTables_footer"ip>',
         "buttons": {
             dom: {
                 button: {
@@ -38,7 +38,7 @@ $(document).ready(function () {
             buttons: [
                 {
 
-                    className: 'btn-submit m-0 mb-1 text-nowrap',
+                    className: 'btn-custom-primary m-0 text-nowrap',
                     text: `Add property`,
                     action: function (e, dt, node, config) {
                         $('.js-add-property-modal').modal('show')
@@ -46,8 +46,12 @@ $(document).ready(function () {
                 },
             ]
         },
-        "pageLength": 5
+        "pageLength": 5,
+        "language": { search: '', searchPlaceholder: "Search..." },
     });
+
+    // Remove form-control-sm to all table' search input
+    $(".dataTables_filter input").removeClass('form-control-sm')
 
     // Recalculate on resize
     $(document).on("resize", function () {
